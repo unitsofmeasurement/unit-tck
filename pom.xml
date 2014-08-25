@@ -302,4 +302,5 @@
 	<scm>
 		<url>https://github.com/unitsofmeasurement/unit-tck.git</url>
 	</scm>
+	<groupId>tec.units</groupId>
 </project>
