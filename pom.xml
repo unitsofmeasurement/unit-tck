@@ -1,6 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<groupId>tec.units</groupId>
 	<artifactId>unit-tck</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging> <!-- bundle? -->
@@ -19,7 +20,7 @@
 
 	<licenses>
 		<license>
-			<name>Apache 2.0</name>
+			<name>BSD</name>
 			<url>LICENSE.txt</url>
 		</license>
 	</licenses>
@@ -27,6 +28,9 @@
         <system>JIRA</system>
         <url>https://java.net/jira/browse/UNITSOFMEASUREMENT</url>
     </issueManagement>
+    <scm>
+        <url>https://github.com/unitsofmeasurement/unit-tck.git</url>
+    </scm>
     
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
@@ -299,8 +303,4 @@
 			</build>
 		</profile>
 	</profiles>
-	<scm>
-		<url>https://github.com/unitsofmeasurement/unit-tck.git</url>
-	</scm>
-	<groupId>tec.units</groupId>
 </project>
