@@ -68,7 +68,7 @@ public class TCKRunner extends XmlSuite{
         tng.setOutputDirectory("./target/tck-results");
 //        tng.addListener(new VerboseReporter());
         File file = new File(System.getProperty("java.io.tmpdir"), "tck-results.txt");
-        TCKReporter rep = new TCKReporter(file);
+        Reporter rep = new Reporter(file);
         System.out.println("Writing to file " + file.getAbsolutePath() + " ...");
         tng.addListener(rep);
         tng.run();
@@ -76,7 +76,7 @@ public class TCKRunner extends XmlSuite{
         System.out.println("-- JSR 363 TCK finished --");
     }
 
-    public static final class TCKReporter extends TestListenerAdapter{
+    public static final class Reporter extends TestListenerAdapter{
         private int count = 0;
         private int skipped = 0;
         private int failed = 0;
@@ -85,7 +85,7 @@ public class TCKRunner extends XmlSuite{
         private final StringWriter stringWriter = new StringWriter(3000);
         private FileWriter writer;
 
-        public TCKReporter(File file){
+        public Reporter(File file){
             try{
                 if(!file.exists()){
                     file.createNewFile();
