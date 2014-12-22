@@ -28,28 +28,30 @@ package tec.units.tck.tests;
 import static tec.units.tck.TCKSetup.*;
 import static org.testng.AssertJUnit.*;
 
+import org.jboss.test.audit.annotations.SpecAssertion;
+import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.annotations.Test;
 
 import java.util.Collection;
 
-//@SpecVersion(spec = "JSR 363", version = "0.7.0")
+@SpecVersion(spec = "JSR 363", version = "0.7.0")
 public class TCKSetupTest{
 
-    /*@SpecAssertion(
+    @SpecAssertion(
             section = "0",
             id = "Setup",
-            note = "Tests that a TestConfiguration is registered with the JDK ServiceLoader.")*/
+            note = "Tests that a TestConfiguration is registered with the JDK ServiceLoader.")
     @Test(description = "TCK Setup: ensure TCK Configuration is registered and available.")
     public void testTestSetup(){
         assertTrue("TCK Configuration not available.", getTestConfiguration() != null);
         assertNotNull(getTestConfiguration());
     }
 
-    /*@SpecAssertion(
+    @SpecAssertion(
             section = "0",
             id = "Setup",
             note = "Checks that TestConfiguration.getQuantityClasses() returns a non empty collection of quantity " +
-                    "implementations")*/
+                    "implementations")
     @Test(description = "TChecks that Quantity classes are registered for testing.")
     public void testQuantityConfiguration(){
         @SuppressWarnings("rawtypes")

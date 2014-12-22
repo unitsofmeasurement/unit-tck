@@ -73,6 +73,16 @@
 			<artifactId>MutabilityDetector</artifactId>
 			<version>0.9.1</version>
 		</dependency>
+		<dependency>
+		  <groupId>org.jboss.test-audit</groupId>
+		  <artifactId>jboss-test-audit-api</artifactId>
+		  <version>${jboss.test.audit.version}</version>
+		</dependency>
+		<dependency>
+          <groupId>org.jboss.test-audit</groupId>
+          <artifactId>jboss-test-audit-impl</artifactId>
+          <version>${jboss.test.audit.version}</version>
+        </dependency>
 	</dependencies>
 
 	<build>
