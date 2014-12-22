@@ -37,7 +37,7 @@ import java.util.ServiceLoader;
  *
  * @author Werner Keil
  */
-public interface ServiceLoaderConfiguration{
+public interface ServiceConfiguration{
 
     /**
      * Return a collection with all {@link Quantity} classes that are implemented. The list

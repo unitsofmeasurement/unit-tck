@@ -25,7 +25,7 @@
  */
 package tec.units.tck.util;
 
-import tec.units.tck.util.ServiceLoaderConfiguration;
+import tec.units.tck.util.ServiceConfiguration;
 
 import javax.measure.*;
 
@@ -35,7 +35,7 @@ import java.util.*;
  * Created by Werner Keil on 21.12.2014.
  */
 @SuppressWarnings("rawtypes")
-public final class TestConfiguration implements ServiceLoaderConfiguration {
+public final class TestConfiguration implements ServiceConfiguration {
 
  
 	@Override

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns="http://jboss.com/products/weld/tec.units.tck/audit"
+               xsi:schemaLocation="http://jboss.com/products/weld/tec.units.tck/audit"
+               name="JSR 363 Units of Measurement" version="0.7.0" id="JSR 363"
+               generateSectionIds="false">
+    <section id="0" title="TCK Setup">
+        <!-- Tests class TCKSetupTest -->
+        <group>
+            <text>Tests the correct setup of the TCK</text>
+            <assertion id="Setup">
+                <text>Ensure an implementation of
+                    tec.units.tck.util.ServiceConfiguration is registered using the
+                    java.util.ServiceLoader.
+                </text>
+            </assertion>
+        </group>
+    </section>
+</specification>

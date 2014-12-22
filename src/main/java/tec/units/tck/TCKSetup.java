@@ -27,27 +27,27 @@ package tec.units.tck;
 
 import java.util.ServiceLoader;
 
-import tec.units.tck.util.ServiceLoaderConfiguration;
+import tec.units.tck.util.ServiceConfiguration;
 
 public final class TCKSetup {
 
-	private static ServiceLoaderConfiguration TEST_CONFIG = loadTestConfiguration();
+	private static ServiceConfiguration TEST_CONFIG = loadTestConfiguration();
 
 	private TCKSetup() {
 	}
 
-	private static ServiceLoaderConfiguration loadTestConfiguration() {
+	private static ServiceConfiguration loadTestConfiguration() {
 		try {
-			return ServiceLoader.load(ServiceLoaderConfiguration.class).iterator()
+			return ServiceLoader.load(ServiceConfiguration.class).iterator()
 					.next();
 		} catch (Exception e) {
 			throw new IllegalStateException("No valid implementation of "
-						+ ServiceLoaderConfiguration.class.getName()
+						+ ServiceConfiguration.class.getName()
 						+ " is registered with the ServiceLoader.");
 		}
 	}
 
-	public static ServiceLoaderConfiguration getTestConfiguration() {
+	public static ServiceConfiguration getTestConfiguration() {
 		return TEST_CONFIG;
 	}
 
