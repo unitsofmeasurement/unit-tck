@@ -6,3 +6,5 @@ release.properties
 /.settings
 /.classpath
 /.project
+/tck-results
+/test-output
