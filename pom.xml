@@ -3,15 +3,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>tec.units</groupId>
 	<artifactId>unit-tck</artifactId>
-	<version>0.1</version>
+	<version>0.2-SNAPSHOT</version>
 	<packaging>jar</packaging> <!-- bundle? -->
 	<name>Units of Measurement TCK</name>
 	<url>http://github.com/unitsofmeasurement/unit-tck</url>
 	<organization>
 		<name>Units of Measurement project</name>
-		<url>http://www.unitsofmeasurement.org</url>
+		<url>http://unitsofmeasurement.github.io</url>
 	</organization>
-	<description>Unit Standard (JSR 363) TCK.</description>
+	<description>Units of Measurement (JSR 363) TCK.</description>
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
