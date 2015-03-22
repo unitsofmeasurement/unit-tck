@@ -1,6 +1,6 @@
 /**
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
 
 import java.util.Collection;
 
-@SpecVersion(spec = "JSR 363", version = "0.7.0")
+@SpecVersion(spec = "JSR 363", version = "0.8.0")
 public class TCKSetupTest{
 
     @SpecAssertion(
