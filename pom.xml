@@ -132,8 +132,8 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Export-Package>tec.uom.tck.*</Export-Package>
-						<Private-Package>tec.uom.tck.internal.*</Private-Package>
+						<Export-Package>tec.units.tck.*</Export-Package>
+						<Private-Package>tec.units.tck.internal.*</Private-Package>
 					</instructions>
 				</configuration>
 			</plugin>
