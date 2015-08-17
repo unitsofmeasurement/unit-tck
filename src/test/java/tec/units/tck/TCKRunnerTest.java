@@ -25,6 +25,8 @@
  */
 package tec.units.tck;
 
+import static org.testng.Assert.assertEquals;
+
 import tec.units.tck.TCKRunner;
 import org.testng.annotations.Test;
 import javax.tools.Tool;
