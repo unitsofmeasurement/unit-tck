@@ -1,6 +1,6 @@
-/**
+/*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -40,15 +40,18 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.lang.model.SourceVersion;
+import javax.tools.Tool;
+
 /**
  * Main class for executing the JSR 363 TCK.
  * Created by Werner Keil on 21.12.2014.
  */
-public class TCKRunner extends XmlSuite{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 3189431432291353154L;
+public class TCKRunner extends XmlSuite implements Tool {
+   /**
+     * 
+     */
+   private static final long serialVersionUID = 3189431432291353154L;
 
 	public TCKRunner(){
         setName("JSR363-TCK 0.1");
@@ -59,7 +62,19 @@ public class TCKRunner extends XmlSuite{
         test.setXmlClasses(classes);
     }
 
-    public static void main(String... args){
+    /**
+     * Main method to start the TCK. Optional arguments are:
+     * <ul>
+     *     <li>-DoutputDir for defining the output directory TestNG uses (default: ./target/tck-output).</li>
+     *     <li>-Dverbose=true to enable TestNG verbose mode.</li>
+     *     <li>-DreportFile=targetFile.txt for defining the TCK result summary report target file
+     *     (default: ./target/tck-results.txt).</li>
+     * </ul>
+     * @param args
+     */
+    @Override
+    public int run(InputStream in, OutputStream out, OutputStream err,
+    			String... args) {
         System.out.println("-- JSR 363 TCK started --");
         List<XmlSuite> suites = new ArrayList<>();
         suites.add(new TCKRunner());
@@ -74,6 +89,13 @@ public class TCKRunner extends XmlSuite{
         tng.run();
         rep.writeSummary();
         System.out.println("-- JSR 363 TCK finished --");
+    }
+
+    @Override
+    public final Set<SourceVersion> getSourceVersions() {
+	return Collections.unmodifiableSet(new HashSet<SourceVersion>(Arrays.asList(
+		new SourceVersion[]{SourceVersion.RELEASE_5, SourceVersion.RELEASE_6, 
+ 			SourceVersion.RELEASE_7 } )));
     }
 
     public static final class Reporter extends TestListenerAdapter{
