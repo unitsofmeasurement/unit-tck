@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -27,6 +27,7 @@ package tec.units.tck;
 
 import tec.units.tck.TCKRunner;
 import org.testng.annotations.Test;
+import javax.tools.Tool;
 
 /**
  * Created by keilw on 21.12.14.
@@ -35,6 +36,8 @@ public class TCKRunnerTest {
 
     @Test
     public static void testTCKRunner() {
-        TCKRunner.main(new String[]{TCKRunner.class.getName()});
+        final Tool runner = new TCKRunner();
+        int returnCode = runner.run(System.in, System.out, System.err, new String[]{TCKRunner.class.getName()});
+        assertEquals(0, returnCode);
     }
 }
