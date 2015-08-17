@@ -101,6 +101,7 @@ public class TCKRunner extends XmlSuite implements Tool {
         tng.run();
         rep.writeSummary();
         System.out.println("-- JSR 363 TCK finished --");
+        return 0;
     }
 
     @Override
