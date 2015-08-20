@@ -16,7 +16,7 @@ To setup the TCK with your implementation you must follow the following steps:
   
 To execute the TCK, simply execute
   
-mvn clean test site
+mvn clean test
        
  1. Go to target/site - there you will find your TCK test results.
    
