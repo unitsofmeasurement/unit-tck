@@ -25,38 +25,39 @@
  */
 package tec.units.tck.tests;
 
-import static tec.units.tck.TCKSetup.*;
-import static org.testng.AssertJUnit.*;
-
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.annotations.Test;
 
-import java.util.Collection;
+import javax.measure.quantity.Length;
+import javax.measure.spi.Bootstrap;
+import javax.measure.spi.QuantityFactory;
+import javax.measure.spi.QuantityFactoryService;
 
-@SpecVersion(spec = "JSR 363", version = "0.8.0")
-public class TCKSetupTest{
+import static org.testng.AssertJUnit.assertNotNull;
 
-    @SpecAssertion(
-            section = "0",
-            id = "Setup",
-            note = "Tests that a TestConfiguration is registered with the JDK ServiceLoader.")
-    @Test(description = "TCK Setup: ensure TCK Configuration is registered and available.")
-    public void testTestSetup(){
-        assertTrue("TCK Configuration not available.", getTestConfiguration() != null);
-        assertNotNull(getTestConfiguration());
-    }
+/**
+ * Test class for creating new quantities.
+ */
+@SpecVersion(spec = "JSR 363", version = "0.8")
+public class CreatingQuantiesTest {
 
-    @SpecAssertion(
-            section = "0",
-            id = "Setup",
-            note = "Checks that TestConfiguration.getQuantityClasses() returns a non empty collection of quantity " +
-                    "implementations")
-    @Test(description = "TChecks that Quantity classes are registered for testing.")
-    public void testQuantityConfiguration(){
-        @SuppressWarnings("rawtypes")
-		Collection<Class> amountClasses = getTestConfiguration().getQuantityClasses();
-        assertNotNull("TCK Test Configuration quantity classes are null.", amountClasses);
-        assertFalse("TCK Test Configuration quantity classes is empty.", amountClasses.isEmpty());
-    }
+	// ************************ A. Accessing Quantity Factories
+	// ************************
+
+	/**
+	 * Access a MonetaryAmountFactory for each registered type.
+	 */
+	@Test(description = "6.5.1 Quantities Obtained from a factory")
+	@SpecAssertion(section = "6.5.1", id = "451-A1")
+	public void testAccessToQuantityFactory() {
+		QuantityFactoryService service = Bootstrap
+				.getService(QuantityFactoryService.class);
+		QuantityFactory<Length> factory = service
+				.getQuantityFactory(Length.class);
+		assertNotNull("Section 6.5.1: No QuantityFactory available for "
+				+ Length.class.getSimpleName(), factory);
+
+	}
+
 }

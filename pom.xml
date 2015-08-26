@@ -36,6 +36,8 @@
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
+		<jsr.version>0.8-SNAPSHOT</jsr.version>
+		<ri.version>0.8-SNAPSHOT</ri.version>
 		<jdkVersion>1.7</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.7</maven.compile.targetLevel>
@@ -44,24 +46,51 @@
 		<jboss.test.audit.version>1.1.0.Final</jboss.test.audit.version>
 	</properties>
 
+	<dependencyManagement>
+		<dependencies>
+		    <dependency>
+                <groupId>tec.units</groupId>
+                <artifactId>unit-ri</artifactId>
+                <version>${ri.version}</version>
+                <type>jar</type>
+            </dependency>
+            
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${testng.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>javax.measure</groupId>
 			<artifactId>unit-api</artifactId>
 		</dependency>
+		  <dependency>
+                <groupId>tec.units</groupId>
+                <artifactId>unit-ri</artifactId>
+                <type>jar</type>
+            </dependency>
+            
 		<!-- dependency> <groupId>org.hamcrest</groupId> <artifactId>hamcrest-all</artifactId> 
 			<scope>test</scope> </dependency> <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> 
 			<scope>test</scope> </dependency -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>${testng.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -74,15 +103,15 @@
 			<version>0.9.1</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.jboss.test-audit</groupId>
-		  <artifactId>jboss-test-audit-api</artifactId>
-		  <version>${jboss.test.audit.version}</version>
+			<groupId>org.jboss.test-audit</groupId>
+			<artifactId>jboss-test-audit-api</artifactId>
+			<version>${jboss.test.audit.version}</version>
 		</dependency>
 		<dependency>
-          <groupId>org.jboss.test-audit</groupId>
-          <artifactId>jboss-test-audit-impl</artifactId>
-          <version>${jboss.test.audit.version}</version>
-        </dependency>
+			<groupId>org.jboss.test-audit</groupId>
+			<artifactId>jboss-test-audit-impl</artifactId>
+			<version>${jboss.test.audit.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -246,18 +275,40 @@
 	</build>
 
 	<!-- Additional repositories -->
-	<!-- Helps to resolve Parent POM -->
+	<!-- Helps to resolve Parent POM and Snapshot artifacts -->
 	<repositories>
 		<repository>
 			<id>geotoolkit</id>
 			<name>Geotoolkit.org project</name>
 			<url>http://maven.geotoolkit.org</url>
 		</repository>
+		<repository>
+			<id>jcenter</id>
+			<name>JCenter</name>
+			<url>http://jcenter.bintray.com</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>bintray-release</id>
+			<name>libs-release</name>
+			<url>http://oss.jfrog.org/artifactory/libs-release</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>bintray-snapshot</id>
+			<name>libs-snapshot</name>
+			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+		</repository>
 	</repositories>
 
 	<profiles>
-	   <!-- TODO create profiles for "minimum", "full", etc. to test different JSR profiles -->
-	   <profile>
+		<!-- TODO create profiles for "minimum", "full", etc. to test different 
+			JSR profiles -->
+		<profile>
 			<id>license</id>
 			<activation>
 				<property>
@@ -314,6 +365,6 @@
 					</plugin>
 				</plugins>
 			</build>
-	   </profile>
+		</profile>
 	</profiles>
 </project>
