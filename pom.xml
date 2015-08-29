@@ -42,6 +42,7 @@
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.7</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
+		<lib.version>0.8-SNAPSHOT</lib.version>
 		<testng.version>6.8.5</testng.version>
 		<jboss.test.audit.version>1.1.0.Final</jboss.test.audit.version>
 	</properties>
@@ -55,6 +56,11 @@
                 <type>jar</type>
             </dependency>
             
+            <dependency>
+                <groupId>tec.uom.lib</groupId>
+                <artifactId>uom-lib-common</artifactId>
+                <version>${lib.version}</version>
+            </dependency>
 			<dependency>
 				<groupId>org.testng</groupId>
 				<artifactId>testng</artifactId>
@@ -83,6 +89,10 @@
 		<!-- dependency> <groupId>org.hamcrest</groupId> <artifactId>hamcrest-all</artifactId> 
 			<scope>test</scope> </dependency> <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> 
 			<scope>test</scope> </dependency -->
+	     <dependency>
+                <groupId>tec.uom.lib</groupId>
+                <artifactId>uom-lib-common</artifactId>
+            </dependency>
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>

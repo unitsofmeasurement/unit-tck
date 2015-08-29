@@ -39,7 +39,7 @@ import static org.testng.AssertJUnit.assertNotNull;
 /**
  * Test class for creating new quantities.
  */
-@SpecVersion(spec = "JSR 363", version = "0.8")
+@SpecVersion(spec = "JSR 363", version = "0.8.0")
 public class CreatingQuantiesTest {
 
 	// ************************ A. Accessing Quantity Factories
@@ -49,7 +49,7 @@ public class CreatingQuantiesTest {
 	 * Access a MonetaryAmountFactory for each registered type.
 	 */
 	@Test(description = "6.5.1 Quantities Obtained from a factory")
-	@SpecAssertion(section = "6.5.1", id = "451-A1")
+	@SpecAssertion(section = "6.5.1", id = "651-A1")
 	public void testAccessToQuantityFactory() {
 		QuantityFactoryService service = Bootstrap
 				.getService(QuantityFactoryService.class);
