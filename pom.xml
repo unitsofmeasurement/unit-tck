@@ -314,7 +314,19 @@
 			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
 		</repository>
 	</repositories>
-
+	<distributionManagement>
+		<repository>
+			<id>bintray-release</id>
+			<name>oss-jfrog-artifactory-release</name>
+			<url>https://oss.jfrog.org/artifactory/oss-release-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>bintray-snapshot</id>
+			<name>oss-jfrog-artifactory-snapshot</name>
+			<url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
+		</snapshotRepository>
+	</distributionManagement>
+	
 	<profiles>
 		<!-- TODO create profiles for "minimum", "full", etc. to test different 
 			JSR profiles -->
@@ -360,18 +372,6 @@
 							to LICENSE.bak first) -->
 					</plugins>
 				</pluginManagement>
-				<distributionManagement>
-					<repository>
-						<id>bintray-release</id>
-						<name>oss-jfrog-artifactory-release</name>
-						<url>https://oss.jfrog.org/artifactory/oss-release-local</url>
-					</repository>
-					<snapshotRepository>
-						<id>bintray-snapshot</id>
-						<name>oss-jfrog-artifactory-snapshot</name>
-						<url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
-					</snapshotRepository>
-				</distributionManagement>
 				<plugins>
 					<plugin>
 						<groupId>com.google.code.maven-license-plugin</groupId>
