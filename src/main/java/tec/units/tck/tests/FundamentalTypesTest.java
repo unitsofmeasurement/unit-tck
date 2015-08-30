@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -23,44 +23,27 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package tec.units.tck.util;
+package tec.units.tck.tests;
 
-import tec.units.tck.util.ServiceConfiguration;
+import org.jboss.test.audit.annotations.SpecAssertion;
+import org.jboss.test.audit.annotations.SpecVersion;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 
-import javax.measure.*;
+import tec.units.tck.TCKSetup;
 
-import java.util.*;
 
-/**
- * Created by Werner Keil on 21.12.2014.
- */
-@SuppressWarnings("rawtypes")
-public final class TestConfiguration implements ServiceConfiguration {
+@SpecVersion(spec = "JSR 363", version = "0.8.0")
+public class FundamentalTypesTest {
 
- 
-	@Override
-    public Collection<Class> getQuantityClasses() {
-            return Arrays
-                    .asList(new Class[]{Quantity.class});
+    /**
+     * Ensure at least one Unit implementation
+     * is available/registered.
+     */
+    @SpecAssertion(section = "5.2", id = "52-A1")
+    @Test(description = "5.2 Ensure at least one javax.measure.Unit implementation is available/registered.")
+    public void testEnsureUnit() {
+        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getTestConfiguration() != null);
+        AssertJUnit.assertTrue(!TCKSetup.getTestConfiguration().getUnitClasses().isEmpty());
     }
-
-    @Override
-    public Collection<Class> getUnitClasses() {
-        try{
-            return Arrays
-                    .asList(new Class[] { Class.forName("javax.measure.Unit")});
-        }
-        catch(ClassNotFoundException e){
-            e.printStackTrace();
-            throw new RuntimeException("Unit class not lodable");
-        }
-    }
-
-    @Override
-    public Collection<UnitConverter> getUnitConverters4Test(){
-        List<UnitConverter> ops = new ArrayList<>();
-        // TODO add unit converters
-        return ops;
-    }
-
 }

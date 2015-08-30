@@ -73,6 +73,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		test.setName("TCK/Test Setup");
 		List<XmlClass> classes = new ArrayList<>();
 		classes.add(new XmlClass(TCKSetup.class));
+		classes.add(new XmlClass(FundamentalTypesTest.class));
 		classes.add(new XmlClass(CreatingQuantiesTest.class));
 		test.setXmlClasses(classes);
 	}
