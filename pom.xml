@@ -49,18 +49,18 @@
 
 	<dependencyManagement>
 		<dependencies>
-		    <dependency>
-                <groupId>tec.units</groupId>
-                <artifactId>unit-ri</artifactId>
-                <version>${ri.version}</version>
-                <type>jar</type>
-            </dependency>
-            
-            <dependency>
-                <groupId>tec.uom.lib</groupId>
-                <artifactId>uom-lib-common</artifactId>
-                <version>${lib.version}</version>
-            </dependency>
+			<dependency>
+				<groupId>tec.units</groupId>
+				<artifactId>unit-ri</artifactId>
+				<version>${ri.version}</version>
+				<type>jar</type>
+			</dependency>
+
+			<dependency>
+				<groupId>tec.uom.lib</groupId>
+				<artifactId>uom-lib-common</artifactId>
+				<version>${lib.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>org.testng</groupId>
 				<artifactId>testng</artifactId>
@@ -80,19 +80,19 @@
 			<groupId>javax.measure</groupId>
 			<artifactId>unit-api</artifactId>
 		</dependency>
-		  <dependency>
-                <groupId>tec.units</groupId>
-                <artifactId>unit-ri</artifactId>
-                <type>jar</type>
-            </dependency>
-            
+		<dependency>
+			<groupId>tec.units</groupId>
+			<artifactId>unit-ri</artifactId>
+			<type>jar</type>
+		</dependency>
+
 		<!-- dependency> <groupId>org.hamcrest</groupId> <artifactId>hamcrest-all</artifactId> 
 			<scope>test</scope> </dependency> <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> 
 			<scope>test</scope> </dependency -->
-	     <dependency>
-                <groupId>tec.uom.lib</groupId>
-                <artifactId>uom-lib-common</artifactId>
-            </dependency>
+		<dependency>
+			<groupId>tec.uom.lib</groupId>
+			<artifactId>uom-lib-common</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -360,6 +360,18 @@
 							to LICENSE.bak first) -->
 					</plugins>
 				</pluginManagement>
+				<distributionManagement>
+					<repository>
+						<id>bintray-release</id>
+						<name>oss-jfrog-artifactory-release</name>
+						<url>https://oss.jfrog.org/artifactory/oss-release-local</url>
+					</repository>
+					<snapshotRepository>
+						<id>bintray-snapshot</id>
+						<name>oss-jfrog-artifactory-snapshot</name>
+						<url>https://oss.jfrog.org/artifactory/oss-snapshot-local</url>
+					</snapshotRepository>
+				</distributionManagement>
 				<plugins>
 					<plugin>
 						<groupId>com.google.code.maven-license-plugin</groupId>
