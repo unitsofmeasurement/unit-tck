@@ -1,6 +1,7 @@
 unit-tck
 ========
 [![Build Status](https://drone.io/github.com/unitsofmeasurement/unit-tck/status.png)](https://drone.io/github.com/unitsofmeasurement/unit-tck/latest)
+[![Circle CI](https://circleci.com/gh/unitsofmeasurement/unit-tck.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/unit-tck)
 [![License](http://img.shields.io/badge/license-BSD3-blue.svg?style=flat-square)](http://opensource.org/licenses/BSD-3-Clause)
 
 JSR 363 Technology Compatibility Kit (TCK) 
@@ -18,5 +19,5 @@ To execute the TCK, simply execute
   
 mvn clean test
        
- 1. Go to target/site - there you will find your TCK test results.
+ 1. Go to target - where you can find your TCK test results.
    
