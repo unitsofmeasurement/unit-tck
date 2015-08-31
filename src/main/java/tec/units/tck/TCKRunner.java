@@ -65,7 +65,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
      */
 	private static final long serialVersionUID = 3189431432291353154L;
 
-	private static final String VERSION_NUMBER = "0.2";
+	private static final String VERSION_NUMBER = "0.3";
 
 	public TCKRunner() {
 		setName("JSR363-TCK " + VERSION_NUMBER);
