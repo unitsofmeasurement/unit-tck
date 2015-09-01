@@ -42,11 +42,11 @@ import static org.testng.AssertJUnit.assertNotNull;
 @SpecVersion(spec = "JSR 363", version = "0.8.0")
 public class CreatingQuantiesTest {
 
-	// ************************ A. Accessing Quantity Factories
+	// ************************ 5.5 Obtaining Quantity Instances
 	// ************************
 
 	/**
-	 * Access a MonetaryAmountFactory for each registered type.
+	 * Access a QuantityFactory for each registered type.
 	 */
 	@Test(description = "5.5.1 Quantities Obtained from a factory")
 	@SpecAssertion(section = "5.5.1", id = "551-A1")
