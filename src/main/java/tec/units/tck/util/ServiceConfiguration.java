@@ -43,7 +43,7 @@ public interface ServiceConfiguration{
      * Return a collection with all {@link Quantity} classes that are implemented. The list
      * must not be empty and should contain <b>every</b> amount class implemented.<p>
      * This enables the TCK to check in addition to the basic implementation compliance, if
-     * according {@link MonetaryAmountFactoryProviderSpi} are registered/available correctly.
+     * according {@linkplain QuantityFactoryService} are registered/available correctly.
      *
      * @return a collection with all implemented amount classes, not null.
      */
