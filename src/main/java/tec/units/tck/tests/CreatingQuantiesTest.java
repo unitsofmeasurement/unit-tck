@@ -48,14 +48,14 @@ public class CreatingQuantiesTest {
 	/**
 	 * Access a MonetaryAmountFactory for each registered type.
 	 */
-	@Test(description = "6.5.1 Quantities Obtained from a factory")
-	@SpecAssertion(section = "6.5.1", id = "651-A1")
+	@Test(description = "5.5.1 Quantities Obtained from a factory")
+	@SpecAssertion(section = "5.5.1", id = "551-A1")
 	public void testAccessToQuantityFactory() {
 		QuantityFactoryService service = Bootstrap
 				.getService(QuantityFactoryService.class);
 		QuantityFactory<Length> factory = service
 				.getQuantityFactory(Length.class);
-		assertNotNull("Section 6.5.1: No QuantityFactory available for "
+		assertNotNull("Section 5.5.1: No QuantityFactory available for "
 				+ Length.class.getSimpleName(), factory);
 
 	}

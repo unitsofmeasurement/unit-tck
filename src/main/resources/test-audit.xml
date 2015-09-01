@@ -16,24 +16,24 @@
 			</assertion>
 		</group>
 	</section>
-	<section id="5" title="API" />
-	<section id="5.1" title="Packages and fundamental types" />
-	<section id="5.2" title="The Unit Interface">
+	<section id="4" title="API" />
+	<section id="4.1" title="Packages and fundamental types" />
+	<section id="4.2" title="The Unit Interface">
 	   <group>
             <text>Unit implementation</text>
-            <assertion id="52-A1">
+            <assertion id="42-A1">
                 <text>Ensure at least one javax.measure.Unit implementation
                     is available/registered.
                 </text>
             </assertion>
         </group>
 	</section>
-	<section id="6" title="SPI" />
-	<section id="6.5" title="Obtaining Quantity Instances" />
-	<section id="6.5.1" title="Quantities Obtained from a factory">
+	<section id="5" title="SPI" />
+	<section id="5.5" title="Obtaining Quantity Instances" />
+	<section id="5.5.1" title="Quantities Obtained from a factory">
 		<group>
 			<text>Quantities Obtained from a factory</text>
-			<assertion id="651-A1">
+			<assertion id="551-A1">
 				<text>Test QuantityFactoryService provides a QuantityFactory for
 					each base quantity.
 				</text>
