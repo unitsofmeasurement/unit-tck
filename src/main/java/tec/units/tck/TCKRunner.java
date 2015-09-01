@@ -61,8 +61,8 @@ import javax.tools.Tool;
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
-     * 
-     */
+         * 
+         */
 	private static final long serialVersionUID = 3189431432291353154L;
 
 	private static final String VERSION_NUMBER = "0.3";
@@ -131,6 +131,11 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 				.asList(new SourceVersion[] { SourceVersion.RELEASE_5,
 						SourceVersion.RELEASE_6, SourceVersion.RELEASE_7 })));
 	}
+
+    	public static final void main(String... args) {
+		final TCKRunner runner = new TCKRunner();
+	 	runner.run(System.in, System.out, System.err, args);
+    	}
 
 	public static final class Reporter extends TestListenerAdapter {
 		private int count = 0;
