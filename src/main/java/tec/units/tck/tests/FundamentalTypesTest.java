@@ -41,7 +41,7 @@ public class FundamentalTypesTest {
      * is available/registered.
      */
     @SpecAssertion(section = "4.2", id = "42-A1")
-    @Test(description = "4.2 Ensure at least one javax.measure.Unit implementation is available/registered.")
+    @Test(groups = { "core" }, description = "4.2 Ensure at least one javax.measure.Unit implementation is available/registered.")
     public void testEnsureUnit() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getTestConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getTestConfiguration().getUnitClasses().isEmpty());

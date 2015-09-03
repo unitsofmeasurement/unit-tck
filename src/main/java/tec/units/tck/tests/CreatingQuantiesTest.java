@@ -48,7 +48,7 @@ public class CreatingQuantiesTest {
 	/**
 	 * Access a QuantityFactory for each registered type.
 	 */
-	@Test(description = "5.5.1 Quantities Obtained from a factory")
+	@Test(groups = { "spi" }, description = "5.5.1 Quantities Obtained from a factory")
 	@SpecAssertion(section = "5.5.1", id = "551-A1")
 	public void testAccessToQuantityFactory() {
 		QuantityFactoryService service = Bootstrap
