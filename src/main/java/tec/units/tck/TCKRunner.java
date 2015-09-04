@@ -25,10 +25,6 @@
  */
 package tec.units.tck;
 
-
-import static tec.units.tck.util.TestGroups.FORMAT;
-import static tec.units.tck.util.TestGroups.FULL;
-import static tec.units.tck.util.TestGroups.MINIMAL;
 import static tec.units.tck.util.TestGroups.SYS_PROPERTY_PROFILE;
 
 import org.testng.ITestResult;
@@ -42,6 +38,8 @@ import org.testng.xml.XmlTest;
 
 import tec.units.tck.tests.*;
 import tec.units.tck.util.TestGroups;
+import tec.units.tck.util.TestGroups.Group;
+import tec.units.tck.util.TestGroups.Profile;
 import tec.uom.lib.common.function.Versioned;
 
 import java.lang.reflect.Method;
@@ -68,37 +66,22 @@ import javax.tools.Tool;
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
-         * 
-         */
+     * 
+     */
 	private static final long serialVersionUID = 3189431432291353154L;
 
 	private static final String VERSION_NUMBER = "0.3";
 
-	private final String profile;
+	private final Profile profile;
 	
 	public TCKRunner() {
 		setName("JSR363-TCK " + VERSION_NUMBER);
 		XmlTest test = new XmlTest(this);
 		
-		profile = System.getProperty(SYS_PROPERTY_PROFILE, FULL);
-		
-		switch(profile) {
-			case MINIMAL:
-				for (TestGroups.Group group : TestGroups.MINIMAL_GROUPS) {
-					test.addIncludedGroup(group.name());
-				}
-				break;
-			case FORMAT:
-				for (TestGroups.Group group : TestGroups.FORMAT_GROUPS) {
-					test.addIncludedGroup(group.name());
-				}
-				break;
-			default:
-				for (TestGroups.Group group : TestGroups.Group.values()) {
-					test.addIncludedGroup(group.name());
-				}	
+		profile = Profile.valueOf(System.getProperty(SYS_PROPERTY_PROFILE, Profile.full.name()));
+		for (Group group : profile.getGroups()) {
+			test.addIncludedGroup(group.name());
 		}
-		
 		test.setName("TCK/Test Setup");
 		List<XmlClass> classes = new ArrayList<>();
 		classes.add(new XmlClass(TCKSetup.class));

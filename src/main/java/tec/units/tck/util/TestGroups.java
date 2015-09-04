@@ -1,6 +1,7 @@
 package tec.units.tck.util;
 
 import static tec.units.tck.util.TestGroups.Group.*;
+import tec.uom.lib.common.function.DescriptionSupplier;
 
 /**
  * TestNG group profiles used in the JSR 363 TCK.
@@ -32,29 +33,14 @@ public final class TestGroups {
     }
 
     /**
-     * Full profile (default if none is given)
-     */
-    public static final String FULL = "full";
-
-    /**
-     * Minimal profile
-     */
-    public static final String MINIMAL = "minimal";
-
-    /**
      * Minimal groups
      */
-    public static final Group[] MINIMAL_GROUPS = {core};
-
-    /**
-     * Format profile
-     */
-    public static final String FORMAT = "format";
+    private static final Group[] MINIMAL_GROUPS = {core};
 
     /**
      * Format groups
      */
-    public static final Group[] FORMAT_GROUPS = {core, format};
+    private static final Group[] FORMAT_GROUPS = {core, format};
     
     /**
      * Base Quantity groups
@@ -83,7 +69,7 @@ public final class TestGroups {
      *
      * @author Werner Keil
      */
-    public enum Profile {
+    public enum Profile implements DescriptionSupplier {
         minimal("Minimal", MINIMAL_GROUPS), format("Format", FORMAT_GROUPS), base_quantity("Base Quantity", BASE_QUANTITY_GROUPS), 
         quantity("Quantity", QUANTITY_GROUPS), spi("SPI", SPI_GROUPS), full("Full", Group.values());
 
@@ -95,13 +81,19 @@ public final class TestGroups {
             this.description = description;
             this.groups = groups;
         }
-
-        public String getDescription() {
-            return description;
-        }
         
         public Group[] getGroups() {
             return groups;
+        }
+
+		@Override
+		/*
+		 * (non-Javadoc)
+		 *
+		 * @see DescriptionSupplier
+		 */
+        public String getDescription() {
+            return description;
         }
     }
 
