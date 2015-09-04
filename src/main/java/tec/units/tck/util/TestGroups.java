@@ -62,8 +62,8 @@ public final class TestGroups {
      *
      * The most profiles (used by {@link TCKRunner}) are:
      * <ul>
-     * <li>{@link #minimal} - used to include tests for the core elements of the API. These tests are <b>mandatory</b> in every
-     * profile.</li>
+     * <li>{@link #minimal} - used to include tests for the core elements of the API. These tests are <b>mandatory</b> for every
+     * implementation.</li>
      * <li>{@link #format} - formatting tests used to include tests for elements in {@linkplain javax.measure.format}.</li>
      * </ul>
      *
