@@ -1,6 +1,6 @@
-/**
+/*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -25,12 +25,10 @@
  */
 package tec.units.tck.util;
 
-
 import org.mutabilitydetector.unittesting.AllowedReason;
 import org.mutabilitydetector.unittesting.MutabilityAssert;
 import org.mutabilitydetector.unittesting.MutabilityMatchers;
 import org.testng.Assert;
-import org.testng.AssertJUnit;
 
 import tec.units.tck.TCKValidationException;
 
@@ -43,22 +41,37 @@ import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.Arrays;
 import java.util.Random;
 
-
 public class TestUtils{
+	
+    /**
+     * Name of the system property to pass the desired profile
+     */
+    public static final String SYS_PROPERTY_PROFILE = "tec.units.tck.profile";
+    
+    /**
+     * Name of the system property to override the default output directory
+     */
+    public static final String SYS_PROPERTY_OUTPUT_DIR = "tec.units.tck.outputDir";
+    
+    /**
+     * Name of the system property to override the default report file
+     */
+    public static final String SYS_PROPERTY_REPORT_FILE = "tec.units.tck.reportFile";
+    
+    /**
+     * Name of the system property to set the <code>verbose</code> flag
+     */
+    public static final String SYS_PROPERTY_VERBOSE = "tec.units.tck.verbose";
 
-    private static final StringBuffer warnings = new StringBuffer();
+    private static final StringBuilder warnings = new StringBuilder();
 
     private TestUtils(){
-
     }
 
-
-    public static BigDecimal createNumberWithPrecision(QuantityFactory f, int precision){
+    public static Number createNumberWithPrecision(QuantityFactory f, int precision){
         if(precision == 0){
             precision = new Random().nextInt(100);
         }
@@ -66,18 +79,17 @@ public class TestUtils{
         for(int i = 0; i < precision; i++){
             b.append(String.valueOf(i % 10));
         }
-        return new BigDecimal(b.toString(), MathContext.UNLIMITED);
+        return new Double(b.toString());
     }
 
-    public static BigDecimal createNumberWithScale(QuantityFactory f, int scale){
+    public static Number createNumberWithScale(QuantityFactory f, int scale){
         StringBuilder b = new StringBuilder(scale + 2);
         b.append("9.");
         for(int i = 0; i < scale; i++){
             b.append(String.valueOf(i % 10));
         }
-        return new BigDecimal(b.toString(), MathContext.UNLIMITED);
+        return new Double(b.toString());
     }
-
 
     public static void testSerializable(String section, Class c){
         if(!Serializable.class.isAssignableFrom(c)){
@@ -119,6 +131,10 @@ public class TestUtils{
             }
         }
         Assert.fail(section + ": Class must implement " + iface.getName() + ", but does not: " + type.getName());
+    }
+
+    public static void testComparable(String section, Class type){
+        testImplementsInterface(section, type, Comparable.class);
     }
 
     public static void testHasPublicMethod(String section, Class type, Class returnType, String name,
@@ -177,16 +193,26 @@ public class TestUtils{
         }
     }
 
-    public static void testComparable(String section, Class type){
-        testImplementsInterface(section, type, Comparable.class);
-    }
-
     public static void assertValue(String section, Object value, String methodName, Object instance)
             throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
             InvocationTargetException{
         Method m = instance.getClass().getDeclaredMethod(methodName);
         Assert.assertEquals(value,
                             m.invoke(instance), section + ": " + m.getName() + '(' + instance + ") returned invalid value:");
+    }
+    
+    public static boolean testHasPublicStaticMethodOpt(String section, Class type, Class returnType, String methodName,
+                                                       Class... paramTypes){
+        try{
+            testHasPublicStaticMethod(section, type, returnType, methodName, paramTypes);
+            return true;
+        }
+        catch(Exception e){
+            warnings.append(section).append(": Recommendation failed: Missing method [public static ")
+                    .append(methodName).append('(').append(Arrays.toString(paramTypes)).append("):")
+                    .append(returnType.getName()).append("] on: ").append(type.getName()).append("\n");
+            return false;
+        }
     }
 
     public static boolean testImmutableOpt(String section, Class type){
@@ -209,20 +235,6 @@ public class TestUtils{
         catch(Exception e){
             warnings.append(section).append(": Recommendation failed: Class should be serializable: ")
                     .append(type.getName()).append(", details: ").append(e.getMessage()).append("\n");
-            return false;
-        }
-    }
-
-    public static boolean testHasPublicStaticMethodOpt(String section, Class type, Class returnType, String methodName,
-                                                       Class... paramTypes){
-        try{
-            testHasPublicStaticMethod(section, type, returnType, methodName, paramTypes);
-            return true;
-        }
-        catch(Exception e){
-            warnings.append(section).append(": Recommendation failed: Missing method [public static ")
-                    .append(methodName).append('(').append(Arrays.toString(paramTypes)).append("):")
-                    .append(returnType.getName()).append("] on: ").append(type.getName()).append("\n");
             return false;
         }
     }

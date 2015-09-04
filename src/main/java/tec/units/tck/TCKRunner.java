@@ -25,7 +25,7 @@
  */
 package tec.units.tck;
 
-import static tec.units.tck.util.TestGroups.SYS_PROPERTY_PROFILE;
+import static tec.units.tck.util.TestUtils.*;
 
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
@@ -37,7 +37,6 @@ import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
 import tec.units.tck.tests.*;
-import tec.units.tck.util.TestGroups;
 import tec.units.tck.util.TestGroups.Group;
 import tec.units.tck.util.TestGroups.Profile;
 import tec.uom.lib.common.function.Versioned;
@@ -93,10 +92,12 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
 	 * Main method to start the TCK. Optional arguments are:
 	 * <ul>
-	 * <li>-DoutputDir for defining the output directory TestNG uses (default:
+	 * <li>-Dtec.units.tck.profile for defining the profile for TestNG groups (default:
+	 * full).</li>
+	 * <li>-Dtec.units.tck.outputDir for defining the output directory TestNG uses (default:
 	 * ./target/tck-output).</li>
-	 * <li>-Dverbose=true to enable TestNG verbose mode.</li>
-	 * <li>-DreportFile=targetFile.txt for defining the TCK result summary
+	 * <li>-Dtec.units.tck.verbose=true to enable TestNG verbose mode.</li>
+	 * <li>-Dtec.units.tck.reportFile=targetFile.txt for defining the TCK result summary
 	 * report target file (default: ./target/tck-results.txt).</li>
 	 * </ul>
 	 * 
@@ -109,29 +110,20 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		
 //		Properties props = System.getProperties();
 //		props.list(System.out);
-		System.out.println("Profile: " + profile);
+		System.out.println("Profile: " + profile.getDescription());
 		
 		List<XmlSuite> suites = new ArrayList<>();
 		suites.add(new TCKRunner());
 		TestNG tng = new TestNG();
 		tng.setXmlSuites(suites);
-		String outDir = System.getProperty("outputDir");
-		if (outDir != null) {
-			tng.setOutputDirectory(outDir);
-		} else {
-			tng.setOutputDirectory("./target/tck-output");
-		}
-		String verbose = System.getProperty("verbose");
+		String outDir = System.getProperty(SYS_PROPERTY_OUTPUT_DIR, "./target/tck-output");
+		tng.setOutputDirectory(outDir);
+		String verbose = System.getProperty(SYS_PROPERTY_VERBOSE);
 		if ("true".equalsIgnoreCase(verbose)) {
 			tng.addListener(new VerboseReporter());
 		}
-		String reportFile = System.getProperty("reportFile");
-		File file = null;
-		if (reportFile != null) {
-			file = new File(reportFile);
-		} else {
-			file = new File("./target/tck-results.txt");
-		}
+		String reportFile = System.getProperty(SYS_PROPERTY_REPORT_FILE, "./target/tck-results.txt");
+		File file = new File(reportFile);
 		Reporter rep = new Reporter(file);
 		System.out
 				.println("Writing to file " + file.getAbsolutePath() + " ...");

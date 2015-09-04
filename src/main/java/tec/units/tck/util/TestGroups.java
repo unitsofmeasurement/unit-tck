@@ -96,9 +96,4 @@ public final class TestGroups {
             return description;
         }
     }
-
-    /**
-     * Name of the system property to give the desired profile
-     */
-    public static final String SYS_PROPERTY_PROFILE = "tec.units.tck.profile";
 }
