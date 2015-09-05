@@ -42,7 +42,10 @@ public final class TestGroups {
      * <ul>
      * <li>{@link #core} - used to include tests for the core elements of the API. These tests are <b>mandatory</b> in every
      * profile.</li>
-     * <li>{@link #format} - formatting tests used to include tests for elements in {@linkplain javax.measure.format}.</li>
+     * <li>{@link #format} - formatting tests used to include elements in {@linkplain javax.measure.format}.</li>
+     * <li>{@link #base_quantity} - tests to include <b>base quantities</b> in {@linkplain javax.measure.quantity}.</li>
+     * <li>{@link #quantity} - tests to include other quantities in {@linkplain javax.measure.quantity}.</li>
+     * <li>{@link #spi} - tests to include SPI elements in {@linkplain javax.measure.spi}.</li>
      * </ul>
      *
      * @author Werner Keil
