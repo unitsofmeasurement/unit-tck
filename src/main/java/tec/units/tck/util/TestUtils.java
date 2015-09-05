@@ -44,6 +44,11 @@ import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Test utilities used in the JSR 363 TCK.
+ *
+ * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ */
 public class TestUtils{
 	
     /**

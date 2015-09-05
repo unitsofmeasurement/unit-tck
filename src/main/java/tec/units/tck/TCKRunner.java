@@ -62,6 +62,9 @@ import javax.tools.Tool;
 /**
  * Main class for executing the JSR 363 TCK. Created by Werner Keil on
  * 21.12.2014.
+ * 
+ * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 0.4, September 5, 2015
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
@@ -114,7 +117,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		
 		List<XmlSuite> suites = new ArrayList<>();
 		suites.add(new TCKRunner());
-		TestNG tng = new TestNG();
+		final TestNG tng = new TestNG();
 		tng.setXmlSuites(suites);
 		String outDir = System.getProperty(SYS_PROPERTY_OUTPUT_DIR, "./target/tck-output");
 		tng.setOutputDirectory(outDir);
@@ -123,8 +126,8 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 			tng.addListener(new VerboseReporter());
 		}
 		String reportFile = System.getProperty(SYS_PROPERTY_REPORT_FILE, "./target/tck-results.txt");
-		File file = new File(reportFile);
-		Reporter rep = new Reporter(file);
+		final File file = new File(reportFile);
+		final Reporter rep = new Reporter(file);
 		System.out
 				.println("Writing to file " + file.getAbsolutePath() + " ...");
 		tng.addListener(rep);
@@ -204,7 +207,6 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 								+ location + ")");
 					}
 				} else {
-
 					if (tr.getThrowable() != null) {
 						StringWriter sw = new StringWriter();
 						PrintWriter w = new PrintWriter(sw);

@@ -32,7 +32,11 @@ import org.testng.annotations.Test;
 
 import tec.units.tck.TCKSetup;
 
-
+/**
+ * Tests for Fundamental Types.
+ *
+ * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ */
 @SpecVersion(spec = "JSR 363", version = "0.8.0")
 public class FundamentalTypesTest {
 
