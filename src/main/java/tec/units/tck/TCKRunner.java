@@ -154,30 +154,31 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		private int failed = 0;
 		private int success = 0;
 
-		private final StringWriter stringWriter = new StringWriter(3000);
-		private FileWriter writer;
+		private final StringWriter consoleWriter = new StringWriter(3000);
+		private FileWriter fileWriter;
 
 		public Reporter(Profile profile, File file) {
 			try {
 				if (!file.exists()) {
 					file.createNewFile();
 				}
-				writer = new FileWriter(file);
-				writer.write("*****************************************************************************************\n");
-				writer.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version " + VERSION_NUMBER + "\n");
-				writer.write("*****************************************************************************************\n\n");
-				writer.write("Executed on " + new java.util.Date() + "\n\n");
-				writer.write("Using profile " + profile.getDescription() + "\n\n");
+				fileWriter = new FileWriter(file);
+				fileWriter.write("*****************************************************************************************\n");
+				fileWriter.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version " + VERSION_NUMBER + "\n");
+				fileWriter.write("*****************************************************************************************\n\n");
+				fileWriter.write("Executed on " + new java.util.Date() + "\n");
+				fileWriter.write("Using profile " + profile.getDescription() + "\n\n");
 
 				// System.out:
-				stringWriter
+				consoleWriter
 						.write("*****************************************************************************************\n");
-				stringWriter
+				consoleWriter
 						.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version " + VERSION_NUMBER + "\n");
-				stringWriter
+				consoleWriter
 						.write("*****************************************************************************************\n\n");
-				stringWriter.write("Executed on " + new java.util.Date()
-						+ "\n\n");
+				consoleWriter.write("Executed on " + new java.util.Date()
+						+ "\n");
+				consoleWriter.write("Using profile " + profile.getDescription() + "\n\n");
 			} catch (IOException e) {
 				e.printStackTrace();
 				System.exit(-1);
@@ -266,10 +267,10 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 
 		private void log(String text) throws IOException {
 			// count++;
-			writer.write(text);
-			writer.write('\n');
-			stringWriter.write(text);
-			stringWriter.write('\n');
+			fileWriter.write(text);
+			fileWriter.write('\n');
+			consoleWriter.write(text);
+			consoleWriter.write('\n');
 		}
 
 		public void writeSummary() {
@@ -280,11 +281,11 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 				log("TOTAL TESTS SKIPPED  : " + skipped);
 				log("TOTAL TESTS SUCCESS  : " + success);
 				log("TOTAL TESTS FAILED   : " + failed);
-				writer.flush();
-				writer.close();
-				stringWriter.flush();
+				fileWriter.flush();
+				fileWriter.close();
+				consoleWriter.flush();
 				System.out.println();
-				System.out.println(stringWriter);
+				System.out.println(consoleWriter);
 			} catch (IOException e) {
 				throw new IllegalStateException("IO Error", e);
 			}
