@@ -16,6 +16,7 @@
 			</assertion>
 		</group>
 	</section>
+	
 	<section id="4" title="API" />
 	<section id="4.1" title="Packages and fundamental types" />
 	<section id="4.2" title="The Unit Interface">
@@ -28,6 +29,18 @@
             </assertion>
         </group>
 	</section>
+	
+	<section id="4.3" title="The Quantity Interface">
+       <group>
+            <text>Quantity implementation</text>
+            <assertion id="43-A1">
+                <text>Ensure at least one javax.measure.Quantity implementation
+                    is available/registered.
+                </text>
+            </assertion>
+        </group>
+    </section>
+	
 	<section id="5" title="SPI" />
 	<section id="5.5" title="Obtaining Quantity Instances" />
 	<section id="5.5.1" title="Quantities Obtained from a factory">
