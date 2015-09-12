@@ -127,7 +127,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		}
 		String reportFile = System.getProperty(SYS_PROPERTY_REPORT_FILE, "./target/tck-results.txt");
 		final File file = new File(reportFile);
-		final Reporter rep = new Reporter(file);
+		final Reporter rep = new Reporter(profile, file);
 		System.out
 				.println("Writing to file " + file.getAbsolutePath() + " ...");
 		tng.addListener(rep);
@@ -158,7 +158,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		private final StringWriter stringWriter = new StringWriter(3000);
 		private FileWriter writer;
 
-		public Reporter(File file) {
+		public Reporter(Profile profile, File file) {
 			try {
 				if (!file.exists()) {
 					file.createNewFile();
@@ -168,6 +168,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 				writer.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version " + VERSION_NUMBER + "\n");
 				writer.write("*****************************************************************************************\n\n");
 				writer.write("Executed on " + new java.util.Date() + "\n\n");
+				writer.write("Using profile " + profile.getDescription() + "\n\n");
 
 				// System.out:
 				stringWriter
