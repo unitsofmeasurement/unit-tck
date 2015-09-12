@@ -60,11 +60,10 @@ import javax.lang.model.SourceVersion;
 import javax.tools.Tool;
 
 /**
- * Main class for executing the JSR 363 TCK. Created by Werner Keil on
- * 21.12.2014.
+ * Main class for executing the JSR 363 TCK.
  * 
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4, September 5, 2015
+ * @version 0.4.1, September 12, 2015
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
