@@ -167,7 +167,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 				fileWriter.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version " + VERSION_NUMBER + "\n");
 				fileWriter.write("*****************************************************************************************\n\n");
 				fileWriter.write("Executed on " + new java.util.Date() + "\n");
-				fileWriter.write("Using profile " + profile.getDescription() + "\n\n");
+				fileWriter.write("Using " + profile.getDescription() + " profile\n\n");
 
 				// System.out:
 				consoleWriter
@@ -178,7 +178,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 						.write("*****************************************************************************************\n\n");
 				consoleWriter.write("Executed on " + new java.util.Date()
 						+ "\n");
-				consoleWriter.write("Using profile " + profile.getDescription() + "\n\n");
+				consoleWriter.write("Using " + profile.getDescription() + " profile\n\n");
 			} catch (IOException e) {
 				e.printStackTrace();
 				System.exit(-1);
