@@ -10,23 +10,24 @@ The current module contains the technical compatibility kit of JSR 363.
 
 To setup the TCK with your implementation you must follow the following steps:
 
- 1. Create a new maven project.
+ 1. Create a new Maven project. You could also use compatible alternatives like Gradle.
  2. Add this TCK and your implementation as dependency.
  3. Implement a class of type tec.units.tck.TestSetup, read the Javadoc, what 
   you must provide with this class.
   
 To execute the TCK, simply execute
-  
+```
 mvn clean test
-       
+```       
  1. Go to target - where you can find your TCK test results.
    
-For help on using the TCK you can execute
-
+For help on using the TCK you may execute
+```
 mvn exec:java
+```
+This will only print instructions, to run the TCK you need to execute it through TestNG.
 
-This will only show you instructions, to run the TCK you need to execute it through TestNG.
-
-To get version information you can execute
-
+To get version information you may execute
+```
 mvn exec:java -Pversion
+```
