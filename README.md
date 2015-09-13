@@ -21,3 +21,12 @@ mvn clean test
        
  1. Go to target - where you can find your TCK test results.
    
+For help on using the TCK you can execute
+
+mvn exec:java
+
+This will only show you instructions, to run the TCK you need to execute it through TestNG.
+
+To get version information you can execute
+
+mvn exec:java -Pversion

@@ -62,24 +62,23 @@ import javax.tools.Tool;
 /**
  * Main class for executing the JSR 363 TCK.
  * 
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4.1, September 12, 2015
+ * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 0.4.2, September 13, 2015
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
      * 
      */
 	private static final long serialVersionUID = 3189431432291353154L;
-
 	private static final String VERSION_NUMBER = "0.4-SNAPSHOT";
-
 	private final Profile profile;
-	
+
 	public TCKRunner() {
 		setName("JSR363-TCK " + VERSION_NUMBER);
 		XmlTest test = new XmlTest(this);
-		
-		profile = Profile.valueOf(System.getProperty(SYS_PROPERTY_PROFILE, Profile.full.name()));
+
+		profile = Profile.valueOf(System.getProperty(SYS_PROPERTY_PROFILE,
+				Profile.full.name()));
 		for (Group group : profile.getGroups()) {
 			test.addIncludedGroup(group.name());
 		}
@@ -94,13 +93,13 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
 	 * Main method to start the TCK. Optional arguments are:
 	 * <ul>
-	 * <li>-Dtec.units.tck.profile for defining the profile for TestNG groups (default:
-	 * full).</li>
-	 * <li>-Dtec.units.tck.outputDir for defining the output directory TestNG uses (default:
-	 * ./target/tck-output).</li>
+	 * <li>-Dtec.units.tck.profile for defining the profile for TestNG groups
+	 * (default: full).</li>
+	 * <li>-Dtec.units.tck.outputDir for defining the output directory TestNG
+	 * uses (default: ./target/tck-output).</li>
 	 * <li>-Dtec.units.tck.verbose=true to enable TestNG verbose mode.</li>
-	 * <li>-Dtec.units.tck.reportFile=targetFile.txt for defining the TCK result summary
-	 * report target file (default: ./target/tck-results.txt).</li>
+	 * <li>-Dtec.units.tck.reportFile=targetFile.txt for defining the TCK result
+	 * summary report target file (default: ./target/tck-results.txt).</li>
 	 * </ul>
 	 * 
 	 * @param args
@@ -109,22 +108,21 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	public int run(InputStream in, OutputStream out, OutputStream err,
 			String... args) {
 		System.out.println("-- JSR 363 TCK started --");
-		
-//		Properties props = System.getProperties();
-//		props.list(System.out);
 		System.out.println("Profile: " + profile.getDescription());
-		
+
 		List<XmlSuite> suites = new ArrayList<>();
 		suites.add(new TCKRunner());
 		final TestNG tng = new TestNG();
 		tng.setXmlSuites(suites);
-		String outDir = System.getProperty(SYS_PROPERTY_OUTPUT_DIR, "./target/tck-output");
+		String outDir = System.getProperty(SYS_PROPERTY_OUTPUT_DIR,
+				"./target/tck-output");
 		tng.setOutputDirectory(outDir);
 		String verbose = System.getProperty(SYS_PROPERTY_VERBOSE);
 		if ("true".equalsIgnoreCase(verbose)) {
 			tng.addListener(new VerboseReporter());
 		}
-		String reportFile = System.getProperty(SYS_PROPERTY_REPORT_FILE, "./target/tck-results.txt");
+		String reportFile = System.getProperty(SYS_PROPERTY_REPORT_FILE,
+				"./target/tck-results.txt");
 		final File file = new File(reportFile);
 		final Reporter rep = new Reporter(profile, file);
 		System.out
@@ -137,16 +135,70 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	}
 
 	@Override
+	public String getVersion() {
+		return VERSION_NUMBER;
+	}
+
+	@Override
 	public final Set<SourceVersion> getSourceVersions() {
 		return Collections.unmodifiableSet(new HashSet<SourceVersion>(Arrays
 				.asList(new SourceVersion[] { SourceVersion.RELEASE_5,
 						SourceVersion.RELEASE_6, SourceVersion.RELEASE_7 })));
 	}
 
-    	public static final void main(String... args) {
-		final TCKRunner runner = new TCKRunner();
-	 	runner.run(System.in, System.out, System.err, args);
-    	}
+	public static final void main(String... args) {
+		if (args.length > 0 && "-version".equalsIgnoreCase(args[0])) {
+			showVersion();
+		} else { // (args.length > 0 && "-help".equalsIgnoreCase(args[0])) {
+			showHelp();
+		} /*
+		 * else { final Tool runner = new TCKRunner(); runner.run(System.in,
+		 * System.out, System.err, new String[]{TCKRunner.class.getName()}); }
+		 */
+	}
+
+	private static final void showHelp() {
+		final StringWriter consoleWriter = new StringWriter(1000);
+		consoleWriter
+				.write("*****************************************************************************************\n");
+		consoleWriter
+				.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version "
+						+ VERSION_NUMBER + "\n");
+		consoleWriter
+				.write("*****************************************************************************************\n\n");
+		consoleWriter.write("Usage:\n");
+		consoleWriter
+				.write("To run the TCK, execute TestNG with Maven or a similar build tool.\n\n");
+		consoleWriter.write("E.g. by running \"mvn test\" with this POM.\n\n");
+		consoleWriter
+				.write("You may use the following system properties to override the default behavior:\n");
+		consoleWriter
+				.write("-D"
+						+ SYS_PROPERTY_PROFILE
+						+ "=<profile>"
+						+ " to select the desired profile from these available JSR 363 profiles:\n");
+		for (Profile p : Profile.values()) {
+			consoleWriter.write("   " + p.name() + " - " + p.getDescription()
+					+ (p.isDefault() ? " (the default profile)\n" : "\n"));
+		}
+		consoleWriter.write("-D" + SYS_PROPERTY_OUTPUT_DIR
+				+ "=<directory> to set the output directory of your choice.\n");
+		consoleWriter
+				.write("-D"
+						+ SYS_PROPERTY_REPORT_FILE
+						+ "=<file> to set the TCK result file directory of your choice.\n");
+		consoleWriter
+				.write("-D"
+						+ SYS_PROPERTY_VERBOSE
+						+ "=true/false to toggle the TCK verbose option for additional test output. The default is \"false\"\n");
+		System.out.println(consoleWriter);
+	}
+
+	private static final void showVersion() {
+		System.out
+				.println("JSR 363 - Units of Measurement, Technical Compatibility Kit, version \""
+						+ VERSION_NUMBER + "\"\n");
+	}
 
 	public static final class Reporter extends TestListenerAdapter {
 		private int count = 0;
@@ -163,22 +215,29 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 					file.createNewFile();
 				}
 				fileWriter = new FileWriter(file);
-				fileWriter.write("*****************************************************************************************\n");
-				fileWriter.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version " + VERSION_NUMBER + "\n");
-				fileWriter.write("*****************************************************************************************\n\n");
+				fileWriter
+						.write("*****************************************************************************************\n");
+				fileWriter
+						.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version "
+								+ VERSION_NUMBER + "\n");
+				fileWriter
+						.write("*****************************************************************************************\n\n");
 				fileWriter.write("Executed on " + new java.util.Date() + "\n");
-				fileWriter.write("Using " + profile.getDescription() + " profile\n\n");
+				fileWriter.write("Using " + profile.getDescription()
+						+ " profile\n\n");
 
 				// System.out:
 				consoleWriter
 						.write("*****************************************************************************************\n");
 				consoleWriter
-						.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version " + VERSION_NUMBER + "\n");
+						.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version "
+								+ VERSION_NUMBER + "\n");
 				consoleWriter
 						.write("*****************************************************************************************\n\n");
 				consoleWriter.write("Executed on " + new java.util.Date()
 						+ "\n");
-				consoleWriter.write("Using " + profile.getDescription() + " profile\n\n");
+				consoleWriter.write("Using " + profile.getDescription()
+						+ " profile\n\n");
 			} catch (IOException e) {
 				e.printStackTrace();
 				System.exit(-1);
@@ -266,7 +325,6 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		}
 
 		private void log(String text) throws IOException {
-			// count++;
 			fileWriter.write(text);
 			fileWriter.write('\n');
 			consoleWriter.write(text);
@@ -290,10 +348,5 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 				throw new IllegalStateException("IO Error", e);
 			}
 		}
-	}
-
-	@Override
-	public String getVersion() {
-		return VERSION_NUMBER;
 	}
 }

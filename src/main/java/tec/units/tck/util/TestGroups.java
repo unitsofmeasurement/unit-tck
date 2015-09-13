@@ -92,22 +92,20 @@ public final class TestGroups {
      * @author Werner Keil
      */
     public enum Profile implements DescriptionSupplier {
-        minimal("Minimal", MINIMAL_GROUPS), format("Format", FORMAT_GROUPS), base_quantity("Base Quantity", BASE_QUANTITY_GROUPS), 
-        quantity("Quantity", QUANTITY_GROUPS), spi("SPI", SPI_GROUPS), full("Full", Group.values());
+        minimal("Minimal", MINIMAL_GROUPS, false), format("Format", FORMAT_GROUPS, false), 
+        base_quantity("Base Quantity", BASE_QUANTITY_GROUPS, false), quantity("Quantity", QUANTITY_GROUPS, false),
+        spi("SPI", SPI_GROUPS, false), full("Full", Group.values(), true);
 
         private final String description;
-
         private final Group[] groups;
+        private final boolean isDefault;
         
-        private Profile(String description, Group[] groups) {
+        private Profile(String description, Group[] groups, boolean isDefault) {
             this.description = description;
             this.groups = groups;
+            this.isDefault = isDefault;
         }
         
-        public Group[] getGroups() {
-            return groups;
-        }
-
 		@Override
 		/*
 		 * (non-Javadoc)
@@ -116,6 +114,14 @@ public final class TestGroups {
 		 */
         public String getDescription() {
             return description;
+        }
+		
+        public Group[] getGroups() {
+            return groups;
+        }
+
+        public boolean isDefault() {
+        	return isDefault;
         }
     }
 }
