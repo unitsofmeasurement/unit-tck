@@ -82,11 +82,12 @@ public final class TestGroups {
     /**
      * Profiles used in the JSR 363 TCK.
      *
-     * The most profiles (used by {@link TCKRunner}) are:
+     * The most important profiles (used by {@link TCKRunner}) are:
      * <ul>
      * <li>{@link #minimal} - used to include tests for the core elements of the API. These tests are <b>mandatory</b> for every
      * implementation.</li>
      * <li>{@link #format} - formatting tests used to include tests for elements in {@linkplain javax.measure.format}.</li>
+     * <li>{@link #full} - All tests in the JSR 363 TCK.</li>
      * </ul>
      *
      * @author Werner Keil
@@ -106,12 +107,11 @@ public final class TestGroups {
             this.isDefault = isDefault;
         }
         
-		@Override
-		/*
-		 * (non-Javadoc)
-		 *
-		 * @see DescriptionSupplier
-		 */
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see DescriptionSupplier
+	 */
         public String getDescription() {
             return description;
         }
