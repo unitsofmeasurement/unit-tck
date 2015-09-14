@@ -15,6 +15,7 @@ To setup the TCK with your implementation you must follow the following steps:
  3. Implement a class of type tec.units.tck.TestSetup, read the Javadoc, what 
   you must provide with this class.
   
+## Running
 To execute the TCK, simply execute
 ```
 mvn clean test
@@ -31,3 +32,32 @@ To get version information you may execute
 ```
 mvn exec:java -Pversion
 ```
+
+### Profiles
+When running the TCK (`mvn test`) by calling the system property
+```
+-Dtec.units.tck.profile=<profile>
+```
+you may select one of the following **profiles**: 
+- minimal
+- format
+- base_quantity
+- quantity
+- spi
+- full
+The `full` profile is default whenever you don't explicitely pass another profile.
+
+### Other System Properties
+In addition to profiles, the following system properties allow you to override default behavior and storage locations of the TCK:
+```
+-Dtec.units.tck.outputDir=<output directory>
+```
+To override the default output directory
+```
+-Dtec.units.tck.reportFile=<file name>
+```
+To override the default TCK report file
+```
+-Dtec.units.tck.verbose=yes/no
+```
+To toggle the `verbose` option of the TCK for extended test output. The default is `false`. And you normally won't need to set this unless you do detailed analysis or issue resolution.
