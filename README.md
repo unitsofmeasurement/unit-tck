@@ -45,7 +45,7 @@ you may select one of the following **profiles**:
 - quantity
 - spi
 - full
-The `full` profile is default whenever you don't explicitely pass another profile.
+The `full` profile is default whenever you don't explicitly pass a profile.
 
 ### Other System Properties
 In addition to profiles, the following system properties allow you to override default behavior and storage locations of the TCK:
