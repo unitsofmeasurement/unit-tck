@@ -29,6 +29,24 @@
             </assertion>
         </group>
 	</section>
+	<section id="4.2.1" title="Operations on Units">
+       <group>
+           <text>Basic Operations</text>
+           <assertion id="421-A1">
+               <text>Ensure the hashCode() operation is implemented.
+               </text>
+           </assertion>
+       </group>
+    </section>
+	<section id="4.2.1.2.1" title="Operations on Units with same dimension as the operand">
+       <group>
+            <text>Algebraic Operations</text>
+            <assertion id="42121-A1">
+                <text>Ensure the shift() operation is implemented.
+                </text>
+            </assertion>
+        </group>
+    </section>
 	
 	<section id="4.3" title="The Quantity Interface">
        <group>

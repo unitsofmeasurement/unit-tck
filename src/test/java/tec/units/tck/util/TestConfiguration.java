@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -48,11 +48,11 @@ public final class TestConfiguration implements ServiceConfiguration {
     public Collection<Class> getUnitClasses() {
         try{
             return Arrays
-                    .asList(new Class[] { Class.forName("javax.measure.Unit")});
+                    .asList(new Class[] { Class.forName("tec.units.ri.unit.BaseUnit")});
         }
         catch(ClassNotFoundException e){
             e.printStackTrace();
-            throw new RuntimeException("Unit class not lodable");
+            throw new RuntimeException("Unit class not loadable");
         }
     }
 

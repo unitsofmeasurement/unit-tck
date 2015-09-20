@@ -25,12 +25,15 @@
  */
 package tec.units.tck.tests;
 
+import javax.measure.Unit;
+
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import tec.units.tck.TCKSetup;
+import tec.units.tck.util.TestUtils;
 
 /**
  * Tests for Fundamental Types - Unit
@@ -49,5 +52,27 @@ public class FundamentalTypesUnitTest {
     public void testEnsureGotUnit() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getTestConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getTestConfiguration().getUnitClasses().isEmpty());
+    }
+    
+    /**
+     * Test that Unit implementations override hashCode.
+     */
+    @SpecAssertion(section = "4.2.1", id = "421-A1")
+    @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override hashCode.")
+    public void testUnitHashcode() {
+        for (Class type : TCKSetup.getTestConfiguration().getUnitClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.2.1", type, int.class, "hashCode");
+        }
+    }
+    
+    /**
+     * Ensure the shift() operation is implemented.
+     */
+    @SpecAssertion(section = "4.2.1.2.1", id = "42121-A1")
+    @Test(groups = { "core" }, description = "4.2.1.2.1a Ensure the shift() operation is implemented.")
+    public void testUnitShift() {
+        for (Class type : TCKSetup.getTestConfiguration().getUnitClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.2.1.2.1", true, type, Unit.class, "shift", double.class);
+        }
     }
 }
