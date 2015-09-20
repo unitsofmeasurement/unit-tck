@@ -4,7 +4,7 @@
 	<groupId>tec.units</groupId>
 	<artifactId>unit-tck</artifactId>
 	<version>0.5-SNAPSHOT</version>
-	<packaging>jar</packaging> <!-- bundle? -->
+	<packaging>bundle</packaging>
 	<name>Units of Measurement TCK</name>
 	<url>http://github.com/unitsofmeasurement/unit-tck</url>
 	<organization>
@@ -190,6 +190,14 @@
 					</instructions>
 				</configuration>
 			</plugin>
+
+            <!-- ======================================================= -->
+            <!-- Source Attachment -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
 
 			<!-- ======================================================= -->
 			<!-- Maven web site -->
