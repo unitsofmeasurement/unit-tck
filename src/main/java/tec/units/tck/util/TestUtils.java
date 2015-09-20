@@ -42,7 +42,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * Test utilities used in the JSR 363 TCK.
@@ -170,10 +174,17 @@ public class TestUtils {
 				+ ", but does not: " + type.getName());
 	}
 
-	public static void testHasPublicMethod(String section, boolean superclassFirst, Class type,
+	private static final List<Class> PRIMITIVE_CLASSES = Collections.unmodifiableList(Arrays.asList(
+			new Class[]{ Object.class, Number.class, Enum.class }));
+	
+	public static void testHasPublicMethod(String section, boolean trySuperclassFirst, Class type,
 			Class returnType, String name, Class... paramTypes) {
-		if (superclassFirst) {
-			testHasPublicMethod(section, type.getSuperclass(), returnType, name, paramTypes);
+		if (trySuperclassFirst && type.getSuperclass()!=null) {
+			if (PRIMITIVE_CLASSES.contains(type.getSuperclass())) {
+				testHasPublicMethod(section, type, returnType, name, paramTypes);
+			} else {
+				testHasPublicMethod(section, type.getSuperclass(), returnType, name, paramTypes);
+			}
 		} else {
 			testHasPublicMethod(section, type, returnType, name, paramTypes);
 		}
