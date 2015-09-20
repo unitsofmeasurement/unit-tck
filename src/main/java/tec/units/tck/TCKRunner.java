@@ -63,14 +63,14 @@ import javax.tools.Tool;
  * Main class for executing the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4.2, September 13, 2015
+ * @version 0.4.3, September 20, 2015
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
      * 
      */
 	private static final long serialVersionUID = 3189431432291353154L;
-	private static final String VERSION_NUMBER = "0.4-SNAPSHOT";
+	private static final String VERSION_NUMBER = "0.4";
 	private final Profile profile;
 
 	public TCKRunner() {
@@ -85,7 +85,8 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		test.setName("TCK/Test Setup");
 		List<XmlClass> classes = new ArrayList<>();
 		classes.add(new XmlClass(TCKSetup.class));
-		classes.add(new XmlClass(FundamentalTypesTest.class));
+		classes.add(new XmlClass(FundamentalTypesUnitTest.class));
+		classes.add(new XmlClass(FundamentalTypesQuantityTest.class));
 		classes.add(new XmlClass(CreatingQuantiesTest.class));
 		test.setXmlClasses(classes);
 	}

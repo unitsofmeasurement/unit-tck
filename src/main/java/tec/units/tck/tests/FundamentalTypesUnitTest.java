@@ -33,12 +33,12 @@ import org.testng.annotations.Test;
 import tec.units.tck.TCKSetup;
 
 /**
- * Tests for Fundamental Types.
+ * Tests for Fundamental Types - Unit
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
 @SpecVersion(spec = "JSR 363", version = "0.8.0")
-public class FundamentalTypesTest {
+public class FundamentalTypesUnitTest {
 
     /**
      * Ensure at least one Unit implementation
@@ -49,16 +49,5 @@ public class FundamentalTypesTest {
     public void testEnsureGotUnit() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getTestConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getTestConfiguration().getUnitClasses().isEmpty());
-    }
-    
-    /**
-     * Ensure at least one Quantity implementation
-     * is available/registered.
-     */
-    @SpecAssertion(section = "4.3", id = "43-A1")
-    @Test(groups = { "core" }, description = "4.3 Ensure at least one javax.measure.Quantity implementation is available/registered.")
-    public void testEnsureHasQuantity() {
-        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getTestConfiguration() != null);
-        AssertJUnit.assertTrue(!TCKSetup.getTestConfiguration().getQuantityClasses().isEmpty());
     }
 }
