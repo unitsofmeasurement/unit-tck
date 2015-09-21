@@ -33,6 +33,10 @@
        <group>
            <text>Basic Operations</text>
            <assertion id="421-A1">
+               <text>Ensure the equals() operation is implemented.
+               </text>
+           </assertion>
+           <assertion id="421-A2">
                <text>Ensure the hashCode() operation is implemented.
                </text>
            </assertion>
@@ -48,16 +52,20 @@
         </group>
     </section>
 	
-	<section id="4.3" title="The Quantity Interface">
+	<section id="4.3" title="Unit Formatting" />
+	
+	<section id="4.4" title="The Quantity Interface">
        <group>
             <text>Quantity implementation</text>
-            <assertion id="43-A1">
+            <assertion id="44-A1">
                 <text>Ensure at least one javax.measure.Quantity implementation
                     is available/registered.
                 </text>
             </assertion>
         </group>
     </section>
+	
+	<section id="4.5" title="Supported Quantities" />
 	
 	<section id="5" title="SPI" />
 	<section id="5.5" title="Obtaining Quantity Instances" />

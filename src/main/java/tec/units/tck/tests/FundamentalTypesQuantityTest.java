@@ -44,10 +44,10 @@ public class FundamentalTypesQuantityTest {
      * Ensure at least one Quantity implementation
      * is available/registered.
      */
-    @SpecAssertion(section = "4.3", id = "43-A1")
-    @Test(groups = { "core" }, description = "4.3 Ensure at least one javax.measure.Quantity implementation is available/registered.")
+    @SpecAssertion(section = "4.4", id = "44-A1")
+    @Test(groups = { "core" }, description = "4.4 Ensure at least one javax.measure.Quantity implementation is available/registered.")
     public void testEnsureHasQuantity() {
-        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getTestConfiguration() != null);
-        AssertJUnit.assertTrue(!TCKSetup.getTestConfiguration().getQuantityClasses().isEmpty());
+        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
+        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getQuantityClasses().isEmpty());
     }
 }

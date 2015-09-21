@@ -1,6 +1,6 @@
-/**
+/*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -31,12 +31,12 @@ import tec.units.tck.util.ServiceConfiguration;
 
 public final class TCKSetup {
 
-	private static ServiceConfiguration TEST_CONFIG = loadTestConfiguration();
+	private static ServiceConfiguration TEST_CONFIG = loadConfiguration();
 
 	private TCKSetup() {
 	}
 
-	private static ServiceConfiguration loadTestConfiguration() {
+	private static ServiceConfiguration loadConfiguration() {
 		try {
 			return ServiceLoader.load(ServiceConfiguration.class).iterator()
 					.next();
@@ -47,7 +47,7 @@ public final class TCKSetup {
 		}
 	}
 
-	public static ServiceConfiguration getTestConfiguration() {
+	public static final ServiceConfiguration getConfiguration() {
 		return TEST_CONFIG;
 	}
 

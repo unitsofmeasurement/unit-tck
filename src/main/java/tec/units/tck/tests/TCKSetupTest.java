@@ -43,8 +43,8 @@ public class TCKSetupTest{
             note = "Tests that a TestConfiguration is registered with the JDK ServiceLoader.")
     @Test(groups = { "core" }, description = "TCK Setup: ensure TCK Configuration is registered and available.")
     public void testTestSetup(){
-        assertTrue("TCK Configuration not available.", getTestConfiguration() != null);
-        assertNotNull(getTestConfiguration());
+        assertTrue("TCK Configuration not available.", getConfiguration() != null);
+        assertNotNull(getConfiguration());
     }
 
     @SpecAssertion(
@@ -55,7 +55,7 @@ public class TCKSetupTest{
     @Test(groups = { "core" }, description = "TChecks that Quantity classes are registered for testing.")
     public void testQuantityConfiguration(){
         @SuppressWarnings("rawtypes")
-		Collection<Class> amountClasses = getTestConfiguration().getQuantityClasses();
+		Collection<Class> amountClasses = getConfiguration().getQuantityClasses();
         assertNotNull("TCK Test Configuration quantity classes are null.", amountClasses);
         assertFalse("TCK Test Configuration quantity classes is empty.", amountClasses.isEmpty());
     }

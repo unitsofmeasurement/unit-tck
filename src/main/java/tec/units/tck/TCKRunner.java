@@ -63,7 +63,7 @@ import javax.tools.Tool;
  * Main class for executing the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4.3, September 20, 2015
+ * @version 0.4.4, September 21, 2015
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
@@ -335,7 +335,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		public void writeSummary() {
 			try {
 				log("\nJSR 363 TCK version " + VERSION_NUMBER + " Summary");
-				log("-------------------------------");
+				log("-------------------------------------------------------");
 				log("\nTOTAL TESTS EXECUTED : " + count);
 				log("TOTAL TESTS SKIPPED  : " + skipped);
 				log("TOTAL TESTS SUCCESS  : " + success);

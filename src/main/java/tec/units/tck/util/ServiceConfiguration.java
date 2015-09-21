@@ -36,6 +36,7 @@ import java.util.ServiceLoader;
  * interface and register it using the {@link ServiceLoader}.
  *
  * @author Werner Keil
+ * @version 0.5, September 21, 2015
  */
 public interface ServiceConfiguration{
 
@@ -57,13 +58,19 @@ public interface ServiceConfiguration{
      */
     Collection<Class> getUnitClasses();
 
+    /**
+     * This method allows instances of Unit to be tested for requirements and recommendations.
+     *
+     * @return the list of operators to be checked, not null. It is allowed to return an empty list here, which will
+     * disable certain TCK tests, e.g. if the result isn't needed by a certain profile.
+     */
+    Collection<? extends Unit<?>> getUnits4Test();
 
     /**
-     * This method allows to let instances of UnitConverter to be tested for requirements and recommendations.
+     * This method allows instances of UnitConverter to be tested for requirements and recommendations.
      *
      * @return the list of operators to be checked, not null. It is allowed to return an empty list here, which will
      * disable TCK tests for UnitConverter instances.
      */
     Collection<UnitConverter> getUnitConverters4Test();
-
 }

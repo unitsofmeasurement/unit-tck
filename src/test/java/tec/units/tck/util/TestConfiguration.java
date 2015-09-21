@@ -25,6 +25,7 @@
  */
 package tec.units.tck.util;
 
+import tec.units.ri.unit.Units;
 import tec.units.tck.util.ServiceConfiguration;
 
 import javax.measure.*;
@@ -33,6 +34,8 @@ import java.util.*;
 
 /**
  * Created by Werner Keil on 21.12.2014.
+ * 
+ * @version 0.5, September 21, 2015
  */
 @SuppressWarnings("rawtypes")
 public final class TestConfiguration implements ServiceConfiguration {
@@ -56,6 +59,11 @@ public final class TestConfiguration implements ServiceConfiguration {
         }
     }
 
+    @Override
+    public Collection<? extends Unit<?>> getUnits4Test(){
+    	return Units.getInstance().getUnits();
+    }
+    
     @Override
     public Collection<UnitConverter> getUnitConverters4Test(){
         List<UnitConverter> ops = new ArrayList<>();
