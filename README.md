@@ -45,6 +45,7 @@ you may select one of the following **profiles**:
 - quantity
 - spi
 - full
+
 The `full` profile is default whenever you don't explicitly pass a profile.
 
 ### Other System Properties
@@ -60,4 +61,4 @@ To override the default TCK report file
 ```
 -Dtec.units.tck.verbose=yes/no
 ```
-To toggle the `verbose` option of the TCK for extended test output. The default is `false`. And you normally won't need to set this unless you do detailed analysis or issue resolution.
+To toggle the `verbose` option of the TCK for extended test output. The default is `false`. And you normally won't need to set this unless you require detailed analysis or issue resolution.
