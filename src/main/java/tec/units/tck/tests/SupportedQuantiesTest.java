@@ -55,7 +55,7 @@ public class SupportedQuantiesTest {
 	/**
 	 * Access a QuantityFactory for each registered type.
 	 */
-	@Test(groups = { "_base_quantity" }, description = "4.5 Ensure all SI Base Quantities are used by an implementation")
+	@Test(groups = { "base_quantity" }, description = "4.5 Ensure all SI Base Quantities are used by an implementation")
 	@SpecAssertion(section = "4.5", id = "45-A1")
 	public void testContainsBaseDimensions() {
 		final Collection<Dimension> baseDimensions = TCKSetup.getConfiguration().getBaseDimensions();
