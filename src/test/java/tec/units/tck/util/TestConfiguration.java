@@ -25,17 +25,20 @@
  */
 package tec.units.tck.util;
 
-import tec.units.ri.unit.Units;
+import static tec.units.ri.quantity.QuantityDimension.*;
 import tec.units.tck.util.ServiceConfiguration;
 
 import javax.measure.*;
+import javax.measure.spi.Bootstrap;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.spi.SystemOfUnitsService;
 
 import java.util.*;
 
 /**
  * Created by Werner Keil on 21.12.2014.
  * 
- * @version 0.5, September 21, 2015
+ * @version 0.5.1, September 22, 2015
  */
 @SuppressWarnings("rawtypes")
 public final class TestConfiguration implements ServiceConfiguration {
@@ -57,11 +60,19 @@ public final class TestConfiguration implements ServiceConfiguration {
             e.printStackTrace();
             throw new RuntimeException("Unit class not loadable");
         }
+//        return Arrays
+//                .asList(new Class[]{AbstractUnit.class});
     }
 
     @Override
     public Collection<? extends Unit<?>> getUnits4Test(){
-    	return Units.getInstance().getUnits();
+//    	Unit<Length> m = Units.METRE;
+//    	final Set<? extends Unit<?>> units = Units.getInstance().getUnits();
+//    	return units;
+    	SystemOfUnitsService service = Bootstrap
+				.getService(SystemOfUnitsService.class);
+    	SystemOfUnits sou = service.getSystemOfUnits();
+    	return sou.getUnits();
     }
     
     @Override
@@ -71,4 +82,10 @@ public final class TestConfiguration implements ServiceConfiguration {
         return ops;
     }
 
+	@Override
+	public Collection<Dimension> getBaseDimensions() {
+		return Arrays
+                .asList(new Dimension[] { AMOUNT_OF_SUBSTANCE, ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, 
+                		MASS, TEMPERATURE, TIME });
+	}
 }

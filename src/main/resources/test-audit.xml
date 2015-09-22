@@ -65,7 +65,15 @@
         </group>
     </section>
 	
-	<section id="4.5" title="Supported Quantities" />
+	<section id="4.5" title="Supported Quantities">
+	   <group>
+            <text>Base Quantities</text>
+            <assertion id="45-A1">
+                <text>Ensure all SI Base Quantities are used by an implementation.
+                </text>
+            </assertion>
+        </group>
+	</section>
 	
 	<section id="5" title="SPI" />
 	<section id="5.5" title="Obtaining Quantity Instances" />

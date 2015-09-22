@@ -25,9 +25,11 @@
  */
 package tec.units.tck.util;
 
+import javax.measure.Dimension;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
+
 import java.util.Collection;
 import java.util.ServiceLoader;
 
@@ -61,15 +63,23 @@ public interface ServiceConfiguration{
     /**
      * This method allows instances of Unit to be tested for requirements and recommendations.
      *
-     * @return the list of operators to be checked, not null. It is allowed to return an empty list here, which will
+     * @return the list of units to be checked, not null. It is allowed to return an empty list here, which will
      * disable certain TCK tests, e.g. if the result isn't needed by a certain profile.
      */
     Collection<? extends Unit<?>> getUnits4Test();
+    
+    /**
+     * This method returns the base dimensions to be tested for requirements and recommendations.
+     *
+     * @return the list of base dimensions to be checked, not null. It is allowed to return an empty list here, which will
+     * disable certain TCK tests, e.g. if the result isn't needed by a certain profile.
+     */
+    Collection<Dimension> getBaseDimensions();
 
     /**
      * This method allows instances of UnitConverter to be tested for requirements and recommendations.
      *
-     * @return the list of operators to be checked, not null. It is allowed to return an empty list here, which will
+     * @return the list of unit converters to be checked, not null. It is allowed to return an empty list here, which will
      * disable TCK tests for UnitConverter instances.
      */
     Collection<UnitConverter> getUnitConverters4Test();
