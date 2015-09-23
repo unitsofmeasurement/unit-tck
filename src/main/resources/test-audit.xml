@@ -73,6 +73,13 @@
                 </text>
             </assertion>
         </group>
+        <group>
+            <text>Derived Quantities</text>
+            <assertion id="45-A2">
+                <text>Ensure all Supported Quantities are used by an implementation.
+                </text>
+            </assertion>
+        </group>
 	</section>
 	
 	<section id="5" title="SPI" />

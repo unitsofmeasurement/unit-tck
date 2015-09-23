@@ -26,9 +26,11 @@
 package tec.units.tck.util;
 
 import static tec.units.ri.quantity.QuantityDimension.*;
+import tec.units.ri.unit.Units;
 import tec.units.tck.util.ServiceConfiguration;
 
 import javax.measure.*;
+import javax.measure.quantity.*;
 import javax.measure.spi.Bootstrap;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
@@ -38,23 +40,22 @@ import java.util.*;
 /**
  * Created by Werner Keil on 21.12.2014.
  * 
- * @version 0.5.1, September 22, 2015
+ * @version 0.5.2, September 23, 2015
  */
-@SuppressWarnings("rawtypes")
 public final class TestConfiguration implements ServiceConfiguration {
 
  
 	@Override
-    public Collection<Class> getQuantityClasses() {
+    public Collection<Class<?>> getQuantityClasses() {
             return Arrays
-                    .asList(new Class[]{Quantity.class});
+                    .asList(new Class<?>[]{Quantity.class});
     }
 
     @Override
-    public Collection<Class> getUnitClasses() {
+    public Collection<Class<?>> getUnitClasses() {
         try{
             return Arrays
-                    .asList(new Class[] { Class.forName("tec.units.ri.unit.BaseUnit")});
+                    .asList(new Class<?>[] { Class.forName("tec.units.ri.unit.BaseUnit")});
         }
         catch(ClassNotFoundException e){
             e.printStackTrace();
@@ -87,5 +88,17 @@ public final class TestConfiguration implements ServiceConfiguration {
 		return Arrays
                 .asList(new Dimension[] { AMOUNT_OF_SUBSTANCE, ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, 
                 		MASS, TEMPERATURE, TIME });
+	}
+
+	@Override
+	public Collection<Class<?>> getSupportedQuantityTypes() {
+		return Arrays
+                .asList(new Class<?>[] { Acceleration.class, Length.class, Mass.class  });
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	@Override
+	public Unit getUnit4Type(Class quantityType) {
+		return Units.getInstance().getUnit(quantityType);
 	}
 }

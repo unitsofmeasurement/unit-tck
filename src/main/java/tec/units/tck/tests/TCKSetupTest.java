@@ -54,8 +54,7 @@ public class TCKSetupTest{
                     "implementations")
     @Test(groups = { "core" }, description = "TChecks that Quantity classes are registered for testing.")
     public void testQuantityConfiguration(){
-        @SuppressWarnings("rawtypes")
-		Collection<Class> amountClasses = getConfiguration().getQuantityClasses();
+        Collection<Class<?>> amountClasses = getConfiguration().getQuantityClasses();
         assertNotNull("TCK Test Configuration quantity classes are null.", amountClasses);
         assertFalse("TCK Test Configuration quantity classes is empty.", amountClasses.isEmpty());
     }

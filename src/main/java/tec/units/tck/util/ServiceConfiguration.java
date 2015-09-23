@@ -38,27 +38,49 @@ import java.util.ServiceLoader;
  * interface and register it using the {@link ServiceLoader}.
  *
  * @author Werner Keil
- * @version 0.5, September 21, 2015
+ * @version 0.5.1, September 23, 2015
  */
 public interface ServiceConfiguration{
 
     /**
      * Return a collection with all {@link Quantity} classes that are implemented. The list
-     * must not be empty and should contain <b>every</b> amount class implemented.<p>
+     * must not be empty and should contain <b>every</b> quantity class implemented.<p>
      * This enables the TCK to check in addition to the basic implementation compliance, if
      * according {@linkplain QuantityFactoryService} are registered/available correctly.
      *
      * @return a collection with all implemented amount classes, not null.
      */
-    Collection<Class> getQuantityClasses();
-
+    Collection<Class<?>> getQuantityClasses();
+    
     /**
-     * List a collection of {@link Unit} implementation.<p>
+     * List a collection of {@link Unit} implementations.<p>
      * This enables the TCK to check the basic implementation compliance.
      *
      * @return a collection with Unit implementations to be tested.
      */
-    Collection<Class> getUnitClasses();
+    Collection<Class<?>> getUnitClasses();
+    
+    /**
+     * Return a collection with all supported {@link Quantity} types. The list
+     * must not return <tt>null/tt>, but could be empty in certain profiles.
+     * 
+     * @return the list of quantity types to be checked, not <tt>null/tt>. It is allowed to return an empty list here, which will
+     *
+     * @return a collection with all implemented amount classes, not null.
+     */
+    Collection<Class<?>> getSupportedQuantityTypes();
+    
+	/**
+	 * Returns a matching unit for the specified quantity type.
+	 * This is a "helper method" to avoid direct references to {@link SystemOfUnits} or implementations in profiles without SPI.
+	 * 
+	 * @param <Q>
+	 *            the compile-time quantity type.
+	 * @param quantityType
+	 *            the quantity type.
+	 * @return the unit for the specified quantity.
+	 */
+    public <Q extends Quantity<Q>> Unit<Q> getUnit4Type(Class<Q> quantityType);
 
     /**
      * This method allows instances of Unit to be tested for requirements and recommendations.

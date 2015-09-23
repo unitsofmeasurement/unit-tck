@@ -37,11 +37,10 @@ import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.annotations.Test;
 
 import javax.measure.Dimension;
+import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.quantity.*;
 
 import tec.units.tck.TCKSetup;
-import tec.units.tck.util.TestUtils;
 
 /**
  * Test class for base quantities.
@@ -73,6 +72,20 @@ public class SupportedQuantiesTest {
 		for (Dimension dim : baseDimensions) {
 			Unit<?> unit = foundUnits.get(dim);
 			assertNotNull("Section 4.5: SI Base Dimension " + dim + " not found", unit);
+		}
+	}
+	
+	/**
+	 * Access a QuantityFactory for each registered type.
+	 */
+	@Test(groups = { "base_quantity", "derived_quantity" }, description = "4.5 Ensure all Supported Quantities are used by an implementation")
+	@SpecAssertion(section = "4.5", id = "45-A2")
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public void testContainsQuantities() {
+		final Collection<Class<?>> quantityTypes = TCKSetup.getConfiguration().getSupportedQuantityTypes();
+		for (Class c : quantityTypes) {
+			Unit unit = TCKSetup.getConfiguration().getUnit4Type(c);
+			assertNotNull("Section 4.5: Quantity type " + c + " not found", unit);
 		}
 	}
 
