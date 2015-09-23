@@ -45,17 +45,19 @@ import java.util.*;
 public final class TestConfiguration implements ServiceConfiguration {
 
  
+	@SuppressWarnings("rawtypes")
 	@Override
-    public Collection<Class<?>> getQuantityClasses() {
+    public Collection<Class> getQuantityClasses() {
             return Arrays
-                    .asList(new Class<?>[]{Quantity.class});
+                    .asList(new Class[]{Quantity.class});
     }
 
-    @Override
-    public Collection<Class<?>> getUnitClasses() {
+    @SuppressWarnings("rawtypes")
+	@Override
+    public Collection<Class> getUnitClasses() {
         try{
             return Arrays
-                    .asList(new Class<?>[] { Class.forName("tec.units.ri.unit.BaseUnit")});
+                    .asList(new Class[] { Class.forName("tec.units.ri.unit.BaseUnit")});
         }
         catch(ClassNotFoundException e){
             e.printStackTrace();
@@ -90,10 +92,11 @@ public final class TestConfiguration implements ServiceConfiguration {
                 		MASS, TEMPERATURE, TIME });
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
-	public Collection<Class<?>> getSupportedQuantityTypes() {
+	public Collection<Class> getSupportedQuantityTypes() {
 		return Arrays
-                .asList(new Class<?>[] { Acceleration.class, Length.class, Mass.class  });
+                .asList(new Class[] { Acceleration.class, Length.class, Mass.class  });
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

@@ -50,7 +50,8 @@ public interface ServiceConfiguration{
      *
      * @return a collection with all implemented amount classes, not null.
      */
-    Collection<Class<?>> getQuantityClasses();
+    @SuppressWarnings("rawtypes")
+	Collection<Class> getQuantityClasses();
     
     /**
      * List a collection of {@link Unit} implementations.<p>
@@ -58,7 +59,8 @@ public interface ServiceConfiguration{
      *
      * @return a collection with Unit implementations to be tested.
      */
-    Collection<Class<?>> getUnitClasses();
+    @SuppressWarnings("rawtypes")
+	Collection<Class> getUnitClasses();
     
     /**
      * Return a collection with all supported {@link Quantity} types. The list
@@ -68,7 +70,8 @@ public interface ServiceConfiguration{
      *
      * @return a collection with all implemented amount classes, not null.
      */
-    Collection<Class<?>> getSupportedQuantityTypes();
+    @SuppressWarnings("rawtypes")
+	Collection<Class> getSupportedQuantityTypes();
     
 	/**
 	 * Returns a matching unit for the specified quantity type.
