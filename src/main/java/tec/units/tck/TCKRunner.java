@@ -40,9 +40,6 @@ import tec.units.tck.tests.*;
 import tec.units.tck.tests.quantity.QuantityInterfaceTest;
 import tec.units.tck.tests.quantity.QuantityTypesTest;
 import tec.units.tck.tests.spi.CreatingQuantiesTest;
-import tec.units.tck.tests.unit.UnitConversionTest;
-import tec.units.tck.tests.unit.UnitDimensionTest;
-import tec.units.tck.tests.unit.UnitInterfaceTest;
 import tec.units.tck.util.TestGroups.Group;
 import tec.units.tck.util.TestGroups.Profile;
 import tec.uom.lib.common.function.Versioned;
@@ -69,7 +66,7 @@ import javax.tools.Tool;
  * Main class for executing the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.4.4, September 21, 2015
+ * @version 0.4.5, September 25, 2015
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
@@ -95,6 +92,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		classes.add(new XmlClass(UnitInterfaceTest.class));
 		classes.add(new XmlClass(UnitConversionTest.class));
 		classes.add(new XmlClass(UnitDimensionTest.class));
+		classes.add(new XmlClass(UnitFormatTest.class));
 		classes.add(new XmlClass(QuantityInterfaceTest.class));
 		classes.add(new XmlClass(QuantityTypesTest.class));
 		classes.add(new XmlClass(CreatingQuantiesTest.class));

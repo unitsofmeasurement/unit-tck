@@ -23,9 +23,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package tec.units.tck.tests.unit;
-
-import javax.measure.Unit;
+package tec.units.tck.tests;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
@@ -35,43 +33,32 @@ import tec.units.tck.TCKSetup;
 import tec.units.tck.util.TestUtils;
 
 /**
- * The Unit Interface
+ * Unit Dimension
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
 @SpecVersion(spec = "JSR 363", version = "0.8.0")
-public class UnitInterfaceTest {
+public class UnitDimensionTest {
     
     /**
-     * Test that Unit implementations override equals.
+     * Test that Dimension implementations override equals.
      */
-    @SpecAssertion(section = "4.2.1", id = "421-A1")
-    @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override equals.")
+	@SpecAssertion(section = "4.2.4", id = "424-A1")
+    @Test(groups = { "core" }, description = "4.2.4 Ensure registered Dimension classes override equals.")
     public void testUnitEquals() {
-        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+        for (@SuppressWarnings("rawtypes") Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1", type, boolean.class, "equals", Object.class);
         }
     }
     
     /**
-     * Test that Unit implementations override hashCode.
+     * Test that Dimension implementations override hashCode.
      */
-    @SpecAssertion(section = "4.2.1", id = "421-A2")
-    @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override hashCode.")
+    @SpecAssertion(section = "4.2.4", id = "424-A2")
+    @Test(groups = { "core" }, description = "4.2.4 Ensure registered Dimension classes override hashCode.")
     public void testUnitHashcode() {
-        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.2.1", type, int.class, "hashCode");
-        }
-    }
-    
-    /**
-     * Ensure the shift() operation is implemented.
-     */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A1")
-    @Test(groups = { "core" }, description = "4.2.1.2 Ensure the shift() operation is implemented.")
-    public void testUnitShift() {
-        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.2.1.2", true, type, Unit.class, "shift", double.class);
+        for (@SuppressWarnings("rawtypes") Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.2.4", type, int.class, "hashCode");
         }
     }
 }

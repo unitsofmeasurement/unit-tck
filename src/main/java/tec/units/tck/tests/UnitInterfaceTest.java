@@ -23,36 +23,24 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package tec.units.tck.tests.unit;
+package tec.units.tck.tests;
 
 import javax.measure.Unit;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import tec.units.tck.TCKSetup;
 import tec.units.tck.util.TestUtils;
 
 /**
- * Tests for Fundamental Types - Unit
+ * The Unit Interface
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
 @SpecVersion(spec = "JSR 363", version = "0.8.0")
-public class UnitConversionTest {
-
-    /**
-     * Ensure at least one Unit implementation
-     * is available/registered.
-     */
-    @SpecAssertion(section = "4.2", id = "42-A1")
-    @Test(groups = { "core" }, description = "4.2 Ensure at least one javax.measure.Unit implementation is available/registered.")
-    public void testEnsureGotUnit() {
-        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
-        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getUnitClasses().isEmpty());
-    }
+public class UnitInterfaceTest {
     
     /**
      * Test that Unit implementations override equals.

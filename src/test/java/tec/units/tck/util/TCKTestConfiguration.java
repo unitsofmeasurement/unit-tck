@@ -26,12 +26,19 @@
 package tec.units.tck.util;
 
 import static tec.units.ri.quantity.QuantityDimension.*;
+import tec.units.ri.format.SimpleUnitFormat;
+import tec.units.ri.function.AddConverter;
+import tec.units.ri.function.ExpConverter;
+import tec.units.ri.function.LogConverter;
+import tec.units.ri.function.MultiplyConverter;
+import tec.units.ri.function.RationalConverter;
 import tec.units.ri.quantity.NumberQuantity;
 import tec.units.ri.quantity.QuantityDimension;
 import tec.units.ri.unit.Units;
 import tec.units.tck.util.ServiceConfiguration;
 
 import javax.measure.*;
+import javax.measure.format.UnitFormat;
 import javax.measure.quantity.*;
 import javax.measure.spi.Bootstrap;
 import javax.measure.spi.SystemOfUnits;
@@ -42,19 +49,17 @@ import java.util.*;
 /**
  * Created by Werner Keil on 21.12.2014.
  * 
- * @version 0.6, September 24, 2015
+ * @version 0.6.1, September 25, 2015
  */
 public final class TCKTestConfiguration implements ServiceConfiguration {
  
 	@SuppressWarnings("rawtypes")
-	@Override
     public Collection<Class> getQuantityClasses() {
             return Arrays
                     .asList(new Class[]{NumberQuantity.class});
     }
 
     @SuppressWarnings("rawtypes")
-	@Override
     public Collection<Class> getUnitClasses() {
         try{
             return Arrays
@@ -68,7 +73,6 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 //                .asList(new Class[]{AbstractUnit.class});
     }
 
-    @Override
     public Collection<? extends Unit<?>> getUnits4Test(){
 //    	Unit<Length> m = Units.METRE;
 //    	final Set<? extends Unit<?>> units = Units.getInstance().getUnits();
@@ -79,21 +83,21 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
     	return sou.getUnits();
     }
     
-    @Override
     public Collection<UnitConverter> getUnitConverters4Test(){
-        List<UnitConverter> ops = new ArrayList<>();
-        // TODO add unit converters
-        return ops;
+    	return Arrays.asList(new UnitConverter[] { new AddConverter(1), new ExpConverter(1), new LogConverter(1),
+				new MultiplyConverter(1), RationalConverter.of(1, 1), });
     }
     
+	public Collection<UnitFormat> getUnitFormats4Test() {
+		return Arrays.asList(new UnitFormat[] { SimpleUnitFormat.getInstance() });
+	}
+    
 	@SuppressWarnings("rawtypes")
-	@Override
     public Collection<Class> getDimensionClasses() {
             return Arrays
                     .asList(new Class[]{QuantityDimension.class});
     }
 
-	@Override
 	public Collection<Dimension> getBaseDimensions() {
 		return Arrays
                 .asList(new Dimension[] { AMOUNT_OF_SUBSTANCE, ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, 
@@ -101,14 +105,12 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 	}
 
 	@SuppressWarnings("rawtypes")
-	@Override
 	public Collection<Class> getSupportedQuantityTypes() {
 		return Arrays
                 .asList(new Class[] { Acceleration.class, Length.class, Mass.class  });
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@Override
 	public Unit getUnit4Type(Class quantityType) {
 		return Units.getInstance().getUnit(quantityType);
 	}

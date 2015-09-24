@@ -84,8 +84,17 @@
        </group>
     </section>
 	
-	<section id="4.3" title="Unit Formatting" />
-	
+	<section id="4.3" title="Unit Formatting">
+	 <group>
+            <text>UnitFormat implementation</text>
+            <assertion id="43-A1">
+                <text>Ensure at least one javax.measure.format.UnitFormat implementation
+                    is available/registered.
+                </text>
+            </assertion>
+        </group>
+    </section>
+    
 	<section id="4.4" title="The Quantity Interface" />
 	
 	<section id="4.4.1" title="Operations on Quantities">
