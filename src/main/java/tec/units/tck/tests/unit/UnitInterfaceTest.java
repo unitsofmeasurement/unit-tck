@@ -29,7 +29,6 @@ import javax.measure.Unit;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import tec.units.tck.TCKSetup;
