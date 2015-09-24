@@ -23,7 +23,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package tec.units.tck.tests;
+package tec.units.tck.tests.quantity;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
@@ -45,7 +45,7 @@ import tec.units.tck.TCKSetup;
  * Test class for base quantities.
  */
 @SpecVersion(spec = "JSR 363", version = "0.8.0")
-public class SupportedQuantiesTest {
+public class QuantityTypesTest {
 
 	// ************************ 4.5 Supported Quantities
 	// ************************

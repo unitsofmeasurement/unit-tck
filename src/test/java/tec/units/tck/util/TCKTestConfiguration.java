@@ -26,6 +26,8 @@
 package tec.units.tck.util;
 
 import static tec.units.ri.quantity.QuantityDimension.*;
+import tec.units.ri.quantity.NumberQuantity;
+import tec.units.ri.quantity.QuantityDimension;
 import tec.units.ri.unit.Units;
 import tec.units.tck.util.ServiceConfiguration;
 
@@ -40,16 +42,15 @@ import java.util.*;
 /**
  * Created by Werner Keil on 21.12.2014.
  * 
- * @version 0.5.2, September 23, 2015
+ * @version 0.6, September 24, 2015
  */
-public final class TestConfiguration implements ServiceConfiguration {
-
+public final class TCKTestConfiguration implements ServiceConfiguration {
  
 	@SuppressWarnings("rawtypes")
 	@Override
     public Collection<Class> getQuantityClasses() {
             return Arrays
-                    .asList(new Class[]{Quantity.class});
+                    .asList(new Class[]{NumberQuantity.class});
     }
 
     @SuppressWarnings("rawtypes")
@@ -83,6 +84,13 @@ public final class TestConfiguration implements ServiceConfiguration {
         List<UnitConverter> ops = new ArrayList<>();
         // TODO add unit converters
         return ops;
+    }
+    
+	@SuppressWarnings("rawtypes")
+	@Override
+    public Collection<Class> getDimensionClasses() {
+            return Arrays
+                    .asList(new Class[]{QuantityDimension.class});
     }
 
 	@Override

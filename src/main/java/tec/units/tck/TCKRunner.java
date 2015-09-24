@@ -37,6 +37,12 @@ import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
 import tec.units.tck.tests.*;
+import tec.units.tck.tests.quantity.QuantityInterfaceTest;
+import tec.units.tck.tests.quantity.QuantityTypesTest;
+import tec.units.tck.tests.spi.CreatingQuantiesTest;
+import tec.units.tck.tests.unit.UnitConversionTest;
+import tec.units.tck.tests.unit.UnitDimensionTest;
+import tec.units.tck.tests.unit.UnitInterfaceTest;
 import tec.units.tck.util.TestGroups.Group;
 import tec.units.tck.util.TestGroups.Profile;
 import tec.uom.lib.common.function.Versioned;
@@ -85,9 +91,12 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		test.setName("TCK/Test Setup");
 		List<XmlClass> classes = new ArrayList<>();
 		classes.add(new XmlClass(TCKSetup.class));
-		classes.add(new XmlClass(FundamentalTypesUnitTest.class));
-		classes.add(new XmlClass(FundamentalTypesQuantityTest.class));
-		classes.add(new XmlClass(SupportedQuantiesTest.class));
+		classes.add(new XmlClass(FundamentalTypesTest.class));
+		classes.add(new XmlClass(UnitInterfaceTest.class));
+		classes.add(new XmlClass(UnitConversionTest.class));
+		classes.add(new XmlClass(UnitDimensionTest.class));
+		classes.add(new XmlClass(QuantityInterfaceTest.class));
+		classes.add(new XmlClass(QuantityTypesTest.class));
 		classes.add(new XmlClass(CreatingQuantiesTest.class));
 		test.setXmlClasses(classes);
 	}

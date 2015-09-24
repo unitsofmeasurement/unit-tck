@@ -23,41 +23,56 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package tec.units.tck.tests;
+package tec.units.tck.tests.unit;
+
+import javax.measure.Unit;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
+import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import javax.measure.quantity.Length;
-import javax.measure.spi.Bootstrap;
-import javax.measure.spi.QuantityFactory;
-import javax.measure.spi.QuantityFactoryService;
-
-import static org.testng.AssertJUnit.assertNotNull;
+import tec.units.tck.TCKSetup;
+import tec.units.tck.util.TestUtils;
 
 /**
- * Test class for creating new quantities.
+ * The Unit Interface
+ *
+ * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
 @SpecVersion(spec = "JSR 363", version = "0.8.0")
-public class CreatingQuantiesTest {
-
-	// ************************ 5.5 Obtaining Quantity Instances
-	// ************************
-
-	/**
-	 * Access a QuantityFactory for each registered type.
-	 */
-	@Test(groups = { "spi" }, description = "5.5.1 Quantities Obtained from a factory")
-	@SpecAssertion(section = "5.5.1", id = "551-A1")
-	public void testAccessToQuantityFactory() {
-		QuantityFactoryService service = Bootstrap
-				.getService(QuantityFactoryService.class);
-		QuantityFactory<Length> factory = service
-				.getQuantityFactory(Length.class);
-		assertNotNull("Section 5.5.1: No QuantityFactory available for "
-				+ Length.class.getSimpleName(), factory);
-
-	}
-
+public class UnitInterfaceTest {
+    
+    /**
+     * Test that Unit implementations override equals.
+     */
+    @SpecAssertion(section = "4.2.1", id = "421-A1")
+    @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override equals.")
+    public void testUnitEquals() {
+        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.2.1", type, boolean.class, "equals", Object.class);
+        }
+    }
+    
+    /**
+     * Test that Unit implementations override hashCode.
+     */
+    @SpecAssertion(section = "4.2.1", id = "421-A2")
+    @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override hashCode.")
+    public void testUnitHashcode() {
+        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.2.1", type, int.class, "hashCode");
+        }
+    }
+    
+    /**
+     * Ensure the shift() operation is implemented.
+     */
+    @SpecAssertion(section = "4.2.1.2", id = "42121-A1")
+    @Test(groups = { "core" }, description = "4.2.1.2 Ensure the shift() operation is implemented.")
+    public void testUnitShift() {
+        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.2.1.2", true, type, Unit.class, "shift", double.class);
+        }
+    }
 }

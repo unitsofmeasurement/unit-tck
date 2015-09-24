@@ -23,7 +23,9 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package tec.units.tck.tests;
+package tec.units.tck.tests.format;
+
+import javax.measure.Unit;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
@@ -31,23 +33,57 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import tec.units.tck.TCKSetup;
+import tec.units.tck.util.TestUtils;
 
 /**
- * Tests for Fundamental Types - Quantity
+ * Tests for Fundamental Types - Unit
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
 @SpecVersion(spec = "JSR 363", version = "0.8.0")
-public class FundamentalTypesQuantityTest {
-   
+public class UnitFormatTest {
+
     /**
-     * Ensure at least one Quantity implementation
+     * Ensure at least one Unit implementation
      * is available/registered.
      */
-    @SpecAssertion(section = "4.4", id = "44-A1")
-    @Test(groups = { "core" }, description = "4.4 Ensure at least one javax.measure.Quantity implementation is available/registered.")
-    public void testEnsureHasQuantity() {
+    @SpecAssertion(section = "4.2", id = "42-A1")
+    @Test(groups = { "core" }, description = "4.2 Ensure at least one javax.measure.Unit implementation is available/registered.")
+    public void testEnsureGotUnit() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
-        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getQuantityClasses().isEmpty());
+        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getUnitClasses().isEmpty());
+    }
+    
+    /**
+     * Test that Unit implementations override equals.
+     */
+    @SpecAssertion(section = "4.2.1", id = "421-A1")
+    @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override equals.")
+    public void testUnitEquals() {
+        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.2.1", type, boolean.class, "equals", Object.class);
+        }
+    }
+    
+    /**
+     * Test that Unit implementations override hashCode.
+     */
+    @SpecAssertion(section = "4.2.1", id = "421-A2")
+    @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override hashCode.")
+    public void testUnitHashcode() {
+        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.2.1", type, int.class, "hashCode");
+        }
+    }
+    
+    /**
+     * Ensure the shift() operation is implemented.
+     */
+    @SpecAssertion(section = "4.2.1.2", id = "42121-A1")
+    @Test(groups = { "core" }, description = "4.2.1.2 Ensure the shift() operation is implemented.")
+    public void testUnitShift() {
+        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.2.1.2", true, type, Unit.class, "shift", double.class);
+        }
     }
 }

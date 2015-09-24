@@ -63,6 +63,15 @@ public interface ServiceConfiguration{
 	Collection<Class> getUnitClasses();
     
     /**
+     * List a collection of {@link Dimension} implementations.<p>
+     * This enables the TCK to check the basic implementation compliance.
+     *
+     * @return a collection with {@link Dimension} implementations to be tested.
+     */
+    @SuppressWarnings("rawtypes")
+	Collection<Class> getDimensionClasses();
+    
+    /**
      * Return a collection with all supported {@link Quantity} types. The list
      * must not return <tt>null/tt>, but could be empty in certain profiles.
      * 
