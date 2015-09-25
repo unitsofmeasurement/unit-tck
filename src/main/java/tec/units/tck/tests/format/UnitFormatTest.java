@@ -23,7 +23,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-package tec.units.tck.tests;
+package tec.units.tck.tests.format;
+
+import javax.measure.Unit;
+import javax.measure.format.UnitFormat;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
@@ -31,9 +34,10 @@ import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import tec.units.tck.TCKSetup;
+import tec.units.tck.util.TestUtils;
 
 /**
- * Tests for Fundamental Types - Unit
+ * Tests for UnitFormat
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
@@ -41,7 +45,7 @@ import tec.units.tck.TCKSetup;
 public class UnitFormatTest {
 
     /**
-     * Ensure at least one Unit implementation
+     * Ensure at least one UnitFormat implementation
      * is available/registered.
      */
     @SpecAssertion(section = "4.3", id = "43-A1")
@@ -49,5 +53,29 @@ public class UnitFormatTest {
     public void testEnsureGotUnitFormat() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getUnitFormats4Test().isEmpty());
+    }
+    
+    /**
+     * Ensure the format() operation is implemented.
+     */
+    @SpecAssertion(section = "4.3", id = "43-A2")
+    @Test(groups = { "format" }, description = "4.3 Ensure the format() operation is implemented.")
+    public void testUnitFormatFormat() {
+        for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
+        	Class<?> type = format.getClass();
+            TestUtils.testHasPublicMethod("Section 4.3", true, type, String.class, "format", Unit.class);
+        }
+    }
+    
+    /**
+     * Ensure the appendable format() operation is implemented.
+     */
+    @SpecAssertion(section = "4.3", id = "43-A2")
+    @Test(groups = { "format" }, description = "4.3 Ensure the appendable format() operation is implemented.")
+    public void testUnitFormatFormatAppendable() {
+        for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
+        	Class<?> type = format.getClass();
+            TestUtils.testHasPublicMethod("Section 4.3", true, type, Appendable.class, "format", Unit.class, Appendable.class);
+        }
     }
 }

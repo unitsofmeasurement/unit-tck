@@ -93,6 +93,17 @@
                 </text>
             </assertion>
         </group>
+        <group>
+            <text>UnitFormat methods</text>
+            <assertion id="43-A2">
+                <text>4.3 Ensure the format() operation is implemented.
+                </text>
+            </assertion>
+            <assertion id="43-A3">
+                <text>4.3 Ensure the appendable format() operation is implemented.
+                </text>
+            </assertion>
+        </group>
     </section>
     
 	<section id="4.4" title="The Quantity Interface" />

@@ -37,6 +37,7 @@ import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
 import tec.units.tck.tests.*;
+import tec.units.tck.tests.format.UnitFormatTest;
 import tec.units.tck.tests.quantity.QuantityInterfaceTest;
 import tec.units.tck.tests.quantity.QuantityTypesTest;
 import tec.units.tck.tests.spi.CreatingQuantiesTest;

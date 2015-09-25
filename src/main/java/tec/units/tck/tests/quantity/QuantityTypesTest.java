@@ -61,16 +61,15 @@ public class QuantityTypesTest {
 		assertEquals("Section 4.5: Number of SI Base Dimensions does not match", 7, baseDimensions.size());
 		final Collection<? extends Unit<?>> units = TCKSetup.getConfiguration().getUnits4Test();
 		for (Unit<?> unit : units) {
-			System.out.println(unit + " (" + unit.getClass() + ")");
 			Dimension dim = unit.getDimension();
-			System.out.println(dim);
+//			System.out.println(unit + "D: "+ dim  + " (" + unit.getClass() + ")");
 			if (baseDimensions.contains(dim)) {
 				foundUnits.put(dim, unit);
 			}
 		}
-		for (Dimension dim : baseDimensions) {
-			Unit<?> unit = foundUnits.get(dim);
-			assertNotNull("Section 4.5: SI Base Dimension " + dim + " not found", unit);
+		for (Dimension dimension : baseDimensions) {
+			Unit<?> unit = foundUnits.get(dimension);
+			assertNotNull("Section 4.5: SI Base Dimension " + dimension + " not found", unit);
 		}
 	}
 	
@@ -87,5 +86,4 @@ public class QuantityTypesTest {
 			assertNotNull("Section 4.5: Quantity type " + c + " not found", unit);
 		}
 	}
-
 }
