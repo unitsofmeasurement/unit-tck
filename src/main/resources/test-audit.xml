@@ -103,6 +103,10 @@
                 <text>4.3 Ensure the appendable format() operation is implemented.
                 </text>
             </assertion>
+            <assertion id="43-A4">
+                <text>4.3 Ensure the label() operation is implemented.
+                </text>
+            </assertion>
         </group>
     </section>
     
