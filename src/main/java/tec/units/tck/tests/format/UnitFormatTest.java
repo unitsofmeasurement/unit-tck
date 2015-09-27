@@ -70,12 +70,24 @@ public class UnitFormatTest {
     /**
      * Ensure the appendable format() operation is implemented.
      */
-    @SpecAssertion(section = "4.3", id = "43-A2")
+    @SpecAssertion(section = "4.3", id = "43-A3")
     @Test(groups = { "format" }, description = "4.3 Ensure the appendable format() operation is implemented.")
     public void testUnitFormatFormatAppendable() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
             TestUtils.testHasPublicMethod("Section 4.3", true, type, Appendable.class, "format", Unit.class, Appendable.class);
+        }
+    }
+    
+    /**
+     * Ensure the label() operation is implemented.
+     */
+    @SpecAssertion(section = "4.3", id = "43-A4")
+    @Test(groups = { "format" }, description = "4.3 Ensure the label() operation is implemented.")
+    public void testUnitFormatLabel() {
+        for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
+        	Class<?> type = format.getClass();
+            TestUtils.testHasPublicMethod("Section 4.3", true, type, void.class, "label", Unit.class, String.class);
         }
     }
 }
