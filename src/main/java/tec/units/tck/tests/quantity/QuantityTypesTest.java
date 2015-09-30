@@ -76,7 +76,7 @@ public class QuantityTypesTest {
 	/**
 	 * Access a QuantityFactory for each registered type.
 	 */
-	@Test(groups = { "base_quantity", "derived_quantity" }, description = "4.5 Ensure all Supported Quantities are used by an implementation")
+	@Test(groups = { "derived_quantity" }, description = "4.5 Ensure all Supported Quantities are used by an implementation")
 	@SpecAssertion(section = "4.5", id = "45-A2")
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void testContainsQuantities() {
