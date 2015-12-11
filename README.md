@@ -16,7 +16,7 @@ To setup the TCK with your implementation you must follow the following steps:
   you must provide with this class.
   
 ## Running
-To execute the TCK, simply execute
+To run the TCK, simply execute
 ```
 mvn clean test
 ```       
