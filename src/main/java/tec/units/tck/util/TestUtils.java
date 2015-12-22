@@ -42,16 +42,15 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 /**
  * Test utilities used in the JSR 363 TCK.
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 0.5, December 22, 2015
  */
 public class TestUtils {
 

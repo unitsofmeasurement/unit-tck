@@ -191,40 +191,40 @@
 				</configuration>
 			</plugin>
 
-            <!-- ======================================================= -->
-            <!-- Source Attachment -->
-            <!-- ======================================================= -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-            </plugin>
-            
-            <!-- ======================================================= -->
-            <!-- JavaDoc Attachment -->
-            <!-- ======================================================= -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <detectLinks>true</detectLinks>
-                    <!-- excludePackageNames>package1</excludePackageNames -->
-                    <keywords>true</keywords>
-                    <linksource>true</linksource>
-                    <failOnError>false</failOnError>
-                    <!-- overview>${basedir}/overview.html</overview -->
-                    <source>${maven.compile.sourceLevel}</source>
-                    <!-- stylesheetfile>${basedir}/src/site/css/money-jdoc.css</stylesheetfile -->
-                    <verbose>true</verbose>
-                </configuration>
-            </plugin>
+			<!-- ======================================================= -->
+			<!-- Source Attachment -->
+			<!-- ======================================================= -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
+
+			<!-- ======================================================= -->
+			<!-- JavaDoc Attachment -->
+			<!-- ======================================================= -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<detectLinks>true</detectLinks>
+					<!-- excludePackageNames>package1</excludePackageNames -->
+					<keywords>true</keywords>
+					<linksource>true</linksource>
+					<failOnError>false</failOnError>
+					<!-- overview>${basedir}/overview.html</overview -->
+					<source>${maven.compile.sourceLevel}</source>
+					<!-- stylesheetfile>${basedir}/src/site/css/money-jdoc.css</stylesheetfile -->
+					<verbose>true</verbose>
+				</configuration>
+			</plugin>
 
 			<!-- ======================================================= -->
 			<!-- Maven web site -->
@@ -383,6 +383,19 @@
 
 	<profiles>
 		<profile>
+			<id>jdk7</id>
+			<properties>
+				<jdkVersion>1.7</jdkVersion>
+			</properties>
+		</profile>
+		<profile>
+			<id>jdk8</id>
+			<properties>
+				<jdkVersion>1.8</jdkVersion>
+			</properties>
+		</profile>
+
+		<profile>
 			<id>license</id>
 			<activation>
 				<property>
@@ -416,6 +429,9 @@
 									<exclude>README.*</exclude>
 									<exclude>checkstyle*.*</exclude>
 									<exclude>*.css</exclude>
+									<exclude>*.jpg</exclude>
+									<exclude>*.png</exclude>
+									<exclude>*.yml</exclude>
 									<exclude>*.launch</exclude>
 								</excludes>
 							</configuration>

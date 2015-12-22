@@ -43,6 +43,7 @@ you may select one of the following **profiles**:
 - format
 - base_quantity
 - quantity
+- quantity_format
 - spi
 - full
 
