@@ -30,8 +30,8 @@ import tec.uom.lib.common.function.DescriptionSupplier;
 
 /**
  * TestNG groups and profiles used in the JSR 363 TCK.
- *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 0.5, December 22, 2015
  */
 public final class TestGroups {
 
@@ -75,6 +75,11 @@ public final class TestGroups {
     private static final Group[] QUANTITY_GROUPS = {core, base_quantity, derived_quantity};
     
     /**
+     * Quantity groups and Format
+     */
+    private static final Group[] QUANTITY_GROUPS_AND_FORMAT = {core, format, base_quantity, derived_quantity};
+    
+    /**
      * SPI groups
      */
     private static final Group[] SPI_GROUPS = {core, format, spi};
@@ -93,9 +98,10 @@ public final class TestGroups {
      * @author Werner Keil
      */
     public enum Profile implements DescriptionSupplier {
-        minimal("Minimal", MINIMAL_GROUPS, false), format("Format", FORMAT_GROUPS, false), 
-        base_quantity("Base Quantity", BASE_QUANTITY_GROUPS, false), quantity("Quantity", QUANTITY_GROUPS, false),
-        spi("SPI", SPI_GROUPS, false), full("Full", Group.values(), true);
+        minimal("Minimal", MINIMAL_GROUPS), format("Format", FORMAT_GROUPS), 
+        base_quantity("Base Quantity", BASE_QUANTITY_GROUPS), quantity("Quantity", QUANTITY_GROUPS),
+        quantity_format("Quantity and Format", QUANTITY_GROUPS_AND_FORMAT),
+        spi("SPI", SPI_GROUPS), full("Full", Group.values(), true);
 
         private final String description;
         private final Group[] groups;
@@ -105,6 +111,10 @@ public final class TestGroups {
             this.description = description;
             this.groups = groups;
             this.isDefault = isDefault;
+        }
+        
+        private Profile(String description, Group[] groups) {
+       	    this(description, groups, false);
         }
         
 	/*
