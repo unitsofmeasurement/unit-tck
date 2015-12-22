@@ -67,14 +67,14 @@ import javax.tools.Tool;
  * Main class for executing the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5, November 11, 2015
+ * @version 0.5.1, December 22, 2015
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
      * 
      */
 	private static final long serialVersionUID = 3189431432291353154L;
-	private static final String VERSION_NUMBER = "0.5";
+	private static final String VERSION_NUMBER = "0.5.1";
 	private final Profile profile;
 
 	public TCKRunner() {
@@ -87,7 +87,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 			test.addIncludedGroup(group.name());
 		}
 		test.setName("TCK/Test Setup");
-		List<XmlClass> classes = new ArrayList<>();
+		List<XmlClass> classes = new ArrayList<XmlClass>();
 		classes.add(new XmlClass(TCKSetup.class));
 		classes.add(new XmlClass(FundamentalTypesTest.class));
 		classes.add(new XmlClass(UnitInterfaceTest.class));
@@ -120,7 +120,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		System.out.println("-- JSR 363 TCK started --");
 		System.out.println("Profile: " + profile.getDescription());
 
-		List<XmlSuite> suites = new ArrayList<>();
+		List<XmlSuite> suites = new ArrayList<XmlSuite>();
 		suites.add(new TCKRunner());
 		final TestNG tng = new TestNG();
 		tng.setXmlSuites(suites);
