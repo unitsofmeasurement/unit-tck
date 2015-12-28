@@ -67,20 +67,20 @@ import javax.tools.Tool;
  * Main class for executing the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6, December 28, 2015
+ * @version 0.6.1, December 28, 2015
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
      * 
      */
 	private static final long serialVersionUID = 3189431432291353154L;
-	private static final String TCK_VERSION = "0.6";
+	private static final String TCK_VERSION = "0.7-SNAPSHOT";
 	public static final String SPEC_ID = "JSR 363";
 	public static final String SPEC_VERSION = "0.9.0";
 	private final Profile profile;
 
 	public TCKRunner() {
-		setName("JSR363-TCK " + TCK_VERSION);
+		setName(SPEC_ID + " - TCK " + TCK_VERSION);
 		XmlTest test = new XmlTest(this);
 
 		profile = Profile.valueOf(System.getProperty(SYS_PROPERTY_PROFILE,
@@ -119,7 +119,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	@Override
 	public int run(InputStream in, OutputStream out, OutputStream err,
 			String... args) {
-		System.out.println("-- JSR 363 TCK started --");
+		System.out.println("-- " + SPEC_ID + " TCK started --");
 		System.out.println("Profile: " + profile.getDescription());
 
 		List<XmlSuite> suites = new ArrayList<XmlSuite>();
@@ -142,7 +142,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		tng.addListener(rep);
 		tng.run();
 		rep.writeSummary();
-		System.out.println("-- JSR 363 TCK finished --");
+		System.out.println("-- " + SPEC_ID + " TCK finished --");
 		return 0;
 	}
 
@@ -174,7 +174,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 		consoleWriter
 				.write("*****************************************************************************************\n");
 		consoleWriter
-				.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version "
+				.write("**** " + SPEC_ID + " - Units of Measurement, Technical Compatibility Kit, version "
 						+ TCK_VERSION + "\n");
 		consoleWriter
 				.write("*****************************************************************************************\n\n");
@@ -188,7 +188,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 				.write("-D"
 						+ SYS_PROPERTY_PROFILE
 						+ "=<profile>"
-						+ " to select the desired profile from these available JSR 363 profiles:\n");
+						+ " to select the desired profile from these available " + SPEC_ID + " profiles:\n");
 		for (Profile p : Profile.values()) {
 			consoleWriter.write("   " + p.name() + " - " + p.getDescription()
 					+ (p.isDefault() ? " (the default profile)\n" : "\n"));
@@ -208,7 +208,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 
 	private static final void showVersion() {
 		System.out
-				.println("JSR 363 - Units of Measurement, Technical Compatibility Kit, version \""
+				.println(SPEC_ID + " - Units of Measurement, Technical Compatibility Kit, version \""
 						+ TCK_VERSION + "\"\n");
 	}
 
@@ -230,7 +230,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 				fileWriter
 						.write("*****************************************************************************************\n");
 				fileWriter
-						.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version "
+						.write("**** " + SPEC_ID + " - Units of Measurement, Technical Compatibility Kit, version "
 								+ TCK_VERSION + "\n");
 				fileWriter
 						.write("*****************************************************************************************\n\n");
@@ -242,7 +242,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 				consoleWriter
 						.write("*****************************************************************************************\n");
 				consoleWriter
-						.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version "
+						.write("**** " + SPEC_ID + " - Units of Measurement, Technical Compatibility Kit, version "
 								+ TCK_VERSION + "\n");
 				consoleWriter
 						.write("*****************************************************************************************\n\n");
@@ -263,7 +263,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 			String location = tr.getTestClass().getRealClass().getSimpleName()
 					+ '#' + tr.getMethod().getMethodName();
 			try {
-				Method realTestMethod = tr.getMethod().getMethod();
+				Method realTestMethod = tr.getMethod().getConstructorOrMethod().getMethod();
 				Test testAnnot = realTestMethod.getAnnotation(Test.class);
 				if (testAnnot != null && testAnnot.description() != null
 						&& !testAnnot.description().isEmpty()) {
@@ -301,7 +301,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 			String location = tr.getTestClass().getRealClass().getSimpleName()
 					+ '#' + tr.getMethod().getMethodName();
 			try {
-				Method realTestMethod = tr.getMethod().getMethod();
+				Method realTestMethod = tr.getMethod().getConstructorOrMethod().getMethod();
 				Test specAssert = realTestMethod.getAnnotation(Test.class);
 				if (specAssert != null && specAssert.description() != null
 						&& !specAssert.description().isEmpty()) {
@@ -322,7 +322,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 			String location = tr.getTestClass().getRealClass().getSimpleName()
 					+ '#' + tr.getMethod().getMethodName();
 			try {
-				Method realTestMethod = tr.getMethod().getMethod();
+				Method realTestMethod = tr.getMethod().getConstructorOrMethod().getMethod();
 				Test specAssert = realTestMethod.getAnnotation(Test.class);
 				if (specAssert != null && specAssert.description() != null
 						&& !specAssert.description().isEmpty()) {
@@ -345,7 +345,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 
 		public void writeSummary() {
 			try {
-				log("\nJSR 363 TCK version " + TCK_VERSION + " Summary");
+				log("\n" + SPEC_ID + " TCK version " + TCK_VERSION + " Summary");
 				log("-------------------------------------------------------");
 				log("\nTOTAL TESTS EXECUTED : " + count);
 				log("TOTAL TESTS SKIPPED  : " + skipped);
