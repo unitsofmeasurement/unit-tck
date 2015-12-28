@@ -67,18 +67,20 @@ import javax.tools.Tool;
  * Main class for executing the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5.1, December 22, 2015
+ * @version 0.5.2, December 24, 2015
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
      * 
      */
 	private static final long serialVersionUID = 3189431432291353154L;
-	private static final String VERSION_NUMBER = "0.5.1";
+	private static final String TCK_VERSION = "0.6-SNAPSHOT";
+	public static final String SPEC_ID = "JSR 363";
+	public static final String SPEC_VERSION = "0.9.0";
 	private final Profile profile;
 
 	public TCKRunner() {
-		setName("JSR363-TCK " + VERSION_NUMBER);
+		setName("JSR363-TCK " + TCK_VERSION);
 		XmlTest test = new XmlTest(this);
 
 		profile = Profile.valueOf(System.getProperty(SYS_PROPERTY_PROFILE,
@@ -146,7 +148,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 
 	@Override
 	public String getVersion() {
-		return VERSION_NUMBER;
+		return TCK_VERSION;
 	}
 
 	@Override
@@ -173,7 +175,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 				.write("*****************************************************************************************\n");
 		consoleWriter
 				.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version "
-						+ VERSION_NUMBER + "\n");
+						+ TCK_VERSION + "\n");
 		consoleWriter
 				.write("*****************************************************************************************\n\n");
 		consoleWriter.write("Usage:\n");
@@ -207,7 +209,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	private static final void showVersion() {
 		System.out
 				.println("JSR 363 - Units of Measurement, Technical Compatibility Kit, version \""
-						+ VERSION_NUMBER + "\"\n");
+						+ TCK_VERSION + "\"\n");
 	}
 
 	public static final class Reporter extends TestListenerAdapter {
@@ -229,7 +231,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 						.write("*****************************************************************************************\n");
 				fileWriter
 						.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version "
-								+ VERSION_NUMBER + "\n");
+								+ TCK_VERSION + "\n");
 				fileWriter
 						.write("*****************************************************************************************\n\n");
 				fileWriter.write("Executed on " + new java.util.Date() + "\n");
@@ -241,7 +243,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 						.write("*****************************************************************************************\n");
 				consoleWriter
 						.write("**** JSR 363 - Units of Measurement, Technical Compatibility Kit, version "
-								+ VERSION_NUMBER + "\n");
+								+ TCK_VERSION + "\n");
 				consoleWriter
 						.write("*****************************************************************************************\n\n");
 				consoleWriter.write("Executed on " + new java.util.Date()
@@ -343,7 +345,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 
 		public void writeSummary() {
 			try {
-				log("\nJSR 363 TCK version " + VERSION_NUMBER + " Summary");
+				log("\nJSR 363 TCK version " + TCK_VERSION + " Summary");
 				log("-------------------------------------------------------");
 				log("\nTOTAL TESTS EXECUTED : " + count);
 				log("TOTAL TESTS SKIPPED  : " + skipped);

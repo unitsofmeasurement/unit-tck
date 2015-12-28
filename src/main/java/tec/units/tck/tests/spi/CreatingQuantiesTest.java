@@ -35,11 +35,13 @@ import javax.measure.spi.QuantityFactory;
 import javax.measure.spi.QuantityFactoryService;
 
 import static org.testng.AssertJUnit.assertNotNull;
+import static tec.units.tck.TCKRunner.SPEC_ID;
+import static tec.units.tck.TCKRunner.SPEC_VERSION;
 
 /**
  * Test class for creating new quantities.
  */
-@SpecVersion(spec = "JSR 363", version = "0.8.0")
+@SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class CreatingQuantiesTest {
 
 	// ************************ 5.5 Obtaining Quantity Instances

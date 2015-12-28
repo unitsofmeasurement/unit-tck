@@ -25,7 +25,12 @@
  */
 package tec.units.tck.tests;
 
+import static tec.units.tck.TCKRunner.SPEC_ID;
+import static tec.units.tck.TCKRunner.SPEC_VERSION;
+
 import javax.measure.Unit;
+import javax.measure.UnitConverter;
+import javax.measure.format.UnitFormat;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
@@ -40,50 +45,53 @@ import tec.units.tck.util.TestUtils;
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
-@SpecVersion(spec = "JSR 363", version = "0.8.0")
+@SpecVersion(spec = SPEC_ID, version =  SPEC_VERSION)
 public class UnitConversionTest {
 
     /**
-     * Ensure at least one Unit implementation
+     * Ensure at least one UnitConverter implementation
      * is available/registered.
      */
-    @SpecAssertion(section = "4.2", id = "42-A1")
-    @Test(groups = { "core" }, description = "4.2 Ensure at least one javax.measure.Unit implementation is available/registered.")
-    public void testEnsureGotUnit() {
+    @SpecAssertion(section = "4.2.3", id = "423-A1")
+    @Test(groups = { "core" }, description = "4.2.3 Ensure at least one javax.measure.UnitConverter implementation is available/registered.")
+    public void testEnsureGotConverters() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
-        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getUnitClasses().isEmpty());
+        AssertJUnit.assertFalse(TCKSetup.getConfiguration().getUnitConverters4Test().isEmpty());
     }
-    
+      
     /**
-     * Test that Unit implementations override equals.
+     * Test that UnitConverter implementations override equals.
      */
-    @SpecAssertion(section = "4.2.1", id = "421-A1")
-    @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override equals.")
-    public void testUnitEquals() {
-        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.2.1", type, boolean.class, "equals", Object.class);
+    @SpecAssertion(section = "4.2.3", id = "423-A2")
+    @Test(groups = { "core" }, description = "4.2.3 Ensure registered UnitConverter classes override equals.")
+    public void testUnitConverterEquals() {
+        for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
+        	Class<?> type = converter.getClass();
+            TestUtils.testHasPublicMethod("Section 4.2.3", type, boolean.class, "equals", Object.class);
+        }
+    }
+       
+    /**
+     * Test that UnitConverter implementations override hashCode.
+     */
+    @SpecAssertion(section = "4.2.3", id = "423-A3")
+    @Test(groups = { "core" }, description = "4.2.3 Ensure registered UnitConverter classes override hashCode.")
+    public void testUnitConverterHashcode() {
+        for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
+        	Class<?> type = converter.getClass();
+            TestUtils.testHasPublicMethod("Section 4.2.3", type, int.class, "hashCode");
         }
     }
     
     /**
-     * Test that Unit implementations override hashCode.
+     * Ensure the isIdentity() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1", id = "421-A2")
-    @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override hashCode.")
-    public void testUnitHashcode() {
-        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.2.1", type, int.class, "hashCode");
-        }
-    }
-    
-    /**
-     * Ensure the shift() operation is implemented.
-     */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A1")
-    @Test(groups = { "core" }, description = "4.2.1.2 Ensure the shift() operation is implemented.")
-    public void testUnitShift() {
-        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.2.1.2", true, type, Unit.class, "shift", double.class);
+    @SpecAssertion(section = "4.2.3", id = "423-A4")
+    @Test(groups = { "core" }, description = "4.2.3 Ensure the isIdentity() method is implemented.")
+    public void testUnitConverterIsIdentity() {
+        for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
+        	Class<?> type = converter.getClass();
+            TestUtils.testHasPublicMethod("Section 4.2.3", true, type, boolean.class, "isIdentity");
         }
     }
 }

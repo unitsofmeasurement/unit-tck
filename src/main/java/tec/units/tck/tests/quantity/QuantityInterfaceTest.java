@@ -25,6 +25,12 @@
  */
 package tec.units.tck.tests.quantity;
 
+import static tec.units.tck.TCKRunner.SPEC_ID;
+import static tec.units.tck.TCKRunner.SPEC_VERSION;
+
+import javax.measure.Quantity;
+import javax.measure.Unit;
+
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.annotations.Test;
@@ -37,11 +43,11 @@ import tec.units.tck.util.TestUtils;
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
-@SpecVersion(spec = "JSR 363", version = "0.8.0")
+@SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class QuantityInterfaceTest {
    
     /**
-     * Test that Unit implementations override equals.
+     * Test that Quantity implementations override equals.
      */
     @SpecAssertion(section = "4.4.1", id = "441-A1")
     @Test(groups = { "core" }, description = "4.4.1 Ensure registered Quantity classes override equals.")
@@ -52,13 +58,46 @@ public class QuantityInterfaceTest {
     }
     
     /**
-     * Test that Unit implementations override hashCode.
+     * Test that Quantity implementations override getUnit.
      */
     @SpecAssertion(section = "4.4.1", id = "441-A2")
+    @Test(groups = { "core" }, description = "4.4.1 Ensure registered Quantity classes implement getUnit.")
+    public void testQuantityGetUnit() {
+        for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.4.1", type, Unit.class, "getUnit");
+        }
+    }
+    
+    /**
+     * Test that Quantity implementations override getValue.
+     */
+    @SpecAssertion(section = "4.4.1", id = "441-A3")
+    @Test(groups = { "core" }, description = "4.4.1 Ensure registered Quantity classes implement getValue.")
+    public void testQuantityGetValue() {
+        for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.4.1", type, Number.class, "getValue");
+        }
+    }
+    
+    /**
+     * Test that Quantity implementations override hashCode.
+     */
+    @SpecAssertion(section = "4.4.1", id = "441-A4")
     @Test(groups = { "core" }, description = "4.4.1 Ensure registered Quantity classes override hashCode.")
     public void testQuantityHashcode() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
             TestUtils.testHasPublicMethod("Section 4.4.1", type, int.class, "hashCode");
+        }
+    }
+    
+    /**
+     * Test that Quantity implementations override add.
+     */
+    @SpecAssertion(section = "4.4.1.1", id = "4411-A1")
+    @Test(groups = { "core" }, description = "4.4.1.1 Ensure registered Quantity classes implement add.")
+    public void testQuantityOpAdd() {
+        for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.4.1.1", type, Quantity.class, "add", Quantity.class);
         }
     }
 }

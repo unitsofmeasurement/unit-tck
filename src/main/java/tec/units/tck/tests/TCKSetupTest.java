@@ -25,6 +25,8 @@
  */
 package tec.units.tck.tests;
 
+import static tec.units.tck.TCKRunner.SPEC_ID;
+import static tec.units.tck.TCKRunner.SPEC_VERSION;
 import static tec.units.tck.TCKSetup.*;
 import static org.testng.AssertJUnit.*;
 
@@ -34,7 +36,7 @@ import org.testng.annotations.Test;
 
 import java.util.Collection;
 
-@SpecVersion(spec = "JSR 363", version = "0.8.0")
+@SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class TCKSetupTest{
 
     @SpecAssertion(

@@ -27,6 +27,8 @@ package tec.units.tck.tests.quantity;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
+import static tec.units.tck.TCKRunner.SPEC_ID;
+import static tec.units.tck.TCKRunner.SPEC_VERSION;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -44,7 +46,7 @@ import tec.units.tck.TCKSetup;
 /**
  * Test class for base quantities.
  */
-@SpecVersion(spec = "JSR 363", version = "0.8.0")
+@SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class QuantityTypesTest {
 
 	// ************************ 4.5 Supported Quantities

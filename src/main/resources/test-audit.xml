@@ -2,7 +2,7 @@
 <specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://jboss.com/products/weld/tec.units.tck/audit"
 	xsi:schemaLocation="http://jboss.com/products/weld/tec.units.tck/audit"
-	name="JSR 363 Units of Measurement" version="0.8.0" id="JSR 363"
+	name="JSR 363 Units of Measurement" version="0.9.0" id="JSR 363"
 	generateSectionIds="false">
 	<section id="0" title="TCK Setup">
 		<!-- Tests class TCKSetupTest -->
@@ -70,6 +70,31 @@
         </group>
     </section>
     
+    <section id="4.2.3" title="Unit Conversion">
+       <group>
+       		<text>Setup</text>
+       		 <assertion id="423-A1">
+               <text>Ensure at least one javax.measure.UnitConverter implementation is available/registered.
+               </text>
+           </assertion>
+       </group>
+       <group>
+           <text>Basic Operations</text>
+           <assertion id="423-A2">
+               <text>Ensure the equals() operation is implemented.
+               </text>
+           </assertion>
+           <assertion id="423-A3">
+               <text>Ensure the hashCode() operation is implemented.
+               </text>
+           </assertion>
+           <assertion id="423-A4">
+               <text>Ensure the isIdentity() method is implemented.
+               </text>
+           </assertion>
+       </group>
+    </section>
+    
     <section id="4.2.4" title="Unit Dimension">
        <group>
            <text>Basic Operations</text>
@@ -120,10 +145,27 @@
                </text>
            </assertion>
            <assertion id="441-A2">
+               <text>Ensure the getUnit() method is implemented.
+               </text>
+           </assertion>
+           <assertion id="441-A3">
+               <text>Ensure the getValue() method is implemented.
+               </text>
+           </assertion>
+           <assertion id="441-A4">
                <text>Ensure the hashCode() operation is implemented.
                </text>
            </assertion>
        </group>
+    </section>
+    <section id="4.4.1.1" title="Operations on Quantities with same dimension as the operand">
+    	<group>
+    		<text>Result with same dimension</text>
+    	   <assertion id="4411-A1">
+               <text>Ensure the add() operation is implemented.
+               </text>
+           </assertion>
+    	</group>
     </section>
 	
 	<section id="4.5" title="Supported Quantities">

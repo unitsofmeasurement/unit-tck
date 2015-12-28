@@ -25,6 +25,9 @@
  */
 package tec.units.tck.tests.format;
 
+import static tec.units.tck.TCKRunner.SPEC_ID;
+import static tec.units.tck.TCKRunner.SPEC_VERSION;
+
 import javax.measure.Unit;
 import javax.measure.format.UnitFormat;
 
@@ -41,7 +44,7 @@ import tec.units.tck.util.TestUtils;
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
-@SpecVersion(spec = "JSR 363", version = "0.8.0")
+@SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class UnitFormatTest {
 
     /**
