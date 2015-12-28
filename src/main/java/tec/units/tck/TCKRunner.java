@@ -67,14 +67,14 @@ import javax.tools.Tool;
  * Main class for executing the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5.2, December 24, 2015
+ * @version 0.6, December 28, 2015
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	/**
      * 
      */
 	private static final long serialVersionUID = 3189431432291353154L;
-	private static final String TCK_VERSION = "0.6-SNAPSHOT";
+	private static final String TCK_VERSION = "0.6";
 	public static final String SPEC_ID = "JSR 363";
 	public static final String SPEC_VERSION = "0.9.0";
 	private final Profile profile;
