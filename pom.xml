@@ -45,6 +45,7 @@
 		<lib.version>0.9-SNAPSHOT</lib.version>
 		<testng.version>6.9.10</testng.version>
 		<jboss.test.audit.version>1.1.0.Final</jboss.test.audit.version>
+		<reflections.version>0.9.10</reflections.version>
 	</properties>
 
 	<dependencyManagement>
@@ -71,6 +72,16 @@
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.reflections</groupId>
+				<artifactId>reflections</artifactId>
+				<version>${reflections.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-library</artifactId>
+				<version>1.3</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -85,9 +96,6 @@
 			<type>jar</type>
 		</dependency>
 
-		<!-- dependency> <groupId>org.hamcrest</groupId> <artifactId>hamcrest-all</artifactId> 
-			<scope>test</scope> </dependency> <dependency> <groupId>junit</groupId> <artifactId>junit</artifactId> 
-			<scope>test</scope> </dependency -->
 		<dependency>
 			<groupId>tec.uom.lib</groupId>
 			<artifactId>uom-lib-common</artifactId>
@@ -97,6 +105,10 @@
 			<artifactId>testng</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
@@ -104,6 +116,10 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>jul-to-slf4j</artifactId>
 			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.mutabilitydetector</groupId>

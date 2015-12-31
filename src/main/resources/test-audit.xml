@@ -55,6 +55,18 @@
                </text>
            </assertion>
            <assertion id="421-A2">
+               <text>Ensure getDimension is implemented.
+               </text>
+           </assertion>
+           <assertion id="421-A3">
+               <text>Ensure getName is implemented.
+               </text>
+           </assertion>
+           <assertion id="421-A4">
+               <text>Ensure getSymbol is implemented.
+               </text>
+           </assertion>
+           <assertion id="421-A5">
                <text>Ensure the hashCode() operation is implemented.
                </text>
            </assertion>

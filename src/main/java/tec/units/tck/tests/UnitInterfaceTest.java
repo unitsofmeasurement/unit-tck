@@ -25,8 +25,15 @@
  */
 package tec.units.tck.tests;
 
+import static java.lang.reflect.Modifier.PUBLIC;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.number.OrderingComparison.*;
+import static org.reflections.ReflectionUtils.*;
 import static tec.units.tck.TCKRunner.SPEC_ID;
 import static tec.units.tck.TCKRunner.SPEC_VERSION;
+
+import java.lang.reflect.Method;
+import java.util.Set;
 
 import javax.measure.Unit;
 
@@ -38,31 +45,73 @@ import tec.units.tck.TCKSetup;
 import tec.units.tck.util.TestUtils;
 
 /**
- * The Unit Interface
+ * Testing the Unit Interface
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class UnitInterfaceTest {
-    
-    /**
+	
+	/**
      * Test that Unit implementations override equals.
      */
     @SpecAssertion(section = "4.2.1", id = "421-A1")
     @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override equals.")
     public void testUnitEquals() {
-        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+        for (@SuppressWarnings("rawtypes") Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1", type, boolean.class, "equals", Object.class);
+        }
+    }
+    
+	/**
+     * Test that Unit implementations contain getters
+     */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@SpecAssertion(section = "4.2.1", id = "421-A2")
+    @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes implement getDimension.")
+    public void testUnitGetDimension() {
+        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+        	Set<Method> getters = getAllMethods(type,
+        			  withModifier(PUBLIC), withPrefix("getDimension"), withParametersCount(0));
+        	assertThat(getters.size(), greaterThan(1)); // interface plus at least one implementation
+        }
+    }
+    
+	/**
+     * Test that Unit implementations contain getters
+     */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@SpecAssertion(section = "4.2.1", id = "421-A3")
+    @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes implement getName.")
+    public void testUnitGetName() {
+        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+        	Set<Method> getters = getAllMethods(type,
+        			  withModifier(PUBLIC), withPrefix("getName"), withParametersCount(0));
+        	assertThat(getters.size(), greaterThan(1)); // interface plus at least one implementation
+        }
+    }
+    
+	/**
+     * Test that Unit implementations contain getters
+     */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	@SpecAssertion(section = "4.2.1", id = "421-A4")
+    @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes implement getSymbol.")
+    public void testUnitGetSymbol() {
+        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+        	Set<Method> getters = getAllMethods(type,
+        			  withModifier(PUBLIC), withPrefix("getSymbol"), withParametersCount(0));
+        	assertThat(getters.size(), greaterThan(1)); // interface plus at least one implementation
         }
     }
     
     /**
      * Test that Unit implementations override hashCode.
      */
-    @SpecAssertion(section = "4.2.1", id = "421-A2")
+    @SpecAssertion(section = "4.2.1", id = "421-A5")
     @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override hashCode.")
     public void testUnitHashcode() {
-        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+        for (@SuppressWarnings("rawtypes") Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1", type, int.class, "hashCode");
         }
     }
@@ -73,7 +122,7 @@ public class UnitInterfaceTest {
     @SpecAssertion(section = "4.2.1.2", id = "42121-A1")
     @Test(groups = { "core" }, description = "4.2.1.2 Ensure the shift() operation is implemented.")
     public void testUnitShift() {
-        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+        for (@SuppressWarnings("rawtypes") Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1.2", true, type, Unit.class, "shift", double.class);
         }
     }
