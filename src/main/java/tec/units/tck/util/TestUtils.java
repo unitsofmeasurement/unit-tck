@@ -25,16 +25,13 @@
  */
 package tec.units.tck.util;
 
-import org.mutabilitydetector.unittesting.AllowedReason;
-import org.mutabilitydetector.unittesting.MutabilityAssert;
-import org.mutabilitydetector.unittesting.MutabilityMatchers;
-import org.testng.Assert;
-
-import tec.units.tck.TCKValidationException;
-
-import javax.measure.*;
-import javax.measure.spi.*;
-
+import static java.lang.reflect.Modifier.PUBLIC;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.number.OrderingComparison.greaterThan;
+import static org.reflections.ReflectionUtils.getAllMethods;
+import static org.reflections.ReflectionUtils.withModifier;
+import static org.reflections.ReflectionUtils.withName;
+import static org.reflections.ReflectionUtils.withParametersCount;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -45,12 +42,23 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
+
+import org.mutabilitydetector.unittesting.AllowedReason;
+import org.mutabilitydetector.unittesting.MutabilityAssert;
+import org.mutabilitydetector.unittesting.MutabilityMatchers;
+import org.testng.Assert;
+
+import tec.units.tck.TCKValidationException;
+
+import javax.measure.*;
+import javax.measure.spi.*;
 
 /**
  * Test utilities used in the JSR 363 TCK.
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5, December 22, 2015
+ * @version 0.6, December 31, 2015
  */
 public class TestUtils {
 
@@ -79,8 +87,7 @@ public class TestUtils {
 	private TestUtils() {
 	}
 
-	public static Number createNumberWithPrecision(QuantityFactory f,
-			int precision) {
+	static Number createNumberWithPrecision(QuantityFactory f, int precision) {
 		if (precision == 0) {
 			precision = new Random().nextInt(100);
 		}
@@ -91,7 +98,7 @@ public class TestUtils {
 		return new Double(b.toString());
 	}
 
-	public static Number createNumberWithScale(QuantityFactory f, int scale) {
+	static Number createNumberWithScale(QuantityFactory f, int scale) {
 		StringBuilder b = new StringBuilder(scale + 2);
 		b.append("9.");
 		for (int i = 0; i < scale; i++) {
@@ -102,83 +109,69 @@ public class TestUtils {
 
 	public static void testSerializable(String section, Class c) {
 		if (!Serializable.class.isAssignableFrom(c)) {
-			throw new TCKValidationException(section
-					+ ": Class must be serializable: " + c.getName());
+			throw new TCKValidationException(section + ": Class must be serializable: " + c.getName());
 		}
 	}
 
 	public static void testImmutable(String section, Class c) {
 		try {
-			MutabilityAssert
-					.assertInstancesOf(
-							c,
-							MutabilityMatchers.areImmutable(),
-							AllowedReason.provided(Dimension.class,
-									Quantity.class, Unit.class,
-									UnitConverter.class).areAlsoImmutable(),
-							AllowedReason.allowingForSubclassing(),
-							AllowedReason.allowingNonFinalFields());
+			MutabilityAssert.assertInstancesOf(c, MutabilityMatchers.areImmutable(),
+					AllowedReason.provided(Dimension.class, Quantity.class, Unit.class, UnitConverter.class)
+							.areAlsoImmutable(),
+					AllowedReason.allowingForSubclassing(), AllowedReason.allowingNonFinalFields());
 		} catch (Exception e) {
-			throw new TCKValidationException(section
-					+ ": Class is not immutable: " + c.getName(), e);
+			throw new TCKValidationException(section + ": Class is not immutable: " + c.getName(), e);
 		}
 	}
 
 	public static void testSerializable(String section, Object o) {
 		if (!(o instanceof Serializable)) {
-			throw new TCKValidationException(section
-					+ ": Class must be serializable: " + o.getClass().getName());
+			throw new TCKValidationException(section + ": Class must be serializable: " + o.getClass().getName());
 		}
-		try (ObjectOutputStream oos = new ObjectOutputStream(
-				new ByteArrayOutputStream())) {
+		try (ObjectOutputStream oos = new ObjectOutputStream(new ByteArrayOutputStream())) {
 			oos.writeObject(o);
 		} catch (Exception e) {
 			throw new TCKValidationException(
-					"Class must be serializable, but serialization failed: "
-							+ o.getClass().getName(), e);
+					"Class must be serializable, but serialization failed: " + o.getClass().getName(), e);
 		}
 	}
 
-	public static void testImplementsInterface(String section, Class type,
-			Class iface) {
+	public static void testImplementsInterface(String section, Class type, Class iface) {
 		for (Class ifa : type.getInterfaces()) {
 			if (ifa.equals(iface)) {
 				return;
 			}
 		}
-		Assert.fail(section + ": Class must implement " + iface.getName()
-				+ ", but does not: " + type.getName());
+		Assert.fail(section + ": Class must implement " + iface.getName() + ", but does not: " + type.getName());
 	}
 
 	public static void testComparable(String section, Class type) {
 		testImplementsInterface(section, type, Comparable.class);
 	}
 
-	public static void testHasPublicMethod(String section, Class type,
-			Class returnType, String name, Class... paramTypes) {
+	public static void testHasPublicMethod(String section, Class type, Class returnType, String name,
+			Class... paramTypes) {
 		Class current = type;
 		while (current != null) {
 			for (Method m : current.getDeclaredMethods()) {
 				if (returnType.equals(returnType) && m.getName().equals(name)
-						&& ((m.getModifiers() & Modifier.PUBLIC) != 0)
+						&& ((m.getModifiers() & PUBLIC) != 0)
 						&& Arrays.equals(m.getParameterTypes(), paramTypes)) {
 					return;
 				}
 			}
 			current = current.getSuperclass();
 		}
-		throw new TCKValidationException(section
-				+ ": Class must implement method " + name + '('
-				+ Arrays.toString(paramTypes) + "): " + returnType.getName()
-				+ ", but does not: " + type.getName());
+		throw new TCKValidationException(section + ": Class must implement method " + name + '('
+				+ Arrays.toString(paramTypes) + "): " + returnType.getName() + ", but does not: " + type.getName());
 	}
 
-	private static final List<Class> PRIMITIVE_CLASSES = Collections.unmodifiableList(Arrays.asList(
-			new Class[]{ Object.class, Number.class, Enum.class }));
-	
-	public static void testHasPublicMethod(String section, boolean trySuperclassFirst, Class type,
-			Class returnType, String name, Class... paramTypes) {
-		if (trySuperclassFirst && type.getSuperclass()!=null) {
+	private static final List<Class> PRIMITIVE_CLASSES = Collections
+			.unmodifiableList(Arrays.asList(new Class[] { Object.class, Number.class, Enum.class }));
+
+	public static void testHasPublicMethod(String section, boolean trySuperclassFirst, Class type, Class returnType,
+			String name, Class... paramTypes) {
+		if (trySuperclassFirst && type.getSuperclass() != null) {
 			if (PRIMITIVE_CLASSES.contains(type.getSuperclass())) {
 				testHasPublicMethod(section, type, returnType, name, paramTypes);
 			} else {
@@ -189,68 +182,65 @@ public class TestUtils {
 		}
 	}
 
-	public static void testHasPublicStaticMethod(String section, Class type,
-			Class returnType, String name, Class... paramTypes) {
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public static void testHasPublicMethod(String section, Class type, String name) {
+		Set<Method> getters = getAllMethods(type, withModifier(PUBLIC), withName(name),
+				withParametersCount(0));
+		assertThat(getters.size(), greaterThan(1)); // interface plus at least
+													// one implementation
+	}
+
+	@SuppressWarnings("rawtypes")
+	static void testHasPublicStaticMethod(String section, Class type, Class returnType, String name,
+			Class... paramTypes) {
 		Class current = type;
 		while (current != null) {
 			for (Method m : current.getDeclaredMethods()) {
 				if (returnType.equals(returnType) && m.getName().equals(name)
-						&& ((m.getModifiers() & Modifier.PUBLIC) != 0)
-						&& ((m.getModifiers() & Modifier.STATIC) != 0)
+						&& ((m.getModifiers() & PUBLIC) != 0) && ((m.getModifiers() & Modifier.STATIC) != 0)
 						&& Arrays.equals(m.getParameterTypes(), paramTypes)) {
 					return;
 				}
 			}
 			current = current.getSuperclass();
 		}
-		throw new TCKValidationException(section
-				+ ": Class must implement method " + name + '('
-				+ Arrays.toString(paramTypes) + "): " + returnType.getName()
-				+ ", but does not: " + type.getName());
+		throw new TCKValidationException(section + ": Class must implement method " + name + '('
+				+ Arrays.toString(paramTypes) + "): " + returnType.getName() + ", but does not: " + type.getName());
 	}
 
-	public static void testHasNotPublicMethod(String section, Class type,
-			Class returnType, String name, Class... paramTypes) {
+	public static void testHasNotPublicMethod(String section, Class type, Class returnType, String name,
+			Class... paramTypes) {
 		Class current = type;
 		while (current != null) {
 			for (Method m : current.getDeclaredMethods()) {
 				if (returnType.equals(returnType) && m.getName().equals(name)
 						&& Arrays.equals(m.getParameterTypes(), paramTypes)) {
-					throw new TCKValidationException(section
-							+ ": Class must NOT implement method " + name + '('
-							+ Arrays.toString(paramTypes) + "): "
-							+ returnType.getName() + ", but does: "
-							+ type.getName());
+					throw new TCKValidationException(
+							section + ": Class must NOT implement method " + name + '(' + Arrays.toString(paramTypes)
+									+ "): " + returnType.getName() + ", but does: " + type.getName());
 				}
 			}
 			current = current.getSuperclass();
 		}
 	}
 
-	public static void assertValue(String section, Object value,
-			String methodName, Object instance) throws NoSuchMethodException,
-			SecurityException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException {
+	public static void assertValue(String section, Object value, String methodName, Object instance)
+			throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
+			InvocationTargetException {
 		Method m = instance.getClass().getDeclaredMethod(methodName);
 		Assert.assertEquals(value, m.invoke(instance),
-				section + ": " + m.getName() + '(' + instance
-						+ ") returned invalid value:");
+				section + ": " + m.getName() + '(' + instance + ") returned invalid value:");
 	}
 
-	public static boolean testHasPublicStaticMethodOpt(String section,
-			Class type, Class returnType, String methodName,
+	static boolean testHasPublicStaticMethodOpt(String section, Class type, Class returnType, String methodName,
 			Class... paramTypes) {
 		try {
-			testHasPublicStaticMethod(section, type, returnType, methodName,
-					paramTypes);
+			testHasPublicStaticMethod(section, type, returnType, methodName, paramTypes);
 			return true;
 		} catch (Exception e) {
-			warnings.append(section)
-					.append(": Recommendation failed: Missing method [public static ")
-					.append(methodName).append('(')
-					.append(Arrays.toString(paramTypes)).append("):")
-					.append(returnType.getName()).append("] on: ")
-					.append(type.getName()).append("\n");
+			warnings.append(section).append(": Recommendation failed: Missing method [public static ")
+					.append(methodName).append('(').append(Arrays.toString(paramTypes)).append("):")
+					.append(returnType.getName()).append("] on: ").append(type.getName()).append("\n");
 			return false;
 		}
 	}
@@ -260,10 +250,8 @@ public class TestUtils {
 			testImmutable(section, type);
 			return true;
 		} catch (Exception e) {
-			warnings.append(section)
-					.append(": Recommendation failed: Class should be immutable: ")
-					.append(type.getName()).append(", details: ")
-					.append(e.getMessage()).append("\n");
+			warnings.append(section).append(": Recommendation failed: Class should be immutable: ")
+					.append(type.getName()).append(", details: ").append(e.getMessage()).append("\n");
 			return false;
 		}
 	}
@@ -273,10 +261,8 @@ public class TestUtils {
 			testSerializable(section, type);
 			return true;
 		} catch (Exception e) {
-			warnings.append(section)
-					.append(": Recommendation failed: Class should be serializable: ")
-					.append(type.getName()).append(", details: ")
-					.append(e.getMessage()).append("\n");
+			warnings.append(section).append(": Recommendation failed: Class should be serializable: ")
+					.append(type.getName()).append(", details: ").append(e.getMessage()).append("\n");
 			return false;
 		}
 	}

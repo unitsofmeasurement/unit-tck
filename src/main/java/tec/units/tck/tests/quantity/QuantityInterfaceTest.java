@@ -29,8 +29,6 @@ import static tec.units.tck.TCKRunner.SPEC_ID;
 import static tec.units.tck.TCKRunner.SPEC_VERSION;
 
 import javax.measure.Quantity;
-import javax.measure.Unit;
-
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.annotations.Test;
@@ -64,7 +62,7 @@ public class QuantityInterfaceTest {
     @Test(groups = { "core" }, description = "4.4.1 Ensure registered Quantity classes implement getUnit.")
     public void testQuantityGetUnit() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.4.1", type, Unit.class, "getUnit");
+            TestUtils.testHasPublicMethod("Section 4.4.1", type, "getUnit");
         }
     }
     
@@ -75,7 +73,7 @@ public class QuantityInterfaceTest {
     @Test(groups = { "core" }, description = "4.4.1 Ensure registered Quantity classes implement getValue.")
     public void testQuantityGetValue() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.4.1", type, Number.class, "getValue");
+            TestUtils.testHasPublicMethod("Section 4.4.1", type, "getValue");
         }
     }
     

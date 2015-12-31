@@ -25,15 +25,8 @@
  */
 package tec.units.tck.tests;
 
-import static java.lang.reflect.Modifier.PUBLIC;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.number.OrderingComparison.*;
-import static org.reflections.ReflectionUtils.*;
 import static tec.units.tck.TCKRunner.SPEC_ID;
 import static tec.units.tck.TCKRunner.SPEC_VERSION;
-
-import java.lang.reflect.Method;
-import java.util.Set;
 
 import javax.measure.Unit;
 
@@ -66,42 +59,35 @@ public class UnitInterfaceTest {
 	/**
      * Test that Unit implementations contain getters
      */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
 	@SpecAssertion(section = "4.2.1", id = "421-A2")
     @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes implement getDimension.")
     public void testUnitGetDimension() {
-        for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-        	Set<Method> getters = getAllMethods(type,
-        			  withModifier(PUBLIC), withPrefix("getDimension"), withParametersCount(0));
-        	assertThat(getters.size(), greaterThan(1)); // interface plus at least one implementation
+        for (@SuppressWarnings("rawtypes") Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+        	TestUtils.testHasPublicMethod("Section 4.2.1", type, "getDimension");
         }
     }
     
 	/**
      * Test that Unit implementations contain getters
      */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({ "rawtypes" })
 	@SpecAssertion(section = "4.2.1", id = "421-A3")
     @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes implement getName.")
     public void testUnitGetName() {
         for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-        	Set<Method> getters = getAllMethods(type,
-        			  withModifier(PUBLIC), withPrefix("getName"), withParametersCount(0));
-        	assertThat(getters.size(), greaterThan(1)); // interface plus at least one implementation
+        	TestUtils.testHasPublicMethod("Section 4.2.1", type, "getName");
         }
     }
     
 	/**
      * Test that Unit implementations contain getters
      */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({ "rawtypes" })
 	@SpecAssertion(section = "4.2.1", id = "421-A4")
     @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes implement getSymbol.")
     public void testUnitGetSymbol() {
         for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-        	Set<Method> getters = getAllMethods(type,
-        			  withModifier(PUBLIC), withPrefix("getSymbol"), withParametersCount(0));
-        	assertThat(getters.size(), greaterThan(1)); // interface plus at least one implementation
+        	TestUtils.testHasPublicMethod("Section 4.2.1", type, "getSymbol");
         }
     }
     

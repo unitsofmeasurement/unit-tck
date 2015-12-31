@@ -28,10 +28,7 @@ package tec.units.tck.tests;
 import static tec.units.tck.TCKRunner.SPEC_ID;
 import static tec.units.tck.TCKRunner.SPEC_VERSION;
 
-import javax.measure.Unit;
 import javax.measure.UnitConverter;
-import javax.measure.format.UnitFormat;
-
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.AssertJUnit;
@@ -41,7 +38,7 @@ import tec.units.tck.TCKSetup;
 import tec.units.tck.util.TestUtils;
 
 /**
- * Tests for Fundamental Types - Unit
+ * Tests for Unit Conversion
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
@@ -84,14 +81,38 @@ public class UnitConversionTest {
     }
     
     /**
-     * Ensure the isIdentity() operation is implemented.
+     * Ensure the inverse() method is implemented.
      */
     @SpecAssertion(section = "4.2.3", id = "423-A4")
+    @Test(groups = { "core" }, description = "4.2.3 Ensure the inverse() method is implemented.")
+    public void testUnitConverterInvert() {
+        for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
+        	Class<?> type = converter.getClass();
+            TestUtils.testHasPublicMethod("Section 4.2.3", type, "inverse");
+        }
+    }
+    
+    /**
+     * Ensure the isIdentity() operation is implemented.
+     */
+    @SpecAssertion(section = "4.2.3", id = "423-A5")
     @Test(groups = { "core" }, description = "4.2.3 Ensure the isIdentity() method is implemented.")
     public void testUnitConverterIsIdentity() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
         	Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod("Section 4.2.3", true, type, boolean.class, "isIdentity");
+            TestUtils.testHasPublicMethod("Section 4.2.3", type, "isIdentity");
+        }
+    }
+    
+    /**
+     * Ensure the isLinear() operation is implemented.
+     */
+    @SpecAssertion(section = "4.2.3", id = "423-A6")
+    @Test(groups = { "core" }, description = "4.2.3 Ensure the isLinear() method is implemented.")
+    public void testUnitConverterIsLinear() {
+        for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
+        	Class<?> type = converter.getClass();
+            TestUtils.testHasPublicMethod("Section 4.2.3", type, "isLinear");
         }
     }
 }

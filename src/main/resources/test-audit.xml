@@ -101,7 +101,15 @@
                </text>
            </assertion>
            <assertion id="423-A4">
+               <text>Ensure the inverse() method is implemented.
+               </text>
+           </assertion>
+           <assertion id="423-A5">
                <text>Ensure the isIdentity() method is implemented.
+               </text>
+           </assertion>
+           <assertion id="423-A6">
+               <text>Ensure the isLinear() method is implemented.
                </text>
            </assertion>
        </group>
