@@ -107,7 +107,11 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 	@SuppressWarnings("rawtypes")
 	public Collection<Class> getSupportedQuantityTypes() {
 		return Arrays
-                .asList(new Class[] { Acceleration.class, Length.class, Mass.class  });
+                .asList(new Class[] { Acceleration.class, AmountOfSubstance.class, Angle.class, Area.class,
+                		CatalyticActivity.class, Dimensionless.class, 
+                		ElectricCapacitance.class, ElectricCharge.class, ElectricConductance.class, 
+                		ElectricCurrent.class, ElectricResistance.class,
+                		Length.class, Mass.class });
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
