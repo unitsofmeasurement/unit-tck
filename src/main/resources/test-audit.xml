@@ -149,7 +149,15 @@
                 </text>
             </assertion>
             <assertion id="43-A4">
+                <text>4.3 Ensure the isLocaleSensitive() method is implemented.
+                </text>
+            </assertion>
+            <assertion id="43-A5">
                 <text>4.3 Ensure the label() operation is implemented.
+                </text>
+            </assertion>
+            <assertion id="43-A6">
+                <text>4.3 Ensure the parse() operation is implemented.
                 </text>
             </assertion>
         </group>

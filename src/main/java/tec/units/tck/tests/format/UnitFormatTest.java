@@ -66,31 +66,56 @@ public class UnitFormatTest {
     public void testUnitFormatFormat() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.3", true, type, String.class, "format", Unit.class);
+            TestUtils.testHasPublicMethod("Section 4.3", type, "format", true);
         }
     }
     
     /**
      * Ensure the appendable format() operation is implemented.
      */
-    @SpecAssertion(section = "4.3", id = "43-A3")
+    @SuppressWarnings("deprecation")
+	@SpecAssertion(section = "4.3", id = "43-A3")
     @Test(groups = { "format" }, description = "4.3 Ensure the appendable format() operation is implemented.")
     public void testUnitFormatFormatAppendable() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.3", true, type, Appendable.class, "format", Unit.class, Appendable.class);
+            TestUtils.testHasPublicMethod("Section 4.3", type, true, Appendable.class, "format", Unit.class, Appendable.class);
+        }
+    }
+    
+    /**
+     * Ensure the isLocaleSensitive() method is implemented.
+     */
+    @SpecAssertion(section = "4.3", id = "43-A4")
+    @Test(groups = { "format" }, description = "4.3 Ensure the isLocaleSensitive() method is implemented.")
+    public void testUnitFormatFormatIsLocalSensitive() {
+        for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
+        	Class<?> type = format.getClass();
+            TestUtils.testHasPublicMethod("Section 4.3", type,"isLocaleSensitive");
         }
     }
     
     /**
      * Ensure the label() operation is implemented.
      */
-    @SpecAssertion(section = "4.3", id = "43-A4")
+    @SpecAssertion(section = "4.3", id = "43-A5")
     @Test(groups = { "format" }, description = "4.3 Ensure the label() operation is implemented.")
     public void testUnitFormatLabel() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.3", true, type, void.class, "label", Unit.class, String.class);
+            TestUtils.testHasPublicMethod("Section 4.3", type, "label", true);
+        }
+    }
+    
+    /**
+     * Ensure the parse() operation is implemented.
+     */
+    @SpecAssertion(section = "4.3", id = "43-A6")
+    @Test(groups = { "format" }, description = "4.3 Ensure the parse() operation is implemented.")
+    public void testUnitFormatParse() {
+        for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
+        	Class<?> type = format.getClass();
+            TestUtils.testHasPublicMethod("Section 4.3", type, "parse", true);
         }
     }
 }

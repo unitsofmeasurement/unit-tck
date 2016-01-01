@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -32,6 +32,7 @@ import static org.reflections.ReflectionUtils.getAllMethods;
 import static org.reflections.ReflectionUtils.withModifier;
 import static org.reflections.ReflectionUtils.withName;
 import static org.reflections.ReflectionUtils.withParametersCount;
+
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -51,6 +52,7 @@ import org.testng.Assert;
 
 import tec.units.tck.TCKValidationException;
 
+import javax.inject.Singleton;
 import javax.measure.*;
 import javax.measure.spi.*;
 
@@ -58,8 +60,9 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 363 TCK.
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6, December 31, 2015
+ * @version 0.6.1, January 1, 2016
  */
+@Singleton
 public class TestUtils {
 
 	/**
@@ -149,7 +152,16 @@ public class TestUtils {
 		testImplementsInterface(section, type, Comparable.class);
 	}
 
-	public static void testHasPublicMethod(String section, Class type, Class returnType, String name,
+	/**
+	 * 
+	 * @param section
+	 * @param type
+	 * @param returnType
+	 * @param name
+	 * @param paramTypes
+	 * @deprecated use the simplified version on top of Reflections.org where possible
+	 */
+	public static void testHasPublicMethod(String section, Class<?> type, Class<?> returnType, String name,
 			Class... paramTypes) {
 		Class current = type;
 		while (current != null) {
@@ -169,8 +181,18 @@ public class TestUtils {
 	private static final List<Class> PRIMITIVE_CLASSES = Collections
 			.unmodifiableList(Arrays.asList(new Class[] { Object.class, Number.class, Enum.class }));
 
-	public static void testHasPublicMethod(String section, boolean trySuperclassFirst, Class type, Class returnType,
-			String name, Class... paramTypes) {
+	/**
+	 * 
+	 * @param section
+	 * @param type
+	 * @param trySuperclassFirst
+	 * @param returnType
+	 * @param name
+	 * @param paramTypes
+	 * @deprecated use the simplified version on top of Reflections.org where possible
+	 */
+	public static void testHasPublicMethod(String section, Class<?> type, boolean trySuperclassFirst, Class<?> returnType,
+			String name, Class<?>... paramTypes) {
 		if (trySuperclassFirst && type.getSuperclass() != null) {
 			if (PRIMITIVE_CLASSES.contains(type.getSuperclass())) {
 				testHasPublicMethod(section, type, returnType, name, paramTypes);
@@ -182,12 +204,21 @@ public class TestUtils {
 		}
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public static void testHasPublicMethod(String section, Class type, String name) {
-		Set<Method> getters = getAllMethods(type, withModifier(PUBLIC), withName(name),
-				withParametersCount(0));
+	@SuppressWarnings({ "unchecked" })
+	public static void testHasPublicMethod(String section, Class<?> type, String name, boolean hasParameters) {
+		Set<Method> getters;
+		if (hasParameters) {
+			getters = getAllMethods(type, withModifier(PUBLIC), withName(name));
+		} else {
+			getters = getAllMethods(type, withModifier(PUBLIC), withName(name),
+					withParametersCount(0));
+		}
 		assertThat(getters.size(), greaterThan(1)); // interface plus at least
 													// one implementation
+	}
+	
+	public static void testHasPublicMethod(String section, Class<?> type, String name) {
+		testHasPublicMethod(section, type, name, false);
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -279,11 +310,11 @@ public class TestUtils {
 		}
 	}
 
-	public static void resetWarnings() {
+	static void resetWarnings() {
 		warnings.setLength(0);
 	}
 
-	public static String getWarnings() {
+	static String getWarnings() {
 		return warnings.toString();
 	}
 }

@@ -63,6 +63,11 @@
 				<version>${lib.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>javax.inject</groupId>
+				<artifactId>javax.inject</artifactId>
+				<version>1</version>
+			</dependency>
+			<dependency>
 				<groupId>org.testng</groupId>
 				<artifactId>testng</artifactId>
 				<version>${testng.version}</version>
@@ -99,6 +104,10 @@
 		<dependency>
 			<groupId>tec.uom.lib</groupId>
 			<artifactId>uom-lib-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.testng</groupId>

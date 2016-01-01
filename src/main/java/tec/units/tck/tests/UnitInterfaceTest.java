@@ -28,8 +28,6 @@ package tec.units.tck.tests;
 import static tec.units.tck.TCKRunner.SPEC_ID;
 import static tec.units.tck.TCKRunner.SPEC_VERSION;
 
-import javax.measure.Unit;
-
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.annotations.Test;
@@ -52,7 +50,7 @@ public class UnitInterfaceTest {
     @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override equals.")
     public void testUnitEquals() {
         for (@SuppressWarnings("rawtypes") Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.2.1", type, boolean.class, "equals", Object.class);
+            TestUtils.testHasPublicMethod("Section 4.2.1", type, "equals", true);
         }
     }
     
@@ -98,7 +96,7 @@ public class UnitInterfaceTest {
     @Test(groups = { "core" }, description = "4.2.1 Ensure registered Unit classes override hashCode.")
     public void testUnitHashcode() {
         for (@SuppressWarnings("rawtypes") Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.2.1", type, int.class, "hashCode");
+            TestUtils.testHasPublicMethod("Section 4.2.1", type, "hashCode");
         }
     }
     
@@ -109,7 +107,7 @@ public class UnitInterfaceTest {
     @Test(groups = { "core" }, description = "4.2.1.2 Ensure the shift() operation is implemented.")
     public void testUnitShift() {
         for (@SuppressWarnings("rawtypes") Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.2.1.2", true, type, Unit.class, "shift", double.class);
+            TestUtils.testHasPublicMethod("Section 4.2.1.2", type, "shift", true);
         }
     }
 }

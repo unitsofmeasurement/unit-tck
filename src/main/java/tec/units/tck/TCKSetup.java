@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -27,8 +27,17 @@ package tec.units.tck;
 
 import java.util.ServiceLoader;
 
+import javax.inject.Singleton;
+
 import tec.units.tck.util.ServiceConfiguration;
 
+/**
+ * Test setup used by the JSR 363 TCK.
+ *
+ * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 0.6, January 1, 2016
+ */
+@Singleton
 public final class TCKSetup {
 
 	private static ServiceConfiguration TEST_CONFIG = loadConfiguration();
