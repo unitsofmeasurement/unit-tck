@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Unit-API - Units of Measurement for Java Technical Compatibility Kit
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -36,6 +36,8 @@ import java.util.Map;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
 import javax.measure.Dimension;
@@ -48,6 +50,7 @@ import tec.units.tck.TCKSetup;
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class QuantityTypesTest {
+	private static final Logger logger = LoggerFactory.getLogger(QuantityTypesTest.class);
 
 	// ************************ 4.5 Supported Quantities
 	// ************************
@@ -64,7 +67,7 @@ public class QuantityTypesTest {
 		final Collection<? extends Unit<?>> units = TCKSetup.getConfiguration().getUnits4Test();
 		for (Unit<?> unit : units) {
 			Dimension dim = unit.getDimension();
-//			System.out.println(unit + "D: "+ dim  + " (" + unit.getClass() + ")");
+			logger.debug(unit + "D: "+ dim  + " (" + unit.getClass() + ")");
 			if (baseDimensions.contains(dim)) {
 				foundUnits.put(dim, unit);
 			}
