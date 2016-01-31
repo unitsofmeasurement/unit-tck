@@ -158,12 +158,12 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.2.1", id = "42121-A2")
     @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the multiply() operation is implemented.")
-    public void testUnit42121MultiplyWithDouble() {
+    public void testUnit42121Multiply() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.2.1.3", type, Unit.class, "multiply", double.class);
+            TestUtils.testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "multiply", Unit.class);
         }
-    }
+    } 
 
     /**
      * Ensure the divide() operation is implemented.
@@ -181,19 +181,19 @@ public class UnitInterfaceTest {
      * Ensure the multiply() operation is implemented.
      */
     @SpecAssertion(section = "4.2.1.2.1", id = "42121-A4")
-    @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the multiply() operation is implemented.")
-    public void testUnit42121Multiply() {
+    @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the multiply(double) operation is implemented.")
+    public void testUnit42121MultiplyWithDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "multiply", Unit.class);
+            TestUtils.testHasPublicMethod("Section 4.2.1.3", type, Unit.class, "multiply", double.class);
         }
     }
-
+    
     /**
      * Ensure the divide() operation is implemented.
      */
     @SpecAssertion(section = "4.2.1.2.1", id = "42121-A5")
-    @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the divide() operation is implemented.")
+    @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the divide(double) operation is implemented.")
     public void testUnit42121DivideWithDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
@@ -212,6 +212,7 @@ public class UnitInterfaceTest {
             TestUtils.testHasPublicMethod("Section 4.2.1.2.1", type, "alternate", true);
         }
     }
+    
     /**
      * Ensure the pow() operation is implemented.
      */
@@ -239,7 +240,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the transform() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2.2", id = "42122-A5")
+    @SpecAssertion(section = "4.2.1.2.2", id = "42122-A3")
     @Test(groups = {"core"}, description = "4.2.1.2.2 Ensure the transform() operation is implemented.")
     public void testUnit42122Transform() {
         for (@SuppressWarnings("rawtypes")

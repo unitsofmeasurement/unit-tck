@@ -72,11 +72,53 @@
            </assertion>
        </group>
     </section>
-	<section id="4.2.1.2" title="Operations on Units with same dimension as the operand">
+	<section id="4.2.1.2" title="Unit Operations">
        <group>
-            <text>Algebraic Operations</text>
+            <text>Operations on Units with same dimension as the operand</text>
             <assertion id="42121-A1">
                 <text>Ensure the shift() operation is implemented.
+                </text>
+            </assertion>
+            <assertion id="42121-A2">
+                <text>4.2.1.2.1 Ensure the multiply() operation is implemented.
+                </text>
+            </assertion>
+            <assertion id="42121-A3">
+                <text>4.2.1.2.1 Ensure the divide() operation is implemented.
+                </text>
+            </assertion>
+            <assertion id="42121-A4">
+                <text>4.2.1.2.1 Ensure the multiply() operation is implemented.
+                </text>
+            </assertion>
+            <assertion id="42121-A5">
+                <text>4.2.1.2.1 Ensure the divide(double) operation is implemented.
+                </text>
+            </assertion>
+            <assertion id="42121-A6">
+                <text>4.2.1.2.1 Ensure the alternate() operation is implemented.
+                </text>
+            </assertion>
+        </group>
+       <group>
+            <text>Operations on Units with different dimension as the operand</text>
+            <assertion id="42122-A1">
+                <text>4.2.1.2.2 Ensure the pow() operation is implemented.
+                </text>
+            </assertion>
+            <assertion id="42122-A2">
+                <text>4.2.1.2.1 Ensure the multiply() operation is implemented.
+                </text>
+            </assertion>
+            <assertion id="42122-A3">
+                <text>4.2.1.2.2 Ensure the transform() operation is implemented.
+                </text>
+            </assertion>
+       </group>
+       <group>
+            <text>Unary Operations on Units</text>
+            <assertion id="42123-A1">
+                <text>4.2.1.2.3 Ensure the inverse() operation is implemented.
                 </text>
             </assertion>
         </group>

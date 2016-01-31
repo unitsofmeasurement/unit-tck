@@ -128,7 +128,7 @@ public class QuantityInterfaceTest {
      */
     @SpecAssertion(section = "4.4.1.2", id = "4412-A2")
     @Test(groups = {"core"}, description = "4.4.1.2 Ensure registered Quantity classes implement divide.")
-    public void testQuantityOp1Divide() {
+    public void testQuantityOp2Divide() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
             TestUtils.testHasPublicMethod("Section 4.4.1.2", type, Quantity.class, "divide", Quantity.class);
         }
