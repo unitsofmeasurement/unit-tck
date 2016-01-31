@@ -50,7 +50,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1", id = "421-A1")
     @Test(groups = {"core"}, description = "4.2.1 Ensure registered Unit classes override equals.")
-    public void testUnitEquals() {
+    public void testEquals() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1", type, "equals", true);
@@ -62,7 +62,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1", id = "421-A2")
     @Test(groups = {"core"}, description = "4.2.1 Ensure registered Unit classes implement getDimension.")
-    public void testUnitGetDimension() {
+    public void testGetDimension() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1", type, "getDimension");
@@ -74,7 +74,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1", id = "421-A3")
     @Test(groups = {"core"}, description = "4.2.1 Ensure registered Unit classes implement getSystemUnit.")
-    public void testUnitGetSystemUnit() {
+    public void testGetSystemUnit() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1", type, "getSystemUnit");
@@ -86,7 +86,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1", id = "421-A4")
     @Test(groups = {"core"}, description = "4.2.1 Ensure registered Unit classes implement getProductUnits.")
-    public void testUnitGetProductUnits() {
+    public void testGetProductUnits() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1", type, "getProductUnits");
@@ -99,7 +99,7 @@ public class UnitInterfaceTest {
     @SuppressWarnings({"rawtypes"})
     @SpecAssertion(section = "4.2.1", id = "421-A5")
     @Test(groups = {"core"}, description = "4.2.1 Ensure registered Unit classes implement getName.")
-    public void testUnitGetName() {
+    public void testGetName() {
         for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1", type, "getName");
         }
@@ -111,7 +111,7 @@ public class UnitInterfaceTest {
     @SuppressWarnings({"rawtypes"})
     @SpecAssertion(section = "4.2.1", id = "421-A6")
     @Test(groups = {"core"}, description = "4.2.1 Ensure registered Unit classes implement getSymbol.")
-    public void testUnitGetSymbol() {
+    public void testGetSymbol() {
         for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1", type, "getSymbol");
         }
@@ -122,7 +122,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1", id = "421-A7")
     @Test(groups = {"core"}, description = "4.2.1 Ensure registered Unit classes override hashCode.")
-    public void testUnitHashcode() {
+    public void testHashcode() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1", type, "hashCode");
@@ -134,7 +134,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1", id = "421-A8")
     @Test(groups = {"core"}, description = "4.2.1 Ensure registered Unit classes override toString.")
-    public void testUnitToString() {
+    public void testToString() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1", type, "toString");
