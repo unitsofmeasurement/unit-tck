@@ -241,7 +241,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.2.2", id = "42122-A5")
     @Test(groups = {"core"}, description = "4.2.1.2.2 Ensure the transform() operation is implemented.")
-    public void testUnit423Transform() {
+    public void testUnit42122Transform() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1.2.2", type, "transform", true);
