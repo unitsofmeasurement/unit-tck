@@ -146,7 +146,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.2", id = "42121-A1")
     @Test(groups = {"core"}, description = "4.2.1.2 Ensure the shift() operation is implemented.")
-    public void testUnitShift() {
+    public void testUnit4212Shift() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1.2", type, "shift", true);
@@ -158,7 +158,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.3", id = "42121-A2")
     @Test(groups = {"core"}, description = "4.2.1.3 Ensure the multiply() operation is implemented.")
-    public void testUnitMultiplyWithDouble() {
+    public void testUnit4213MultiplyWithDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1.3", type, Unit.class, "multiply", double.class);
@@ -170,7 +170,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.4", id = "42121-A3")
     @Test(groups = {"core"}, description = "4.2.1.4 Ensure the divide() operation is implemented.")
-    public void testUnitDivide() {
+    public void testUnit4214Divide() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1.4", type, Unit.class, "divide", Unit.class);
@@ -182,7 +182,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.3", id = "42121-A2")
     @Test(groups = {"core"}, description = "4.2.1.3 Ensure the multiply() operation is implemented.")
-    public void testUnitMultiply() {
+    public void testUnit4213Multiply() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1.3", type, Unit.class, "multiply", Unit.class);
@@ -194,7 +194,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.4", id = "42121-A3")
     @Test(groups = {"core"}, description = "4.2.1.4 Ensure the divide() operation is implemented.")
-    public void testUnitDivideWithDouble() {
+    public void testUnit4214DivideWithDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1.4", type, Unit.class, "divide", double.class);
@@ -206,7 +206,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.6", id = "42121-A5")
     @Test(groups = {"core"}, description = "4.2.1.6 Ensure the root() operation is implemented.")
-    public void testUnitRoot() {
+    public void testUnit4216Root() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1.6", type, "root", true);
@@ -218,7 +218,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.7", id = "42121-A6")
     @Test(groups = {"core"}, description = "4.2.1.7 Ensure the pow() operation is implemented.")
-    public void testUnitPow() {
+    public void testUnit4217Pow() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1.7", type, "pow", true);
@@ -230,7 +230,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.8", id = "42121-A7")
     @Test(groups = {"core"}, description = "4.2.1.8 Ensure the inverse() operation is implemented.")
-    public void testUnitInverse() {
+    public void testUnit4218Inverse() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1.8", type, "inverse", false);
@@ -242,7 +242,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.3", id = "423-A1")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the getConverterTo() operation is implemented.")
-    public void testUnitGetConverterTo() {
+    public void testUnit423GetConverterTo() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.3", type, "getConverterTo", true);
@@ -254,7 +254,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.3", id = "423-A2")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the getConverterToAny() operation is implemented.")
-    public void testUnitGetConverterToAny() {
+    public void testUnit423GetConverterToAny() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.3", type, "getConverterToAny", true);
@@ -266,7 +266,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.3", id = "423-A2")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the alternate() operation is implemented.")
-    public void testUnitAlternate() {
+    public void testUnit423Alternate() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.3", type, "alternate", true);
@@ -278,7 +278,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.3", id = "423-A3")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the transform() operation is implemented.")
-    public void testUnitTransform() {
+    public void testUnit423Transform() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.3", type, "transform", true);
@@ -290,7 +290,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.3", id = "423-A4")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the isCompatible() operation is implemented.")
-    public void testUnitIsCompatible() {
+    public void testUnit423IsCompatible() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.3", type, "isCompatible", true);
@@ -302,7 +302,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.3", id = "423-A5")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the asType() operation is implemented.")
-    public void testUnitAsType() {
+    public void testUnit423AsType() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.3", type, "asType", true);
