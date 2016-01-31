@@ -27,7 +27,7 @@ package tec.units.tck.util;
 
 import static java.lang.reflect.Modifier.PUBLIC;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.number.OrderingComparison.greaterThan;
+import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
 import static org.reflections.ReflectionUtils.getAllMethods;
 import static org.reflections.ReflectionUtils.withModifier;
 import static org.reflections.ReflectionUtils.withName;
@@ -60,7 +60,7 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 363 TCK.
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6.1, January 1, 2016
+ * @version 0.7, January 31, 2016
  */
 @Singleton
 public class TestUtils {
@@ -213,8 +213,8 @@ public class TestUtils {
 			getters = getAllMethods(type, withModifier(PUBLIC), withName(name),
 					withParametersCount(0));
 		}
-		assertThat(getters.size(), greaterThan(1)); // interface plus at least
-													// one implementation
+		assertThat(getters.size(), greaterThanOrEqualTo(1)); // interface plus at least
+													 		 // one implementation
 	}
 	
 	public static void testHasPublicMethod(String section, Class<?> type, String name) {

@@ -1,5 +1,5 @@
 /*
- * Unit-API - Units of Measurement API for Java Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner
+ * Unit-API - Units of Measurement API for Java Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner
  * Keil, V2COM.
  * 
  * All rights reserved.
@@ -50,7 +50,7 @@ public class UnitConversionTest {
     /**
      * Ensure at least one UnitConverter implementation is available/registered.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A1")
+    @SpecAssertion(section = "4.2.3", id = "423-A3")
     @Test(groups = {"core"}, description = "4.2.3 Ensure at least one javax.measure.UnitConverter implementation is available/registered.")
     public void testEnsureGotConverters() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
@@ -60,31 +60,31 @@ public class UnitConversionTest {
     /**
      * Test that UnitConverter implementations override equals.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A2")
+    @SpecAssertion(section = "4.2.3", id = "423-A4")
     @Test(groups = {"core"}, description = "4.2.3 Ensure registered UnitConverter classes override equals.")
     public void testUnitConverterEquals() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod("Section 4.2.3", type, boolean.class, "equals", Object.class);
+            TestUtils.testHasPublicMethod("Section 4.2.3", type, "equals", true);
         }
     }
 
     /**
      * Test that UnitConverter implementations override hashCode.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A3")
+    @SpecAssertion(section = "4.2.3", id = "423-A5")
     @Test(groups = {"core"}, description = "4.2.3 Ensure registered UnitConverter classes override hashCode.")
     public void testUnitConverterHashcode() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod("Section 4.2.3", type, int.class, "hashCode");
+            TestUtils.testHasPublicMethod("Section 4.2.3", type, "hashCode");
         }
     }
 
     /**
      * Ensure the inverse() method is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A4")
+    @SpecAssertion(section = "4.2.3", id = "423-A6")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the inverse() method is implemented.")
     public void testUnitConverterInvert() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
@@ -96,7 +96,7 @@ public class UnitConversionTest {
     /**
      * Ensure the isIdentity() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A5")
+    @SpecAssertion(section = "4.2.3", id = "423-A7")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the isIdentity() method is implemented.")
     public void testUnitConverterIsIdentity() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
@@ -108,7 +108,7 @@ public class UnitConversionTest {
     /**
      * Ensure the isLinear() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A6")
+    @SpecAssertion(section = "4.2.3", id = "423-A8")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the isLinear() method is implemented.")
     public void testUnitConverterIsLinear() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
@@ -120,7 +120,7 @@ public class UnitConversionTest {
     /**
      * Ensure the convert() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A7")
+    @SpecAssertion(section = "4.2.3", id = "423-A9")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the convert() method is implemented.")
     public void testUnitConverterConvert() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
@@ -132,7 +132,7 @@ public class UnitConversionTest {
     /**
      * Ensure the convert() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A7")
+    @SpecAssertion(section = "4.2.3", id = "423-A10")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the convert() method is implemented.")
     public void testUnitConverterConvertWithDouble() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
@@ -144,7 +144,7 @@ public class UnitConversionTest {
     /**
      * Ensure the concatenate() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A8")
+    @SpecAssertion(section = "4.2.3", id = "423-A11")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the concatenate() method is implemented.")
     public void testUnitConverterConcatenate() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
@@ -156,7 +156,7 @@ public class UnitConversionTest {
     /**
      * Ensure the getConversionSteps() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A9")
+    @SpecAssertion(section = "4.2.3", id = "423-A12")
     @Test(groups = {"core"}, description = "4.2.3 Ensure the getConversionSteps() method is implemented.")
     public void testUnitConverterGetConversionSteps() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
