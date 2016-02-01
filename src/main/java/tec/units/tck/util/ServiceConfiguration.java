@@ -1,6 +1,6 @@
 /**
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -39,7 +39,7 @@ import java.util.ServiceLoader;
  * interface and register it using the {@link ServiceLoader}.
  *
  * @author Werner Keil
- * @version 0.5.1, September 23, 2015
+ * @version 0.6, February 1, 2016
  */
 public interface ServiceConfiguration{
 
@@ -81,7 +81,7 @@ public interface ServiceConfiguration{
      * @return a collection with all implemented amount classes, not null.
      */
     @SuppressWarnings("rawtypes")
-	Collection<Class> getSupportedQuantityTypes();
+	Collection<Class<? extends Quantity>> getSupportedQuantityTypes();
     
 	/**
 	 * Returns a matching unit for the specified quantity type.

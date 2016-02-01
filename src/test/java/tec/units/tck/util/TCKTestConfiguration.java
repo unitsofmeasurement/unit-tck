@@ -1,6 +1,6 @@
 /*
  *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -39,81 +39,81 @@ import tec.units.tck.util.ServiceConfiguration;
 
 import javax.measure.*;
 import javax.measure.format.UnitFormat;
-import javax.measure.quantity.*;
 import javax.measure.spi.Bootstrap;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
+
+import org.reflections.Reflections;
 
 import java.util.*;
 
 /**
  * Created by Werner Keil on 21.12.2014.
  * 
- * @version 0.6.1, September 25, 2015
+ * @author Werner Keil
+ * @author Muhammed Almas
+ * @version 0.7, February 1, 2016
  */
 public final class TCKTestConfiguration implements ServiceConfiguration {
- 
+
 	@SuppressWarnings("rawtypes")
-    public Collection<Class> getQuantityClasses() {
-            return Arrays
-                    .asList(new Class[]{NumberQuantity.class});
-    }
-
-    @SuppressWarnings("rawtypes")
-    public Collection<Class> getUnitClasses() {
-        try{
-            return Arrays
-                    .asList(new Class[] { Class.forName("tec.units.ri.unit.BaseUnit")});
-        }
-        catch(ClassNotFoundException e){
-            e.printStackTrace();
-            throw new RuntimeException("Unit class not loadable");
-        }
-//        return Arrays
-//                .asList(new Class[]{AbstractUnit.class});
-    }
-
-    public Collection<? extends Unit<?>> getUnits4Test(){
-//    	Unit<Length> m = Units.METRE;
-//    	final Set<? extends Unit<?>> units = Units.getInstance().getUnits();
-//    	return units;
-    	SystemOfUnitsService service = Bootstrap
-				.getService(SystemOfUnitsService.class);
-    	SystemOfUnits sou = service.getSystemOfUnits();
-    	return sou.getUnits();
-    }
-    
-    public Collection<UnitConverter> getUnitConverters4Test(){
-    	return Arrays.asList(new UnitConverter[] { new AddConverter(1), new ExpConverter(1), new LogConverter(1),
-				new MultiplyConverter(0), RationalConverter.of(1, 1), });
-    }
-    
-	public Collection<UnitFormat> getUnitFormats4Test() {
-		return Arrays.asList(new UnitFormat[] { SimpleUnitFormat.getInstance() });
+	public Collection<Class> getQuantityClasses() {
+		return Arrays.asList(new Class[] { NumberQuantity.class });
 	}
-    
+
 	@SuppressWarnings("rawtypes")
-    public Collection<Class> getDimensionClasses() {
-            return Arrays
-                    .asList(new Class[]{QuantityDimension.class});
-    }
+	public Collection<Class> getUnitClasses() {
+		try {
+			return Arrays.asList(new Class[] { Class
+					.forName("tec.units.ri.unit.BaseUnit") });
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Unit class not loadable");
+		}
+		// return Arrays
+		// .asList(new Class[]{AbstractUnit.class});
+	}
+
+	public Collection<? extends Unit<?>> getUnits4Test() {
+		// Unit<Length> m = Units.METRE;
+		// final Set<? extends Unit<?>> units = Units.getInstance().getUnits();
+		// return units;
+		SystemOfUnitsService service = Bootstrap
+				.getService(SystemOfUnitsService.class);
+		SystemOfUnits sou = service.getSystemOfUnits();
+		return sou.getUnits();
+	}
+
+	public Collection<UnitConverter> getUnitConverters4Test() {
+		return Arrays.asList(new UnitConverter[] { new AddConverter(1),
+				new ExpConverter(1), new LogConverter(1),
+				new MultiplyConverter(0), RationalConverter.of(1, 1), });
+	}
+
+	public Collection<UnitFormat> getUnitFormats4Test() {
+		return Arrays
+				.asList(new UnitFormat[] { SimpleUnitFormat.getInstance() });
+	}
+
+	@SuppressWarnings("rawtypes")
+	public Collection<Class> getDimensionClasses() {
+		return Arrays.asList(new Class[] { QuantityDimension.class });
+	}
 
 	public Collection<Dimension> getBaseDimensions() {
-		return Arrays
-                .asList(new Dimension[] { AMOUNT_OF_SUBSTANCE, ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, 
-                		MASS, TEMPERATURE, TIME });
+		return Arrays.asList(new Dimension[] { AMOUNT_OF_SUBSTANCE,
+				ELECTRIC_CURRENT, LENGTH, LUMINOUS_INTENSITY, MASS,
+				TEMPERATURE, TIME });
 	}
 
 	@SuppressWarnings("rawtypes")
-	public Collection<Class> getSupportedQuantityTypes() {
-		return Arrays
-                .asList(new Class[] { Acceleration.class, AmountOfSubstance.class, Angle.class, Area.class,
-                		CatalyticActivity.class, Dimensionless.class, 
-                		ElectricCapacitance.class, ElectricCharge.class, ElectricConductance.class, 
-                		ElectricCurrent.class, ElectricResistance.class,
-                		Length.class, Mass.class });
+	public Collection<Class<? extends Quantity>> getSupportedQuantityTypes() {
+		Reflections reflections = new Reflections("javax.measure");
+		Set<Class<? extends Quantity>> subTypes = reflections
+				.getSubTypesOf(Quantity.class);
+		return subTypes;
 	}
-	
+
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Unit getUnit4Type(Class quantityType) {
 		return Units.getInstance().getUnit(quantityType);

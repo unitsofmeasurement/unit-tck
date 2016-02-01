@@ -41,6 +41,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
 
 import javax.measure.Dimension;
+import javax.measure.Quantity;
 import javax.measure.Unit;
 
 import tec.units.tck.TCKSetup;
@@ -85,7 +86,7 @@ public class QuantityTypesTest {
 	@SpecAssertion(section = "4.5", id = "45-A2")
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void testContainsQuantities() {
-		final Collection<Class> quantityTypes = TCKSetup.getConfiguration().getSupportedQuantityTypes();
+		final Collection<Class<? extends Quantity>> quantityTypes = TCKSetup.getConfiguration().getSupportedQuantityTypes();
 		for (Class c : quantityTypes) {
 			Unit unit = TCKSetup.getConfiguration().getUnit4Type(c);
 			assertNotNull("Section 4.5: Quantity type " + c + " not found", unit);
