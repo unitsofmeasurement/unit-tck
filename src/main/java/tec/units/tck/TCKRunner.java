@@ -69,7 +69,7 @@ import tec.uom.lib.common.function.Versioned;
  * Main class for executing the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.1, February 1, 2016
+ * @version 0.7.2, February 3, 2016
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 
@@ -85,7 +85,8 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
     public TCKRunner() {
         setName(SPEC_ID + " - TCK " + TCK_VERSION);
         XmlTest test = new XmlTest(this);
-        profile = Profile.valueOf(System.getProperty(SYS_PROPERTY_PROFILE, Profile.full.name()));
+        profile = Profile.valueOf((System.getProperty(SYS_PROPERTY_PROFILE, 
+        		Profile.full.name()).toLowerCase()));
         for (Group group : profile.getGroups()) {
             test.addIncludedGroup(group.name());
         }
