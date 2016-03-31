@@ -78,7 +78,7 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 		// Unit<Length> m = Units.METRE;
 		// final Set<? extends Unit<?>> units = Units.getInstance().getUnits();
 		// return units;
-		SystemOfUnitsService service = ServiceProvider.getDefault().getSystemOfUnitsService();
+		SystemOfUnitsService service = ServiceProvider.current().getSystemOfUnitsService();
 		SystemOfUnits sou = service.getSystemOfUnits();
 		return sou.getUnits();
 	}

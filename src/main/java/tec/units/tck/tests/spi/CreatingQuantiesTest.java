@@ -63,7 +63,7 @@ public class CreatingQuantiesTest {
     @Test(groups = {"spi"}, description = "5.5.1 Quantities Obtained from a factory")
     @SpecAssertion(section = "5.5.1", id = "551-A1")
     public void testAccessToQuantityFactory() {
-        QuantityFactoryService service = ServiceProvider.getDefault().getQuantityFactoryService();
+        QuantityFactoryService service = ServiceProvider.current().getQuantityFactoryService();
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
@@ -78,7 +78,7 @@ public class CreatingQuantiesTest {
     @Test(groups = {"spi"}, description = "5.5.1 Quantities Obtained from a factory has create method")
     @SpecAssertion(section = "5.5.1", id = "551-A2")
     public void testAccessToQuantityFactoryCreate() {
-        QuantityFactoryService service = ServiceProvider.getDefault().getQuantityFactoryService();
+        QuantityFactoryService service = ServiceProvider.current().getQuantityFactoryService();
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
@@ -93,7 +93,7 @@ public class CreatingQuantiesTest {
     @Test(groups = {"spi"}, description = "5.5.1 Quantities Obtained from a factory has getSystemUnit method")
     @SpecAssertion(section = "5.5.1", id = "551-A3")
     public void testAccessToQuantityFactoryGetSystemUnit() {
-        QuantityFactoryService service = ServiceProvider.getDefault().getQuantityFactoryService();
+        QuantityFactoryService service = ServiceProvider.current().getQuantityFactoryService();
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
