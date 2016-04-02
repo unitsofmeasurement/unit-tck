@@ -39,7 +39,7 @@ import tec.units.tck.util.ServiceConfiguration;
 
 import javax.measure.*;
 import javax.measure.format.UnitFormat;
-import javax.measure.spi.Bootstrap;
+import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.spi.SystemOfUnitsService;
 
@@ -78,8 +78,7 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 		// Unit<Length> m = Units.METRE;
 		// final Set<? extends Unit<?>> units = Units.getInstance().getUnits();
 		// return units;
-		SystemOfUnitsService service = Bootstrap
-				.getService(SystemOfUnitsService.class);
+		SystemOfUnitsService service = ServiceProvider.current().getSystemOfUnitsService();
 		SystemOfUnits sou = service.getSystemOfUnits();
 		return sou.getUnits();
 	}

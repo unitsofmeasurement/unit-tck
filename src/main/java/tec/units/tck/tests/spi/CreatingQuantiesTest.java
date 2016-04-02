@@ -31,16 +31,20 @@ package tec.units.tck.tests.spi;
 import static org.testng.AssertJUnit.assertNotNull;
 import static tec.units.tck.TCKRunner.SPEC_ID;
 import static tec.units.tck.TCKRunner.SPEC_VERSION;
+
 import java.util.Set;
+
 import javax.measure.Quantity;
 import javax.measure.Unit;
-import javax.measure.spi.Bootstrap;
 import javax.measure.spi.QuantityFactory;
 import javax.measure.spi.QuantityFactoryService;
+import javax.measure.spi.ServiceProvider;
+
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
 import org.reflections.Reflections;
 import org.testng.annotations.Test;
+
 import tec.units.tck.util.TestUtils;
 
 /**
@@ -59,7 +63,7 @@ public class CreatingQuantiesTest {
     @Test(groups = {"spi"}, description = "5.5.1 Quantities Obtained from a factory")
     @SpecAssertion(section = "5.5.1", id = "551-A1")
     public void testAccessToQuantityFactory() {
-        QuantityFactoryService service = Bootstrap.getService(QuantityFactoryService.class);
+        QuantityFactoryService service = ServiceProvider.current().getQuantityFactoryService();
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
@@ -74,7 +78,7 @@ public class CreatingQuantiesTest {
     @Test(groups = {"spi"}, description = "5.5.1 Quantities Obtained from a factory has create method")
     @SpecAssertion(section = "5.5.1", id = "551-A2")
     public void testAccessToQuantityFactoryCreate() {
-        QuantityFactoryService service = Bootstrap.getService(QuantityFactoryService.class);
+        QuantityFactoryService service = ServiceProvider.current().getQuantityFactoryService();
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
@@ -89,7 +93,7 @@ public class CreatingQuantiesTest {
     @Test(groups = {"spi"}, description = "5.5.1 Quantities Obtained from a factory has getSystemUnit method")
     @SpecAssertion(section = "5.5.1", id = "551-A3")
     public void testAccessToQuantityFactoryGetSystemUnit() {
-        QuantityFactoryService service = Bootstrap.getService(QuantityFactoryService.class);
+        QuantityFactoryService service = ServiceProvider.current().getQuantityFactoryService();
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
