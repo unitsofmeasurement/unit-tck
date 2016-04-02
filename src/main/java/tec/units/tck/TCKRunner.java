@@ -29,6 +29,7 @@ import static tec.units.tck.util.TestUtils.SYS_PROPERTY_OUTPUT_DIR;
 import static tec.units.tck.util.TestUtils.SYS_PROPERTY_PROFILE;
 import static tec.units.tck.util.TestUtils.SYS_PROPERTY_REPORT_FILE;
 import static tec.units.tck.util.TestUtils.SYS_PROPERTY_VERBOSE;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -43,8 +44,10 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import javax.lang.model.SourceVersion;
 import javax.tools.Tool;
+
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
@@ -53,11 +56,13 @@ import org.testng.reporters.VerboseReporter;
 import org.testng.xml.XmlClass;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
+
 import tec.units.tck.tests.FundamentalTypesTest;
 import tec.units.tck.tests.format.UnitFormatTest;
 import tec.units.tck.tests.quantity.QuantityInterfaceTest;
 import tec.units.tck.tests.quantity.QuantityTypesTest;
 import tec.units.tck.tests.spi.ObtainingQuantiesTest;
+import tec.units.tck.tests.spi.ServiceProviderTest;
 import tec.units.tck.tests.unit.UnitConversionTest;
 import tec.units.tck.tests.unit.UnitDimensionTest;
 import tec.units.tck.tests.unit.UnitInterfaceTest;
@@ -69,7 +74,7 @@ import tec.uom.lib.common.function.Versioned;
  * Main class for executing the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.2, February 3, 2016
+ * @version 0.8, April 2, 2016
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 
@@ -100,6 +105,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         classes.add(new XmlClass(UnitFormatTest.class));
         classes.add(new XmlClass(QuantityInterfaceTest.class));
         classes.add(new XmlClass(QuantityTypesTest.class));
+        classes.add(new XmlClass(ServiceProviderTest.class));
         classes.add(new XmlClass(ObtainingQuantiesTest.class));
         test.setXmlClasses(classes);
     }

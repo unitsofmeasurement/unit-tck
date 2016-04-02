@@ -16,246 +16,258 @@
 			</assertion>
 		</group>
 	</section>
-	
+
 	<section id="4" title="API" />
 	<section id="4.1" title="Packages and fundamental types">
-	   <group>
-            <text>Unit implementation</text>
-            <assertion id="41-A1">
-                <text>Ensure at least one javax.measure.Unit implementation
-                    is available/registered.
-                </text>
-            </assertion>
-        </group>
-        <group>
-            <text>Dimension implementation</text>
-            <assertion id="41-A2">
-                <text>Ensure at least one javax.measure.Dimension implementation
-                    is available/registered.
-                </text>
-            </assertion>
-        </group>
-	    <group>
-            <text>Quantity implementation</text>
-            <assertion id="41-A3">
-                <text>Ensure at least one javax.measure.Quantity implementation
-                    is available/registered.
-                </text>
-            </assertion>
-        </group>
-    </section>
-    
+		<group>
+			<text>Unit implementation</text>
+			<assertion id="41-A1">
+				<text>Ensure at least one javax.measure.Unit implementation
+					is available/registered.
+				</text>
+			</assertion>
+		</group>
+		<group>
+			<text>Dimension implementation</text>
+			<assertion id="41-A2">
+				<text>Ensure at least one javax.measure.Dimension implementation
+					is available/registered.
+				</text>
+			</assertion>
+		</group>
+		<group>
+			<text>Quantity implementation</text>
+			<assertion id="41-A3">
+				<text>Ensure at least one javax.measure.Quantity implementation
+					is available/registered.
+				</text>
+			</assertion>
+		</group>
+	</section>
+
 	<section id="4.2" title="The Unit Interface" />
 
 	<section id="4.2.1" title="Operations on Units">
-       <group>
-           <text>Basic Operations</text>
-           <assertion id="421-A1">
-               <text>Ensure the equals() operation is implemented.
-               </text>
-           </assertion>
-           <assertion id="421-A2">
-               <text>Ensure getDimension is implemented.
-               </text>
-           </assertion>
-           <assertion id="421-A3">
-               <text>Ensure getName is implemented.
-               </text>
-           </assertion>
-           <assertion id="421-A4">
-               <text>Ensure getSymbol is implemented.
-               </text>
-           </assertion>
-           <assertion id="421-A5">
-               <text>Ensure the hashCode() operation is implemented.
-               </text>
-           </assertion>
-       </group>
-    </section>
-	<section id="4.2.1.2" title="Unit Operations">
-       <group>
-            <text>Operations on Units with same dimension as the operand</text>
-            <assertion id="42121-A1">
-                <text>Ensure the shift() operation is implemented.
-                </text>
-            </assertion>
-            <assertion id="42121-A2">
-                <text>4.2.1.2.1 Ensure the multiply() operation is implemented.
-                </text>
-            </assertion>
-            <assertion id="42121-A3">
-                <text>4.2.1.2.1 Ensure the divide() operation is implemented.
-                </text>
-            </assertion>
-            <assertion id="42121-A4">
-                <text>4.2.1.2.1 Ensure the multiply() operation is implemented.
-                </text>
-            </assertion>
-            <assertion id="42121-A5">
-                <text>4.2.1.2.1 Ensure the divide(double) operation is implemented.
-                </text>
-            </assertion>
-            <assertion id="42121-A6">
-                <text>4.2.1.2.1 Ensure the alternate() operation is implemented.
-                </text>
-            </assertion>
-        </group>
-       <group>
-            <text>Operations on Units with different dimension as the operand</text>
-            <assertion id="42122-A1">
-                <text>4.2.1.2.2 Ensure the pow() operation is implemented.
-                </text>
-            </assertion>
-            <assertion id="42122-A2">
-                <text>4.2.1.2.1 Ensure the multiply() operation is implemented.
-                </text>
-            </assertion>
-            <assertion id="42122-A3">
-                <text>4.2.1.2.2 Ensure the transform() operation is implemented.
-                </text>
-            </assertion>
-       </group>
-       <group>
-            <text>Unary Operations on Units</text>
-            <assertion id="42123-A1">
-                <text>4.2.1.2.3 Ensure the inverse() operation is implemented.
-                </text>
-            </assertion>
-        </group>
-    </section>
-    
-    <section id="4.2.3" title="Unit Conversion">
-       <group>
-       		<text>Setup</text>
-       		 <assertion id="423-A1">
-               <text>Ensure at least one javax.measure.UnitConverter implementation is available/registered.
-               </text>
-           </assertion>
-       </group>
-       <group>
-           <text>Basic Operations</text>
-           <assertion id="423-A2">
-               <text>Ensure the equals() operation is implemented.
-               </text>
-           </assertion>
-           <assertion id="423-A3">
-               <text>Ensure the hashCode() operation is implemented.
-               </text>
-           </assertion>
-           <assertion id="423-A4">
-               <text>Ensure the inverse() method is implemented.
-               </text>
-           </assertion>
-           <assertion id="423-A5">
-               <text>Ensure the isIdentity() method is implemented.
-               </text>
-           </assertion>
-           <assertion id="423-A6">
-               <text>Ensure the isLinear() method is implemented.
-               </text>
-           </assertion>
-       </group>
-    </section>
-    
-    <section id="4.2.4" title="Unit Dimension">
-       <group>
-           <text>Basic Operations</text>
-           <assertion id="424-A1">
-               <text>Ensure the equals() operation is implemented.
-               </text>
-           </assertion>
-           <assertion id="424-A2">
-               <text>Ensure the hashCode() operation is implemented.
-               </text>
-           </assertion>
-       </group>
-    </section>
-	
-	<section id="4.3" title="Unit Formatting">
-	 <group>
-            <text>UnitFormat implementation</text>
-            <assertion id="43-A1">
-                <text>Ensure at least one javax.measure.format.UnitFormat implementation
-                    is available/registered.
-                </text>
-            </assertion>
-        </group>
-        <group>
-            <text>UnitFormat methods</text>
-            <assertion id="43-A2">
-                <text>4.3 Ensure the format() operation is implemented.
-                </text>
-            </assertion>
-            <assertion id="43-A3">
-                <text>4.3 Ensure the appendable format() operation is implemented.
-                </text>
-            </assertion>
-            <assertion id="43-A4">
-                <text>4.3 Ensure the isLocaleSensitive() method is implemented.
-                </text>
-            </assertion>
-            <assertion id="43-A5">
-                <text>4.3 Ensure the label() operation is implemented.
-                </text>
-            </assertion>
-            <assertion id="43-A6">
-                <text>4.3 Ensure the parse() operation is implemented.
-                </text>
-            </assertion>
-        </group>
-    </section>
-    
-	<section id="4.4" title="The Quantity Interface" />
-	
-	<section id="4.4.1" title="Operations on Quantities">
-       <group>
-           <text>Basic Operations</text>
-           <assertion id="441-A1">
-               <text>Ensure the equals() operation is implemented.
-               </text>
-           </assertion>
-           <assertion id="441-A2">
-               <text>Ensure the getUnit() method is implemented.
-               </text>
-           </assertion>
-           <assertion id="441-A3">
-               <text>Ensure the getValue() method is implemented.
-               </text>
-           </assertion>
-           <assertion id="441-A4">
-               <text>Ensure the hashCode() operation is implemented.
-               </text>
-           </assertion>
-       </group>
-    </section>
-    <section id="4.4.1.1" title="Operations on Quantities with same dimension as the operand">
-    	<group>
-    		<text>Result with same dimension</text>
-    	   <assertion id="4411-A1">
-               <text>Ensure the add() operation is implemented.
-               </text>
-           </assertion>
-    	</group>
-    </section>
-	
-	<section id="4.5" title="Supported Quantities">
-	   <group>
-            <text>Base Quantities</text>
-            <assertion id="45-A1">
-                <text>Ensure all SI Base Quantities are used by an implementation.
-                </text>
-            </assertion>
-        </group>
-        <group>
-            <text>Derived Quantities</text>
-            <assertion id="45-A2">
-                <text>Ensure all Supported Quantities are used by an implementation.
-                </text>
-            </assertion>
-        </group>
+		<group>
+			<text>Basic Operations</text>
+			<assertion id="421-A1">
+				<text>Ensure the equals() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="421-A2">
+				<text>Ensure getDimension is implemented.
+				</text>
+			</assertion>
+			<assertion id="421-A3">
+				<text>Ensure getName is implemented.
+				</text>
+			</assertion>
+			<assertion id="421-A4">
+				<text>Ensure getSymbol is implemented.
+				</text>
+			</assertion>
+			<assertion id="421-A5">
+				<text>Ensure the hashCode() operation is implemented.
+				</text>
+			</assertion>
+		</group>
 	</section>
-	
+	<section id="4.2.1.2" title="Unit Operations">
+		<group>
+			<text>Operations on Units with same dimension as the operand</text>
+			<assertion id="42121-A1">
+				<text>Ensure the shift() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42121-A2">
+				<text>4.2.1.2.1 Ensure the multiply() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42121-A3">
+				<text>4.2.1.2.1 Ensure the divide() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42121-A4">
+				<text>4.2.1.2.1 Ensure the multiply() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42121-A5">
+				<text>4.2.1.2.1 Ensure the divide(double) operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42121-A6">
+				<text>4.2.1.2.1 Ensure the alternate() operation is implemented.
+				</text>
+			</assertion>
+		</group>
+		<group>
+			<text>Operations on Units with different dimension as the operand
+			</text>
+			<assertion id="42122-A1">
+				<text>4.2.1.2.2 Ensure the pow() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42122-A2">
+				<text>4.2.1.2.1 Ensure the multiply() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42122-A3">
+				<text>4.2.1.2.2 Ensure the transform() operation is implemented.
+				</text>
+			</assertion>
+		</group>
+		<group>
+			<text>Unary Operations on Units</text>
+			<assertion id="42123-A1">
+				<text>4.2.1.2.3 Ensure the inverse() operation is implemented.
+				</text>
+			</assertion>
+		</group>
+	</section>
+
+	<section id="4.2.3" title="Unit Conversion">
+		<group>
+			<text>Setup</text>
+			<assertion id="423-A1">
+				<text>Ensure at least one javax.measure.UnitConverter implementation
+					is available/registered.
+				</text>
+			</assertion>
+		</group>
+		<group>
+			<text>Basic Operations</text>
+			<assertion id="423-A2">
+				<text>Ensure the equals() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="423-A3">
+				<text>Ensure the hashCode() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="423-A4">
+				<text>Ensure the inverse() method is implemented.
+				</text>
+			</assertion>
+			<assertion id="423-A5">
+				<text>Ensure the isIdentity() method is implemented.
+				</text>
+			</assertion>
+			<assertion id="423-A6">
+				<text>Ensure the isLinear() method is implemented.
+				</text>
+			</assertion>
+		</group>
+	</section>
+
+	<section id="4.2.4" title="Unit Dimension">
+		<group>
+			<text>Basic Operations</text>
+			<assertion id="424-A1">
+				<text>Ensure the equals() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="424-A2">
+				<text>Ensure the hashCode() operation is implemented.
+				</text>
+			</assertion>
+		</group>
+	</section>
+
+	<section id="4.3" title="Unit Formatting">
+		<group>
+			<text>UnitFormat implementation</text>
+			<assertion id="43-A1">
+				<text>Ensure at least one javax.measure.format.UnitFormat
+					implementation
+					is available/registered.
+				</text>
+			</assertion>
+		</group>
+		<group>
+			<text>UnitFormat methods</text>
+			<assertion id="43-A2">
+				<text>4.3 Ensure the format() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="43-A3">
+				<text>4.3 Ensure the appendable format() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="43-A4">
+				<text>4.3 Ensure the isLocaleSensitive() method is implemented.
+				</text>
+			</assertion>
+			<assertion id="43-A5">
+				<text>4.3 Ensure the label() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="43-A6">
+				<text>4.3 Ensure the parse() operation is implemented.
+				</text>
+			</assertion>
+		</group>
+	</section>
+
+	<section id="4.4" title="The Quantity Interface" />
+
+	<section id="4.4.1" title="Operations on Quantities">
+		<group>
+			<text>Basic Operations</text>
+			<assertion id="441-A1">
+				<text>Ensure the equals() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="441-A2">
+				<text>Ensure the getUnit() method is implemented.
+				</text>
+			</assertion>
+			<assertion id="441-A3">
+				<text>Ensure the getValue() method is implemented.
+				</text>
+			</assertion>
+			<assertion id="441-A4">
+				<text>Ensure the hashCode() operation is implemented.
+				</text>
+			</assertion>
+		</group>
+	</section>
+	<section id="4.4.1.1"
+		title="Operations on Quantities with same dimension as the operand">
+		<group>
+			<text>Result with same dimension</text>
+			<assertion id="4411-A1">
+				<text>Ensure the add() operation is implemented.
+				</text>
+			</assertion>
+		</group>
+	</section>
+
+	<section id="4.5" title="Supported Quantities">
+		<group>
+			<text>Base Quantities</text>
+			<assertion id="45-A1">
+				<text>Ensure all SI Base Quantities are used by an implementation.
+				</text>
+			</assertion>
+		</group>
+		<group>
+			<text>Derived Quantities</text>
+			<assertion id="45-A2">
+				<text>Ensure all Supported Quantities are used by an implementation.
+				</text>
+			</assertion>
+		</group>
+	</section>
+
 	<section id="5" title="SPI" />
+	<section id="5.3" title="Service Provider" />
+	<group>
+		<assertion id="53-A1">
+			<text>Test QuantityFactoryService provides a QuantityFactory for
+				each base quantity.
+			</text>
+		</assertion>
+	</group>
 	<section id="5.6" title="Obtaining Quantity Instances" />
 	<section id="5.6.1" title="Quantities Obtained from a factory">
 		<group>
@@ -266,10 +278,12 @@
 				</text>
 			</assertion>
 			<assertion id="561-A2">
-			     <text>5.6.1 Quantities Obtained from a factory has create method</text>
+				<text>5.6.1 Quantities Obtained from a factory has create method
+				</text>
 			</assertion>
 			<assertion id="561-A3">
-			     <text>5.6.1 Quantities Obtained from a factory has getSystemUnit method</text>
+				<text>5.6.1 Quantities Obtained from a factory has getSystemUnit
+					method</text>
 			</assertion>
 		</group>
 	</section>
