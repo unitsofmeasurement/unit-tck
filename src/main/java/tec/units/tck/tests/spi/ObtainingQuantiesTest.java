@@ -54,51 +54,52 @@ import tec.units.tck.util.TestUtils;
 public class ObtainingQuantiesTest {
 
     private static final String MEASURE_PACKAGE = "javax.measure";
-
+    private static final String SECTION = "5.6.1";
+    
     // ************************ 5.6 Obtaining Quantity Instances
     // ************************
     /**
      * Access a QuantityFactory for each registered type.
      */
-    @Test(groups = {"spi"}, description = "5.6.1 Quantities Obtained from a factory")
-    @SpecAssertion(section = "5.6.1", id = "561-A1")
+    @Test(groups = {"spi"}, description = SECTION + " Quantities Obtained from a factory")
+    @SpecAssertion(section = SECTION, id = "561-A1")
     public void testAccessToQuantityFactory() {
         QuantityFactoryService service = ServiceProvider.current().getQuantityFactoryService();
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
             QuantityFactory<?> factory = service.getQuantityFactory(clazz);
-            assertNotNull("Section 5.6.1: No QuantityFactory available for " + clazz.getSimpleName(), factory);
+            assertNotNull("Section " + SECTION + ": No QuantityFactory available for " + clazz.getSimpleName(), factory);
         }
     }
 
     /**
      * Check a QuantityFactory for each registered type has create method.
      */
-    @Test(groups = {"spi"}, description = "5.6.1 Quantities Obtained from a factory has create method")
-    @SpecAssertion(section = "5.6.1", id = "561-A2")
+    @Test(groups = {"spi"}, description = SECTION + " Quantities Obtained from a factory has create method")
+    @SpecAssertion(section = SECTION, id = "561-A2")
     public void testAccessToQuantityFactoryCreate() {
         QuantityFactoryService service = ServiceProvider.current().getQuantityFactoryService();
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
             QuantityFactory<?> factory = service.getQuantityFactory(clazz);
-            TestUtils.testHasPublicMethod("Section 5.6.1", factory.getClass(), Quantity.class, "create", Number.class, Unit.class);
+            TestUtils.testHasPublicMethod("Section " + SECTION, factory.getClass(), Quantity.class, "create", Number.class, Unit.class);
         }
     }
 
     /**
      * Check a QuantityFactory for each registered type has getSystemUnit method.
      */
-    @Test(groups = {"spi"}, description = "5.6.1 Quantities Obtained from a factory has getSystemUnit method")
-    @SpecAssertion(section = "5.6.1", id = "561-A3")
+    @Test(groups = {"spi"}, description = SECTION + " Quantities Obtained from a factory has getSystemUnit method")
+    @SpecAssertion(section = SECTION, id = "561-A3")
     public void testAccessToQuantityFactoryGetSystemUnit() {
         QuantityFactoryService service = ServiceProvider.current().getQuantityFactoryService();
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
             QuantityFactory<?> factory = service.getQuantityFactory(clazz);
-            TestUtils.testHasPublicMethod("Section 5.6.1", factory.getClass(), Unit.class, "getSystemUnit");
+            TestUtils.testHasPublicMethod("Section " + SECTION, factory.getClass(), Unit.class, "getSystemUnit");
         }
     }
 }
