@@ -256,14 +256,20 @@
 	</section>
 	
 	<section id="5" title="SPI" />
-	<section id="5.5" title="Obtaining Quantity Instances" />
-	<section id="5.5.1" title="Quantities Obtained from a factory">
+	<section id="5.6" title="Obtaining Quantity Instances" />
+	<section id="5.6.1" title="Quantities Obtained from a factory">
 		<group>
 			<text>Quantities Obtained from a factory</text>
-			<assertion id="551-A1">
+			<assertion id="561-A1">
 				<text>Test QuantityFactoryService provides a QuantityFactory for
 					each base quantity.
 				</text>
+			</assertion>
+			<assertion id="561-A2">
+			     <text>5.6.1 Quantities Obtained from a factory has create method</text>
+			</assertion>
+			<assertion id="561-A3">
+			     <text>5.6.1 Quantities Obtained from a factory has getSystemUnit method</text>
 			</assertion>
 		</group>
 	</section>

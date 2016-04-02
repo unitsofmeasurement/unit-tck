@@ -57,7 +57,7 @@ import tec.units.tck.tests.FundamentalTypesTest;
 import tec.units.tck.tests.format.UnitFormatTest;
 import tec.units.tck.tests.quantity.QuantityInterfaceTest;
 import tec.units.tck.tests.quantity.QuantityTypesTest;
-import tec.units.tck.tests.spi.CreatingQuantiesTest;
+import tec.units.tck.tests.spi.ObtainingQuantiesTest;
 import tec.units.tck.tests.unit.UnitConversionTest;
 import tec.units.tck.tests.unit.UnitDimensionTest;
 import tec.units.tck.tests.unit.UnitInterfaceTest;
@@ -100,7 +100,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         classes.add(new XmlClass(UnitFormatTest.class));
         classes.add(new XmlClass(QuantityInterfaceTest.class));
         classes.add(new XmlClass(QuantityTypesTest.class));
-        classes.add(new XmlClass(CreatingQuantiesTest.class));
+        classes.add(new XmlClass(ObtainingQuantiesTest.class));
         test.setXmlClasses(classes);
     }
 
