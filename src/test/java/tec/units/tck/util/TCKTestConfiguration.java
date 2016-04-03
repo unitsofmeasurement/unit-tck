@@ -86,7 +86,7 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 	public Collection<UnitConverter> getUnitConverters4Test() {
 		return Arrays.asList(new UnitConverter[] { new AddConverter(1),
 				new ExpConverter(1), new LogConverter(1),
-				new MultiplyConverter(0), RationalConverter.of(1, 1), });
+				new MultiplyConverter(0), RationalConverter.of(2, 1), });
 	}
 
 	public Collection<UnitFormat> getUnitFormats4Test() {
