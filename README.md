@@ -39,15 +39,16 @@ When running the TCK (`mvn test`) by calling the system property
 -Dtec.units.tck.profile=<profile>
 ```
 you may select one of the following **profiles**: 
-- minimal
-- format
-- base_quantity
-- quantity
-- quantity_format
-- spi
-- full
+- MINIMAL
+- FORMAT
+- BASE_QUANTITY
+- QUANTITY
+- QUANTITY_FORMAT
+- SPI
+- FULL
 
-The `full` profile is default whenever you don't explicitly pass a profile.
+The `Full` profile is default whenever you don't explicitly pass a profile.
+You may pass the profile name in either case, `TCKRunner` will automatically convert them to UPPERCASE before parsing the name of the profile.
 
 ### Other System Properties
 In addition to profiles, the following system properties allow you to override default behavior and storage locations of the TCK:
