@@ -82,14 +82,14 @@ public class UnitInterfaceTest {
     }
 
     /**
-     * Test that Unit implementations contain getProductUnits
+     * Test that Unit implementations contain getBaseUnits
      */
     @SpecAssertion(section = "4.2.1", id = "421-A4")
-    @Test(groups = {"core"}, description = "4.2.1 Ensure registered Unit classes implement getProductUnits.")
+    @Test(groups = {"core"}, description = "4.2.1 Ensure registered Unit classes implement getBaseUnits.")
     public void testGetProductUnits() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.2.1", type, "getProductUnits");
+            TestUtils.testHasPublicMethod("Section 4.2.1", type, "getBaseUnits");
         }
     }
 
