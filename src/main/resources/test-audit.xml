@@ -23,7 +23,8 @@
 			<text>Unit implementation</text>
 			<assertion id="41-A1">
 				<text>Ensure at least one javax.measure.Unit implementation
-					is available/registered.
+					is
+					available/registered.
 				</text>
 			</assertion>
 		</group>
@@ -31,7 +32,8 @@
 			<text>Dimension implementation</text>
 			<assertion id="41-A2">
 				<text>Ensure at least one javax.measure.Dimension implementation
-					is available/registered.
+					is
+					available/registered.
 				</text>
 			</assertion>
 		</group>
@@ -39,7 +41,8 @@
 			<text>Quantity implementation</text>
 			<assertion id="41-A3">
 				<text>Ensure at least one javax.measure.Quantity implementation
-					is available/registered.
+					is
+					available/registered.
 				</text>
 			</assertion>
 		</group>
@@ -260,11 +263,48 @@
 	</section>
 
 	<section id="5" title="SPI" />
+	<section id="5.2" title="Quantity Factory" />
+    <group>
+        <assertion id="51-A1">
+            <text>Ensure at least one QuantityFactory implementation exist
+            </text>
+        </assertion>
+    </group>
+	<section id="5.2" title="System of Units" />
+	<group>
+        <assertion id="52-A1">
+            <text>Ensure at least one javax.measure.spi.SystemOfUnits implementation is available
+            </text>
+        </assertion>
+        <assertion id="52-A2">
+            <text>Ensure the getName() method is implemented.
+            </text>
+        </assertion>
+        <assertion id="52-A3">
+            <text>Ensure the getUnit() method is implemented.
+            </text>
+        </assertion>
+        <assertion id="52-A4">
+            <text>Ensure the getUnits() method is implemented.
+            </text>
+        </assertion>
+        <assertion id="52-A5">
+            <text>Ensure the getUnits() method is implemented.
+            </text>
+        </assertion>
+    </group>
 	<section id="5.3" title="Service Provider" />
 	<group>
 		<assertion id="53-A1">
-			<text>Test QuantityFactoryService provides a QuantityFactory for
-				each base quantity.
+			<text>ServiceProvider has available instances.
+			</text>
+		</assertion>
+		<assertion id="53-A2">
+			<text>ServiceProvider has a current instance.
+			</text>
+		</assertion>
+		<assertion id="53-A3">
+			<text>ServiceProvider has a priority.
 			</text>
 		</assertion>
 	</group>
@@ -283,7 +323,8 @@
 			</assertion>
 			<assertion id="561-A3">
 				<text>5.6.1 Quantities Obtained from a factory has getSystemUnit
-					method</text>
+					method
+				</text>
 			</assertion>
 		</group>
 	</section>
