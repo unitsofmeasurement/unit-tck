@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Units of Measurement TCK
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -25,6 +25,7 @@
  */
 package tec.units.tck.tests.spi;
 
+import static org.testng.AssertJUnit.assertNotNull;
 import static tec.units.tck.TCKRunner.SPEC_ID;
 import static tec.units.tck.TCKRunner.SPEC_VERSION;
 
@@ -32,7 +33,6 @@ import java.util.Set;
 
 import javax.measure.Dimension;
 import javax.measure.Unit;
-import javax.measure.format.UnitFormat;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
 
@@ -41,76 +41,92 @@ import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
-import tec.units.tck.TCKSetup;
 import tec.units.tck.util.TestUtils;
 
 /**
  * Tests for SystemOfUnits
  *
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class SystemOfUnitsTest {
+    private static final String SECTION = "5.2";
 
     /**
-     * Ensure at least one SystemOfUnits implementation
-     * is available/registered.
+     * Ensure at least one SystemOfUnits implementation exists.
      */
-    @SpecAssertion(section = "5.2", id = "52-A1")
-    @Test(groups = { "spi" }, description = "5.2 Ensure at least one javax.measure.spi.SystemOfUnits implementation is available/registered.")
+    @SpecAssertion(section = SECTION, id = "52-A1")
+    @Test(groups = { "spi" }, description = SECTION
+	    + " Ensure a SystemOfUnits implementation exists for every ServiceProvider")
     public void testEnsureGotSystemOfUnits() {
-        AssertJUnit.assertNotNull("SystemOfUnits not available.", 
-        	ServiceProvider.current().getSystemOfUnitsService().getAvailableSystemsOfUnits());
-        AssertJUnit.assertTrue(!ServiceProvider.current().getSystemOfUnitsService().getAvailableSystemsOfUnits().isEmpty());
+	for (ServiceProvider provider : ServiceProvider.available()) {
+	    assertNotNull("Section " + SECTION + ": ServiceProvider is null",
+		    provider);
+	    AssertJUnit.assertNotNull("SystemOfUnits is null for " + provider,
+		    provider.getSystemOfUnitsService()
+			    .getAvailableSystemsOfUnits());
+	    AssertJUnit.assertFalse("SystemOfUnits not found in " + provider,
+		    provider.getSystemOfUnitsService()
+			    .getAvailableSystemsOfUnits().isEmpty());
+	}
     }
-    
-    
+
     /**
      * Ensure the getName() method is implemented.
      */
-    @SpecAssertion(section = "5.2", id = "52-A2")
-    @Test(groups = { "spi" }, description = "5.2 Ensure the getName() method is implemented.")
+    @SpecAssertion(section = SECTION, id = "52-A2")
+    @Test(groups = { "spi" }, description = SECTION
+	    + " Ensure the getName() method is implemented.")
     public void testSystemOfUnitsGetName() {
-        for (SystemOfUnits suo : ServiceProvider.current().getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
-        	Class<?> type = suo.getClass();
-            TestUtils.testHasPublicMethod("Section 5.2", type,"getName");
-        }
+	for (SystemOfUnits suo : ServiceProvider.current()
+		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
+	    Class<?> type = suo.getClass();
+	    TestUtils
+		    .testHasPublicMethod("Section " + SECTION, type, "getName");
+	}
     }
-    
+
     /**
      * Ensure the getUnit() method is implemented.
      */
-    @SpecAssertion(section = "5.2", id = "52-A3")
-    @Test(groups = { "spi" }, description = "5.2 Ensure the getUnit() method is implemented.")
+    @SpecAssertion(section = SECTION, id = "52-A3")
+    @Test(groups = { "spi" }, description = SECTION
+	    + " Ensure the getUnit() method is implemented.")
     public void testSystemOfUnitsGetUnit() {
-        for (SystemOfUnits suo : ServiceProvider.current().getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
-        	Class<?> type = suo.getClass();
-        	TestUtils.testHasPublicMethod("Section 5.2", type, true, Unit.class, "getUnit", Class.class);
-        }
+	for (SystemOfUnits suo : ServiceProvider.current()
+		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
+	    Class<?> type = suo.getClass();
+	    TestUtils.testHasPublicMethod("Section " + SECTION, type, true,
+		    Unit.class, "getUnit", Class.class);
+	}
     }
-    
+
     /**
      * Ensure the getUnits() method is implemented.
      */
-    @SpecAssertion(section = "5.2", id = "52-A4")
-    @Test(groups = { "spi" }, description = "5.2 Ensure the getUnits() method is implemented.")
+    @SpecAssertion(section = SECTION, id = "52-A4")
+    @Test(groups = { "spi" }, description = SECTION
+	    + " Ensure the getUnits() method is implemented.")
     public void testSystemOfUnitsGetUnits() {
-        for (SystemOfUnits suo : ServiceProvider.current().getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
-        	Class<?> type = suo.getClass();
-        	TestUtils.testHasPublicMethod("Section 5.2", type,"getUnits");
-        }
+	for (SystemOfUnits suo : ServiceProvider.current()
+		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
+	    Class<?> type = suo.getClass();
+	    TestUtils.testHasPublicMethod("Section " + SECTION, type,
+		    "getUnits");
+	}
     }
-    
+
     /**
      * Ensure the getUnits() method is implemented.
      */
-    @SpecAssertion(section = "5.2", id = "52-A5")
+    @SpecAssertion(section = SECTION, id = "52-A5")
     @Test(groups = { "spi" }, description = "5.2 Ensure the getUnits() method is implemented.")
     public void testSystemOfUnitsGetUnitsForDimension() {
-        for (SystemOfUnits suo : ServiceProvider.current().getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
-        	Class<?> type = suo.getClass();
-        	TestUtils.testHasPublicMethod("Section 5.2", type, true, Set.class, "getUnits", Dimension.class);
-        }
+	for (SystemOfUnits suo : ServiceProvider.current()
+		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
+	    Class<?> type = suo.getClass();
+	    TestUtils.testHasPublicMethod("Section 5.2", type, true, Set.class,
+		    "getUnits", Dimension.class);
+	}
     }
-    
 }

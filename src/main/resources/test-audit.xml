@@ -266,7 +266,7 @@
 	<section id="5.2" title="Quantity Factory" />
     <group>
         <assertion id="51-A1">
-            <text>Ensure at least one QuantityFactory implementation exist
+            <text>Ensure a QuantityFactory implementation exists for every ServiceProvider
             </text>
         </assertion>
     </group>

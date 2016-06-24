@@ -1,5 +1,5 @@
 /*
- * Units of Measurement TCK for Java Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner
+ * Unit-API - Units of Measurement API for Java Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner
  * Keil, V2COM.
  * 
  * All rights reserved.
@@ -28,66 +28,42 @@
  */
 package tec.units.tck.tests.spi;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
-import static org.hamcrest.number.OrderingComparison.lessThanOrEqualTo;
 import static org.testng.AssertJUnit.assertNotNull;
-import static org.testng.AssertJUnit.assertTrue;
 import static tec.units.tck.TCKRunner.SPEC_ID;
 import static tec.units.tck.TCKRunner.SPEC_VERSION;
 
-import java.util.List;
+import javax.measure.Unit;
 import javax.measure.spi.ServiceProvider;
+import javax.measure.spi.SystemOfUnits;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.annotations.Test;
 
 /**
- * Test class for {@link ServiceProvider}.
+ * Test class for obtaining units.
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
-public class ServiceProviderTest {
+public class ObtainingUnitsTest {
 
-    private static final String DESCRIPTION = "5.3 Service Provider";
+    private static final String SECTION = "5.5.1";
 
-    // ************************ 5.3 Service Provider
+    // ************************ 5.5 Obtaining Unit Instances
     // ************************
     /**
-     * Access available service providers.
+     * Access a SystemOfUnits for each registered unit.
      */
-    @Test(groups = {"spi"}, description = DESCRIPTION)
-    @SpecAssertion(section = "5.3", id = "53-A1")
-    public void testAvailable() {
-	List<ServiceProvider> spa = ServiceProvider.available();
-        assertNotNull("Section 5.3: available ServiceProviders is null", spa);
-        assertTrue("Section 5.3: No available ServiceProviders found", spa.size()>0);
+    @SuppressWarnings("rawtypes")
+    @Test(groups = { "spi" }, description = SECTION
+	    + " Units Obtained from a SystemOfUnits")
+    @SpecAssertion(section = SECTION, id = "551-A1")
+    public void testAccessToUnitSystems() {
+	for (SystemOfUnits sou : ServiceProvider.current()
+		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
+	    for (Unit u : sou.getUnits()) {
+		assertNotNull("Section " + SECTION + ": A Unit is missing from " + sou.getName(), u);
+	    }
+	}
     }
-    
-    // ************************ 5.3 Service Provider
-    // ************************
-    /**
-     * Access current ServiceProvider.
-     */
-    @Test(groups = {"spi"}, description = DESCRIPTION)
-    @SpecAssertion(section = "5.3", id = "53-A2")
-    public void testCurrent() {
-	ServiceProvider sp = ServiceProvider.current();
-        assertNotNull("Section 5.3: No current ServiceProvider found", sp);
-    }
-    
-    // ************************ 5.3 Service Provider
-    // ************************
-    /**
-     * Access a ServiceProvider priority.
-     */
-    @Test(groups = {"spi"}, description = DESCRIPTION)
-    @SpecAssertion(section = "5.3", id = "53-A3")
-    public void testPriority() {
-	ServiceProvider sp = ServiceProvider.current();
-	assertThat("Section 5.3: Priority should be a valid int", sp.getPriority(),
-		greaterThanOrEqualTo(Integer.MIN_VALUE));
-	assertThat("Section 5.3: Priority should be a valid int", sp.getPriority(),
-		lessThanOrEqualTo(Integer.MAX_VALUE));
-    }
+
 }

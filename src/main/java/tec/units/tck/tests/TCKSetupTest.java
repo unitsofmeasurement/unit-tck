@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Units of Measurement TCK
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -54,10 +54,10 @@ public class TCKSetupTest{
             id = "Setup",
             note = "Checks that TestConfiguration.getQuantityClasses() returns a non empty collection of quantity " +
                     "implementations")
-    @Test(groups = { "core" }, description = "TChecks that Quantity classes are registered for testing.")
+    @Test(groups = { "core" }, description = "Checks that Quantity classes are registered for testing.")
     public void testQuantityConfiguration(){
-        Collection<Class> amountClasses = getConfiguration().getQuantityClasses();
-        assertNotNull("TCK Test Configuration quantity classes are null.", amountClasses);
-        assertFalse("TCK Test Configuration quantity classes is empty.", amountClasses.isEmpty());
+        Collection<Class> quantityClasses = getConfiguration().getQuantityClasses();
+        assertNotNull("TCK Test Configuration quantity classes are null.", quantityClasses);
+        assertFalse("TCK Test Configuration quantity classes is empty.", quantityClasses.isEmpty());
     }
 }

@@ -1,6 +1,6 @@
-/**
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2014, Jean-Marie Dautelle, Werner Keil, V2COM.
+/*
+ *  Units of Measurement TCK
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -25,7 +25,9 @@
  */
 package tec.units.tck;
 
-public final class TCKValidationException extends RuntimeException {
+import javax.measure.MeasurementException;
+
+public final class TCKValidationException extends MeasurementException {
 
 	/**
 	 * 
@@ -39,5 +41,4 @@ public final class TCKValidationException extends RuntimeException {
 	public TCKValidationException(String message, Throwable e) {
 		super(message, e);
 	}
-
 }

@@ -60,6 +60,7 @@ public class ObtainingQuantiesTest {
     /**
      * Access a QuantityFactory for each registered type.
      */
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @Test(groups = {"spi"}, description = SECTION + " Quantities Obtained from a factory")
     @SpecAssertion(section = SECTION, id = "561-A1")
     public void testAccessToQuantityFactory() {
@@ -74,6 +75,7 @@ public class ObtainingQuantiesTest {
     /**
      * Check a QuantityFactory for each registered type has create method.
      */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @Test(groups = {"spi"}, description = SECTION + " Quantities Obtained from a factory has create method")
     @SpecAssertion(section = SECTION, id = "561-A2")
     public void testAccessToQuantityFactoryCreate() {
@@ -88,6 +90,7 @@ public class ObtainingQuantiesTest {
     /**
      * Check a QuantityFactory for each registered type has getSystemUnit method.
      */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     @Test(groups = {"spi"}, description = SECTION + " Quantities Obtained from a factory has getSystemUnit method")
     @SpecAssertion(section = SECTION, id = "561-A3")
     public void testAccessToQuantityFactoryGetSystemUnit() {

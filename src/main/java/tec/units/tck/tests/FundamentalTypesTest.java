@@ -1,6 +1,6 @@
 /*
- *  Unit-API - Units of Measurement API for Java
- *  Copyright (c) 2005-2015, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Units of Measurement TCK
+ *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -48,7 +48,7 @@ public class FundamentalTypesTest {
      * is available/registered.
      */
     @SpecAssertion(section = "4.1", id = "41-A1")
-    @Test(groups = { "core" }, description = "4.1 Ensure at least one javax.measure.Unit implementation is available/registered.")
+    @Test(groups = { "core" }, description = "4.1 Ensure at least one Unit implementation is available/registered.")
     public void testEnsureGotUnit() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getUnitClasses().isEmpty());
@@ -59,7 +59,7 @@ public class FundamentalTypesTest {
      * is available/registered.
      */
     @SpecAssertion(section = "4.1", id = "41-A2")
-    @Test(groups = { "core" }, description = "4.1 Ensure at least one javax.measure.Dimension implementation is available/registered.")
+    @Test(groups = { "core" }, description = "4.1 Ensure at least one Dimension implementation is available/registered.")
     public void testEnsureHasDimension() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getDimensionClasses().isEmpty());
@@ -70,7 +70,7 @@ public class FundamentalTypesTest {
      * is available/registered.
      */
     @SpecAssertion(section = "4.1", id = "41-A3")
-    @Test(groups = { "core" }, description = "4.1 Ensure at least one javax.measure.Quantity implementation is available/registered.")
+    @Test(groups = { "core" }, description = "4.1 Ensure at least one Quantity implementation is available/registered.")
     public void testEnsureHasQuantity() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getQuantityClasses().isEmpty());
