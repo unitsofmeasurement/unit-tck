@@ -65,6 +65,7 @@ import tec.units.tck.tests.spi.ObtainingQuantiesTest;
 import tec.units.tck.tests.spi.ObtainingUnitsTest;
 import tec.units.tck.tests.spi.QuantityFactoryTest;
 import tec.units.tck.tests.spi.ServiceProviderTest;
+import tec.units.tck.tests.spi.ServicesTest;
 import tec.units.tck.tests.spi.SystemOfUnitsTest;
 import tec.units.tck.tests.unit.UnitConversionTest;
 import tec.units.tck.tests.unit.UnitDimensionTest;
@@ -77,7 +78,7 @@ import tec.uom.lib.common.function.Versioned;
  * Main class for executing the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.8.2, June 24, 2016
+ * @version 0.9, July 1, 2016
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 
@@ -85,7 +86,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
      * 
      */
     private static final long serialVersionUID = 3189431432291353154L;
-    private static final String TCK_VERSION = "0.9-SNAPSHOT";
+    private static final String TCK_VERSION = "0.9.0";
     public static final String SPEC_ID = "JSR 363";
     public static final String SPEC_VERSION = "0.9.0";
     private final Profile profile;
@@ -111,6 +112,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         classes.add(new XmlClass(QuantityFactoryTest.class));
         classes.add(new XmlClass(SystemOfUnitsTest.class));
         classes.add(new XmlClass(ServiceProviderTest.class));
+        classes.add(new XmlClass(ServicesTest.class));
         classes.add(new XmlClass(ObtainingUnitsTest.class));
         classes.add(new XmlClass(ObtainingQuantiesTest.class));
         test.setXmlClasses(classes);

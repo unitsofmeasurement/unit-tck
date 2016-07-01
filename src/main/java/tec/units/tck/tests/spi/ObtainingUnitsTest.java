@@ -57,7 +57,7 @@ public class ObtainingUnitsTest {
     @Test(groups = { "spi" }, description = SECTION
 	    + " Units Obtained from a SystemOfUnits")
     @SpecAssertion(section = SECTION, id = "551-A1")
-    public void testAccessToUnitSystems() {
+    public void testGetUnitsFromUnitSystems() {
 	for (SystemOfUnits sou : ServiceProvider.current()
 		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
 	    for (Unit u : sou.getUnits()) {

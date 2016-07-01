@@ -119,14 +119,14 @@ public class UnitDimensionTest {
     }
 
     /**
-     * Test that Dimension implementations override getProductDimensions.
+     * Test that Dimension implementations override getBaseDimensions.
      */
     @SpecAssertion(section = "4.2.4", id = "424-A7")
-    @Test(groups = {"core"}, description = "4.2.4 Ensure registered Dimension classes override getProductDimensions.")
+    @Test(groups = {"core"}, description = "4.2.4 Ensure registered Dimension classes override getBaseDimensions.")
     public void testUnitGetProductDimensions() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.2.4", type, Map.class, "getProductDimensions");
+            TestUtils.testHasPublicMethod("Section 4.2.4", type, Map.class, "getBaseDimensions");
         }
     }
 }

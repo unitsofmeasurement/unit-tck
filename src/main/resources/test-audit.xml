@@ -263,7 +263,7 @@
 	</section>
 
 	<section id="5" title="SPI" />
-	<section id="5.2" title="Quantity Factory" />
+	<section id="5.1" title="Quantity Factory" />
     <group>
         <assertion id="51-A1">
             <text>Ensure a QuantityFactory implementation exists for every ServiceProvider
@@ -296,18 +296,59 @@
 	<section id="5.3" title="Service Provider" />
 	<group>
 		<assertion id="53-A1">
-			<text>ServiceProvider has available instances.
+			<text>Available ServiceProviders are not null.
 			</text>
 		</assertion>
 		<assertion id="53-A2">
-			<text>ServiceProvider has a current instance.
+			<text>ServiceProvider has available instances.
 			</text>
 		</assertion>
 		<assertion id="53-A3">
-			<text>ServiceProvider has a priority.
+			<text>ServiceProvider has a current instance.
 			</text>
 		</assertion>
+		<assertion id="53-A4">
+            <text>ServiceProvider has a priority.
+            </text>
+        </assertion>
 	</group>
+	<section id="5.4" title="Services" />
+    <group>
+        <assertion id="54-A1">
+            <text>Access available UnitFormatServices.
+            </text>
+        </assertion>
+        <assertion id="54-A2">
+            <text>Access Default UnitFormats in UnitFormatServices.
+            </text>
+        </assertion>
+        <assertion id="54-A3">
+            <text>Access available UnitFormats in UnitFormatServices.
+            </text>
+        </assertion>
+        <assertion id="54-A4">
+            <text>Access available SystemOfUnitsServices.
+            </text>
+        </assertion>
+        <assertion id="54-A5">
+            <text>Access default SystemOfUnits in SystemOfUnitsService.
+            </text>
+        </assertion>
+        <assertion id="54-A6">
+            <text>Access available Systems OfUnits in SystemOfUnitsService.
+            </text>
+        </assertion>
+    </group>
+	<section id="5.5" title="Obtaining Unit Instances" />
+    <section id="5.5.1" title="Units Obtained from Unit Systems">
+        <group>
+            <text>Units Obtained from Unit Systems</text>
+            <assertion id="551-A1">
+                <text>Access a SystemOfUnits for each registered unit.
+                </text>
+            </assertion>
+        </group>
+    </section>
 	<section id="5.6" title="Obtaining Quantity Instances" />
 	<section id="5.6.1" title="Quantities Obtained from a factory">
 		<group>
