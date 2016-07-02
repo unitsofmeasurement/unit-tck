@@ -144,7 +144,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the shift() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2.1", id = "42121-A1")
+    @SpecAssertion(section = "4.2.1.2", id = "42121-A1")
     @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the shift() operation is implemented.")
     public void testUnit42121Shift() {
         for (@SuppressWarnings("rawtypes")
@@ -156,7 +156,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the multiply() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2.1", id = "42121-A2")
+    @SpecAssertion(section = "4.2.1.2", id = "42121-A2")
     @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the multiply() operation is implemented.")
     public void testUnit42121Multiply() {
         for (@SuppressWarnings("rawtypes")
@@ -168,7 +168,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the divide() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2.1", id = "42121-A3")
+    @SpecAssertion(section = "4.2.1.2", id = "42121-A3")
     @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the divide() operation is implemented.")
     public void testUnit42121Divide() {
         for (@SuppressWarnings("rawtypes")
@@ -180,7 +180,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the multiply() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2.1", id = "42121-A4")
+    @SpecAssertion(section = "4.2.1.2", id = "42121-A4")
     @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the multiply(double) operation is implemented.")
     public void testUnit42121MultiplyWithDouble() {
         for (@SuppressWarnings("rawtypes")
@@ -192,7 +192,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the divide() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2.1", id = "42121-A5")
+    @SpecAssertion(section = "4.2.1.2", id = "42121-A5")
     @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the divide(double) operation is implemented.")
     public void testUnit42121DivideWithDouble() {
         for (@SuppressWarnings("rawtypes")
@@ -204,7 +204,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the alternate() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2.1", id = "42121-A6")
+    @SpecAssertion(section = "4.2.1.2", id = "42121-A6")
     @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the alternate() operation is implemented.")
     public void testUnit42121Alternate() {
         for (@SuppressWarnings("rawtypes")
@@ -216,7 +216,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the pow() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2.2", id = "42122-A1")
+    @SpecAssertion(section = "4.2.1.2", id = "42122-A1")
     @Test(groups = {"core"}, description = "4.2.1.2.2 Ensure the pow() operation is implemented.")
     public void testUnit42122Pow() {
         for (@SuppressWarnings("rawtypes")
@@ -228,7 +228,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the root() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2.2", id = "42122-A2")
+    @SpecAssertion(section = "4.2.1.2", id = "42122-A2")
     @Test(groups = {"core"}, description = "4.2.1.2.2 Ensure the root() operation is implemented.")
     public void testUnit42122Root() {
         for (@SuppressWarnings("rawtypes")
@@ -240,7 +240,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the transform() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2.2", id = "42122-A3")
+    @SpecAssertion(section = "4.2.1.2", id = "42122-A3")
     @Test(groups = {"core"}, description = "4.2.1.2.2 Ensure the transform() operation is implemented.")
     public void testUnit42122Transform() {
         for (@SuppressWarnings("rawtypes")
@@ -252,7 +252,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the inverse() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2.3", id = "42123-A1")
+    @SpecAssertion(section = "4.2.1.2", id = "42123-A1")
     @Test(groups = {"core"}, description = "4.2.1.2.3 Ensure the inverse() operation is implemented.")
     public void testUnit42123Inverse() {
         for (@SuppressWarnings("rawtypes")
