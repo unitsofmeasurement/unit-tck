@@ -173,6 +173,26 @@
 				<text>Ensure the hashCode() operation is implemented.
 				</text>
 			</assertion>
+			<assertion id="424-A3">
+                <text>Ensure registered Dimension classes override multiply.
+                </text>
+            </assertion>
+            <assertion id="424-A4">
+                <text>Ensure registered Dimension classes override divide.
+                </text>
+            </assertion>
+            <assertion id="424-A5">
+                <text>Ensure registered Dimension classes override root.
+                </text>
+            </assertion>
+            <assertion id="424-A6">
+                <text>Ensure registered Dimension classes override pow.
+                </text>
+            </assertion>
+            <assertion id="424-A7">
+                <text>Ensure registered Dimension classes override getBaseDimensions.
+                </text>
+            </assertion>
 		</group>
 	</section>
 

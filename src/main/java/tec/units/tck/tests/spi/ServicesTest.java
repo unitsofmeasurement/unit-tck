@@ -56,7 +56,7 @@ public class ServicesTest {
      */
     @Test(groups = {"spi"}, description = DESCRIPTION)
     @SpecAssertion(section = SECTION, id = "54-A1")
-    public void testFormatServices() {
+    public void testFormatService() {
 	for (ServiceProvider provider : ServiceProvider.available()) {
 	    assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
 	    UnitFormatService service = provider.getUnitFormatService();
@@ -106,7 +106,7 @@ public class ServicesTest {
      */
     @Test(groups = {"spi"}, description = DESCRIPTION)
     @SpecAssertion(section = SECTION, id = "54-A4")
-    public void testSystemOfUnitsServices() {
+    public void testSystemOfUnitsService() {
 	for (ServiceProvider provider : ServiceProvider.available()) {
 	    assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
 	    SystemOfUnitsService service = provider.getSystemOfUnitsService();
