@@ -52,7 +52,7 @@ public class UnitFormatTest {
      * is available/registered.
      */
     @SpecAssertion(section = "4.3", id = "43-A1")
-    @Test(groups = { "format" }, description = "4.3 Ensure at least one javax.measure.format.UnitFormat implementation is available/registered.")
+    @Test(groups = { "format" }, description = "4.3 Ensure at least one UnitFormat implementation is available/registered.")
     public void testEnsureGotUnitFormat() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getUnitFormats4Test().isEmpty());

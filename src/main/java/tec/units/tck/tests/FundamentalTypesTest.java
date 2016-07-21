@@ -36,7 +36,7 @@ import org.testng.annotations.Test;
 import tec.units.tck.TCKSetup;
 
 /**
- * Tests for Fundamental Types - Unit
+ * Tests for Fundamental Types
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */

@@ -51,7 +51,7 @@ public class UnitConversionTest {
      * Ensure at least one UnitConverter implementation is available/registered.
      */
     @SpecAssertion(section = "4.2.3", id = "423-A3")
-    @Test(groups = {"core"}, description = "4.2.3 Ensure at least one javax.measure.UnitConverter implementation is available/registered.")
+    @Test(groups = {"core"}, description = "4.2.3 Ensure at least one UnitConverter implementation is available/registered.")
     public void testEnsureGotConverters() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
         AssertJUnit.assertFalse(TCKSetup.getConfiguration().getUnitConverters4Test().isEmpty());

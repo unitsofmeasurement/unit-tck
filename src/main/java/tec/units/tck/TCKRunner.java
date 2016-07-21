@@ -78,7 +78,7 @@ import tec.uom.lib.common.function.Versioned;
  * Main class for executing the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.9, July 1, 2016
+ * @version 1.0, July 21, 2016
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 
@@ -86,9 +86,9 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
      * 
      */
     private static final long serialVersionUID = 3189431432291353154L;
-    private static final String TCK_VERSION = "0.9.0";
+    private static final String TCK_VERSION = "1.0.0";
     public static final String SPEC_ID = "JSR 363";
-    public static final String SPEC_VERSION = "0.9.0";
+    public static final String SPEC_VERSION = "1.0.0";
     private final Profile profile;
 
     public TCKRunner() {

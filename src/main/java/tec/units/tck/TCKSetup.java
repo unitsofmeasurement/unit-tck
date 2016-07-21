@@ -35,7 +35,7 @@ import tec.units.tck.util.ServiceConfiguration;
  * Test setup used by the JSR 363 TCK.
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, June 25, 2016
+ * @version 1.0, July 21, 2016
  */
 @Singleton
 public final class TCKSetup {
