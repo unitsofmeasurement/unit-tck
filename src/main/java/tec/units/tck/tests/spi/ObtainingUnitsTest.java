@@ -45,7 +45,6 @@ import org.testng.annotations.Test;
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class ObtainingUnitsTest {
-
     private static final String SECTION = "5.5.1";
 
     // ************************ 5.5 Obtaining Unit Instances
