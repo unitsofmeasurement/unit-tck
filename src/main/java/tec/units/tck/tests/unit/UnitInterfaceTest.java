@@ -41,6 +41,7 @@ import tec.units.tck.util.TestUtils;
  * Testing the Unit Interface
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class UnitInterfaceTest {
@@ -182,7 +183,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.2", id = "42121-A4")
     @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the multiply(double) operation is implemented.")
-    public void testUnit42121MultiplyWithDouble() {
+    public void testUnit42121MultiplyByDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1.3", type, Unit.class, "multiply", double.class);
@@ -194,7 +195,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.2", id = "42121-A5")
     @Test(groups = {"core"}, description = "4.2.1.2.1 Ensure the divide(double) operation is implemented.")
-    public void testUnit42121DivideWithDouble() {
+    public void testUnit42121DivideByDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             TestUtils.testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "divide", double.class);

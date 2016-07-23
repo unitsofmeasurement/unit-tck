@@ -60,7 +60,7 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 363 TCK.
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, January 31, 2016
+ * @version 1.0, July 24 31, 2016
  */
 @Singleton
 public class TestUtils {

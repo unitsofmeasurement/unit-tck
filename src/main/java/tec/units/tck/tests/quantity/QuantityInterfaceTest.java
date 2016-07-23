@@ -30,11 +30,14 @@ package tec.units.tck.tests.quantity;
 
 import static tec.units.tck.TCKRunner.SPEC_ID;
 import static tec.units.tck.TCKRunner.SPEC_VERSION;
+
 import javax.measure.Quantity;
 import javax.measure.Unit;
+
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.annotations.Test;
+
 import tec.units.tck.TCKSetup;
 import tec.units.tck.util.TestUtils;
 
@@ -45,22 +48,23 @@ import tec.units.tck.util.TestUtils;
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class QuantityInterfaceTest {
-
+    private static final String SECTION = "4.4.1";
+    
     /**
      * Test that Quantity implementations override equals.
      */
-    @SpecAssertion(section = "4.4.1", id = "441-A1")
-    @Test(groups = {"core"}, description = "4.4.1 Ensure registered Quantity classes override equals.")
+    @SpecAssertion(section = SECTION, id = "441-A1")
+    @Test(groups = {"core"}, description = SECTION + " Ensure registered Quantity classes override equals.")
     public void testQuantityEquals() {
         for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.4.1", type, "equals", true);
+            TestUtils.testHasPublicMethod("Section " + SECTION, type, "equals", true);
         }
     }
 
     /**
      * Test that Quantity implementations override getUnit.
      */
-    @SpecAssertion(section = "4.4.1", id = "441-A2")
+    @SpecAssertion(section = SECTION, id = "441-A2")
     @Test(groups = {"core"}, description = "4.4.1 Ensure registered Quantity classes implement getUnit.")
     public void testQuantityGetUnit() {
         for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
@@ -82,7 +86,7 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override hashCode.
      */
-    @SpecAssertion(section = "4.4.1", id = "441-A4")
+    @SpecAssertion(section = SECTION, id = "441-A4")
     @Test(groups = {"core"}, description = "4.4.1 Ensure registered Quantity classes override hashCode.")
     public void testQuantityHashcode() {
         for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
@@ -93,7 +97,7 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override asType method.
      */
-    @SpecAssertion(section = "4.4.1", id = "441-A5")
+    @SpecAssertion(section = SECTION, id = "441-A5")
     @Test(groups = {"core"}, description = "4.4.1 Ensure registered Quantity classes implement asType method.")
     public void testQuantityCastAsType() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {

@@ -43,15 +43,17 @@ import tec.units.tck.util.TestUtils;
  * Tests for Unit Conversion
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class UnitConversionTest {
-
+    private static final String SECTION = "4.2.3";
+    
     /**
      * Ensure at least one UnitConverter implementation is available/registered.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A3")
-    @Test(groups = {"core"}, description = "4.2.3 Ensure at least one UnitConverter implementation is available/registered.")
+    @SpecAssertion(section = SECTION, id = "423-A3")
+    @Test(groups = {"core"}, description = SECTION + " Ensure at least one UnitConverter implementation is available/registered.")
     public void testEnsureGotConverters() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
         AssertJUnit.assertFalse(TCKSetup.getConfiguration().getUnitConverters4Test().isEmpty());
@@ -60,108 +62,108 @@ public class UnitConversionTest {
     /**
      * Test that UnitConverter implementations override equals.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A4")
-    @Test(groups = {"core"}, description = "4.2.3 Ensure registered UnitConverter classes override equals.")
+    @SpecAssertion(section = SECTION, id = "423-A4")
+    @Test(groups = {"core"}, description = SECTION + " Ensure registered UnitConverter classes override equals.")
     public void testUnitConverterEquals() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod("Section 4.2.3", type, "equals", true);
+            TestUtils.testHasPublicMethod("Section " + SECTION, type, "equals", true);
         }
     }
 
     /**
      * Test that UnitConverter implementations override hashCode.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A5")
-    @Test(groups = {"core"}, description = "4.2.3 Ensure registered UnitConverter classes override hashCode.")
+    @SpecAssertion(section = SECTION, id = "423-A5")
+    @Test(groups = {"core"}, description = SECTION + " Ensure registered UnitConverter classes override hashCode.")
     public void testUnitConverterHashcode() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod("Section 4.2.3", type, "hashCode");
+            TestUtils.testHasPublicMethod("Section " + SECTION, type, "hashCode");
         }
     }
 
     /**
      * Ensure the inverse() method is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A6")
-    @Test(groups = {"core"}, description = "4.2.3 Ensure the inverse() method is implemented.")
+    @SpecAssertion(section = SECTION, id = "423-A6")
+    @Test(groups = {"core"}, description = SECTION + " Ensure the inverse() method is implemented.")
     public void testUnitConverterInvert() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod("Section 4.2.3", type, "inverse");
+            TestUtils.testHasPublicMethod("Section " + SECTION, type, "inverse");
         }
     }
 
     /**
      * Ensure the isIdentity() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A7")
-    @Test(groups = {"core"}, description = "4.2.3 Ensure the isIdentity() method is implemented.")
+    @SpecAssertion(section = SECTION, id = "423-A7")
+    @Test(groups = {"core"}, description = SECTION + " Ensure the isIdentity() method is implemented.")
     public void testUnitConverterIsIdentity() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod("Section 4.2.3", type, "isIdentity");
+            TestUtils.testHasPublicMethod("Section " + SECTION, type, "isIdentity");
         }
     }
 
     /**
      * Ensure the isLinear() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A8")
-    @Test(groups = {"core"}, description = "4.2.3 Ensure the isLinear() method is implemented.")
+    @SpecAssertion(section = SECTION, id = "423-A8")
+    @Test(groups = {"core"}, description = SECTION + " Ensure the isLinear() method is implemented.")
     public void testUnitConverterIsLinear() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod("Section 4.2.3", type, "isLinear");
+            TestUtils.testHasPublicMethod("Section " + SECTION, type, "isLinear");
         }
     }
 
     /**
      * Ensure the convert() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A9")
-    @Test(groups = {"core"}, description = "4.2.3 Ensure the convert() method is implemented.")
+    @SpecAssertion(section = SECTION, id = "423-A9")
+    @Test(groups = {"core"}, description = SECTION + " Ensure the convert() method is implemented.")
     public void testUnitConverterConvert() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod("Section 4.2.3", type, Number.class, "convert", Number.class);
+            TestUtils.testHasPublicMethod("Section " + SECTION, type, Number.class, "convert", Number.class);
         }
     }
 
     /**
      * Ensure the convert() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A10")
-    @Test(groups = {"core"}, description = "4.2.3 Ensure the convert() method is implemented.")
+    @SpecAssertion(section = SECTION, id = "423-A10")
+    @Test(groups = {"core"}, description = SECTION + " Ensure the convert() method is implemented.")
     public void testUnitConverterConvertWithDouble() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod("Section 4.2.3", type, double.class, "convert", double.class);
+            TestUtils.testHasPublicMethod("Section " + SECTION, type, double.class, "convert", double.class);
         }
     }
 
     /**
      * Ensure the concatenate() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A11")
-    @Test(groups = {"core"}, description = "4.2.3 Ensure the concatenate() method is implemented.")
+    @SpecAssertion(section = SECTION, id = "423-A11")
+    @Test(groups = {"core"}, description = SECTION + " Ensure the concatenate() method is implemented.")
     public void testUnitConverterConcatenate() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod("Section 4.2.3", type, UnitConverter.class, "concatenate", UnitConverter.class);
+            TestUtils.testHasPublicMethod("Section " + SECTION, type, UnitConverter.class, "concatenate", UnitConverter.class);
         }
     }
 
     /**
      * Ensure the getConversionSteps() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A12")
-    @Test(groups = {"core"}, description = "4.2.3 Ensure the getConversionSteps() method is implemented.")
+    @SpecAssertion(section = SECTION, id = "423-A12")
+    @Test(groups = {"core"}, description = SECTION + " Ensure the getConversionSteps() method is implemented.")
     public void testUnitConverterGetConversionSteps() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod("Section 4.2.3", type, List.class, "getConversionSteps");
+            TestUtils.testHasPublicMethod("Section " + SECTION, type, List.class, "getConversionSteps");
         }
     }
 }
