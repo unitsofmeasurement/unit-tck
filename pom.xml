@@ -245,7 +245,7 @@
 					<failOnError>false</failOnError>
 					<!-- overview>${basedir}/overview.html</overview -->
 					<source>${maven.compile.sourceLevel}</source>
-					<!-- stylesheetfile>${basedir}/src/site/css/money-jdoc.css</stylesheetfile -->
+					<!-- stylesheetfile>${basedir}/src/site/css/measure-jdoc.css</stylesheetfile -->
 					<verbose>true</verbose>
 				</configuration>
 			</plugin>

@@ -1,6 +1,6 @@
 /*
- * Units of Measurement TCK for Java Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner
- * Keil, V2COM.
+ * Units of Measurement TCK for Java 
+ * Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  * 
  * All rights reserved.
  * 
@@ -42,8 +42,10 @@ import tec.units.tck.util.TestUtils;
 /**
  * Tests for Unit Conversion
  *
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0
+ * @author Werner Keil
+ * @author Almas Shaikh
+ * @version 1.0, August 16, 2016
+ * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class UnitConversionTest {

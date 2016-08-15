@@ -369,6 +369,15 @@
             </assertion>
         </group>
     </section>
+     <section id="5.5.2" title="Units Obtained by Symbol Parsing">
+        <group>
+            <text>Units Obtained by Symbol Parsing</text>
+            <assertion id="552-A1">
+                <text>Parse the string representation of each registered unit.
+                </text>
+            </assertion>
+        </group>
+    </section>
 	<section id="5.6" title="Obtaining Quantity Instances" />
 	<section id="5.6.1" title="Quantities Obtained from a factory">
 		<group>

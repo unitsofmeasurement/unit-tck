@@ -28,11 +28,13 @@
  */
 package tec.units.tck.tests.spi;
 
+import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
 import static tec.units.tck.TCKRunner.SPEC_ID;
 import static tec.units.tck.TCKRunner.SPEC_VERSION;
 
 import javax.measure.Unit;
+import javax.measure.format.UnitFormat;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
 
@@ -42,12 +44,13 @@ import org.testng.annotations.Test;
 
 /**
  * Test class for obtaining units.
+ * @author Werner Keil
  * @version 1.0, August 16, 2016
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class ObtainingUnitsTest {
-    private static final String SECTION = "5.5.1";
+    private static final String SECTION1 = "5.5.1";
 
     // ************************ 5.5 Obtaining Unit Instances
     // ************************
@@ -55,14 +58,38 @@ public class ObtainingUnitsTest {
      * Access a SystemOfUnits for each registered unit.
      */
     @SuppressWarnings("rawtypes")
-    @Test(groups = { "spi" }, description = SECTION
+    @Test(groups = { "spi" }, description = SECTION1
 	    + " Units Obtained from Unit Systems")
-    @SpecAssertion(section = SECTION, id = "551-A1")
-    public void testGetUnitsFromUnitSystems() {
+    @SpecAssertion(section = SECTION1, id = "551-A1")
+    public void testGetUnitsFromSystemOfUnits() {
 	for (SystemOfUnits sou : ServiceProvider.current()
 		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
 	    for (Unit u : sou.getUnits()) {
-		assertNotNull("Section " + SECTION + ": A Unit is missing from " + sou.getName(), u);
+		assertNotNull("Section " + SECTION1 + ": A Unit is missing from " + sou.getName(), u);
+	    }
+	}
+    }
+    
+    private static final String SECTION2 = "5.5.2";
+    
+    /**
+     * Try parsing the symbol for each registered unit.
+     */
+    @SuppressWarnings("rawtypes")
+    @Test(groups = { "spi" }, description = SECTION2
+	    + " Units Obtained by Symbol Parsing")
+    @SpecAssertion(section = SECTION2, id = "552-A1")
+    public void testGetUnitsFromUnitString() {
+	UnitFormat format = ServiceProvider.current().getUnitFormatService().getUnitFormat();
+	for (SystemOfUnits sou : ServiceProvider.current()
+		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
+	    for (Unit u : sou.getUnits()) {
+		assertNotNull("Section " + SECTION2 + ": A Unit is missing from " + sou.getName(), u);
+		if (u.getSymbol() != null) {
+		    String s = u.toString();
+		    Unit p = format.parse(s);
+		    assertEquals("Section " + SECTION2 + ": Unit could not be parsed for '" + s + "'", u, p);
+		}
 	    }
 	}
     }

@@ -1,5 +1,5 @@
 /*
- *  Unit-API - Units of Measurement for Java Technical Compatibility Kit
+ *  Units of Measurement for Java Technical Compatibility Kit
  *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
@@ -47,7 +47,10 @@ import javax.measure.Unit;
 import tec.units.tck.TCKSetup;
 
 /**
- * Test class for base quantities.
+ * Test class for quantities
+ * @author Werner Keil
+ * @version 1.0, August 16, 2016
+ * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class QuantityTypesTest {

@@ -1,5 +1,5 @@
 /*
- *  Unit-API - Units of Measurement API for Java
+ *  Units of Measurement TCK for Java
  *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
@@ -32,7 +32,8 @@ import tec.uom.lib.common.function.DescriptionSupplier;
  * TestNG groups and profiles used in the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6, April 3, 2016
+ * @version 1.0, August 16, 2016
+ * @since 1.0
  */
 public final class TestGroups {
 
@@ -54,6 +55,7 @@ public final class TestGroups {
      * </ul>
      *
      * @author Werner Keil
+     * @since 1.0
      */
     public enum Group {
 	core, format, base_quantity, derived_quantity, spi
@@ -104,6 +106,7 @@ public final class TestGroups {
      * </ul>
      *
      * @author Werner Keil
+     * @since 1.0
      */
     public enum Profile implements DescriptionSupplier {
 	MINIMAL("Minimal", MINIMAL_GROUPS), FORMAT("Format", FORMAT_GROUPS), BASE_QUANTITY(

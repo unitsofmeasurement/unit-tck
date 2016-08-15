@@ -1,5 +1,5 @@
 /**
- *  Unit-API - Units of Measurement API for Java
+ *  Units of Measurement TCK for Java
  *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
@@ -39,7 +39,8 @@ import java.util.ServiceLoader;
  * interface and register it using the {@link ServiceLoader}.
  *
  * @author Werner Keil
- * @version 0.6, February 1, 2016
+ * @version 1.0, August 16, 2016
+ * @since 1.0
  */
 public interface ServiceConfiguration{
 
@@ -52,7 +53,7 @@ public interface ServiceConfiguration{
      * @return a collection with all implemented amount classes, not null.
      */
     @SuppressWarnings("rawtypes")
-	Collection<Class> getQuantityClasses();
+    Collection<Class> getQuantityClasses();
     
     /**
      * List a collection of {@link Unit} implementations.<p>
@@ -61,7 +62,7 @@ public interface ServiceConfiguration{
      * @return a collection with Unit implementations to be tested.
      */
     @SuppressWarnings("rawtypes")
-	Collection<Class> getUnitClasses();
+    Collection<Class> getUnitClasses();
     
     /**
      * List a collection of {@link Dimension} implementations.<p>
@@ -70,7 +71,7 @@ public interface ServiceConfiguration{
      * @return a collection with {@link Dimension} implementations to be tested.
      */
     @SuppressWarnings("rawtypes")
-	Collection<Class> getDimensionClasses();
+    Collection<Class> getDimensionClasses();
     
     /**
      * Return a collection with all supported {@link Quantity} types. The list
@@ -81,18 +82,18 @@ public interface ServiceConfiguration{
      * @return a collection with all implemented amount classes, not null.
      */
     @SuppressWarnings("rawtypes")
-	Collection<Class<? extends Quantity>> getSupportedQuantityTypes();
+    Collection<Class<? extends Quantity>> getSupportedQuantityTypes();
     
-	/**
-	 * Returns a matching unit for the specified quantity type.
-	 * This is a "helper method" to avoid direct references to {@link SystemOfUnits} or implementations in profiles without SPI.
-	 * 
-	 * @param <Q>
-	 *            the compile-time quantity type.
-	 * @param quantityType
-	 *            the quantity type.
-	 * @return the unit for the specified quantity.
-	 */
+    /**
+     * Returns a matching unit for the specified quantity type.
+     * This is a "helper method" to avoid direct references to {@link SystemOfUnits} or implementations in profiles without SPI.
+     * 
+     * @param <Q>
+     *            the compile-time quantity type.
+     * @param quantityType
+     *            the quantity type.
+     * @return the unit for the specified quantity.
+     */
     public <Q extends Quantity<Q>> Unit<Q> getUnit4Type(Class<Q> quantityType);
 
     /**

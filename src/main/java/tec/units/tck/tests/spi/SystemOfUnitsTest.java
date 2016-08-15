@@ -47,6 +47,8 @@ import tec.units.tck.util.TestUtils;
  * Tests for SystemOfUnits
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 1.0, August 16, 2016
+ * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class SystemOfUnitsTest {

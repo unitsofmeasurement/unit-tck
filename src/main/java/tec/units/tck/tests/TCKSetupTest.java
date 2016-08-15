@@ -36,6 +36,12 @@ import org.testng.annotations.Test;
 
 import java.util.Collection;
 
+/**
+ * Tests the ServiceConfiguration
+ * @author Werner Keil
+ * @version 1.0, August 16, 2016
+ * @since 1.0
+ */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class TCKSetupTest{
 
@@ -56,7 +62,8 @@ public class TCKSetupTest{
                     "implementations")
     @Test(groups = { "core" }, description = "Checks that Quantity classes are registered for testing.")
     public void testQuantityConfiguration(){
-        Collection<Class> quantityClasses = getConfiguration().getQuantityClasses();
+        @SuppressWarnings("rawtypes")
+	Collection<Class> quantityClasses = getConfiguration().getQuantityClasses();
         assertNotNull("TCK Test Configuration quantity classes are null.", quantityClasses);
         assertFalse("TCK Test Configuration quantity classes is empty.", quantityClasses.isEmpty());
     }

@@ -1,6 +1,6 @@
 /*
- * Units of Measurement TCK for Java Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner
- * Keil, V2COM.
+ * Units of Measurement for Java Technical Compatibility Kit 
+ * Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
  * 
  * All rights reserved.
  * 
@@ -43,6 +43,9 @@ import org.testng.annotations.Test;
 
 /**
  * Test class for Services.
+ * @author Werner Keil
+ * @version 1.0, August 16, 2016
+ * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class ServicesTest {
