@@ -27,6 +27,13 @@ package tec.units.tck;
 
 import javax.measure.MeasurementException;
 
+/**
+ * This exception indicates that an error has occurred while performing a TCK validate operation.
+ *
+ * @author Werner Keil
+ * @version 1.0, August 15, 2016
+ * @since 1.0
+ */
 public final class TCKValidationException extends MeasurementException {
 
 	/**

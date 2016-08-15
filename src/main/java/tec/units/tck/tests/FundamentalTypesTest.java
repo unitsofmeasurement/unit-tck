@@ -39,6 +39,8 @@ import tec.units.tck.TCKSetup;
  * Tests for Fundamental Types
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 1.0, August 16, 2016
+ * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class FundamentalTypesTest {
