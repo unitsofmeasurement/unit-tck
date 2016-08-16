@@ -145,8 +145,8 @@ public class QuantityInterfaceTest {
      * Test that Quantity implementations override multiply with number as argument.
      */
     @SpecAssertion(section = "4.4.1.1", id = "4411-A4")
-    @Test(groups = {"core"}, description = "4.4.1.1 Ensure registered Quantity classes implement multiply with number as argument.")
-    public void testQuantityOp1MultiplyWithNumber() {
+    @Test(groups = {"core"}, description = "4.4.1.1 Ensure registered Quantity classes implement multiply by number.")
+    public void testQuantityOp1MultiplyByNumber() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
             TestUtils.testHasPublicMethod("Section 4.4.1.1", type, Quantity.class, "multiply", Number.class);
         }
@@ -156,8 +156,8 @@ public class QuantityInterfaceTest {
      * Test that Quantity implementations override divide with number as argument.
      */
     @SpecAssertion(section = "4.4.1.1", id = "4411-A5")
-    @Test(groups = {"core"}, description = "4.4.1.1 Ensure registered Quantity classes implement divide with number as argument.")
-    public void testQuantityOp1DivideWithNumber() {
+    @Test(groups = {"core"}, description = "4.4.1.1 Ensure registered Quantity classes implement divide by number.")
+    public void testQuantityOp1DivideByNumber() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
             TestUtils.testHasPublicMethod("Section 4.4.1.1", type, Quantity.class, "divide", Number.class);
         }
