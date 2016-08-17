@@ -2,4 +2,4 @@ test:
    override:
      - mvn install
    post:
-     - cp $HOME/unit-tck/target/coverage-JSR%20363.html $CIRCLE_ARTIFACTS
+     - cp $HOME/unit-tck/target/*.html $CIRCLE_ARTIFACTS
