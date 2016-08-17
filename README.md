@@ -6,7 +6,7 @@ JSR 363 Technology Compatibility Kit (TCK)
 [![Circle CI](https://circleci.com/gh/unitsofmeasurement/unit-tck.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/unit-tck)
 [![License](http://img.shields.io/badge/license-BSD3-blue.svg?style=flat-square)](http://opensource.org/licenses/BSD-3-Clause)
 
-The current module contains the technical compatibility kit of JSR 363.
+The current module contains the technology compatibility kit of JSR 363.
 
 To setup the TCK with your implementation you must follow the following steps:
 
