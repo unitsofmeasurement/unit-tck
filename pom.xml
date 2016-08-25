@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0</version>
+		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 
 	<licenses>
@@ -36,12 +36,12 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jsr.version>1.0</jsr.version>
-		<ri.version>${project.version}</ri.version>
+		<ri.version>1.0</ri.version>
 		<jdkVersion>1.7</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.7</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
-		<lib.version>${project.version}</lib.version>
+		<lib.version>1.0</lib.version>
 		<testng.version>6.9.10</testng.version>
 		<jboss.test.audit.version>1.1.0.Final</jboss.test.audit.version>
 		<reflections.version>0.9.10</reflections.version>
