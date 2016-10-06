@@ -36,7 +36,7 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jsr.version>1.0</jsr.version>
-		<ri.version>1.0</ri.version>
+		<ri.version>1.0.1</ri.version>
 		<jdkVersion>1.7</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.7</maven.compile.targetLevel>
