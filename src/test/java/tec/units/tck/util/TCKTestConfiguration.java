@@ -70,14 +70,9 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 			e.printStackTrace();
 			throw new RuntimeException("Unit class not loadable");
 		}
-		// return Arrays
-		// .asList(new Class[]{AbstractUnit.class});
 	}
 
 	public Collection<? extends Unit<?>> getUnits4Test() {
-		// Unit<Length> m = Units.METRE;
-		// final Set<? extends Unit<?>> units = Units.getInstance().getUnits();
-		// return units;
 		SystemOfUnitsService service = ServiceProvider.current().getSystemOfUnitsService();
 		SystemOfUnits sou = service.getSystemOfUnits();
 		return sou.getUnits();
