@@ -1,6 +1,6 @@
 /*
  *  Units of Measurement TCK
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -78,7 +78,8 @@ import tec.uom.lib.common.function.Versioned;
  * Main class for executing the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, July 21, 2016
+ * @version 1.0.1, April 20, 2017
+ * @since 1.0
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 
@@ -86,21 +87,21 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
      * 
      */
     private static final long serialVersionUID = 3189431432291353154L;
-    private static final String TCK_VERSION = "1.0.0";
+    private static final String TCK_VERSION = "1.0.1";
     public static final String SPEC_ID = "JSR 363";
     public static final String SPEC_VERSION = "1.0.0";
     private final Profile profile;
 
     public TCKRunner() {
         setName(SPEC_ID + " - TCK " + TCK_VERSION);
-        XmlTest test = new XmlTest(this);
+        final XmlTest test = new XmlTest(this);
         profile = Profile.valueOf((System.getProperty(SYS_PROPERTY_PROFILE, 
         		Profile.FULL.name()).toUpperCase()));
         for (Group group : profile.getGroups()) {
             test.addIncludedGroup(group.name());
         }
         test.setName("TCK/Test Setup");
-        List<XmlClass> classes = new ArrayList<XmlClass>();
+        final List<XmlClass> classes = new ArrayList<>();
         classes.add(new XmlClass(TCKSetup.class));
         classes.add(new XmlClass(FundamentalTypesTest.class));
         classes.add(new XmlClass(UnitInterfaceTest.class));
@@ -129,13 +130,13 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
      * target file (default: ./target/tck-results.txt).</li>
      * </ul>
      * 
-     * @param args
+     * @param args Optional arguments to control TCK execution
      */
     @Override
     public int run(InputStream in, OutputStream out, OutputStream err, String... args) {
         System.out.println("-- " + SPEC_ID + " TCK started --");
         System.out.println("Profile: " + profile.getDescription());
-        List<XmlSuite> suites = new ArrayList<XmlSuite>();
+        final List<XmlSuite> suites = new ArrayList<>();
         suites.add(new TCKRunner());
         final TestNG tng = new TestNG();
         tng.setXmlSuites(suites);
@@ -163,7 +164,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 
     @Override
     public final Set<SourceVersion> getSourceVersions() {
-        return Collections.unmodifiableSet(new HashSet<SourceVersion>(Arrays.asList(new SourceVersion[] {SourceVersion.RELEASE_5, SourceVersion.RELEASE_6, SourceVersion.RELEASE_7})));
+        return Collections.unmodifiableSet(new HashSet<>(Arrays.asList(new SourceVersion[] {SourceVersion.RELEASE_5, SourceVersion.RELEASE_6, SourceVersion.RELEASE_7})));
     }
 
     public static final void main(String... args) {
@@ -177,7 +178,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
            */
     }
 
-    private static final void showHelp() {
+    private static void showHelp() {
         final StringWriter consoleWriter = new StringWriter(1000);
         consoleWriter.write("*****************************************************************************************\n");
         consoleWriter.write("**** " + SPEC_ID + " - Units of Measurement, Technical Compatibility Kit, version " + TCK_VERSION + "\n");
@@ -196,12 +197,11 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         System.out.println(consoleWriter);
     }
 
-    private static final void showVersion() {
+    private static void showVersion() {
         System.out.println(SPEC_ID + " - Units of Measurement, Technical Compatibility Kit, version \"" + TCK_VERSION + "\"\n");
     }
 
     public static final class Reporter extends TestListenerAdapter {
-
         private int count = 0;
         private int skipped = 0;
         private int failed = 0;
