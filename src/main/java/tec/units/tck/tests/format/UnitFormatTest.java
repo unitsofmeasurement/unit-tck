@@ -1,6 +1,6 @@
 /*
  *  Units of Measurement TCK for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ *  Copyright (c) 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
@@ -41,7 +41,7 @@ import tec.units.tck.util.TestUtils;
 
 /**
  * Tests for UnitFormat
- * @version 1.0, August 16, 2016
+ * @version 1.0.1, April 20, 2017
  * @since 1.0
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
@@ -80,7 +80,7 @@ public class UnitFormatTest {
     public void testUnitFormatFormatAppendable() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.3", type, true, Appendable.class, "format", Unit.class, Appendable.class);
+            TestUtils.testHasPublicMethod("Section 4.3", type, false, Appendable.class, "format", Unit.class, Appendable.class);
         }
     }
     
@@ -92,7 +92,7 @@ public class UnitFormatTest {
     public void testUnitFormatFormatIsLocalSensitive() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.3", type,"isLocaleSensitive");
+            TestUtils.testHasPublicMethod("Section 4.3", type, "isLocaleSensitive", false);
         }
     }
     
