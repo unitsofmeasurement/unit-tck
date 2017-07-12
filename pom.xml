@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>tec.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0.1-SNAPSHOT</version>
+		<version>1.0.4</version>
 	</parent>
 
 	<licenses>
@@ -24,8 +24,8 @@
 		</license>
 	</licenses>
 	<issueManagement>
-		<system>JIRA</system>
-		<url>https://java.net/jira/browse/UNITSOFMEASUREMENT</url>
+		<system>GitHub</system>
+		<url>https://github.com/unitsofmeasurement/unit-tck/issues</url>
 	</issueManagement>
 	<scm>
 		<url>https://github.com/unitsofmeasurement/unit-tck.git</url>
@@ -441,4 +441,5 @@
 			</build>
 		</profile>
 	</profiles>
+	<version>1.0.1-SNAPSHOT</version>
 </project>
