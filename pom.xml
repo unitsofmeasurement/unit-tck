@@ -16,7 +16,6 @@
 		<artifactId>uom-parent</artifactId>
 		<version>1.0.4</version>
 	</parent>
-
 	<licenses>
 		<license>
 			<name>BSD</name>
@@ -36,13 +35,13 @@
 	<!-- ======================================================= -->
 	<properties>
 		<jsr.version>1.0</jsr.version>
-		<ri.version>1.0.1</ri.version>
+		<ri.version>1.0.3</ri.version>
 		<jdkVersion>1.7</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.7</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
-		<lib.version>1.0.1</lib.version>
-		<testng.version>6.9.10</testng.version>
+		<lib.version>1.0.2</lib.version>
+		<testng.version>6.10</testng.version>
 		<jboss.test.audit.version>1.1.0.Final</jboss.test.audit.version>
 		<reflections.version>0.9.10</reflections.version>
 	</properties>
