@@ -1,16 +1,20 @@
-/**
- *  Units of Measurement TCK for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+/*
+ * Units of Measurement TCK
+ * Copyright © 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
  *
- * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+ * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+ *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363 nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+ * 3. Neither the name of JSR-363 nor the names of its contributors may be used to endorse or promote products
+ *    derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -39,7 +43,7 @@ import java.util.ServiceLoader;
  * interface and register it using the {@link ServiceLoader}.
  *
  * @author Werner Keil
- * @version 1.0, August 16, 2016
+ * @version 1.0.1, Sep 10, 2017
  * @since 1.0
  */
 public interface ServiceConfiguration{
@@ -48,7 +52,7 @@ public interface ServiceConfiguration{
      * Return a collection with all {@link Quantity} classes that are implemented. The list
      * must not be empty and should contain <b>every</b> quantity class implemented.<p>
      * This enables the TCK to check in addition to the basic implementation compliance, if
-     * according {@linkplain QuantityFactoryService} are registered/available correctly.
+     * according {@link ServiceProvider} is registered/available.
      *
      * @return a collection with all implemented amount classes, not null.
      */
@@ -75,9 +79,9 @@ public interface ServiceConfiguration{
     
     /**
      * Return a collection with all supported {@link Quantity} types. The list
-     * must not return <tt>null/tt>, but could be empty in certain profiles.
+     * must not return <tt>null</tt>, but could be empty in certain profiles.
      * 
-     * @return the list of quantity types to be checked, not <tt>null/tt>. It is allowed to return an empty list here, which will
+     * @return the list of quantity types to be checked, not <tt>null</tt>. It is allowed to return an empty list here, which will
      *
      * @return a collection with all implemented amount classes, not null.
      */

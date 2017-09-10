@@ -1,16 +1,20 @@
 /*
- *  Units of Measurement TCK for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Units of Measurement TCK
+ * Copyright © 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
  *
- * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+ * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+ *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363 nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+ * 3. Neither the name of JSR-363 nor the names of its contributors may be used to endorse or promote products
+ *    derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -60,7 +64,7 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 363 TCK.
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.1, August 16, 2016
+ * @version 1.0.2, September 10, 2017
  * @since 1.0
  */
 @Singleton
@@ -94,112 +98,114 @@ public class TestUtils {
     private TestUtils() {
     }
 
-    static Number createNumberWithPrecision(QuantityFactory f, int precision) {
-	if (precision == 0) {
-	    precision = new Random().nextInt(100);
-	}
-	StringBuilder b = new StringBuilder(precision + 1);
-	for (int i = 0; i < precision; i++) {
-	    b.append(String.valueOf(i % 10));
-	}
-	return new Double(b.toString());
+    static Number createNumberWithPrecision(QuantityFactory<?> f, int precision) {
+        if (precision == 0) {
+            precision = new Random().nextInt(100);
+        }
+        StringBuilder b = new StringBuilder(precision + 1);
+        for (int i = 0; i < precision; i++) {
+            b.append(String.valueOf(i % 10));
+        }
+        return new Double(b.toString());
     }
 
-    static Number createNumberWithScale(QuantityFactory f, int scale) {
-	StringBuilder b = new StringBuilder(scale + 2);
-	b.append("9.");
-	for (int i = 0; i < scale; i++) {
-	    b.append(String.valueOf(i % 10));
-	}
-	return new Double(b.toString());
+    static Number createNumberWithScale(QuantityFactory<?> f, int scale) {
+        StringBuilder b = new StringBuilder(scale + 2);
+        b.append("9.");
+        for (int i = 0; i < scale; i++) {
+            b.append(String.valueOf(i % 10));
+        }
+        return new Double(b.toString());
     }
 
     /**
      * Tests the given object being (effectively) serializable by serializing it.
      *
-     * @param section the section of the spec under test
-     * @param o       the object to be checked.
-     * @throws TCKValidationException if the test fails.
+     * @param section
+     *            the section of the spec under test
+     * @param type
+     *            the type to be checked.
+     * @throws TCKValidationException
+     *             if the test fails.
      */
-    public static void testSerializable(String section, Class c) {
-	if (!Serializable.class.isAssignableFrom(c)) {
-	    throw new TCKValidationException(section
-		    + ": Class must be serializable: " + c.getName());
-	}
+    public static void testSerializable(String section, Class<?> type) {
+        if (!Serializable.class.isAssignableFrom(type)) {
+            throw new TCKValidationException(section + ": Class must be serializable: " + type.getName());
+        }
     }
 
     /**
      * Tests the given class being serializable.
      *
-     * @param section the section of the spec under test
-     * @param c       the class to be checked.
-     * @throws TCKValidationException if test fails.
+     * @param section
+     *            the section of the spec under test
+     * @param type
+     *            the type to be checked.
+     * @throws TCKValidationException
+     *             if test fails.
      */
-    public static void testImmutable(String section, Class c) {
-	try {
-	    MutabilityAssert
-		    .assertInstancesOf(
-			    c,
-			    MutabilityMatchers.areImmutable(),
-			    AllowedReason.provided(Dimension.class,
-				    Quantity.class, Unit.class,
-				    UnitConverter.class).areAlsoImmutable(),
-			    AllowedReason.allowingForSubclassing(),
-			    AllowedReason.allowingNonFinalFields());
-	} catch (Exception e) {
-	    throw new TCKValidationException(section
-		    + ": Class is not immutable: " + c.getName(), e);
-	}
+    public static void testImmutable(String section, Class<?> type) {
+        try {
+            MutabilityAssert.assertInstancesOf(type, MutabilityMatchers.areImmutable(),
+                    AllowedReason.provided(Dimension.class, Quantity.class, Unit.class, UnitConverter.class).areAlsoImmutable(),
+                    AllowedReason.allowingForSubclassing(), AllowedReason.allowingNonFinalFields());
+        } catch (Exception e) {
+            throw new TCKValidationException(section + ": Class is not immutable: " + type.getName(), e);
+        }
     }
 
     /**
      * Tests the given object being (effectively) serializable by serializing it.
      *
-     * @param section the section of the spec under test
-     * @param o       the object to be checked.
-     * @throws TCKValidationException if test fails.
+     * @param section
+     *            the section of the spec under test
+     * @param o
+     *            the object to be checked.
+     * @throws TCKValidationException
+     *             if test fails.
      */
     public static void testSerializable(String section, Object o) {
-	if (!(o instanceof Serializable)) {
-	    throw new TCKValidationException(section
-		    + ": Class must be serializable: " + o.getClass().getName());
-	}
-	try (ObjectOutputStream oos = new ObjectOutputStream(
-		new ByteArrayOutputStream())) {
-	    oos.writeObject(o);
-	} catch (Exception e) {
-	    throw new TCKValidationException(
-		    "Class must be serializable, but serialization failed: "
-			    + o.getClass().getName(), e);
-	}
+        if (!(o instanceof Serializable)) {
+            throw new TCKValidationException(section + ": Class must be serializable: " + o.getClass().getName());
+        }
+        try (ObjectOutputStream oos = new ObjectOutputStream(new ByteArrayOutputStream())) {
+            oos.writeObject(o);
+        } catch (Exception e) {
+            throw new TCKValidationException("Class must be serializable, but serialization failed: " + o.getClass().getName(), e);
+        }
     }
 
     /**
      * Tests the given class implements a given interface.
      *
-     * @param section the section of the spec under test
-     * @param type    the type to be checked.
-     * @param iface   the interface to be checked for.
-     * @throws Assert#fail if test fails.
+     * @param section
+     *            the section of the spec under test
+     * @param type
+     *            the type to be checked.
+     * @param iface
+     *            the interface to be checked for.
+     * @throws Assert#fail
+     *             if test fails.
      */
-    public static void testImplementsInterface(String section, Class type,
-	    Class iface) {
-	for (Class ifa : type.getInterfaces()) {
-	    if (ifa.equals(iface)) {
-		return;
-	    }
-	}
-	Assert.fail(section + ": Class must implement " + iface.getName()
-		+ ", but does not: " + type.getName());
+    public static void testImplementsInterface(String section, Class<?> type, Class<?> iface) {
+        for (Class<?> ifa : type.getInterfaces()) {
+            if (ifa.equals(iface)) {
+                return;
+            }
+        }
+        Assert.fail(section + ": Class must implement " + iface.getName() + ", but does not: " + type.getName());
     }
 
     /**
      * Tests if the given type is comparable.
-     * @param section the section of the spec under test
-     * @param type the type to be checked.
+     * 
+     * @param section
+     *            the section of the spec under test
+     * @param type
+     *            the type to be checked.
      */
-    public static void testComparable(String section, Class type) {
-	testImplementsInterface(section, type, Comparable.class);
+    public static void testComparable(String section, Class<?> type) {
+        testImplementsInterface(section, type, Comparable.class);
     }
 
     /**
@@ -209,31 +215,25 @@ public class TestUtils {
      * @param returnType
      * @param name
      * @param paramTypes
-     * @deprecated use the simplified version on top of Reflections.org where
-     *             possible
+     * @deprecated use the simplified version on top of Reflections.org where possible
      */
-    public static void testHasPublicMethod(String section, Class<?> type,
-	    Class<?> returnType, String name, Class... paramTypes) {
-	Class current = type;
-	while (current != null) {
-	    for (Method m : current.getDeclaredMethods()) {
-		if (returnType.equals(returnType) && m.getName().equals(name)
-			&& ((m.getModifiers() & PUBLIC) != 0)
-			&& Arrays.equals(m.getParameterTypes(), paramTypes)) {
-		    return;
-		}
-	    }
-	    current = current.getSuperclass();
-	}
-	throw new TCKValidationException(section
-		+ ": Class must implement method " + name + '('
-		+ Arrays.toString(paramTypes) + "): " + returnType.getName()
-		+ ", but does not: " + type.getName());
+    public static void testHasPublicMethod(String section, Class<?> type, Class<?> returnType, String name, Class... paramTypes) {
+        Class<?> current = type;
+        while (current != null) {
+            for (Method m : current.getDeclaredMethods()) {
+                if (returnType.equals(returnType) && m.getName().equals(name) && ((m.getModifiers() & PUBLIC) != 0)
+                        && Arrays.equals(m.getParameterTypes(), paramTypes)) {
+                    return;
+                }
+            }
+            current = current.getSuperclass();
+        }
+        throw new TCKValidationException(section + ": Class must implement method " + name + '(' + Arrays.toString(paramTypes) + "): "
+                + returnType.getName() + ", but does not: " + type.getName());
     }
 
     private static final List<Class> PRIMITIVE_CLASSES = Collections
-	    .unmodifiableList(Arrays.asList(new Class[] { Object.class,
-		    Number.class, Enum.class }));
+            .unmodifiableList(Arrays.asList(new Class[] { Object.class, Number.class, Enum.class }));
 
     /**
      * 
@@ -243,47 +243,45 @@ public class TestUtils {
      * @param returnType
      * @param name
      * @param paramTypes
-     * @deprecated use the simplified version on top of Reflections.org where
-     *             possible
+     * @deprecated use the simplified version on top of Reflections.org where possible
      */
-    public static void testHasPublicMethod(String section, Class<?> type,
-	    boolean trySuperclassFirst, Class<?> returnType, String name,
-	    Class<?>... paramTypes) {
-	if (trySuperclassFirst && type.getSuperclass() != null) {
-	    if (PRIMITIVE_CLASSES.contains(type.getSuperclass())) {
-		testHasPublicMethod(section, type, returnType, name, paramTypes);
-	    } else {
-		testHasPublicMethod(section, type.getSuperclass(), returnType,
-			name, paramTypes);
-	    }
-	} else {
-	    testHasPublicMethod(section, type, returnType, name, paramTypes);
-	}
+    public static void testHasPublicMethod(String section, Class<?> type, boolean trySuperclassFirst, Class<?> returnType, String name,
+            Class<?>... paramTypes) {
+        if (trySuperclassFirst && type.getSuperclass() != null) {
+            if (PRIMITIVE_CLASSES.contains(type.getSuperclass())) {
+                testHasPublicMethod(section, type, returnType, name, paramTypes);
+            } else {
+                testHasPublicMethod(section, type.getSuperclass(), returnType, name, paramTypes);
+            }
+        } else {
+            testHasPublicMethod(section, type, returnType, name, paramTypes);
+        }
     }
 
     /**
      * Tests if the given type has a public method with the given signature.
-     * @param section the section of the spec under test
-     * @param type the type to be checked.
-     * @param returnType the method return type.
-     * @param name the method name
-     * @param paramTypes the parametr types.
-     * @throws TCKValidationException if test fails.
+     * 
+     * @param section
+     *            the section of the spec under test
+     * @param type
+     *            the type to be checked.
+     * @param name
+     *            the method name
+     * @param hasParameters
+     *            the method has parameters.
+     * @throws TCKValidationException
+     *             if test fails.
      */
     @SuppressWarnings({ "unchecked" })
-    public static void testHasPublicMethod(String section, Class<?> type,
-	    String name, boolean hasParameters) {
-	Set<Method> getters;
-	if (hasParameters) {
-	    getters = getAllMethods(type, withModifier(PUBLIC), withName(name));
-	} else {
-	    getters = getAllMethods(type, withModifier(PUBLIC), withName(name),
-		    withParametersCount(0));
-	}
-	assertThat(getters.size(), greaterThanOrEqualTo(1)); // interface plus
-							     // at least
-							     // one
-							     // implementation
+    public static void testHasPublicMethod(String section, Class<?> type, String name, boolean hasParameters) {
+        Set<Method> getters;
+        if (hasParameters) {
+            getters = getAllMethods(type, withModifier(PUBLIC), withName(name));
+        } else {
+            getters = getAllMethods(type, withModifier(PUBLIC), withName(name), withParametersCount(0));
+        }
+        assertThat(getters.size(), greaterThanOrEqualTo(1)); // interface plus
+        // at least one implementation
     }
 
     /**
@@ -291,17 +289,14 @@ public class TestUtils {
      * @param section
      * @param type
      * @param name
-     * @deprecated use the simplified version on top of Reflections.org where
-     *             possible
+     * @deprecated use the simplified version on top of Reflections.org where possible
      */
-    public static void testHasPublicMethod(String section, Class<?> type,
-	    String name) {
-	testHasPublicMethod(section, type, name, false);
+    public static void testHasPublicMethod(String section, Class<?> type, String name) {
+        testHasPublicMethod(section, type, name, false);
     }
 
     /**
-     * Tests if the given type has a public static method with the given
-     * signature.
+     * Tests if the given type has a public static method with the given signature.
      * 
      * @param section
      *            the section of the spec under test
@@ -313,157 +308,156 @@ public class TestUtils {
      *            the method name
      * @param paramTypes
      *            the parameter types.
-     * @throws TCKValidationException  if test fails.
+     * @throws TCKValidationException
+     *             if test fails.
      */
     @SuppressWarnings("rawtypes")
-    static void testHasPublicStaticMethod(String section, Class type,
-	    Class returnType, String name, Class... paramTypes) {
-	Class current = type;
-	while (current != null) {
-	    for (Method m : current.getDeclaredMethods()) {
-		if (returnType.equals(returnType) && m.getName().equals(name)
-			&& ((m.getModifiers() & PUBLIC) != 0)
-			&& ((m.getModifiers() & Modifier.STATIC) != 0)
-			&& Arrays.equals(m.getParameterTypes(), paramTypes)) {
-		    return;
-		}
-	    }
-	    current = current.getSuperclass();
-	}
-	throw new TCKValidationException(section
-		+ ": Class must implement method " + name + '('
-		+ Arrays.toString(paramTypes) + "): " + returnType.getName()
-		+ ", but does not: " + type.getName());
+    static void testHasPublicStaticMethod(String section, Class type, Class returnType, String name, Class... paramTypes) {
+        Class current = type;
+        while (current != null) {
+            for (Method m : current.getDeclaredMethods()) {
+                if (returnType.equals(returnType) && m.getName().equals(name) && ((m.getModifiers() & PUBLIC) != 0)
+                        && ((m.getModifiers() & Modifier.STATIC) != 0) && Arrays.equals(m.getParameterTypes(), paramTypes)) {
+                    return;
+                }
+            }
+            current = current.getSuperclass();
+        }
+        throw new TCKValidationException(section + ": Class must implement method " + name + '(' + Arrays.toString(paramTypes) + "): "
+                + returnType.getName() + ", but does not: " + type.getName());
     }
 
     /**
      * Tests if the given type has not a public method with the given signature.
-     * @param section the section of the spec under test
-     * @param type the type to be checked.
-     * @param returnType the method return type.
-     * @param name the method name
-     * @param paramTypes the parameter types.
-     *                   @throws TCKValidationException if test fails.
+     * 
+     * @param section
+     *            the section of the spec under test
+     * @param type
+     *            the type to be checked.
+     * @param returnType
+     *            the method return type.
+     * @param name
+     *            the method name
+     * @param paramTypes
+     *            the parameter types.
+     * @throws TCKValidationException
+     *             if test fails.
      */
-    public static void testHasNotPublicMethod(String section, Class type,
-	    Class returnType, String name, Class... paramTypes) {
-	Class current = type;
-	while (current != null) {
-	    for (Method m : current.getDeclaredMethods()) {
-		if (returnType.equals(returnType) && m.getName().equals(name)
-			&& Arrays.equals(m.getParameterTypes(), paramTypes)) {
-		    throw new TCKValidationException(section
-			    + ": Class must NOT implement method " + name + '('
-			    + Arrays.toString(paramTypes) + "): "
-			    + returnType.getName() + ", but does: "
-			    + type.getName());
-		}
-	    }
-	    current = current.getSuperclass();
-	}
+    public static void testHasNotPublicMethod(String section, Class type, Class returnType, String name, Class... paramTypes) {
+        Class current = type;
+        while (current != null) {
+            for (Method m : current.getDeclaredMethods()) {
+                if (returnType.equals(returnType) && m.getName().equals(name) && Arrays.equals(m.getParameterTypes(), paramTypes)) {
+                    throw new TCKValidationException(section + ": Class must NOT implement method " + name + '(' + Arrays.toString(paramTypes) + "): "
+                            + returnType.getName() + ", but does: " + type.getName());
+                }
+            }
+            current = current.getSuperclass();
+        }
     }
 
     /**
      * Checks the returned value, when calling a given method.
-     * @param section the section of the spec under test
-     * @param value the expected value
-     * @param methodName the target method name
-     * @param instance the instance to call
+     * 
+     * @param section
+     *            the section of the spec under test
+     * @param value
+     *            the expected value
+     * @param methodName
+     *            the target method name
+     * @param instance
+     *            the instance to call
      * @throws NoSuchMethodException
      * @throws SecurityException
      * @throws IllegalAccessException
      * @throws IllegalArgumentException
      * @throws InvocationTargetException
-     * @throws TCKValidationException if test fails.
+     * @throws TCKValidationException
+     *             if test fails.
      */
-    public static void assertValue(String section, Object value,
-	    String methodName, Object instance) throws NoSuchMethodException,
-	    SecurityException, IllegalAccessException,
-	    IllegalArgumentException, InvocationTargetException {
-	Method m = instance.getClass().getDeclaredMethod(methodName);
-	Assert.assertEquals(value, m.invoke(instance),
-		section + ": " + m.getName() + '(' + instance
-			+ ") returned invalid value:");
+    public static void assertValue(String section, Object value, String methodName, Object instance)
+            throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Method m = instance.getClass().getDeclaredMethod(methodName);
+        Assert.assertEquals(value, m.invoke(instance), section + ": " + m.getName() + '(' + instance + ") returned invalid value:");
     }
 
-    static boolean testHasPublicStaticMethodOpt(String section, Class type,
-	    Class returnType, String methodName, Class... paramTypes) {
-	try {
-	    testHasPublicStaticMethod(section, type, returnType, methodName,
-		    paramTypes);
-	    return true;
-	} catch (Exception e) {
-	    warnings.append(section)
-		    .append(": Recommendation failed: Missing method [public static ")
-		    .append(methodName).append('(')
-		    .append(Arrays.toString(paramTypes)).append("):")
-		    .append(returnType.getName()).append("] on: ")
-		    .append(type.getName()).append("\n");
-	    return false;
-	}
+    static boolean testHasPublicStaticMethodOpt(String section, Class type, Class returnType, String methodName, Class... paramTypes) {
+        try {
+            testHasPublicStaticMethod(section, type, returnType, methodName, paramTypes);
+            return true;
+        } catch (Exception e) {
+            warnings.append(section).append(": Recommendation failed: Missing method [public static ").append(methodName).append('(')
+                    .append(Arrays.toString(paramTypes)).append("):").append(returnType.getName()).append("] on: ").append(type.getName())
+                    .append("\n");
+            return false;
+        }
     }
 
     /**
      * Test for immutability (optional recommendation), writes a warning if not given.
-     * @param section the section of the spec under test
-     * @param type the type to be checked.
+     * 
+     * @param section
+     *            the section of the spec under test
+     * @param type
+     *            the type to be checked.
      * @return true, if the instance is probably immutable.
      */
     public static boolean testImmutableOpt(String section, Class type) {
-	try {
-	    testImmutable(section, type);
-	    return true;
-	} catch (Exception e) {
-	    warnings.append(section)
-		    .append(": Recommendation failed: Class should be immutable: ")
-		    .append(type.getName()).append(", details: ")
-		    .append(e.getMessage()).append("\n");
-	    return false;
-	}
+        try {
+            testImmutable(section, type);
+            return true;
+        } catch (Exception e) {
+            warnings.append(section).append(": Recommendation failed: Class should be immutable: ").append(type.getName()).append(", details: ")
+                    .append(e.getMessage()).append("\n");
+            return false;
+        }
     }
 
     /**
      * Test for serializable (optional recommendation), writes a warning if not given.
-     * @param section the section of the spec under test
-     * @param type the type to be checked.
+     * 
+     * @param section
+     *            the section of the spec under test
+     * @param type
+     *            the type to be checked.
      * @return true, if the type is probably serializable.
      */
     public static boolean testSerializableOpt(String section, Class type) {
-	try {
-	    testSerializable(section, type);
-	    return true;
-	} catch (Exception e) {
-	    warnings.append(section)
-		    .append(": Recommendation failed: Class should be serializable: ")
-		    .append(type.getName()).append(", details: ")
-		    .append(e.getMessage()).append("\n");
-	    return false;
-	}
+        try {
+            testSerializable(section, type);
+            return true;
+        } catch (Exception e) {
+            warnings.append(section).append(": Recommendation failed: Class should be serializable: ").append(type.getName()).append(", details: ")
+                    .append(e.getMessage()).append("\n");
+            return false;
+        }
     }
 
     /**
      * Test for serializable (optional recommendation), writes a warning if not given.
-     * @param section the section of the spec under test
-     * @param instance the object to be checked.
+     * 
+     * @param section
+     *            the section of the spec under test
+     * @param instance
+     *            the object to be checked.
      * @return true, if the instance is probably serializable.
      */
     public static boolean testSerializableOpt(String section, Object instance) {
-	try {
-	    testSerializable(section, instance);
-	    return true;
-	} catch (Exception e) {
-	    warnings.append(section)
-		    .append(": Recommendation failed: Class is serializable, but serialization failed: ")
-		    .append(instance.getClass().getName()).append("\n");
-	    return false;
-	}
+        try {
+            testSerializable(section, instance);
+            return true;
+        } catch (Exception e) {
+            warnings.append(section).append(": Recommendation failed: Class is serializable, but serialization failed: ")
+                    .append(instance.getClass().getName()).append("\n");
+            return false;
+        }
     }
 
     static void resetWarnings() {
-	warnings.setLength(0);
+        warnings.setLength(0);
     }
 
     static String getWarnings() {
-	return warnings.toString();
+        return warnings.toString();
     }
 }

@@ -1,16 +1,20 @@
 /*
- *  Units of Measurement TCK for Java
- *  Copyright (c) 2005-2016, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Units of Measurement TCK
+ * Copyright © 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
  *
  * All rights reserved.
  *
- * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
  *
- * 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
  *
- * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+ * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
+ *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363 nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+ * 3. Neither the name of JSR-363 nor the names of its contributors may be used to endorse or promote products
+ *    derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
  * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
@@ -32,7 +36,7 @@ import tec.uom.lib.common.function.DescriptionSupplier;
  * TestNG groups and profiles used in the JSR 363 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, August 16, 2016
+ * @version 1.0.1, September 10, 2017
  * @since 1.0
  */
 public final class TestGroups {
@@ -45,16 +49,17 @@ public final class TestGroups {
      * <li>{@link #core} - used to include tests for the core elements of the
      * API. These tests are <b>mandatory</b> in every profile.</li>
      * <li>{@link #format} - formatting tests used to include elements in
-     * {@linkplain javax.measure.format}.</li>
+     * <tt>javax.measure.format</tt>.</li>
      * <li>{@link #base_quantity} - tests to include <b>base quantities</b> in
-     * {@linkplain javax.measure.quantity}.</li>
-     * <li>{@link #quantity} - tests to include other quantities in
-     * {@linkplain javax.measure.quantity}.</li>
+     * <tt>javax.measure.quantity</tt>.</li>
+     * <li>{@link #derived_quantity} - tests to include other quantities in
+     * <tt>javax.measure.quantity</tt>.</li>
      * <li>{@link #spi} - tests to include SPI elements in
-     * {@linkplain javax.measure.spi}.</li>
+     * <tt>javax.measure.spi</tt>.</li>
      * </ul>
      *
      * @author Werner Keil
+     * @version 1.0.1
      * @since 1.0
      */
     public enum Group {
@@ -100,12 +105,13 @@ public final class TestGroups {
      * <ul>
      * <li>{@link #MINIMAL} - used to include tests for the core elements of the
      * API. These tests are <b>mandatory</b> for every implementation.</li>
-     * <li>{@link #format} - formatting tests used to include tests for elements
-     * in {@linkplain javax.measure.format}.</li>
-     * <li>{@link #full} - All tests in the JSR 363 TCK.</li>
+     * <li>{@link #FORMAT} - formatting tests used to include tests for elements
+     * in <tt>javax.measure.format</tt>.</li>
+     * <li>{@link #FULL} - All tests in the JSR 363 TCK.</li>
      * </ul>
      *
      * @author Werner Keil
+     * @version 1.0.1
      * @since 1.0
      */
     public enum Profile implements DescriptionSupplier {
