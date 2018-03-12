@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>tec.units</groupId>
+	<groupId>tech.units</groupId>
 	<artifactId>unit-tck</artifactId>
 	<packaging>bundle</packaging>
 	<name>Units of Measurement TCK</name>
@@ -11,11 +11,11 @@
 		<url>http://unitsofmeasurement.github.io</url>
 	</organization>
 	<description>Units of Measurement (JSR 363) TCK.</description>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.1</version>
 	<parent>
-		<groupId>tec.uom</groupId>
+		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>1.0.4</version>
+		<version>1.2</version>
 	</parent>
 	<licenses>
 		<license>
