@@ -2,7 +2,7 @@
 <!--
 
     Units of Measurement TCK
-    Copyright © 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
+    Copyright © 2005-2018, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
 
     All rights reserved.
 
@@ -33,7 +33,7 @@
 <specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://jboss.com/products/weld/tec.units.tck/audit"
 	xsi:schemaLocation="http://jboss.com/products/weld/tec.units.tck/audit"
-	name="JSR 385 Units of Measurement" version="1.0.0" id="JSR 385"
+	name="JSR 385 Units of Measurement" version="2.0.0" id="JSR 385"
 	generateSectionIds="false">
 	<section id="0" title="TCK Setup">
 		<!-- Tests class TCKSetupTest -->
