@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Copyright © 2005-2018, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -13,7 +13,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363 nor the names of its contributors may be used to endorse or promote products
+ * 3. Neither the name of JSR-385 nor the names of its contributors may be used to endorse or promote products
  *    derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -29,16 +29,16 @@
  */
 package tec.units.tck.util;
 
-import static tec.units.ri.quantity.QuantityDimension.*;
-import tec.units.ri.format.SimpleUnitFormat;
-import tec.units.ri.function.AddConverter;
-import tec.units.ri.function.ExpConverter;
-import tec.units.ri.function.LogConverter;
-import tec.units.ri.function.MultiplyConverter;
-import tec.units.ri.function.RationalConverter;
-import tec.units.ri.quantity.NumberQuantity;
-import tec.units.ri.quantity.QuantityDimension;
-import tec.units.ri.unit.Units;
+import static tech.units.indriya.quantity.QuantityDimension.*;
+import tech.units.indriya.format.SimpleUnitFormat;
+import tech.units.indriya.function.AddConverter;
+import tech.units.indriya.function.ExpConverter;
+import tech.units.indriya.function.LogConverter;
+import tech.units.indriya.function.MultiplyConverter;
+import tech.units.indriya.function.RationalConverter;
+import tech.units.indriya.quantity.NumberQuantity;
+import tech.units.indriya.quantity.QuantityDimension;
+import tech.units.indriya.unit.Units;
 import tec.units.tck.util.ServiceConfiguration;
 
 import javax.measure.*;
@@ -56,7 +56,8 @@ import java.util.*;
  * 
  * @author Werner Keil
  * @author Muhammed Almas
- * @version 0.7, February 1, 2016
+ * @version 1.0, April 1, 2018
+ * @since 1.0
  */
 public final class TCKTestConfiguration implements ServiceConfiguration {
 
@@ -69,7 +70,7 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 	public Collection<Class> getUnitClasses() {
 		try {
 			return Arrays.asList(new Class[] { Class
-					.forName("tec.units.ri.unit.BaseUnit") });
+					.forName("tech.units.indriya.unit.BaseUnit") });
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new RuntimeException("Unit class not loadable");

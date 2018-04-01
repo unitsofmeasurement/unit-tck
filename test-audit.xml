@@ -15,7 +15,7 @@
     2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
        and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
-    3. Neither the name of JSR-363 nor the names of its contributors may be used to endorse or promote products
+    3. Neither the name of JSR-385 nor the names of its contributors may be used to endorse or promote products
        derived from this software without specific prior written permission.
 
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -33,7 +33,7 @@
 <specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://jboss.com/products/weld/tec.units.tck/audit"
 	xsi:schemaLocation="http://jboss.com/products/weld/tec.units.tck/audit"
-	name="JSR 363 Units of Measurement" version="1.0.0" id="JSR 363"
+	name="JSR 385 Units of Measurement" version="1.0.0" id="JSR 385"
 	generateSectionIds="false">
 	<section id="0" title="TCK Setup">
 		<!-- Tests class TCKSetupTest -->

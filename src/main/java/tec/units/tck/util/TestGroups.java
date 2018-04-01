@@ -13,7 +13,7 @@
  * 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
  *    and the following disclaimer in the documentation and/or other materials provided with the distribution.
  *
- * 3. Neither the name of JSR-363 nor the names of its contributors may be used to endorse or promote products
+ * 3. Neither the name of JSR-385 nor the names of its contributors may be used to endorse or promote products
  *    derived from this software without specific prior written permission.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -30,19 +30,19 @@
 package tec.units.tck.util;
 
 import static tec.units.tck.util.TestGroups.Group.*;
-import tec.uom.lib.common.function.DescriptionSupplier;
+import tech.uom.lib.common.function.DescriptionSupplier;
 
 /**
- * TestNG groups and profiles used in the JSR 363 TCK.
+ * TestNG groups and profiles used in the JSR 385 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0.1, September 10, 2017
+ * @version 1.1, April 1, 2018
  * @since 1.0
  */
 public final class TestGroups {
 
     /**
-     * TestNG groups used in the JSR 363 TCK.
+     * TestNG groups used in the JSR 385 TCK.
      *
      * The most important groups (used by {@link TCKRunner}) are:
      * <ul>
@@ -99,7 +99,7 @@ public final class TestGroups {
     private static final Group[] SPI_GROUPS = { core, format, spi };
 
     /**
-     * Profiles used in the JSR 363 TCK.
+     * Profiles used in the JSR 385 TCK.
      *
      * The most important profiles (used by {@link TCKRunner}) are:
      * <ul>
@@ -107,7 +107,7 @@ public final class TestGroups {
      * API. These tests are <b>mandatory</b> for every implementation.</li>
      * <li>{@link #FORMAT} - formatting tests used to include tests for elements
      * in <tt>javax.measure.format</tt>.</li>
-     * <li>{@link #FULL} - All tests in the JSR 363 TCK.</li>
+     * <li>{@link #FULL} - All tests in the JSR 385 TCK.</li>
      * </ul>
      *
      * @author Werner Keil

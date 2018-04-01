@@ -34,9 +34,9 @@
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
-		<jsr.version>1.0</jsr.version>
-		<ri.version>1.0.3</ri.version>
-		<jdkVersion>1.7</jdkVersion>
+		<jsr.version>2.0-SNAPSHOT</jsr.version>
+		<ri.version>2.0-SNAPSHOT</ri.version>
+		<jdkVersion>1.8</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.7</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -48,8 +48,8 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>tec.units</groupId>
-				<artifactId>unit-ri</artifactId>
+				<groupId>tech.units</groupId>
+				<artifactId>indriya</artifactId>
 				<version>${ri.version}</version>
 				<type>jar</type>
 			</dependency>
@@ -88,8 +88,8 @@
 			<artifactId>unit-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>tec.units</groupId>
-			<artifactId>unit-ri</artifactId>
+			<groupId>tech.units</groupId>
+			<artifactId>indriya</artifactId>
 			<type>jar</type>
 		</dependency>
 
