@@ -1,12 +1,12 @@
 unit-tck
 ========
-JSR 363 Technology Compatibility Kit (TCK) 
+JSR 385 Technology Compatibility Kit (TCK) 
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/tech.units/unit-tck/badge.svg)](https://maven-badges.herokuapp.com/maven-central/tech.units/unit-tck)
 [![Circle CI](https://circleci.com/gh/unitsofmeasurement/unit-tck.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/unit-tck)
 [![License](http://img.shields.io/badge/license-BSD3-blue.svg?style=flat-square)](http://opensource.org/licenses/BSD-3-Clause)
 
-The current module contains the technology compatibility kit of JSR 363.
+The current module contains the technology compatibility kit of JSR 385.
 
 To setup the TCK with your implementation you must follow the following steps:
 
@@ -64,3 +64,10 @@ To override the default TCK report file
 -Dtec.units.tck.verbose=yes/no
 ```
 To toggle the `verbose` option of the TCK for extended test output. The default is `false`. And you normally won't need to set this unless you require detailed analysis or issue resolution.
+
+---
+**NOTE**
+
+Starting with release **1.1** the groupId of this Parent POM changes from a "virtual" domain **tec.uom** to **tech.uom**. Laying the ground for the 2.x releases.
+
+---
