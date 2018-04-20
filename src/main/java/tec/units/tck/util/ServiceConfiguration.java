@@ -78,6 +78,17 @@ public interface ServiceConfiguration{
     Collection<Class> getDimensionClasses();
     
     /**
+     * List a collection of {@link Prefix} implementations.<p>
+     * This enables the TCK to check the basic implementation compliance.
+     *
+     * @return a collection with {@link Prefix} implementations to be tested.
+     * @since 2.0
+     */
+    @SuppressWarnings("rawtypes")
+    Collection<Class> getPrefixClasses();
+    // Although this is already given by the API it allows to check for additional implementations
+    
+    /**
      * Return a collection with all supported {@link Quantity} types. The list
      * must not return <tt>null</tt>, but could be empty in certain profiles.
      * 

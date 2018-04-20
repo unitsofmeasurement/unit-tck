@@ -43,7 +43,7 @@ import tec.units.tck.TCKSetup;
  * Tests for Fundamental Types
  *
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, August 16, 2016
+ * @version 1.1, April 20, 2018
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -72,10 +72,22 @@ public class FundamentalTypesTest {
     }
     
     /**
-     * Ensure at least one Quantity implementation
+     * Ensure at least one Prefix implementation
      * is available/registered.
      */
     @SpecAssertion(section = "4.1", id = "41-A3")
+    @Test(groups = { "core" }, description = "4.1 Ensure at least one Prefix implementation is available/registered.")
+    public void testEnsureHasPrefix() {
+        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
+        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getPrefixClasses().isEmpty());
+        AssertJUnit.assertTrue(TCKSetup.getConfiguration().getPrefixClasses().size() >= 2); // The 2 API prefixes must be there
+    }
+    
+    /**
+     * Ensure at least one Quantity implementation
+     * is available/registered.
+     */
+    @SpecAssertion(section = "4.1", id = "41-A4")
     @Test(groups = { "core" }, description = "4.1 Ensure at least one Quantity implementation is available/registered.")
     public void testEnsureHasQuantity() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);

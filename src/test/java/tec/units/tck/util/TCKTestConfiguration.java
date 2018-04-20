@@ -56,7 +56,7 @@ import java.util.*;
  * 
  * @author Werner Keil
  * @author Muhammed Almas
- * @version 1.0, April 1, 2018
+ * @version 1.1, April 20, 2018
  * @since 1.0
  */
 public final class TCKTestConfiguration implements ServiceConfiguration {
@@ -97,6 +97,11 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 	@SuppressWarnings("rawtypes")
 	public Collection<Class> getDimensionClasses() {
 		return Arrays.asList(new Class[] { QuantityDimension.class });
+	}
+	
+	@SuppressWarnings("rawtypes")
+	public Collection<Class> getPrefixClasses() {
+		return Arrays.asList(new Class[] { MetricPrefix.class, BinaryPrefix.class });
 	}
 
 	public Collection<Dimension> getBaseDimensions() {
