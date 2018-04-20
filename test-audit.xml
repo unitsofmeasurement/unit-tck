@@ -69,8 +69,17 @@
 			</assertion>
 		</group>
 		<group>
-			<text>Quantity implementation</text>
+			<text>Prefix implementation</text>
 			<assertion id="41-A3">
+				<text>Ensure at least one javax.measure.Prefix implementation
+					is
+					available/registered.
+				</text>
+			</assertion>
+		</group>
+		<group>
+			<text>Quantity implementation</text>
+			<assertion id="41-A4">
 				<text>Ensure at least one javax.measure.Quantity implementation
 					is
 					available/registered.
