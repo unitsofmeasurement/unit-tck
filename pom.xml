@@ -191,7 +191,7 @@
 					<archive>
 						<manifest>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-							<mainClass>tec.units.tck.TCKRunner</mainClass>
+							<mainClass>tech.units.tck.TCKRunner</mainClass>
 						</manifest>
 						<manifestEntries>
 							<Specification-Title>Units of Measurement API</Specification-Title>
@@ -216,7 +216,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>tec.units.tck.TCKRunner</mainClass>
+					<mainClass>tech.units.tck.TCKRunner</mainClass>
 				</configuration>
 			</plugin>
 
@@ -229,8 +229,8 @@
 				<extensions>true</extensions>
 				<configuration>
 					<instructions>
-						<Export-Package>tec.units.tck.*</Export-Package>
-						<!-- <Private-Package>tec.units.tck.internal.*</Private-Package> -->
+						<Export-Package>tech.units.tck.*</Export-Package>
+						<!-- <Private-Package>tech.units.tck.internal.*</Private-Package> -->
 					</instructions>
 				</configuration>
 			</plugin>
@@ -451,7 +451,7 @@
 							</execution>
 						</executions>
 						<configuration>
-							<mainClass>tec.units.tck.TCKRunner</mainClass>
+							<mainClass>tech.units.tck.TCKRunner</mainClass>
 							<arguments>
 								<argument>-version</argument>
 							</arguments>

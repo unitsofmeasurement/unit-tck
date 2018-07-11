@@ -13,7 +13,7 @@ To setup the TCK with your implementation you must follow the following steps:
 
  1. Create a new Maven project. You could also use compatible alternatives like Gradle.
  2. Add this TCK and your implementation as dependency.
- 3. Implement a class of type tec.units.tck.TestSetup, read the Javadoc, what 
+ 3. Implement a class of type tech.units.tck.TestSetup, read the Javadoc, what 
   you must provide with this class.
   
 ## Running
@@ -37,7 +37,7 @@ mvn exec:java -Pversion
 ### Profiles
 When running the TCK (`mvn test`) by calling the system property
 ```
--Dtec.units.tck.profile=<profile>
+-Dtech.units.tck.profile=<profile>
 ```
 you may select one of the following **profiles**: 
 - MINIMAL
@@ -54,15 +54,15 @@ You may pass the profile name in either case, `TCKRunner` will automatically con
 ### Other System Properties
 In addition to profiles, the following system properties allow you to override default behavior and storage locations of the TCK:
 ```
--Dtec.units.tck.outputDir=<output directory>
+-Dtech.units.tck.outputDir=<output directory>
 ```
 To override the default output directory
 ```
--Dtec.units.tck.reportFile=<file name>
+-Dtech.units.tck.reportFile=<file name>
 ```
 To override the default TCK report file
 ```
--Dtec.units.tck.verbose=yes/no
+-Dtech.units.tck.verbose=yes/no
 ```
 To toggle the `verbose` option of the TCK for extended test output. The default is `false`. And you normally won't need to set this unless you require detailed analysis or issue resolution.
 

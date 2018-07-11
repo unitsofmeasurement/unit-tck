@@ -31,8 +31,8 @@
 
 -->
 <specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://jboss.com/products/weld/tec.units.tck/audit"
-	xsi:schemaLocation="http://jboss.com/products/weld/tec.units.tck/audit"
+	xmlns="http://jboss.com/products/weld/tech.units.tck/audit"
+	xsi:schemaLocation="http://jboss.com/products/weld/tech.units.tck/audit"
 	name="JSR 385 Units of Measurement" version="2.0.0" id="JSR 385"
 	generateSectionIds="false">
 	<section id="0" title="TCK Setup">
@@ -41,7 +41,7 @@
 			<text>Tests the correct setup of the TCK</text>
 			<assertion id="Setup">
 				<text>Ensure an implementation of
-					tec.units.tck.util.ServiceConfiguration is registered using the
+					tech.units.tck.util.ServiceConfiguration is registered using the
 					java.util.ServiceLoader.
 				</text>
 			</assertion>
