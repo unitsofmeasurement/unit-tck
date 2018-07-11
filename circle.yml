@@ -1,8 +1,0 @@
-machine:
-  java:
-    version: oraclejdk8
-test:
-   override:
-     - mvn install
-   post:
-     - cp $HOME/unit-tck/target/*.html $CIRCLE_ARTIFACTS
