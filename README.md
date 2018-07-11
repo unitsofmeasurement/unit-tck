@@ -4,6 +4,7 @@ JSR 363 Technology Compatibility Kit (TCK)
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/tec.units/unit-tck/badge.svg)](https://maven-badges.herokuapp.com/maven-central/tec.units/unit-tck)
 [![Circle CI](https://circleci.com/gh/unitsofmeasurement/unit-tck.svg?style=svg)](https://circleci.com/gh/unitsofmeasurement/unit-tck)
+[![Stability: Maintenance](https://masterminds.github.io/stability/maintenance.svg)](https://masterminds.github.io/stability/maintenance.html)
 [![License](http://img.shields.io/badge/license-BSD3-blue.svg?style=flat-square)](http://opensource.org/licenses/BSD-3-Clause)
 
 The current module contains the technology compatibility kit of JSR 363.
