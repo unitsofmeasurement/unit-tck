@@ -69,6 +69,6 @@ To toggle the `verbose` option of the TCK for extended test output. The default 
 ---
 **NOTE**
 
-Starting with release **1.1** the groupId of this Parent POM changes from a "virtual" domain **tec.uom** to **tech.uom**. Laying the ground for the 2.x releases.
+Starting with release **1.1** the groupId of this Parent POM changes from a "virtual" domain **tec.units** to **tech.units**. Laying the ground for the 2.x releases.
 
 ---
