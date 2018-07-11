@@ -53,7 +53,7 @@ import tec.units.tck.TCKSetup;
 /**
  * Test class for quantities
  * @author Werner Keil
- * @version 1.0, August 16, 2016
+ * @version 1.1, July 11, 2018
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -64,7 +64,7 @@ public class QuantityTypesTest {
 	// ************************
 
 	/**
-	 * Access a QuantityFactory for each registered type.
+	 * Check if all SI Base Quantities are used.
 	 */
 	@Test(groups = { "base_quantity" }, description = "4.5 Ensure all SI Base Quantities are used by an implementation")
 	@SpecAssertion(section = "4.5", id = "45-A1")
@@ -87,7 +87,7 @@ public class QuantityTypesTest {
 	}
 	
 	/**
-	 * Access a QuantityFactory for each registered type.
+	 * Ensure all Supported Quantities are used by an implementation.
 	 */
 	@Test(groups = { "derived_quantity" }, description = "4.5 Ensure all Supported Quantities are used by an implementation")
 	@SpecAssertion(section = "4.5", id = "45-A2")
