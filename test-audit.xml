@@ -398,6 +398,14 @@
             <text>Access available Systems OfUnits in SystemOfUnitsService.
             </text>
         </assertion>
+        <assertion id="54-A7">
+        	<text>Access Binary Prefixes in SystemOfUnitsService.
+            </text>
+        </assertion>
+        <assertion id="54-A8">
+            <text>Access Metric Prefixes in SystemOfUnitsService.
+            </text>
+        </assertion>
     </group>
 	<section id="5.5" title="Obtaining Unit Instances" />
     <section id="5.5.1" title="Units Obtained from Unit Systems">
