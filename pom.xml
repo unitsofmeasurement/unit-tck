@@ -145,8 +145,8 @@
                 <configuration>
                     <header>src/main/config/header.txt</header>
                     <properties>
-                        <owner>Jean-Marie Dautelle, Werner Keil, V2COM</owner>
-                        <currentYear>2017</currentYear>
+                        <owner>Jean-Marie Dautelle, Werner Keil, Otavio Santana</owner>
+                        <currentYear>2018</currentYear>
                     </properties>
                     <excludes>
                         <exclude>**/pom.xml</exclude>
