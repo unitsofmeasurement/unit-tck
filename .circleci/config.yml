@@ -24,7 +24,7 @@ jobs:
       - checkout
         
       # run tests!
-      - run: mvn --batch-mode test jacoco:report
+      - run: mvn clean
       
       - run: bash <(curl -s https://codecov.io/bash)
   deployment:
@@ -53,6 +53,3 @@ workflows:
   build_deploy:
     jobs:
       - build
-      - deployment:
-          requires:
-            - build
