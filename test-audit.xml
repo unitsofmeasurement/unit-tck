@@ -333,6 +333,10 @@
 				ServiceProvider
 			</text>
 		</assertion>
+		<assertion id="51-A2">
+			<text>Ensure every QuantityFactory creates quantities with the correct scale
+			</text>
+		</assertion>
 	</group>
 	<section id="5.2" title="System of Units" />
 	<group>

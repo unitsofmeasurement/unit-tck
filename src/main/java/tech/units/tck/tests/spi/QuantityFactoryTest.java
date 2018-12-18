@@ -29,16 +29,18 @@
  */
 package tech.units.tck.tests.spi;
 
+import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 
 import java.util.Set;
-
 import javax.measure.Quantity;
+import javax.measure.Quantity.Scale;
+import javax.measure.Unit;
+import javax.measure.quantity.Length;
 import javax.measure.spi.QuantityFactory;
 import javax.measure.spi.ServiceProvider;
-
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
 import org.reflections.Reflections;
@@ -47,31 +49,47 @@ import org.testng.annotations.Test;
 /**
  * Tests for QuantityFactory
  *
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0, August 16, 2016
+ * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @version 1.1, December 18, 2018
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class QuantityFactoryTest {
     private static final String MEASURE_PACKAGE = "javax.measure";
     private static final String SECTION = "5.1";
-    
+
     /**
      * Ensure at least one QuantityFactory implementation exists
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    @Test(groups = {"spi"}, description = SECTION + " Ensure a QuantityFactory implementation exists for every ServiceProvider")
+    @Test(groups = { "spi" }, description = SECTION + " Ensure a QuantityFactory implementation exists for every ServiceProvider")
     @SpecAssertion(section = SECTION, id = "51-A1")
     public void testQuantityFactoryExists() {
-	for (ServiceProvider provider : ServiceProvider.available()) {
-	    assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
+        for (ServiceProvider provider : ServiceProvider.available()) {
+            assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
             Reflections reflections = new Reflections(MEASURE_PACKAGE);
             Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
             for (Class clazz : subTypes) {
                 QuantityFactory<?> factory = provider.getQuantityFactory(clazz);
-                assertNotNull("Section " + SECTION + ": No QuantityFactory available for " + clazz.getSimpleName()
-                	+ " in " + provider, factory);
+                assertNotNull("Section " + SECTION + ": No QuantityFactory available for " + clazz.getSimpleName() + " in " + provider, factory);
             }
-	}
+        }
+    }
+
+    /**
+     * Ensure every QuantityFactory creates quantities with the correct scale
+     * @since 2.0
+     */
+    @Test(groups = { "spi" }, description = SECTION + " Ensure a QuantityFactory implementation returns the correct scale")
+    @SpecAssertion(section = SECTION, id = "51-A2")
+    public void testQuantityFactoryScale() {
+        for (ServiceProvider provider : ServiceProvider.available()) {
+            QuantityFactory<Length> factory = provider.getQuantityFactory(Length.class);
+            Unit<Length> systemUnit = ServiceProvider.current().getSystemOfUnitsService().getSystemOfUnits().getUnit(Length.class);
+            for (Scale scale : Scale.values()) {
+                Quantity<Length> result = factory.create(10d, systemUnit, scale);
+                assertEquals(scale, result.getScale());
+            }
+        }
     }
 }
