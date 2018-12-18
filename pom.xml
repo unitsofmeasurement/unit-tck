@@ -34,8 +34,8 @@
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
-		<jsr.version>2.0-EDR</jsr.version>
-		<ri.version>2.0-EDR</ri.version>
+		<jsr.version>2.0-SNAPSHOT</jsr.version>
+		<ri.version>2.0-SNAPSHOT</ri.version>
 		<jdkVersion>1.8</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>

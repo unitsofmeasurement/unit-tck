@@ -105,7 +105,18 @@ public class QuantityInterfaceTest {
     @Test(groups = {"core"}, description = "4.4.1 Ensure registered Quantity classes implement asType method.")
     public void testQuantityCastAsType() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.4.1.1", type, Quantity.class, "asType", Class.class);
+            TestUtils.testHasPublicMethod("Section 4.4.1", type, Quantity.class, "asType", Class.class);
+        }
+    }
+    
+    /**
+     * Test that Quantity implementations override asType method.
+     */
+    @SpecAssertion(section = SECTION, id = "441-A6")
+    @Test(groups = {"core"}, description = "4.4.1 Ensure registered Quantity classes implement getScale method.")
+    public void testQuantityScale() {
+        for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.4.1", type, "getScale");
         }
     }
 

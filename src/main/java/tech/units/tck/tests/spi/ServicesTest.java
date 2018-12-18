@@ -54,7 +54,7 @@ import org.testng.annotations.Test;
  * Test class for Services.
  * 
  * @author Werner Keil
- * @version 1.0, August 16, 2016
+ * @version 1.1, December 18, 2018
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -168,6 +168,7 @@ public class ServicesTest {
 
 	/**
 	 * Access Binary Prefixes in SystemOfUnitsService.
+	 * @since 2.0
 	 */
 	@Test(groups = { "spi" }, description = DESCRIPTION)
 	@SpecAssertion(section = SECTION, id = "54-A7")
@@ -176,7 +177,7 @@ public class ServicesTest {
 			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
 			final SystemOfUnitsService service = provider.getSystemOfUnitsService();
 			assertNotNull("Section " + SECTION + ": SystemOfUnitsService is null", service);
-			Set<Prefix> prefixes = service.getPrefixes(BinaryPrefix.class);
+			Set<BinaryPrefix> prefixes = service.getPrefixes(BinaryPrefix.class);
 			assertNotNull("Section " + SECTION + ": Binary Prefixes are null", prefixes);
 			assertFalse("Section " + SECTION + " No Binary Prefixes found", prefixes.isEmpty());
 			assertEquals(8, prefixes.size(), "Section " + SECTION + " Wrong Number of Binary Prefixes");
@@ -185,6 +186,7 @@ public class ServicesTest {
 	
 	/**
 	 * Access Metric Prefixes in SystemOfUnitsService.
+	 * @since 2.0
 	 */
 	@Test(groups = { "spi" }, description = DESCRIPTION)
 	@SpecAssertion(section = SECTION, id = "54-A8")
@@ -193,7 +195,7 @@ public class ServicesTest {
 			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
 			final SystemOfUnitsService service = provider.getSystemOfUnitsService();
 			assertNotNull("Section " + SECTION + ": SystemOfUnitsService is null", service);
-			Set<Prefix> prefixes = service.getPrefixes(MetricPrefix.class);
+			Set<MetricPrefix> prefixes = service.getPrefixes(MetricPrefix.class);
 			assertNotNull("Section " + SECTION + ": Metric Prefixes are null", prefixes);
 			assertFalse("Section " + SECTION + " No Metric Prefixes found", prefixes.isEmpty());
 			assertEquals(20, prefixes.size(), "Section " + SECTION + " Wrong Number of Metric Prefixes");
