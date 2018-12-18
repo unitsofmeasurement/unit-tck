@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2017, Jean-Marie Dautelle, Werner Keil, V2COM.
+ * Copyright (c) 2005-2018, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -47,7 +47,7 @@ import tech.units.tck.util.TestUtils;
  *
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @author Almas Shaikh
- * @version 1.0, August 16, 2016
+ * @version 1.1, December 18, 2018
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -55,21 +55,43 @@ public class QuantityInterfaceTest {
     private static final String SECTION = "4.4.1";
     
     /**
-     * Test that Quantity implementations override equals.
+     * Test that Quantity implementations override asType method.
      */
     @SpecAssertion(section = SECTION, id = "441-A1")
+    @Test(groups = {"core"}, description = SECTION + " Ensure registered Quantity classes implement asType method.")
+    public void testQuantityCastAsType() {
+        for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.4.1", type, Quantity.class, "asType", Class.class);
+        }
+    }
+    /**
+     * Test that Quantity implementations override equals.
+     */
+    @SpecAssertion(section = SECTION, id = "441-A2")
     @Test(groups = {"core"}, description = SECTION + " Ensure registered Quantity classes override equals.")
     public void testQuantityEquals() {
         for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
             TestUtils.testHasPublicMethod("Section " + SECTION, type, "equals", true);
         }
     }
+    
+    /**
+     * Test that Quantity implementations override getScale.
+     */
+    @SpecAssertion(section = SECTION, id = "441-A3")
+    @Test(groups = {"core"}, description = SECTION + " Ensure registered Quantity classes implement getScale method.")
+    public void testQuantityGetScale() {
+        for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.4.1", type, "getScale");
+        }
+    }
+
 
     /**
      * Test that Quantity implementations override getUnit.
      */
-    @SpecAssertion(section = SECTION, id = "441-A2")
-    @Test(groups = {"core"}, description = "4.4.1 Ensure registered Quantity classes implement getUnit.")
+    @SpecAssertion(section = SECTION, id = "441-A4")
+    @Test(groups = {"core"}, description = SECTION + " Ensure registered Quantity classes implement getUnit.")
     public void testQuantityGetUnit() {
         for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
             TestUtils.testHasPublicMethod("Section 4.4.1", type, "getUnit");
@@ -79,8 +101,8 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override getValue.
      */
-    @SpecAssertion(section = "4.4.1", id = "441-A3")
-    @Test(groups = {"core"}, description = "4.4.1 Ensure registered Quantity classes implement getValue.")
+    @SpecAssertion(section = "4.4.1", id = "441-A5")
+    @Test(groups = {"core"}, description = SECTION + " Ensure registered Quantity classes implement getValue.")
     public void testQuantityGetValue() {
         for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
             TestUtils.testHasPublicMethod("Section 4.4.1", type, "getValue");
@@ -90,36 +112,14 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override hashCode.
      */
-    @SpecAssertion(section = SECTION, id = "441-A4")
-    @Test(groups = {"core"}, description = "4.4.1 Ensure registered Quantity classes override hashCode.")
+    @SpecAssertion(section = SECTION, id = "441-A6")
+    @Test(groups = {"core"}, description = SECTION + " Ensure registered Quantity classes override hashCode.")
     public void testQuantityHashcode() {
         for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
             TestUtils.testHasPublicMethod("Section 4.4.1", type, "hashCode");
         }
     }
-
-    /**
-     * Test that Quantity implementations override asType method.
-     */
-    @SpecAssertion(section = SECTION, id = "441-A5")
-    @Test(groups = {"core"}, description = "4.4.1 Ensure registered Quantity classes implement asType method.")
-    public void testQuantityCastAsType() {
-        for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.4.1", type, Quantity.class, "asType", Class.class);
-        }
-    }
     
-    /**
-     * Test that Quantity implementations override asType method.
-     */
-    @SpecAssertion(section = SECTION, id = "441-A6")
-    @Test(groups = {"core"}, description = "4.4.1 Ensure registered Quantity classes implement getScale method.")
-    public void testQuantityScale() {
-        for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.4.1", type, "getScale");
-        }
-    }
-
     /**
      * Test that Quantity implementations override add.
      */

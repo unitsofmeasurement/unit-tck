@@ -1,36 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-
-    Units of Measurement TCK
-    Copyright © 2005-2018, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
-
-    All rights reserved.
-
-    Redistribution and use in source and binary forms, with or without modification,
-    are permitted provided that the following conditions are met:
-
-    1. Redistributions of source code must retain the above copyright notice,
-       this list of conditions and the following disclaimer.
-
-    2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-       and the following disclaimer in the documentation and/or other materials provided with the distribution.
-
-    3. Neither the name of JSR-385 nor the names of its contributors may be used to endorse or promote products
-       derived from this software without specific prior written permission.
-
-    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-    THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-    ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-    FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
-    AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-    EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
--->
-<specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<!-- Units of Measurement TCK Copyright © 2005-2018, Jean-Marie Dautelle, 
+	Werner Keil, Otavio Santana. All rights reserved. Redistribution and use 
+	in source and binary forms, with or without modification, are permitted provided 
+	that the following conditions are met: 1. Redistributions of source code 
+	must retain the above copyright notice, this list of conditions and the following 
+	disclaimer. 2. Redistributions in binary form must reproduce the above copyright 
+	notice, this list of conditions and the following disclaimer in the documentation 
+	and/or other materials provided with the distribution. 3. Neither the name 
+	of JSR-385 nor the names of its contributors may be used to endorse or promote 
+	products derived from this software without specific prior written permission. 
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" 
+	AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE 
+	IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE 
+	ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE 
+	LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
+	DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR 
+	SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER 
+	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, 
+	OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE 
+	USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. -->
+<specification
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://jboss.com/products/weld/tech.units.tck/audit"
 	xsi:schemaLocation="http://jboss.com/products/weld/tech.units.tck/audit"
 	name="JSR 385 Units of Measurement" version="2.0.0" id="JSR 385"
@@ -119,15 +109,15 @@
 		<group>
 			<text>Operations on Units with same dimension as the operand</text>
 			<assertion id="42121-A1">
-				<text>Ensure the shift() operation is implemented.
+				<text>4.2.1.2.1 Ensure the alternate() operation is implemented.
 				</text>
 			</assertion>
 			<assertion id="42121-A2">
-				<text>4.2.1.2.1 Ensure the multiply() operation is implemented.
+				<text>4.2.1.2.1 Ensure the divide() operation is implemented.
 				</text>
 			</assertion>
 			<assertion id="42121-A3">
-				<text>4.2.1.2.1 Ensure the divide() operation is implemented.
+				<text>4.2.1.2.1 Ensure the divide(double) operation is implemented.
 				</text>
 			</assertion>
 			<assertion id="42121-A4">
@@ -135,11 +125,15 @@
 				</text>
 			</assertion>
 			<assertion id="42121-A5">
-				<text>4.2.1.2.1 Ensure the divide(double) operation is implemented.
+				<text>4.2.1.2.1 Ensure the multiply(double) operation is implemented.
 				</text>
 			</assertion>
 			<assertion id="42121-A6">
-				<text>4.2.1.2.1 Ensure the alternate() operation is implemented.
+				<text>Ensure the prefix() operation is implemented.
+				</text>
+			</assertion>	
+			<assertion id="42121-A7">
+				<text>Ensure the shift() operation is implemented.
 				</text>
 			</assertion>
 		</group>
@@ -214,25 +208,26 @@
 				</text>
 			</assertion>
 			<assertion id="424-A3">
-                <text>Ensure registered Dimension classes override multiply.
-                </text>
-            </assertion>
-            <assertion id="424-A4">
-                <text>Ensure registered Dimension classes override divide.
-                </text>
-            </assertion>
-            <assertion id="424-A5">
-                <text>Ensure registered Dimension classes override root.
-                </text>
-            </assertion>
-            <assertion id="424-A6">
-                <text>Ensure registered Dimension classes override pow.
-                </text>
-            </assertion>
-            <assertion id="424-A7">
-                <text>Ensure registered Dimension classes override getBaseDimensions.
-                </text>
-            </assertion>
+				<text>Ensure registered Dimension classes override multiply.
+				</text>
+			</assertion>
+			<assertion id="424-A4">
+				<text>Ensure registered Dimension classes override divide.
+				</text>
+			</assertion>
+			<assertion id="424-A5">
+				<text>Ensure registered Dimension classes override root.
+				</text>
+			</assertion>
+			<assertion id="424-A6">
+				<text>Ensure registered Dimension classes override pow.
+				</text>
+			</assertion>
+			<assertion id="424-A7">
+				<text>Ensure registered Dimension classes override
+					getBaseDimensions.
+				</text>
+			</assertion>
 		</group>
 	</section>
 
@@ -277,19 +272,27 @@
 		<group>
 			<text>Basic Operations</text>
 			<assertion id="441-A1">
-				<text>Ensure the equals() operation is implemented.
+				<text>Ensure the asType() operation is implemented.
 				</text>
 			</assertion>
 			<assertion id="441-A2">
-				<text>Ensure the getUnit() method is implemented.
+				<text>Ensure the equals() operation is implemented.
 				</text>
 			</assertion>
 			<assertion id="441-A3">
-				<text>Ensure the getValue() method is implemented.
+				<text>Ensure the hashCode() operation is implemented.
 				</text>
 			</assertion>
 			<assertion id="441-A4">
-				<text>Ensure the hashCode() operation is implemented.
+				<text>Ensure the getScale() method is implemented.
+				</text>
+			</assertion>
+			<assertion id="441-A5">
+				<text>Ensure the getUnit() method is implemented.
+				</text>
+			</assertion>
+			<assertion id="441-A6">
+				<text>Ensure the getValue() method is implemented.
 				</text>
 			</assertion>
 		</group>
@@ -324,35 +327,37 @@
 
 	<section id="5" title="SPI" />
 	<section id="5.1" title="Quantity Factory" />
-    <group>
-        <assertion id="51-A1">
-            <text>Ensure a QuantityFactory implementation exists for every ServiceProvider
-            </text>
-        </assertion>
-    </group>
+	<group>
+		<assertion id="51-A1">
+			<text>Ensure a QuantityFactory implementation exists for every
+				ServiceProvider
+			</text>
+		</assertion>
+	</group>
 	<section id="5.2" title="System of Units" />
 	<group>
-        <assertion id="52-A1">
-            <text>Ensure at least one javax.measure.spi.SystemOfUnits implementation is available
-            </text>
-        </assertion>
-        <assertion id="52-A2">
-            <text>Ensure the getName() method is implemented.
-            </text>
-        </assertion>
-        <assertion id="52-A3">
-            <text>Ensure the getUnit() method is implemented.
-            </text>
-        </assertion>
-        <assertion id="52-A4">
-            <text>Ensure the getUnits() method is implemented.
-            </text>
-        </assertion>
-        <assertion id="52-A5">
-            <text>Ensure the getUnits() method is implemented.
-            </text>
-        </assertion>
-    </group>
+		<assertion id="52-A1">
+			<text>Ensure at least one javax.measure.spi.SystemOfUnits
+				implementation is available
+			</text>
+		</assertion>
+		<assertion id="52-A2">
+			<text>Ensure the getName() method is implemented.
+			</text>
+		</assertion>
+		<assertion id="52-A3">
+			<text>Ensure the getUnit() method is implemented.
+			</text>
+		</assertion>
+		<assertion id="52-A4">
+			<text>Ensure the getUnits() method is implemented.
+			</text>
+		</assertion>
+		<assertion id="52-A5">
+			<text>Ensure the getUnits() method is implemented.
+			</text>
+		</assertion>
+	</group>
 	<section id="5.3" title="Service Provider" />
 	<group>
 		<assertion id="53-A1">
@@ -368,64 +373,64 @@
 			</text>
 		</assertion>
 		<assertion id="53-A4">
-            <text>ServiceProvider has a priority.
-            </text>
-        </assertion>
+			<text>ServiceProvider has a priority.
+			</text>
+		</assertion>
 	</group>
 	<section id="5.4" title="Services" />
-    <group>
-        <assertion id="54-A1">
-            <text>Access available UnitFormatServices.
-            </text>
-        </assertion>
-        <assertion id="54-A2">
-            <text>Access Default UnitFormats in UnitFormatServices.
-            </text>
-        </assertion>
-        <assertion id="54-A3">
-            <text>Access available UnitFormats in UnitFormatServices.
-            </text>
-        </assertion>
-        <assertion id="54-A4">
-            <text>Access available SystemOfUnitsServices.
-            </text>
-        </assertion>
-        <assertion id="54-A5">
-            <text>Access default SystemOfUnits in SystemOfUnitsService.
-            </text>
-        </assertion>
-        <assertion id="54-A6">
-            <text>Access available Systems OfUnits in SystemOfUnitsService.
-            </text>
-        </assertion>
-        <assertion id="54-A7">
-        	<text>Access Binary Prefixes in SystemOfUnitsService.
-            </text>
-        </assertion>
-        <assertion id="54-A8">
-            <text>Access Metric Prefixes in SystemOfUnitsService.
-            </text>
-        </assertion>
-    </group>
+	<group>
+		<assertion id="54-A1">
+			<text>Access available UnitFormatServices.
+			</text>
+		</assertion>
+		<assertion id="54-A2">
+			<text>Access Default UnitFormats in UnitFormatServices.
+			</text>
+		</assertion>
+		<assertion id="54-A3">
+			<text>Access available UnitFormats in UnitFormatServices.
+			</text>
+		</assertion>
+		<assertion id="54-A4">
+			<text>Access available SystemOfUnitsServices.
+			</text>
+		</assertion>
+		<assertion id="54-A5">
+			<text>Access default SystemOfUnits in SystemOfUnitsService.
+			</text>
+		</assertion>
+		<assertion id="54-A6">
+			<text>Access available Systems OfUnits in SystemOfUnitsService.
+			</text>
+		</assertion>
+		<assertion id="54-A7">
+			<text>Access Binary Prefixes in SystemOfUnitsService.
+			</text>
+		</assertion>
+		<assertion id="54-A8">
+			<text>Access Metric Prefixes in SystemOfUnitsService.
+			</text>
+		</assertion>
+	</group>
 	<section id="5.5" title="Obtaining Unit Instances" />
-    <section id="5.5.1" title="Units Obtained from Unit Systems">
-        <group>
-            <text>Units Obtained from Unit Systems</text>
-            <assertion id="551-A1">
-                <text>Access a SystemOfUnits for each registered unit.
-                </text>
-            </assertion>
-        </group>
-    </section>
-     <section id="5.5.2" title="Units Obtained by Symbol Parsing">
-        <group>
-            <text>Units Obtained by Symbol Parsing</text>
-            <assertion id="552-A1">
-                <text>Parse the string representation of each registered unit.
-                </text>
-            </assertion>
-        </group>
-    </section>
+	<section id="5.5.1" title="Units Obtained from Unit Systems">
+		<group>
+			<text>Units Obtained from Unit Systems</text>
+			<assertion id="551-A1">
+				<text>Access a SystemOfUnits for each registered unit.
+				</text>
+			</assertion>
+		</group>
+	</section>
+	<section id="5.5.2" title="Units Obtained by Symbol Parsing">
+		<group>
+			<text>Units Obtained by Symbol Parsing</text>
+			<assertion id="552-A1">
+				<text>Parse the string representation of each registered unit.
+				</text>
+			</assertion>
+		</group>
+	</section>
 	<section id="5.6" title="Obtaining Quantity Instances" />
 	<section id="5.6.1" title="Quantities Obtained from a factory">
 		<group>
