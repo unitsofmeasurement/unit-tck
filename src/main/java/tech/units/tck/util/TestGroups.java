@@ -37,7 +37,7 @@ import tech.uom.lib.common.function.DescriptionSupplier;
  * TestNG groups and profiles used in the JSR 385 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.1, April 1, 2018
+ * @version 1.2, January 16, 2019
  * @since 1.0
  */
 public final class TestGroups {
@@ -47,24 +47,19 @@ public final class TestGroups {
      *
      * The most important groups (used by {@link TCKRunner}) are:
      * <ul>
-     * <li>{@link #core} - used to include tests for the core elements of the
-     * API. These tests are <b>mandatory</b> in every profile.</li>
-     * <li>{@link #format} - formatting tests used to include elements in
-     * <tt>javax.measure.format</tt>.</li>
-     * <li>{@link #base_quantity} - tests to include <b>base quantities</b> in
-     * <tt>javax.measure.quantity</tt>.</li>
-     * <li>{@link #derived_quantity} - tests to include other quantities in
-     * <tt>javax.measure.quantity</tt>.</li>
-     * <li>{@link #spi} - tests to include SPI elements in
-     * <tt>javax.measure.spi</tt>.</li>
+     * <li>{@link #core} - used to include tests for the core elements of the API. These tests are <b>mandatory</b> in every profile.</li>
+     * <li>{@link #format} - formatting tests used to include elements in <tt>javax.measure.format</tt>.</li>
+     * <li>{@link #base_quantity} - tests to include <b>base quantities</b> in <tt>javax.measure.quantity</tt>.</li>
+     * <li>{@link #derived_quantity} - tests to include other quantities in <tt>javax.measure.quantity</tt>.</li>
+     * <li>{@link #spi} - tests to include SPI elements in <tt>javax.measure.spi</tt>.</li>
      * </ul>
      *
      * @author Werner Keil
-     * @version 1.0.1
+     * @version 1.1
      * @since 1.0
      */
     public enum Group {
-	core, format, base_quantity, derived_quantity, spi
+        core, format, base_quantity, derived_quantity, spi
     }
 
     /**
@@ -85,14 +80,12 @@ public final class TestGroups {
     /**
      * Quantity groups
      */
-    private static final Group[] QUANTITY_GROUPS = { core, base_quantity,
-	    derived_quantity };
+    private static final Group[] QUANTITY_GROUPS = { core, base_quantity, derived_quantity };
 
     /**
      * Quantity groups and Format
      */
-    private static final Group[] QUANTITY_GROUPS_AND_FORMAT = { core, format,
-	    base_quantity, derived_quantity };
+    private static final Group[] QUANTITY_GROUPS_AND_FORMAT = { core, format, base_quantity, derived_quantity };
 
     /**
      * SPI groups
@@ -102,55 +95,55 @@ public final class TestGroups {
     /**
      * Profiles used in the JSR 385 TCK.
      *
-     * The most important profiles (used by {@link TCKRunner}) are:
+     * Some of the most common profiles (used by {@link TCKRunner}) are:
      * <ul>
-     * <li>{@link #MINIMAL} - used to include tests for the core elements of the
-     * API. These tests are <b>mandatory</b> for every implementation.</li>
-     * <li>{@link #FORMAT} - formatting tests used to include tests for elements
-     * in <tt>javax.measure.format</tt>.</li>
+     * <li>{@link #MINIMAL} - used to include tests for the core elements of the API. These tests are <b>mandatory</b> for every implementation.</li>
+     * <li>{@link #FORMAT} - formatting tests used to include tests for elements in <tt>javax.measure.format</tt>.</li>
      * <li>{@link #FULL} - All tests in the JSR 385 TCK.</li>
      * </ul>
      *
      * @author Werner Keil
-     * @version 1.0.1
+     * @version 1.1
      * @since 1.0
      */
     public enum Profile implements DescriptionSupplier {
-	MINIMAL("Minimal", MINIMAL_GROUPS), FORMAT("Format", FORMAT_GROUPS), BASE_QUANTITY(
-		"Base Quantity", BASE_QUANTITY_GROUPS), QUANTITY("Quantity",
-		QUANTITY_GROUPS), QUANTITY_FORMAT("Quantity and Format",
-		QUANTITY_GROUPS_AND_FORMAT), SPI("SPI", SPI_GROUPS, false), FULL(
-		"Full", Group.values(), true);
+        MINIMAL("Minimal", MINIMAL_GROUPS), //
+        FORMAT("Format", FORMAT_GROUPS), //
+        BASE_QUANTITY("Base Quantity", BASE_QUANTITY_GROUPS), //
+        QUANTITY("Quantity", QUANTITY_GROUPS), //
+        QUANTITY_FORMAT("Quantity and Format", QUANTITY_GROUPS_AND_FORMAT), //
+        SPI("SPI", SPI_GROUPS, false), //
+        FULL("Full", Group.values(), true);
 
-	private final String description;
-	private final Group[] groups;
-	private final boolean isDefault;
+        private final String description;
+        private final Group[] groups;
+        private final boolean isDefault;
 
-	private Profile(String description, Group[] groups, boolean isDefault) {
-	    this.description = description;
-	    this.groups = groups;
-	    this.isDefault = isDefault;
-	}
+        private Profile(String description, Group[] groups, boolean isDefault) {
+            this.description = description;
+            this.groups = groups;
+            this.isDefault = isDefault;
+        }
 
-	private Profile(String description, Group[] groups) {
-	    this(description, groups, false);
-	}
+        private Profile(String description, Group[] groups) {
+            this(description, groups, false);
+        }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see DescriptionSupplier
-	 */
-	public String getDescription() {
-	    return description;
-	}
+        /*
+         * (non-Javadoc)
+         * 
+         * @see DescriptionSupplier
+         */
+        public String getDescription() {
+            return description;
+        }
 
-	public Group[] getGroups() {
-	    return groups;
-	}
+        public Group[] getGroups() {
+            return groups;
+        }
 
-	public boolean isDefault() {
-	    return isDefault;
-	}
+        public boolean isDefault() {
+            return isDefault;
+        }
     }
 }

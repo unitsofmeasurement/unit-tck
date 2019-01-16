@@ -148,7 +148,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         tng.setOutputDirectory(outDir);
         String verbose = System.getProperty(SYS_PROPERTY_VERBOSE);
         if ("true".equalsIgnoreCase(verbose)) {
-            tng.addListener(new VerboseReporter());
+            tng.addListener(new VerboseReporter("[VerboseUoM] "));
         }
         String reportFile = System.getProperty(SYS_PROPERTY_REPORT_FILE, "./target/tck-results.txt");
         final File file = new File(reportFile);
