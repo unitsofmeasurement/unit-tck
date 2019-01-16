@@ -40,7 +40,6 @@ import static org.testng.AssertJUnit.assertFalse;
 
 import javax.measure.BinaryPrefix;
 import javax.measure.MetricPrefix;
-import javax.measure.Prefix;
 import javax.measure.spi.FormatService;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
@@ -54,7 +53,7 @@ import org.testng.annotations.Test;
  * Test class for Services.
  * 
  * @author Werner Keil
- * @version 1.1, December 18, 2018
+ * @version 1.2, January 16, 2019
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
