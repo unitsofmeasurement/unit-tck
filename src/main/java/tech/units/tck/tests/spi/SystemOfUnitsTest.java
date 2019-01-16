@@ -134,7 +134,7 @@ public class SystemOfUnitsTest {
     		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
     	    Class<?> type = suo.getClass();
     	    TestUtils.testHasPublicMethod("Section " + SECTION, type,
-    		    "getUnits");
+    		    "getUnits", false);
     	}
     }
 

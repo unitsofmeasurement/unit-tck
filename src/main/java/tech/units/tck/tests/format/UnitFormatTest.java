@@ -78,8 +78,7 @@ public class UnitFormatTest {
     /**
      * Ensure the appendable format() operation is implemented.
      */
-    @SuppressWarnings("deprecation")
-	@SpecAssertion(section = "4.3", id = "43-A3")
+    @SpecAssertion(section = "4.3", id = "43-A3")
     @Test(groups = { "format" }, description = "4.3 Ensure the appendable format() operation is implemented.")
     public void testUnitFormatFormatAppendable() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
