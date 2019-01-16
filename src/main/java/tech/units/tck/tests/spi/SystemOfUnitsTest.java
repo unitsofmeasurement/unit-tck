@@ -65,16 +65,16 @@ public class SystemOfUnitsTest {
     @Test(groups = { "spi" }, description = SECTION
 	    + " Ensure a SystemOfUnits implementation exists for every ServiceProvider")
     public void testEnsureGotSystemOfUnits() {
-	for (ServiceProvider provider : ServiceProvider.available()) {
-	    assertNotNull("Section " + SECTION + ": ServiceProvider is null",
-		    provider);
-	    AssertJUnit.assertNotNull("SystemOfUnits is null for " + provider,
-		    provider.getSystemOfUnitsService()
-			    .getAvailableSystemsOfUnits());
-	    AssertJUnit.assertFalse("SystemOfUnits not found in " + provider,
-		    provider.getSystemOfUnitsService()
-			    .getAvailableSystemsOfUnits().isEmpty());
-	}
+    	for (ServiceProvider provider : ServiceProvider.available()) {
+    	    assertNotNull("Section " + SECTION + ": ServiceProvider is null",
+    		    provider);
+    	    AssertJUnit.assertNotNull("SystemOfUnits is null for " + provider,
+    		    provider.getSystemOfUnitsService()
+    			    .getAvailableSystemsOfUnits());
+    	    AssertJUnit.assertFalse("SystemOfUnits not found in " + provider,
+    		    provider.getSystemOfUnitsService()
+    			    .getAvailableSystemsOfUnits().isEmpty());
+    	}
     }
 
     /**
@@ -84,12 +84,12 @@ public class SystemOfUnitsTest {
     @Test(groups = { "spi" }, description = SECTION
 	    + " Ensure the getName() method is implemented.")
     public void testSystemOfUnitsGetName() {
-	for (SystemOfUnits suo : ServiceProvider.current()
-		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
-	    Class<?> type = suo.getClass();
-	    TestUtils
-		    .testHasPublicMethod("Section " + SECTION, type, "getName");
-	}
+    	for (SystemOfUnits suo : ServiceProvider.current()
+    		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
+    	    Class<?> type = suo.getClass();
+    	    TestUtils
+    		    .testHasPublicMethod("Section " + SECTION, type, "getName");
+    	}
     }
 
     /**
@@ -144,11 +144,11 @@ public class SystemOfUnitsTest {
     @SpecAssertion(section = SECTION, id = "52-A6")
     @Test(groups = { "spi" }, description = "5.2 Ensure the getUnits() method is implemented.")
     public void testSystemOfUnitsGetUnitsForDimension() {
-	for (SystemOfUnits suo : ServiceProvider.current()
-		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
-	    Class<?> type = suo.getClass();
-	    TestUtils.testHasPublicMethod("Section 5.2", type, true, Set.class,
-		    "getUnits", Dimension.class);
-	}
+    	for (SystemOfUnits suo : ServiceProvider.current()
+    		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
+    	    Class<?> type = suo.getClass();
+    	    TestUtils.testHasPublicMethod("Section 5.2", type, true, Set.class,
+    		    "getUnits", Dimension.class);
+    	}
     }
 }
