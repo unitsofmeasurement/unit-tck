@@ -145,7 +145,7 @@
                     <header>src/main/config/header.txt</header>
                     <properties>
                         <owner>Jean-Marie Dautelle, Werner Keil, Otavio Santana</owner>
-                        <currentYear>2018</currentYear>
+                        <currentYear>2019</currentYear>
                     </properties>
                     <excludes>
                         <exclude>**/pom.xml</exclude>
