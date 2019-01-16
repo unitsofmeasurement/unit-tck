@@ -365,11 +365,15 @@
 			</text>
 		</assertion>
 		<assertion id="52-A4">
-			<text>Ensure the getUnits() method is implemented.
+			<text>Ensure the getUnit(String) method is implemented.
 			</text>
 		</assertion>
 		<assertion id="52-A5">
 			<text>Ensure the getUnits() method is implemented.
+			</text>
+		</assertion>
+		<assertion id="52-A6">
+			<text>Ensure the getUnits(Dimension) method is implemented.
 			</text>
 		</assertion>
 	</group>
