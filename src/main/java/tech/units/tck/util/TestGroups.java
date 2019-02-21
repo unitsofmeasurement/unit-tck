@@ -54,20 +54,19 @@ public final class TestGroups {
      *
      * The most important groups (used by {@link TCKRunner}) are:
      * <ul>
-     * <li>{@link #Core} - used to include tests for the core elements of the API. These tests are <b>mandatory</b> in every profile.</li>
-     * <li>{@link #Format} - formatting tests used to include elements in <tt>javax.measure.format</tt>.</li>
-     * <li>{@link #Base_Quantity} - tests to include <b>base quantities</b> in <tt>javax.measure.quantity</tt>.</li>
-     * <li>{@link #Derived_Quantity} - tests to include other quantities in <tt>javax.measure.quantity</tt>.</li>
-     * <li>{@link #Spi} - tests to include SPI elements in <tt>javax.measure.spi</tt>.</li>
+     * <li>{@link #core} - used to include tests for the core elements of the API. These tests are <b>mandatory</b> in every profile.</li>
+     * <li>{@link #format} - formatting tests used to include elements in <tt>javax.measure.format</tt>.</li>
+     * <li>{@link #base_quantity} - tests to include <b>base quantities</b> in <tt>javax.measure.quantity</tt>.</li>
+     * <li>{@link #derived_quantity} - tests to include other quantities in <tt>javax.measure.quantity</tt>.</li>
+     * <li>{@link #spi} - tests to include SPI elements in <tt>javax.measure.spi</tt>.</li>
      * </ul>
      *
      * @author Werner Keil
      * @version 1.2
      * @since 1.0
-     * @deprecated While the Profile enum is useful and vital, this enum feels redundant and could better be replaced by the String constants (cause those work in TestNG annotations) 
-     */
+      */
     public enum Group implements Identifiable<String> {
-        Core(CORE), Format(FORMAT), Base_Quantity(BASE_QUANTITY), Derived_Quantity(DERIVED_QUANTITY), Spi(SPI);
+        core(CORE), format(FORMAT), base_quantity(BASE_QUANTITY), derived_quantity(DERIVED_QUANTITY), spi(SPI);
         
         private final String id;
         
@@ -87,32 +86,32 @@ public final class TestGroups {
     /**
      * Minimal groups
      */
-    private static final Group[] MINIMAL_GROUPS = { Core };
+    private static final Group[] MINIMAL_GROUPS = { core };
 
     /**
      * Format groups
      */
-    private static final Group[] FORMAT_GROUPS = { Core, Format };
+    private static final Group[] FORMAT_GROUPS = { core, format };
 
     /**
      * Base Quantity groups
      */
-    private static final Group[] BASE_QUANTITY_GROUPS = { Core, Base_Quantity };
+    private static final Group[] BASE_QUANTITY_GROUPS = { core, base_quantity };
 
     /**
      * Quantity groups
      */
-    private static final Group[] QUANTITY_GROUPS = { Core, Base_Quantity, Derived_Quantity };
+    private static final Group[] QUANTITY_GROUPS = { core, base_quantity, derived_quantity };
 
     /**
      * Quantity groups and Format
      */
-    private static final Group[] QUANTITY_GROUPS_AND_FORMAT = { Core, Format, Base_Quantity, Derived_Quantity };
+    private static final Group[] QUANTITY_GROUPS_AND_FORMAT = { core, format, base_quantity, derived_quantity };
 
     /**
      * SPI groups
      */
-    private static final Group[] SPI_GROUPS = { Core, Format, Spi };
+    private static final Group[] SPI_GROUPS = { core, format, spi };
 
     /**
      * Profiles used in the JSR 385 TCK.
