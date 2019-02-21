@@ -53,25 +53,25 @@ import javax.measure.Unit;
 /**
  * Test class for quantities
  * @author Werner Keil
- * @version 1.1, July 11, 2018
+ * @version 1.2, February 21, 2019
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class QuantityTypesTest {
 	private static final Logger logger = LoggerFactory.getLogger(QuantityTypesTest.class);
 
-	// ************************ 4.5 Supported Quantities
+	// ************************ 4.4 Supported Quantities
 	// ************************
 
 	/**
 	 * Check if all SI Base Quantities are used.
 	 */
-	@Test(groups = { "base_quantity" }, description = "4.5 Ensure all SI Base Quantities are used by an implementation")
-	@SpecAssertion(section = "4.5", id = "45-A1")
+	@Test(groups = { "base_quantity" }, description = "4.4 Ensure all SI Base Quantities are used by an implementation")
+	@SpecAssertion(section = "4.4", id = "44-A1")
 	public void testContainsBaseDimensions() {
 		final Collection<Dimension> baseDimensions = TCKSetup.getConfiguration().getBaseDimensions();
 		final Map<Dimension, Unit<?>> foundUnits = new HashMap<>();
-		assertEquals("Section 4.5: Number of SI Base Dimensions does not match", 7, baseDimensions.size());
+		assertEquals("Section 4.4: Number of SI Base Dimensions does not match", 7, baseDimensions.size());
 		final Collection<? extends Unit<?>> units = TCKSetup.getConfiguration().getUnits4Test();
 		for (Unit<?> unit : units) {
 			Dimension dim = unit.getDimension();
@@ -82,21 +82,21 @@ public class QuantityTypesTest {
 		}
 		for (Dimension dimension : baseDimensions) {
 			Unit<?> unit = foundUnits.get(dimension);
-			assertNotNull("Section 4.5: SI Base Dimension " + dimension + " not found", unit);
+			assertNotNull("Section 4.4: SI Base Dimension " + dimension + " not found", unit);
 		}
 	}
 	
 	/**
 	 * Ensure all Supported Quantities are used by an implementation.
 	 */
-	@Test(groups = { "derived_quantity" }, description = "4.5 Ensure all Supported Quantities are used by an implementation")
-	@SpecAssertion(section = "4.5", id = "45-A2")
+	@Test(groups = { "derived_quantity" }, description = "4.4 Ensure all Supported Quantities are used by an implementation")
+	@SpecAssertion(section = "4.4", id = "44-A2")
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void testContainsQuantities() {
 		final Collection<Class<? extends Quantity>> quantityTypes = TCKSetup.getConfiguration().getSupportedQuantityTypes();
 		for (Class c : quantityTypes) {
 			Unit unit = TCKSetup.getConfiguration().getUnit4Type(c);
-			assertNotNull("Section 4.5: Quantity type " + c + " not found", unit);
+			assertNotNull("Section 4.4: Quantity type " + c + " not found", unit);
 		}
 	}
 }

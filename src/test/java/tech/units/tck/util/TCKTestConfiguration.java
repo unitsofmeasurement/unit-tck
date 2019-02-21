@@ -30,6 +30,10 @@
 package tech.units.tck.util;
 
 import static tech.units.indriya.quantity.QuantityDimension.*;
+
+import tech.units.indriya.format.EBNFUnitFormat;
+import tech.units.indriya.format.NumberDelimiterQuantityFormat;
+import tech.units.indriya.format.SimpleQuantityFormat;
 import tech.units.indriya.format.SimpleUnitFormat;
 import tech.units.indriya.function.AddConverter;
 import tech.units.indriya.function.ExpConverter;
@@ -42,6 +46,7 @@ import tech.units.indriya.unit.Units;
 import tech.units.tck.util.ServiceConfiguration;
 
 import javax.measure.*;
+import javax.measure.format.QuantityFormat;
 import javax.measure.format.UnitFormat;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
@@ -56,7 +61,7 @@ import java.util.*;
  * 
  * @author Werner Keil
  * @author Muhammed Almas
- * @version 1.1, April 20, 2018
+ * @version 1.2, February 21, 2019
  * @since 1.0
  */
 public final class TCKTestConfiguration implements ServiceConfiguration {
@@ -91,7 +96,7 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 
 	public Collection<UnitFormat> getUnitFormats4Test() {
 		return Arrays
-				.asList(new UnitFormat[] { SimpleUnitFormat.getInstance() });
+				.asList(new UnitFormat[] { SimpleUnitFormat.getInstance(), EBNFUnitFormat.getInstance() });
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -122,4 +127,11 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 	public Unit getUnit4Type(Class quantityType) {
 		return Units.getInstance().getUnit(quantityType);
 	}
+
+    @Override
+    public Collection<QuantityFormat> getQuantityFormats4Test() {
+        return Arrays
+                .asList(new QuantityFormat[] { SimpleQuantityFormat.getInstance(), NumberDelimiterQuantityFormat.getInstance() });
+
+    }
 }

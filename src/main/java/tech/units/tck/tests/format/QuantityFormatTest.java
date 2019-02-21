@@ -32,8 +32,8 @@ package tech.units.tck.tests.format;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 
-import javax.measure.Unit;
-import javax.measure.format.UnitFormat;
+import javax.measure.Quantity;
+import javax.measure.format.QuantityFormat;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
@@ -44,82 +44,71 @@ import tech.units.tck.TCKSetup;
 import tech.units.tck.util.TestUtils;
 
 /**
- * Tests for UnitFormat
- * @version 1.1, February 21, 2019
- * @since 1.0
+ * Tests for QuantityFormat
+ * @version 1.0, February 21, 2019
+ * @since 2.0
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
-public class UnitFormatTest {
+public class QuantityFormatTest {
 
     /**
-     * Ensure at least one UnitFormat implementation
+     * Ensure at least one QuantityFormat implementation
      * is available/registered.
      */
-    @SpecAssertion(section = "4.5", id = "45-A1")
-    @Test(groups = { "format" }, description = "4.5 Ensure at least one UnitFormat implementation is available/registered.")
-    public void testEnsureGotUnitFormat() {
+    @SpecAssertion(section = "4.4", id = "46-A1")
+    @Test(groups = { "format" }, description = "4.6 Ensure at least one QuantityFormat implementation is available/registered.")
+    public void testEnsureGotQuantityFormat() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
-        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getUnitFormats4Test().isEmpty());
+        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getQuantityFormats4Test().isEmpty());
     }
     
     /**
      * Ensure the format() operation is implemented.
      */
-    @SpecAssertion(section = "4.5", id = "45-A2")
-    @Test(groups = { "format" }, description = "4.5 Ensure the format() operation is implemented.")
-    public void testUnitFormatFormat() {
-        for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
+    @SpecAssertion(section = "4.6", id = "46-A2")
+    @Test(groups = { "format" }, description = "4.6 Ensure the format() operation is implemented.")
+    public void testQuantityFormatFormat() {
+        for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.5", type, false, String.class, "format", Unit.class);
+            TestUtils.testHasPublicMethod("Section 4.6", type, "format", true);
+            // FIXME right now this only checks for a method name, change similar to UnitFormatTest.testUnitFormatFormat() after https://github.com/unitsofmeasurement/unit-api/issues/176 is done
         }
     }
     
     /**
      * Ensure the appendable format() operation is implemented.
      */
-    @SpecAssertion(section = "4.5", id = "45-A3")
-    @Test(groups = { "format" }, description = "4.5 Ensure the appendable format() operation is implemented.")
-    public void testUnitFormatFormatAppendable() {
-        for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
+    @SpecAssertion(section = "4.6", id = "46-A3")
+    @Test(groups = { "format" }, description = "4.6 Ensure the appendable format() operation is implemented.")
+    public void testQuantityFormatFormatAppendable() {
+        for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.5", type, false, Appendable.class, "format", Unit.class, Appendable.class);
+            TestUtils.testHasPublicMethod("Section 4.6", type, false, Appendable.class, "format", Quantity.class, Appendable.class);
         }
     }
     
     /**
      * Ensure the isLocaleSensitive() method is implemented.
      */
-    @SpecAssertion(section = "4.5", id = "45-A4")
-    @Test(groups = { "format" }, description = "4.5 Ensure the isLocaleSensitive() method is implemented.")
-    public void testUnitFormatFormatIsLocalSensitive() {
-        for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
+    @SpecAssertion(section = "4.6", id = "46-A4")
+    @Test(groups = { "format" }, description = "4.6 Ensure the isLocaleSensitive() method is implemented.")
+    public void testQuantityFormatFormatIsLocalSensitive() {
+        for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.5", type, "isLocaleSensitive", false);
-        }
-    }
-    
-    /**
-     * Ensure the label() operation is implemented.
-     */
-    @SpecAssertion(section = "4.5", id = "45-A5")
-    @Test(groups = { "format" }, description = "4.5 Ensure the label() operation is implemented.")
-    public void testUnitFormatLabel() {
-        for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
-        	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.5", type, "label", true);
+            TestUtils.testHasPublicMethod("Section 4.6", type, "isLocaleSensitive", false);
         }
     }
     
     /**
      * Ensure the parse() operation is implemented.
      */
-    @SpecAssertion(section = "4.5", id = "45-A6")
-    @Test(groups = { "format" }, description = "4.5 Ensure the parse() operation is implemented.")
-    public void testUnitFormatParse() {
-        for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
+    @SpecAssertion(section = "4.6", id = "46-A5")
+    @Test(groups = { "format" }, description = "4.6 Ensure the parse() operation is implemented.")
+    public void testQuantityFormatParse() {
+        for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.5", type, "parse", true);
+            TestUtils.testHasPublicMethod("Section 4.6", type, "parse", true);
         }
     }
 }

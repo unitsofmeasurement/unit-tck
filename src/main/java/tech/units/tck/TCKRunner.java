@@ -62,6 +62,7 @@ import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 
 import tech.units.tck.tests.FundamentalTypesTest;
+import tech.units.tck.tests.format.QuantityFormatTest;
 import tech.units.tck.tests.format.UnitFormatTest;
 import tech.units.tck.tests.quantity.QuantityInterfaceTest;
 import tech.units.tck.tests.quantity.QuantityTypesTest;
@@ -82,7 +83,7 @@ import tech.uom.lib.common.function.Versioned;
  * Main class for executing the JSR 385 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.4.1, January 16, 2019
+ * @version 1.5, February 21, 2019
  * @since 1.0
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
@@ -112,6 +113,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         classes.add(new XmlClass(UnitConversionTest.class));
         classes.add(new XmlClass(UnitDimensionTest.class));
         classes.add(new XmlClass(UnitFormatTest.class));
+        classes.add(new XmlClass(QuantityFormatTest.class));
         classes.add(new XmlClass(QuantityInterfaceTest.class));
         classes.add(new XmlClass(QuantityTypesTest.class));
         classes.add(new XmlClass(QuantityFactoryTest.class));

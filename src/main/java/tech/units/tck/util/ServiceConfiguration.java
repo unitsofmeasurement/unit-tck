@@ -33,6 +33,7 @@ import javax.measure.Dimension;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
+import javax.measure.format.QuantityFormat;
 import javax.measure.format.UnitFormat;
 
 import java.util.Collection;
@@ -43,7 +44,7 @@ import java.util.ServiceLoader;
  * interface and register it using the {@link ServiceLoader}.
  *
  * @author Werner Keil
- * @version 1.0.1, Sep 10, 2017
+ * @version 1.1, Feb 21, 2019
  * @since 1.0
  */
 public interface ServiceConfiguration{
@@ -142,4 +143,13 @@ public interface ServiceConfiguration{
      * disable certain TCK tests, e.g. if the result isn't needed by a particular profile.
      */
     Collection<UnitFormat> getUnitFormats4Test();
+    
+    /**
+     * This method allows instances of QuantityFormat to be tested for requirements and recommendations.
+     *
+     * @return the list of unit converters to be checked, not null. It is allowed to return an empty list here, which will
+     * disable certain TCK tests, e.g. if the result isn't needed by a particular profile.
+     * @since 2.0
+     */
+    Collection<QuantityFormat> getQuantityFormats4Test();
 }
