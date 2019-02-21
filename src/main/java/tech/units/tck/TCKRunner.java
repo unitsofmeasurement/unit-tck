@@ -103,7 +103,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         profile = Profile.valueOf((System.getProperty(SYS_PROPERTY_PROFILE, 
         		Profile.FULL.name()).toUpperCase()));
         for (Group group : profile.getGroups()) {
-            test.addIncludedGroup(group.name());
+            test.addIncludedGroup(group.name()); // TODO use string constants here
         }
         test.setName("TCK/Test Setup");
         final List<XmlClass> classes = new ArrayList<>();

@@ -64,6 +64,7 @@ public final class TestGroups {
      * @author Werner Keil
      * @version 1.2
      * @since 1.0
+     * @deprecated As TestNG annotations work with String values, the name() of an enum won't work and this should be replaced by the constants.
       */
     public enum Group implements Identifiable<String> {
         core(CORE), format(FORMAT), base_quantity(BASE_QUANTITY), derived_quantity(DERIVED_QUANTITY), spi(SPI);
