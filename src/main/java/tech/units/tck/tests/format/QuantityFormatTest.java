@@ -31,6 +31,7 @@ package tech.units.tck.tests.format;
 
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
+import static tech.units.tck.util.TestGroups.FORMAT;
 
 import javax.measure.Quantity;
 import javax.measure.format.QuantityFormat;
@@ -57,7 +58,7 @@ public class QuantityFormatTest {
      * is available/registered.
      */
     @SpecAssertion(section = "4.4", id = "46-A1")
-    @Test(groups = { "format" }, description = "4.6 Ensure at least one QuantityFormat implementation is available/registered.")
+    @Test(groups = { FORMAT }, description = "4.6 Ensure at least one QuantityFormat implementation is available/registered.")
     public void testEnsureGotQuantityFormat() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getQuantityFormats4Test().isEmpty());
@@ -67,7 +68,7 @@ public class QuantityFormatTest {
      * Ensure the format() operation is implemented.
      */
     @SpecAssertion(section = "4.6", id = "46-A2")
-    @Test(groups = { "format" }, description = "4.6 Ensure the format() operation is implemented.")
+    @Test(groups = { FORMAT }, description = "4.6 Ensure the format() operation is implemented.")
     public void testQuantityFormatFormat() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
@@ -80,7 +81,7 @@ public class QuantityFormatTest {
      * Ensure the appendable format() operation is implemented.
      */
     @SpecAssertion(section = "4.6", id = "46-A3")
-    @Test(groups = { "format" }, description = "4.6 Ensure the appendable format() operation is implemented.")
+    @Test(groups = { FORMAT }, description = "4.6 Ensure the appendable format() operation is implemented.")
     public void testQuantityFormatFormatAppendable() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
@@ -92,7 +93,7 @@ public class QuantityFormatTest {
      * Ensure the isLocaleSensitive() method is implemented.
      */
     @SpecAssertion(section = "4.6", id = "46-A4")
-    @Test(groups = { "format" }, description = "4.6 Ensure the isLocaleSensitive() method is implemented.")
+    @Test(groups = { FORMAT }, description = "4.6 Ensure the isLocaleSensitive() method is implemented.")
     public void testQuantityFormatFormatIsLocalSensitive() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
@@ -104,7 +105,7 @@ public class QuantityFormatTest {
      * Ensure the parse() operation is implemented.
      */
     @SpecAssertion(section = "4.6", id = "46-A5")
-    @Test(groups = { "format" }, description = "4.6 Ensure the parse() operation is implemented.")
+    @Test(groups = { FORMAT }, description = "4.6 Ensure the parse() operation is implemented.")
     public void testQuantityFormatParse() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
