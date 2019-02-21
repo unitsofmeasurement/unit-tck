@@ -112,10 +112,10 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         classes.add(new XmlClass(UnitInterfaceTest.class));
         classes.add(new XmlClass(UnitConversionTest.class));
         classes.add(new XmlClass(UnitDimensionTest.class));
-        classes.add(new XmlClass(UnitFormatTest.class));
-        classes.add(new XmlClass(QuantityFormatTest.class));
         classes.add(new XmlClass(QuantityInterfaceTest.class));
         classes.add(new XmlClass(QuantityTypesTest.class));
+        classes.add(new XmlClass(UnitFormatTest.class));
+        classes.add(new XmlClass(QuantityFormatTest.class));
         classes.add(new XmlClass(QuantityFactoryTest.class));
         classes.add(new XmlClass(SystemOfUnitsTest.class));
         classes.add(new XmlClass(ServiceProviderTest.class));
