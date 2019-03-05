@@ -32,21 +32,22 @@ package tech.units.tck.tests.format;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.util.TestGroups.FORMAT;
+import static org.testng.AssertJUnit.assertFalse;
+import static org.testng.AssertJUnit.assertNotNull;
+import static tech.units.tck.util.TestUtils.testHasPublicMethod;
 
 import javax.measure.Unit;
 import javax.measure.format.UnitFormat;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import tech.units.tck.TCKSetup;
-import tech.units.tck.util.TestUtils;
 
 /**
  * Tests for UnitFormat
- * @version 1.1, February 21, 2019
+ * @version 1.2, March 5, 2019
  * @since 1.0
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
@@ -60,8 +61,8 @@ public class UnitFormatTest {
     @SpecAssertion(section = "4.5", id = "45-A1")
     @Test(groups = { FORMAT }, description = "4.5 Ensure at least one UnitFormat implementation is available/registered.")
     public void testEnsureGotUnitFormat() {
-        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
-        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getUnitFormats4Test().isEmpty());
+        assertNotNull("TCK Configuration not available.", TCKSetup.getConfiguration());
+        assertFalse(TCKSetup.getConfiguration().getUnitFormats4Test().isEmpty());
     }
     
     /**
@@ -72,7 +73,7 @@ public class UnitFormatTest {
     public void testUnitFormatFormat() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.5", type, false, String.class, "format", Unit.class);
+            testHasPublicMethod("Section 4.5", type, false, String.class, "format", Unit.class);
         }
     }
     
@@ -84,7 +85,7 @@ public class UnitFormatTest {
     public void testUnitFormatFormatAppendable() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.5", type, false, Appendable.class, "format", Unit.class, Appendable.class);
+            testHasPublicMethod("Section 4.5", type, false, Appendable.class, "format", Unit.class, Appendable.class);
         }
     }
     
@@ -96,7 +97,7 @@ public class UnitFormatTest {
     public void testUnitFormatFormatIsLocalSensitive() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.5", type, "isLocaleSensitive", false);
+            testHasPublicMethod("Section 4.5", type, "isLocaleSensitive", false);
         }
     }
     
@@ -108,7 +109,7 @@ public class UnitFormatTest {
     public void testUnitFormatLabel() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.5", type, "label", true);
+            testHasPublicMethod("Section 4.5", type, "label", true);
         }
     }
     
@@ -120,7 +121,7 @@ public class UnitFormatTest {
     public void testUnitFormatParse() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.5", type, "parse", true);
+            testHasPublicMethod("Section 4.5", type, "parse", true);
         }
     }
 }
