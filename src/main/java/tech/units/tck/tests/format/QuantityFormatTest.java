@@ -32,21 +32,21 @@ package tech.units.tck.tests.format;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.util.TestGroups.FORMAT;
+import static tech.units.tck.util.TestUtils.testHasPublicMethod;
+import static org.testng.AssertJUnit.*;
 
 import javax.measure.Quantity;
 import javax.measure.format.QuantityFormat;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import tech.units.tck.TCKSetup;
-import tech.units.tck.util.TestUtils;
 
 /**
  * Tests for QuantityFormat
- * @version 1.0, February 21, 2019
+ * @version 1.1, March 5, 2019
  * @since 2.0
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  */
@@ -60,8 +60,8 @@ public class QuantityFormatTest {
     @SpecAssertion(section = "4.4", id = "46-A1")
     @Test(groups = { FORMAT }, description = "4.6 Ensure at least one QuantityFormat implementation is available/registered.")
     public void testEnsureGotQuantityFormat() {
-        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
-        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getQuantityFormats4Test().isEmpty());
+        assertNotNull("TCK Configuration not available.", TCKSetup.getConfiguration());
+        assertTrue(!TCKSetup.getConfiguration().getQuantityFormats4Test().isEmpty());
     }
     
     /**
@@ -72,8 +72,7 @@ public class QuantityFormatTest {
     public void testQuantityFormatFormat() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.6", type, "format", true);
-            // FIXME right now this only checks for a method name, change similar to UnitFormatTest.testUnitFormatFormat() after https://github.com/unitsofmeasurement/unit-api/issues/176 is done
+            testHasPublicMethod("Section 4.6", type, false, Appendable.class, "format", Quantity.class);
         }
     }
     
@@ -85,7 +84,7 @@ public class QuantityFormatTest {
     public void testQuantityFormatFormatAppendable() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.6", type, false, Appendable.class, "format", Quantity.class, Appendable.class);
+            testHasPublicMethod("Section 4.6", type, false, Appendable.class, "format", Quantity.class, Appendable.class);
         }
     }
     
@@ -97,7 +96,7 @@ public class QuantityFormatTest {
     public void testQuantityFormatFormatIsLocalSensitive() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.6", type, "isLocaleSensitive", false);
+            testHasPublicMethod("Section 4.6", type, "isLocaleSensitive", false);
         }
     }
     
@@ -109,7 +108,7 @@ public class QuantityFormatTest {
     public void testQuantityFormatParse() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
-            TestUtils.testHasPublicMethod("Section 4.6", type, "parse", true);
+            testHasPublicMethod("Section 4.6", type, "parse", true);
         }
     }
 }
