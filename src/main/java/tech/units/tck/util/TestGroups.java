@@ -29,7 +29,6 @@
  */
 package tech.units.tck.util;
 
-import static tech.units.tck.util.TestGroups.Group.*;
 
 import tech.uom.lib.common.function.DescriptionSupplier;
 import tech.uom.lib.common.function.Identifiable;
@@ -48,71 +47,41 @@ public final class TestGroups {
     public static final String BASE_QUANTITY = "base_quantity";
     public static final String DERIVED_QUANTITY = "derived_quantity";
     public static final String SPI = "spi";
-    
-    /**
-     * TestNG groups used in the JSR 385 TCK.
-     *
-     * The most important groups (used by {@link TCKRunner}) are:
-     * <ul>
-     * <li>{@link #core} - used to include tests for the core elements of the API. These tests are <b>mandatory</b> in every profile.</li>
-     * <li>{@link #format} - formatting tests used to include elements in <tt>javax.measure.format</tt>.</li>
-     * <li>{@link #base_quantity} - tests to include <b>base quantities</b> in <tt>javax.measure.quantity</tt>.</li>
-     * <li>{@link #derived_quantity} - tests to include other quantities in <tt>javax.measure.quantity</tt>.</li>
-     * <li>{@link #spi} - tests to include SPI elements in <tt>javax.measure.spi</tt>.</li>
-     * </ul>
-     *
-     * @author Werner Keil
-     * @version 1.2
-     * @since 1.0
-     * @deprecated As TestNG annotations work with String values, the name() of an enum won't work and this should be replaced by the constants.
-      */
-    public enum Group implements Identifiable<String> {
-        core(CORE), format(FORMAT), base_quantity(BASE_QUANTITY), derived_quantity(DERIVED_QUANTITY), spi(SPI);
-        
-        private final String id;
-        
-        private Group(String id) {
-            this.id = id;
-        }
-
-        @Override
-        /**
-         * @since 2.0
-         */
-        public String getId() {
-            return id;
-        }
-    }
 
     /**
      * Minimal groups
      */
-    private static final Group[] MINIMAL_GROUPS = { core };
+    private static final String[] MINIMAL_GROUPS = { CORE };
 
     /**
      * Format groups
      */
-    private static final Group[] FORMAT_GROUPS = { core, format };
+    private static final String[] FORMAT_GROUPS = { CORE, FORMAT };
 
     /**
      * Base Quantity groups
      */
-    private static final Group[] BASE_QUANTITY_GROUPS = { core, base_quantity };
+    private static final String[] BASE_QUANTITY_GROUPS = { CORE, BASE_QUANTITY };
 
     /**
      * Quantity groups
      */
-    private static final Group[] QUANTITY_GROUPS = { core, base_quantity, derived_quantity };
+    private static final String[] QUANTITY_GROUPS = { CORE, BASE_QUANTITY, DERIVED_QUANTITY };
 
     /**
      * Quantity groups and Format
      */
-    private static final Group[] QUANTITY_GROUPS_AND_FORMAT = { core, format, base_quantity, derived_quantity };
+    private static final String[] QUANTITY_GROUPS_AND_FORMAT = { CORE, FORMAT, BASE_QUANTITY, DERIVED_QUANTITY };
 
     /**
      * SPI groups
      */
-    private static final Group[] SPI_GROUPS = { core, format, spi };
+    private static final String[] SPI_GROUPS = { CORE, FORMAT, SPI };
+
+	/**
+	 * All groups
+	 */
+	private static final String[] ALL_GROUPS = { CORE, FORMAT, BASE_QUANTITY, DERIVED_QUANTITY, SPI };
 
     /**
      * Profiles used in the JSR 385 TCK.
@@ -135,19 +104,19 @@ public final class TestGroups {
         QUANTITY("Quantity", QUANTITY_GROUPS), //
         QUANTITY_FORMAT("Quantity and Format", QUANTITY_GROUPS_AND_FORMAT), //
         SPI("SPI", SPI_GROUPS, false), //
-        FULL("Full", Group.values(), true);
+        FULL("Full", ALL_GROUPS, true);
 
         private final String description;
-        private final Group[] groups;
         private final boolean isDefault;
+        private final String[] groups;
 
-        private Profile(String description, Group[] groups, boolean isDefault) {
+        private Profile(String description, String[] groups, boolean isDefault) {
             this.description = description;
             this.groups = groups;
             this.isDefault = isDefault;
         }
 
-        private Profile(String description, Group[] groups) {
+        private Profile(String description, String[] groups) {
             this(description, groups, false);
         }
 
@@ -160,9 +129,7 @@ public final class TestGroups {
             return description;
         }
 
-        public Group[] getGroups() {
-            return groups;
-        }
+        public String[] getGroups() { return groups; }
 
         public boolean isDefault() {
             return isDefault;
