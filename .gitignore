@@ -8,3 +8,10 @@ release.properties
 /.project
 /tck-results
 /test-output
+
+# IntelliJ #
+.idea/
+*.iml
+
+# OS Files #
+.DS_Store
