@@ -29,15 +29,14 @@
  */
 package tech.units.tck.util;
 
-
 import tech.uom.lib.common.function.DescriptionSupplier;
-import tech.uom.lib.common.function.Identifiable;
 
 /**
  * TestNG groups and profiles used in the JSR 385 TCK.
  * 
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 2.0, February 21, 2019
+ * @author <a href="mailto:werner@units.tech">Werner Keil</a>
+ * @author <a href="mailto:thodoris.bais@gmail.com">Thodoris Bais</a>
+ * @version 2.1, March 8, 2019
  * @since 1.0
  */
 public final class TestGroups {
