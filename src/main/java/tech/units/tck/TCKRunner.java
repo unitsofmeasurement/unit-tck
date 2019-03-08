@@ -75,7 +75,6 @@ import tech.units.tck.tests.spi.SystemOfUnitsTest;
 import tech.units.tck.tests.unit.UnitConversionTest;
 import tech.units.tck.tests.unit.UnitDimensionTest;
 import tech.units.tck.tests.unit.UnitInterfaceTest;
-import tech.units.tck.util.TestGroups.Group;
 import tech.units.tck.util.TestGroups.Profile;
 import tech.uom.lib.common.function.Versioned;
 
@@ -102,8 +101,8 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         final XmlTest test = new XmlTest(this);
         profile = Profile.valueOf((System.getProperty(SYS_PROPERTY_PROFILE, 
         		Profile.FULL.name()).toUpperCase()));
-        for (Group group : profile.getGroups()) {
-            test.addIncludedGroup(group.name()); // TODO use string constants here
+        for (String group : profile.getGroups()) {
+            test.addIncludedGroup(group);
         }
         test.setName("TCK/Test Setup");
         final List<XmlClass> classes = new ArrayList<>();
