@@ -45,9 +45,9 @@ import tech.units.tck.TCKSetup;
 /**
  * Testing the Unit Interface
  *
- * @author Werner Keil
+ * @author <a href="mailto:werner@units.tech">Werner Keil</a>
  * @author Almas Shaikh
- * @version 1.1, March 22, 2019
+ * @version 1.2, April 21, 2019
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -234,20 +234,7 @@ public class UnitInterfaceTest {
             testHasPublicMethod("Section 4.2.1.2.1", type, "shift", true);
         }
     }
-    
-    /**
-     * Ensure the mix() operation is implemented.
-     * @since 2.0
-     */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A8")
-    @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the mix() operation is implemented.")
-    public void testUnit42121A8_Mix() {
-        for (@SuppressWarnings("rawtypes")
-        Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.1", type, false, Unit.class, "mix", Unit.class);
-        }
-    }
-    
+      
     /**
      * Ensure the pow() operation is implemented.
      */

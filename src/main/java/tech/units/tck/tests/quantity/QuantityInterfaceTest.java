@@ -45,7 +45,7 @@ import tech.units.tck.util.TestUtils;
 /**
  * Tests for The Quantity Interface
  *
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:werner@units.tech">Werner Keil</a>
  * @author Almas Shaikh
  * @version 1.2, February 21, 2019
  * @since 1.0
