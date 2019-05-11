@@ -132,19 +132,31 @@
 				</text>
 			</assertion>
 			<assertion id="42121-A4">
-				<text>4.2.1.2.1 Ensure the multiply() operation is implemented.
+				<text>4.2.1.2.1 Ensure the divide(Number) operation is implemented.
 				</text>
 			</assertion>
 			<assertion id="42121-A5">
-				<text>4.2.1.2.1 Ensure the multiply(double) operation is implemented.
+				<text>4.2.1.2.1 Ensure the multiply() operation is implemented.
 				</text>
 			</assertion>
 			<assertion id="42121-A6">
+				<text>4.2.1.2.1 Ensure the multiply(double) operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42121-A7">
+				<text>4.2.1.2.1 Ensure the multiply(Number) operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42121-A8">
 				<text>Ensure the prefix() operation is implemented.
 				</text>
 			</assertion>	
-			<assertion id="42121-A7">
-				<text>Ensure the shift() operation is implemented.
+			<assertion id="42121-A9">
+				<text>Ensure the shift(double) operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42121-A10">
+				<text>Ensure the shift(Number) operation is implemented.
 				</text>
 			</assertion>
 		</group>

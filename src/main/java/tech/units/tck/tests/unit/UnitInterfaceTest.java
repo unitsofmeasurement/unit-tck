@@ -184,13 +184,25 @@ public class UnitInterfaceTest {
             testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "divide", double.class);
         }
     }
+
+	/**
+	 * Ensure the divide() operation is implemented.
+	 */
+	@SpecAssertion(section = "4.2.1.2", id = "42121-A4")
+	@Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the divide(Number) operation is implemented.")
+	public void testUnit42121A4_DivideByNumber() {
+		for (@SuppressWarnings("rawtypes")
+			Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+			testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "divide", Number.class);
+		}
+	}
     
     /**
      * Ensure the multiply() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A4")
+    @SpecAssertion(section = "4.2.1.2", id = "42121-A5")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the multiply() operation is implemented.")
-    public void testUnit42121A4_Multiply() {
+    public void testUnit42121A5_Multiply() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "multiply", Unit.class);
@@ -200,22 +212,34 @@ public class UnitInterfaceTest {
     /**
      * Ensure the multiply() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A5")
+    @SpecAssertion(section = "4.2.1.2", id = "42121-A6")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the multiply(double) operation is implemented.")
-    public void testUnit42121A5_MultiplyByDouble() {
+    public void testUnit42121A6_MultiplyByDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.3", type, Unit.class, "multiply", double.class);
+            testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "multiply", double.class);
         }
     }
+
+	/**
+	 * Ensure the multiply() operation is implemented.
+	 */
+	@SpecAssertion(section = "4.2.1.2", id = "42121-A7")
+	@Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the multiply(Number) operation is implemented.")
+	public void testUnit42121A7_MultiplyByNumber() {
+		for (@SuppressWarnings("rawtypes")
+			Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+			testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "multiply", Number.class);
+		}
+	}
     
     /**
      * Ensure the prefix() operation is implemented.
      * @since 2.0
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A6")
+    @SpecAssertion(section = "4.2.1.2", id = "42121-A8")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the prefix() operation is implemented.")
-    public void testUnit42121A6_Prefix() {
+    public void testUnit42121A8_Prefix() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             //testHasPublicMethod("Section 4.2.1.2.1", type, "prefix", true);
@@ -226,14 +250,26 @@ public class UnitInterfaceTest {
     /**
      * Ensure the shift() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A7")
-    @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the shift() operation is implemented.")
-    public void testUnit42121A7_Shift() {
+    @SpecAssertion(section = "4.2.1.2", id = "42121-A9")
+    @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the shift(double) operation is implemented.")
+    public void testUnit42121A9_ShiftByDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.1", type, "shift", true);
+			testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "shift", double.class);
         }
     }
+
+	/**
+	 * Ensure the shift() operation is implemented.
+	 */
+	@SpecAssertion(section = "4.2.1.2", id = "42121-A10")
+	@Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the shift(Number) operation is implemented.")
+	public void testUnit42121A10_ShiftByNumber() {
+		for (@SuppressWarnings("rawtypes")
+			Class type : TCKSetup.getConfiguration().getUnitClasses()) {
+			testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "shift", Number.class);
+		}
+	}
       
     /**
      * Ensure the pow() operation is implemented.
