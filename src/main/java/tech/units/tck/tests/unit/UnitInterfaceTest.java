@@ -217,7 +217,7 @@ public class UnitInterfaceTest {
     public void testUnit42121A6_MultiplyByDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.3", type, Unit.class, "multiply", double.class);
+            testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "multiply", double.class);
         }
     }
 
@@ -229,7 +229,7 @@ public class UnitInterfaceTest {
 	public void testUnit42121A7_MultiplyByNumber() {
 		for (@SuppressWarnings("rawtypes")
 			Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-			testHasPublicMethod("Section 4.2.1.3", type, Unit.class, "multiply", Number.class);
+			testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "multiply", Number.class);
 		}
 	}
     
@@ -252,7 +252,7 @@ public class UnitInterfaceTest {
      */
     @SpecAssertion(section = "4.2.1.2", id = "42121-A9")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the shift(double) operation is implemented.")
-    public void testUnit42121A9_Shift() {
+    public void testUnit42121A9_ShiftByDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
 			testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "shift", double.class);
@@ -264,7 +264,7 @@ public class UnitInterfaceTest {
 	 */
 	@SpecAssertion(section = "4.2.1.2", id = "42121-A10")
 	@Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the shift(Number) operation is implemented.")
-	public void testUnit42121A10_Shift() {
+	public void testUnit42121A10_ShiftByNumber() {
 		for (@SuppressWarnings("rawtypes")
 			Class type : TCKSetup.getConfiguration().getUnitClasses()) {
 			testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "shift", Number.class);
