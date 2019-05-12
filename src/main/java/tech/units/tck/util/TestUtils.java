@@ -64,7 +64,7 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 1.1, January 16, 2019
+ * @version 1.2, May 12, 2019
  * @since 1.0
  */
 @Singleton
@@ -184,7 +184,7 @@ public class TestUtils {
      *            the type to be checked.
      * @param iface
      *            the interface to be checked for.
-     * @throws Assert#fail
+     * Triggers Assert#fail
      *             if test fails.
      */
     public static void testImplementsInterface(String section, Class<?> type, Class<?> iface) {
@@ -237,12 +237,12 @@ public class TestUtils {
 
     /**
      * 
-     * @param section
-     * @param type
-     * @param trySuperclassFirst
-     * @param returnType
-     * @param name
-     * @param paramTypes
+     * @param section the section in the specification
+     * @param type the data type
+     * @param trySuperclassFirst if tht super class if available should be tested first
+     * @param returnType the expected return type
+     * @param name the name of the method
+     * @param paramTypes types of parameters
      */
     public static void testHasPublicMethod(String section, Class<?> type, boolean trySuperclassFirst, Class<?> returnType, String name,
             Class<?>... paramTypes) {
@@ -365,11 +365,11 @@ public class TestUtils {
      *            the target method name
      * @param instance
      *            the instance to call
-     * @throws NoSuchMethodException
-     * @throws SecurityException
-     * @throws IllegalAccessException
-     * @throws IllegalArgumentException
-     * @throws InvocationTargetException
+     * @throws NoSuchMethodException if no method with the given name exists.
+     * @throws SecurityException if a security problem occurs.
+     * @throws IllegalAccessException if the method may not be called, e.g. due to security constraints.
+     * @throws IllegalArgumentException if a wrong or inappropriate argument was provided.
+     * @throws InvocationTargetException if an exception thrown by an invoked method or constructor.
      * @throws TCKValidationException
      *             if test fails.
      */
