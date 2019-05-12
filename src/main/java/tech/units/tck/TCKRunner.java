@@ -82,7 +82,7 @@ import tech.uom.lib.common.function.Versioned;
  * Main class for executing the JSR 385 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.5, February 21, 2019
+ * @version 1.6, May 12, 2019
  * @since 1.0
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
@@ -91,7 +91,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
      * 
      */
     //private static final long serialVersionUID = 3189431432291353154L;
-    private static final String TCK_VERSION = "2.0.0-SNAPSHOT";
+    private static final String TCK_VERSION = "2.0.0-PRD";
     public static final String SPEC_ID = "JSR 385";
     public static final String SPEC_VERSION = "2.0.0";
     private final Profile profile;
@@ -137,7 +137,8 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
      * 
      * @param args Optional arguments to control TCK execution
      */
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     public int run(InputStream in, OutputStream out, OutputStream err, String... args) {
         System.out.println("-- " + SPEC_ID + " TCK started --");
         System.out.println("Profile: " + profile.getDescription());

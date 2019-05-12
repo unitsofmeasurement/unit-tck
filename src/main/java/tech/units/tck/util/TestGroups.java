@@ -36,7 +36,7 @@ import tech.uom.lib.common.function.DescriptionSupplier;
  * 
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
  * @author <a href="mailto:thodoris.bais@gmail.com">Thodoris Bais</a>
- * @version 2.1, March 8, 2019
+ * @version 2.2, May 12, 2019
  * @since 1.0
  */
 public final class TestGroups {
@@ -85,7 +85,7 @@ public final class TestGroups {
     /**
      * Profiles used in the JSR 385 TCK.
      *
-     * Some of the most common profiles (used by {@link TCKRunner}) are:
+     * Some of the most common profiles (used by {@link tech.units.tck.TCKRunner}) are:
      * <ul>
      * <li>{@link #MINIMAL} - used to include tests for the core elements of the API. These tests are <b>mandatory</b> for every implementation.</li>
      * <li>{@link #FORMAT} - formatting tests used to include tests for elements in <tt>javax.measure.format</tt>.</li>
@@ -93,7 +93,7 @@ public final class TestGroups {
      * </ul>
      *
      * @author Werner Keil
-     * @version 1.1
+     * @version 1.2
      * @since 1.0
      */
     public enum Profile implements DescriptionSupplier {

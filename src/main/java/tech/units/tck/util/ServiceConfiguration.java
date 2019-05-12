@@ -30,6 +30,7 @@
 package tech.units.tck.util;
 
 import javax.measure.Dimension;
+import javax.measure.Prefix;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
@@ -44,7 +45,7 @@ import java.util.ServiceLoader;
  * interface and register it using the {@link ServiceLoader}.
  *
  * @author Werner Keil
- * @version 1.1, Feb 21, 2019
+ * @version 1.2, May 12, 2019
  * @since 1.0
  */
 public interface ServiceConfiguration{
@@ -53,7 +54,7 @@ public interface ServiceConfiguration{
      * Return a collection with all {@link Quantity} classes that are implemented. The list
      * must not be empty and should contain <b>every</b> quantity class implemented.<p>
      * This enables the TCK to check in addition to the basic implementation compliance, if
-     * according {@link ServiceProvider} is registered/available.
+     * according {@code ServiceProvider} is registered/available.
      *
      * @return a collection with all implemented amount classes, not null.
      */
@@ -93,16 +94,15 @@ public interface ServiceConfiguration{
      * Return a collection with all supported {@link Quantity} types. The list
      * must not return <tt>null</tt>, but could be empty in certain profiles.
      * 
-     * @return the list of quantity types to be checked, not <tt>null</tt>. It is allowed to return an empty list here, which will
-     *
-     * @return a collection with all implemented amount classes, not null.
+     * @return the list of quantity types to be checked, not <tt>null</tt>. 
+     * It is allowed to return an empty list here, which will return a collection with all implemented amount classes, not null.
      */
     @SuppressWarnings("rawtypes")
     Collection<Class<? extends Quantity>> getSupportedQuantityTypes();
     
     /**
      * Returns a matching unit for the specified quantity type.
-     * This is a "helper method" to avoid direct references to {@link SystemOfUnits} or implementations in profiles without SPI.
+     * This is a "helper method" to avoid direct references to {@code SystemOfUnits} or implementations in profiles without SPI.
      * 
      * @param <Q>
      *            the compile-time quantity type.
