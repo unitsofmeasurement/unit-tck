@@ -422,12 +422,6 @@
 
 	<profiles>
 		<profile>
-			<id>jdk7</id>
-			<properties>
-				<jdkVersion>1.7</jdkVersion>
-			</properties>
-		</profile>
-		<profile>
 			<id>jdk8</id>
 			<properties>
 				<jdkVersion>1.8</jdkVersion>
