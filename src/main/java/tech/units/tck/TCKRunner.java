@@ -72,6 +72,7 @@ import tech.units.tck.tests.spi.QuantityFactoryTest;
 import tech.units.tck.tests.spi.ServiceProviderTest;
 import tech.units.tck.tests.spi.ServicesTest;
 import tech.units.tck.tests.spi.SystemOfUnitsTest;
+import tech.units.tck.tests.unit.PrefixInterfaceTest;
 import tech.units.tck.tests.unit.UnitConversionTest;
 import tech.units.tck.tests.unit.UnitDimensionTest;
 import tech.units.tck.tests.unit.UnitInterfaceTest;
@@ -82,7 +83,7 @@ import tech.uom.lib.common.function.Versioned;
  * Main class for executing the JSR 385 TCK.
  * 
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.6, May 12, 2019
+ * @version 1.7, July 6, 2019
  * @since 1.0
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
@@ -91,7 +92,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
      * 
      */
     //private static final long serialVersionUID = 3189431432291353154L;
-    private static final String TCK_VERSION = "2.0.0-PRD";
+    private static final String TCK_VERSION = "2.0.0-SNAPSHOT";
     public static final String SPEC_ID = "JSR 385";
     public static final String SPEC_VERSION = "2.0.0";
     private final Profile profile;
@@ -110,6 +111,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         classes.add(new XmlClass(FundamentalTypesTest.class));
         classes.add(new XmlClass(UnitInterfaceTest.class));
         classes.add(new XmlClass(UnitConversionTest.class));
+        classes.add(new XmlClass(PrefixInterfaceTest.class));
         classes.add(new XmlClass(UnitDimensionTest.class));
         classes.add(new XmlClass(QuantityInterfaceTest.class));
         classes.add(new XmlClass(QuantityTypesTest.class));

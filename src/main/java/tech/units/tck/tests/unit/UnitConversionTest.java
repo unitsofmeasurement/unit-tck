@@ -127,7 +127,8 @@ public class UnitConversionTest {
     /**
      * Ensure the convert() operation is implemented.
      */
-    @SpecAssertion(section = SECTION, id = "423-A9")
+    @SuppressWarnings("deprecation")
+	@SpecAssertion(section = SECTION, id = "423-A9")
     @Test(groups = { CORE }, description = SECTION + " Ensure the convert() method is implemented.")
     public void testUnitConverterConvert() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
@@ -139,7 +140,8 @@ public class UnitConversionTest {
     /**
      * Ensure the convert() operation is implemented.
      */
-    @SpecAssertion(section = SECTION, id = "423-A10")
+    @SuppressWarnings("deprecation")
+	@SpecAssertion(section = SECTION, id = "423-A10")
     @Test(groups = { CORE }, description = SECTION + " Ensure the convert() method is implemented.")
     public void testUnitConverterConvertWithDouble() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
@@ -151,7 +153,8 @@ public class UnitConversionTest {
     /**
      * Ensure the concatenate() operation is implemented.
      */
-    @SpecAssertion(section = SECTION, id = "423-A11")
+    @SuppressWarnings("deprecation")
+	@SpecAssertion(section = SECTION, id = "423-A11")
     @Test(groups = { CORE }, description = SECTION + " Ensure the concatenate() method is implemented.")
     public void testUnitConverterConcatenate() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
@@ -163,7 +166,8 @@ public class UnitConversionTest {
     /**
      * Ensure the getConversionSteps() operation is implemented.
      */
-    @SpecAssertion(section = SECTION, id = "423-A12")
+    @SuppressWarnings("deprecation")
+	@SpecAssertion(section = SECTION, id = "423-A12")
     @Test(groups = { CORE }, description = SECTION + " Ensure the getConversionSteps() method is implemented.")
     public void testUnitConverterGetConversionSteps() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {

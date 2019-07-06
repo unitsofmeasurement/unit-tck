@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.0-PRD</version>
+		<version>2.0-SNAPSHOT</version>
 	</parent>
 	<licenses>
 		<license>
@@ -34,8 +34,8 @@
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
-		<jsr.version>2.0-PRD</jsr.version>
-		<ri.version>2.0-PRD</ri.version>
+		<jsr.version>2.0-SNAPSHOT</jsr.version>
+		<ri.version>2.0-SNAPSHOT</ri.version>
 		<jdkVersion>1.8</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>

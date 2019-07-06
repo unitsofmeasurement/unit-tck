@@ -64,7 +64,7 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 1.2, May 12, 2019
+ * @version 1.3, July 6, 2019
  * @since 1.0
  */
 @Singleton
@@ -210,11 +210,11 @@ public class TestUtils {
 
     /**
      * 
-     * @param section
-     * @param type
-     * @param returnType
-     * @param name
-     * @param paramTypes
+     * @param section The section of the specification
+     * @param type The type to test
+     * @param returnType The expected return type
+     * @param name The name of the method
+     * @param paramTypes The types of parameters if available
      * @deprecated use the simplified version on top of Reflections.org where possible
      */
     public static void testHasPublicMethod(String section, Class<?> type, Class<?> returnType, String name, Class... paramTypes) {
