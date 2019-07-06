@@ -162,10 +162,10 @@ public class UnitInterfaceTest {
     }
     
     /**
-     * Ensure the divide() operation is implemented.
+     * Ensure the divide(Unit) operation is implemented.
      */
     @SpecAssertion(section = "4.2.1.2", id = "42121-A2")
-    @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the divide() operation is implemented.")
+    @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the divide(Unit) operation is implemented.")
     public void testUnit42121A2_Divide() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
@@ -174,7 +174,7 @@ public class UnitInterfaceTest {
     }
     
     /**
-     * Ensure the divide() operation is implemented.
+     * Ensure the divide(double) operation is implemented.
      */
     @SpecAssertion(section = "4.2.1.2", id = "42121-A3")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the divide(double) operation is implemented.")
@@ -186,7 +186,7 @@ public class UnitInterfaceTest {
     }
 
 	/**
-	 * Ensure the divide() operation is implemented.
+	 * Ensure the divide(Number) operation is implemented.
 	 */
 	@SpecAssertion(section = "4.2.1.2", id = "42121-A4")
 	@Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the divide(Number) operation is implemented.")
@@ -210,7 +210,7 @@ public class UnitInterfaceTest {
     } 
 
     /**
-     * Ensure the multiply() operation is implemented.
+     * Ensure the multiply(double) operation is implemented.
      */
     @SpecAssertion(section = "4.2.1.2", id = "42121-A6")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the multiply(double) operation is implemented.")
@@ -222,7 +222,7 @@ public class UnitInterfaceTest {
     }
 
 	/**
-	 * Ensure the multiply() operation is implemented.
+	 * Ensure the multiply(Number) operation is implemented.
 	 */
 	@SpecAssertion(section = "4.2.1.2", id = "42121-A7")
 	@Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the multiply(Number) operation is implemented.")
@@ -260,7 +260,7 @@ public class UnitInterfaceTest {
     }
 
 	/**
-	 * Ensure the shift() operation is implemented.
+	 * Ensure the shift(Number) operation is implemented.
 	 */
 	@SpecAssertion(section = "4.2.1.2", id = "42121-A10")
 	@Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the shift(Number) operation is implemented.")
