@@ -454,4 +454,5 @@
 			</build>
 		</profile>
 	</profiles>
+	<version>2.0.1-SNAPSHOT</version>
 </project>
