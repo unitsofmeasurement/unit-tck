@@ -42,7 +42,7 @@ import tech.units.tck.util.TestUtils;
  * Tests for Unit Conversion
  *
  * @author Werner Keil
- * @version 1.1, July 6, 2019
+ * @version 1.2, July 7, 2019
  * @since 2.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -52,9 +52,10 @@ public class PrefixInterfaceTest {
     /**
      * Test that Dimension implementations override equals.
      */
-    @SpecAssertion(section = SECTION, id = "424-A1")
-    @Test(groups = {"core"}, description = SECTION + " Ensure registered Prefix classes override equals.")
-    public void testUnitEquals() {
+    @SuppressWarnings("deprecation")
+	@SpecAssertion(section = SECTION, id = "424-A1")
+    @Test(groups = {"core"}, description = SECTION + " Ensure supported Prefix classes override equals.")
+    public void testEquals() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
             TestUtils.testHasPublicMethod("Section "+ SECTION, type, boolean.class, "equals", Object.class);
@@ -64,9 +65,10 @@ public class PrefixInterfaceTest {
     /**
      * Test that Dimension implementations override hashCode.
      */
-    @SpecAssertion(section = SECTION, id = "424-A2")
-    @Test(groups = {"core"}, description = SECTION + " Ensure registered Prefix classes override hashCode.")
-    public void testUnitHashcode() {
+    @SuppressWarnings("deprecation")
+	@SpecAssertion(section = SECTION, id = "424-A2")
+    @Test(groups = {"core"}, description = SECTION + " Ensure supported Prefix classes override hashCode.")
+    public void testHashcode() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
             TestUtils.testHasPublicMethod("Section "+ SECTION, type, int.class, "hashCode");
@@ -77,7 +79,7 @@ public class PrefixInterfaceTest {
 	 * Test that Prefix implementations override getName.
 	 */
 	@SpecAssertion(section = SECTION, id = "424-A3")
-	@Test(groups = { "core" }, description = SECTION + " Ensure registered Prefix implementations override getName.")
+	@Test(groups = { "core" }, description = SECTION + " Ensure supported Prefix implementations override getName.")
 	public void testGetName() {
 		for (@SuppressWarnings("rawtypes")
 		Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
@@ -89,7 +91,7 @@ public class PrefixInterfaceTest {
 	 * Test that Prefix implementations override getSymbol.
 	 */
 	@SpecAssertion(section = SECTION, id = "424-A4")
-	@Test(groups = { "core" }, description = SECTION + " Ensure registered Prefix implementations override getSymbol.")
+	@Test(groups = { "core" }, description = SECTION + " Ensure supported Prefix implementations override getSymbol.")
 	public void testGetSymbol() {
 		for (@SuppressWarnings("rawtypes")
 		Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
@@ -97,16 +99,29 @@ public class PrefixInterfaceTest {
 		}
 	}
 
-
     /**
      * Test that Prefix implementations override getValue.
      */
-    @SpecAssertion(section = SECTION, id = "424-A5")
-    @Test(groups = {"core"}, description = SECTION + " Ensure registered Prefix implementations override getValue.")
-    public void testUnitGetValue() {
+    @SuppressWarnings("deprecation")
+	@SpecAssertion(section = SECTION, id = "424-A5")
+    @Test(groups = {"core"}, description = SECTION + " Ensure supported Prefix implementations override getValue.")
+    public void testGetValue() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
             TestUtils.testHasPublicMethod("Section "+ SECTION, type, Number.class, "getValue");
+        }
+    }
+    
+    /**
+     * Test that Prefix implementations override getExponent.
+     */
+    @SuppressWarnings("deprecation")
+	@SpecAssertion(section = SECTION, id = "424-A6")
+    @Test(groups = {"core"}, description = SECTION + " Ensure supported Prefix implementations override getExponent.")
+    public void testGetXponent() {
+        for (@SuppressWarnings("rawtypes")
+        Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
+            TestUtils.testHasPublicMethod("Section "+ SECTION, type, int.class, "getExponent");
         }
     }
 }
