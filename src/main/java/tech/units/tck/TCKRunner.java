@@ -82,7 +82,7 @@ import tech.uom.lib.common.function.Versioned;
 /**
  * Main class for executing the JSR 385 TCK.
  * 
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:werner@units.tech">Werner Keil</a>
  * @version 2.0, July 7, 2019
  * @since 1.0
  */

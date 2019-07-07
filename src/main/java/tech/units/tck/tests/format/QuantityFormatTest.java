@@ -49,7 +49,7 @@ import tech.units.tck.TCKSetup;
  * Tests for QuantityFormat
  * @version 1.1, March 5, 2019
  * @since 2.0
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author  <a href="mailto:werner@units.tech">Werner Keil</a>
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class QuantityFormatTest {
