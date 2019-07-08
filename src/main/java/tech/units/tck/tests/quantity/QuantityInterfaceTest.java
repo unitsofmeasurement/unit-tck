@@ -123,7 +123,7 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override add.
      */
-    @SpecAssertion(section = "4.3.1.1", id = "4411-A1")
+    @SpecAssertion(section = "4.3.1.1", id = "4311-A1")
     @Test(groups = {"core"}, description = "4.3.1.1 Ensure registered Quantity classes implement add.")
     public void testQuantityOp1Add() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
@@ -134,7 +134,7 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override multiply.
      */
-    @SpecAssertion(section = "4.3.1.2", id = "4412-A1")
+    @SpecAssertion(section = "4.3.1.2", id = "4312-A1")
     @Test(groups = {"core"}, description = "4.3.1.2 Ensure registered Quantity classes implement multiply.")
     public void testQuantityOp2Multiply() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
@@ -145,7 +145,7 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override divide.
      */
-    @SpecAssertion(section = "4.3.1.2", id = "4412-A2")
+    @SpecAssertion(section = "4.3.1.2", id = "4312-A2")
     @Test(groups = {"core"}, description = "4.3.1.2 Ensure registered Quantity classes implement divide.")
     public void testQuantityOp2Divide() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
@@ -156,7 +156,7 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override multiply with number as argument.
      */
-    @SpecAssertion(section = "4.3.1.1", id = "4411-A4")
+    @SpecAssertion(section = "4.3.1.1", id = "4311-A4")
     @Test(groups = {"core"}, description = "4.3.1.1 Ensure registered Quantity classes implement multiply by number.")
     public void testQuantityOp1MultiplyByNumber() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
@@ -167,7 +167,7 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override divide with number as argument.
      */
-    @SpecAssertion(section = "4.3.1.1", id = "4411-A5")
+    @SpecAssertion(section = "4.3.1.1", id = "4311-A5")
     @Test(groups = {"core"}, description = "4.3.1.1 Ensure registered Quantity classes implement divide by number.")
     public void testQuantityOp1DivideByNumber() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
@@ -178,7 +178,7 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override subtract.
      */
-    @SpecAssertion(section = "4.3.1.1", id = "4411-A6")
+    @SpecAssertion(section = "4.3.1.1", id = "4311-A6")
     @Test(groups = {"core"}, description = "4.3.1.1 Ensure registered Quantity classes implement subtract.")
     public void testQuantityOp1Subtract() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
@@ -189,7 +189,7 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override to method.
      */
-    @SpecAssertion(section = "4.3.1.2", id = "4412-A3")
+    @SpecAssertion(section = "4.3.1.2", id = "4312-A3")
     @Test(groups = {"core"}, description = "4.3.1.2 Ensure registered Quantity classes implement to method.")
     public void testQuantityOp2To() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {

@@ -300,7 +300,7 @@
 				<text>Ensure the getScale() method is implemented.
 				</text>
 			</assertion>
-			<assertion id="441-A5">
+			<assertion id="431-A5">
 				<text>Ensure the getUnit() method is implemented.
 				</text>
 			</assertion>
@@ -314,8 +314,13 @@
 		title="Operations on Quantities with same dimension as the operand">
 		<group>
 			<text>Result with same dimension</text>
+			
 			<assertion id="4311-A1">
 				<text>Ensure the add() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="4311-A6">
+				<text>Ensure the sbtract() operation is implemented.
 				</text>
 			</assertion>
 		</group>
