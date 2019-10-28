@@ -29,6 +29,7 @@
  */
 package tec.units.tck;
 
+import java.util.Objects;
 import java.util.ServiceLoader;
 
 import javax.inject.Singleton;
@@ -44,24 +45,24 @@ import tec.units.tck.util.ServiceConfiguration;
 @Singleton
 public final class TCKSetup {
 
-	private static ServiceConfiguration TEST_CONFIG = loadConfiguration();
+    private static ServiceConfiguration testConfig;
 
-	private TCKSetup() {
-	}
+    private TCKSetup() {
+    }
 
-	private static ServiceConfiguration loadConfiguration() {
-		try {
-			return ServiceLoader.load(ServiceConfiguration.class).iterator()
-					.next();
-		} catch (Exception e) {
-			throw new IllegalStateException("No valid implementation of "
-						+ ServiceConfiguration.class.getName()
-						+ " is registered with the ServiceLoader.");
-		}
-	}
+    public static synchronized ServiceConfiguration getConfiguration() {
+        if (testConfig == null) try {
+            testConfig = ServiceLoader.load(ServiceConfiguration.class).iterator()
+                    .next();
+        } catch (Exception e) {
+            throw new IllegalStateException("No valid implementation of "
+                        + ServiceConfiguration.class.getName()
+                        + " is registered with the ServiceLoader.");
+        }
+        return testConfig;
+    }
 
-	public static final ServiceConfiguration getConfiguration() {
-		return TEST_CONFIG;
-	}
-
+    public static synchronized void setConfiguration(ServiceConfiguration config) {
+        testConfig = Objects.requireNonNull(config);
+    }
 }
