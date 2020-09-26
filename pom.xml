@@ -36,6 +36,7 @@
 	<properties>
 		<jsr.version>2.0-PRD</jsr.version>
 		<ri.version>2.0-PRD</ri.version>
+		<jakarta.inject.version>2.0.0</jakarta.inject.version>
 		<jdkVersion>1.8</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
@@ -53,11 +54,10 @@
 				<version>${ri.version}</version>
 				<type>jar</type>
 			</dependency>
-
 			<dependency>
-				<groupId>javax.inject</groupId>
-				<artifactId>javax.inject</artifactId>
-				<version>1</version>
+				<groupId>jakarta.inject</groupId>
+				<artifactId>jakarta.inject-api</artifactId>
+				<version>${jakarta.inject.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.testng</groupId>
