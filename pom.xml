@@ -11,10 +11,11 @@
 		<url>http://unitsofmeasurement.github.io</url>
 	</organization>
 	<description>Units of Measurement (JSR 385) TCK.</description>
+	
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
-		<version>2.0-PRD</version>
+		<version>2.1-SNAPSHOT</version>
 	</parent>
 	<licenses>
 		<license>
@@ -34,16 +35,16 @@
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
-		<jsr.version>2.0-PRD</jsr.version>
-		<ri.version>2.0-PRD</ri.version>
-		<jakarta.inject.version>2.0.0</jakarta.inject.version>
+		<jsr.version>2.1-SNAPSHOT</jsr.version>
+		<ri.version>2.1-SNAPSHOT</ri.version>
 		<jdkVersion>1.8</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
-		<testng.version>6.13.1</testng.version>
+		<testng.version>7.0.0</testng.version>
+		<jakarta.inject.version>2.0.0</jakarta.inject.version>		
 		<jboss.test.audit.version>1.1.4.Final</jboss.test.audit.version>
-		<reflections.version>0.9.10</reflections.version>
+		<reflections.version>0.9.12</reflections.version>
 	</properties>
 
 	<dependencyManagement>
@@ -54,11 +55,12 @@
 				<version>${ri.version}</version>
 				<type>jar</type>
 			</dependency>
-			<dependency>
-				<groupId>jakarta.inject</groupId>
-				<artifactId>jakarta.inject-api</artifactId>
-				<version>${jakarta.inject.version}</version>
-			</dependency>
+
+            <dependency>
+                <groupId>jakarta.inject</groupId>
+                <artifactId>jakarta.inject-api</artifactId>
+                <version>${jakarta.inject.version}</version>
+            </dependency>
 			<dependency>
 				<groupId>org.testng</groupId>
 				<artifactId>testng</artifactId>
@@ -92,6 +94,11 @@
 			<artifactId>indriya</artifactId>
 			<type>jar</type>
 		</dependency>
+
+         <dependency>
+             <groupId>jakarta.inject</groupId>
+             <artifactId>jakarta.inject-api</artifactId>
+         </dependency>
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -116,7 +123,7 @@
 		<dependency>
 			<groupId>org.mutabilitydetector</groupId>
 			<artifactId>MutabilityDetector</artifactId>
-			<version>0.10.1</version>
+			<version>0.10.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.test-audit</groupId>
@@ -140,9 +147,12 @@
                     <header>src/main/config/header.txt</header>
                     <properties>
                         <owner>Jean-Marie Dautelle, Werner Keil, Otavio Santana</owner>
-                        <currentYear>2019</currentYear>
+                        <currentYear>2020</currentYear>
                     </properties>
                     <excludes>
+                    	<exclude>.editorconfig</exclude>
+						<exclude>.gitattributes</exclude>
+						<exclude>.circleci/**</exclude>
                         <exclude>**/pom.xml</exclude>
                         <exclude>**/README</exclude>
                         <exclude>**/settings.xml</exclude>
@@ -361,15 +371,6 @@
 								<reportSet></reportSet>
 							</reportSets>
 						</plugin>
-
-						<!-- ======================================================= -->
-						<!-- Static analysis for occurences of bug patterns -->
-						<!-- ======================================================= -->
-						<!-- plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>findbugs-maven-plugin</artifactId> 
-							<version>2.5.2</version> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> 
-							<artifactId>maven-checkstyle-plugin</artifactId> <version>2.11</version> 
-							<configuration> <configLocation>src/main/config/checkstyle.xml</configLocation> </configuration> 
-							</plugin -->
 					</reportPlugins>
 				</configuration>
 			</plugin>
@@ -449,5 +450,4 @@
 			</build>
 		</profile>
 	</profiles>
-	<version>2.0-SNAPSHOT</version>
 </project>

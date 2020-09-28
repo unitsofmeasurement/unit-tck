@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -47,16 +47,21 @@ import tech.units.tck.TCKSetup;
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
  * @author Almas Shaikh
- * @version 1.2, April 21, 2019
+ * @version 2.0, August 1, 2019
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class UnitInterfaceTest {
-
+	private static final String SECTION1 = "4.2.1";
+	
+	private static final String SECTION2 = "4.2.1.2";
+	
+	private static final String SECTION3 = "4.2.2";
+	
     /**
      * Test that Unit implementations override equals.
      */
-    @SpecAssertion(section = "4.2.1", id = "421-A1")
+    @SpecAssertion(section = SECTION1, id = "421-A1")
     @Test(groups = { CORE }, description = "4.2.1 Ensure registered Unit classes override equals.")
     public void testEquals() {
         for (@SuppressWarnings("rawtypes")
@@ -68,7 +73,7 @@ public class UnitInterfaceTest {
     /**
      * Test that Unit implementations contain getters
      */
-    @SpecAssertion(section = "4.2.1", id = "421-A2")
+    @SpecAssertion(section = SECTION1, id = "421-A2")
     @Test(groups = { CORE }, description = "4.2.1 Ensure registered Unit classes implement getDimension.")
     public void testGetDimension() {
         for (@SuppressWarnings("rawtypes")
@@ -80,7 +85,7 @@ public class UnitInterfaceTest {
     /**
      * Test that Unit implementations contain getSystemUnit
      */
-    @SpecAssertion(section = "4.2.1", id = "421-A3")
+    @SpecAssertion(section = SECTION1, id = "421-A3")
     @Test(groups = { CORE }, description = "4.2.1 Ensure registered Unit classes implement getSystemUnit.")
     public void testGetSystemUnit() {
         for (@SuppressWarnings("rawtypes")
@@ -92,7 +97,7 @@ public class UnitInterfaceTest {
     /**
      * Test that Unit implementations contain getBaseUnits
      */
-    @SpecAssertion(section = "4.2.1", id = "421-A4")
+    @SpecAssertion(section = SECTION1, id = "421-A4")
     @Test(groups = { CORE }, description = "4.2.1 Ensure registered Unit classes implement getBaseUnits.")
     public void testGetBaseUnits() {
         for (@SuppressWarnings("rawtypes")
@@ -105,7 +110,7 @@ public class UnitInterfaceTest {
      * Test that Unit implementations contain getters
      */
     @SuppressWarnings({"rawtypes"})
-    @SpecAssertion(section = "4.2.1", id = "421-A5")
+    @SpecAssertion(section = SECTION1, id = "421-A5")
     @Test(groups = { CORE }, description = "4.2.1 Ensure registered Unit classes implement getName.")
     public void testGetName() {
         for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
@@ -117,7 +122,7 @@ public class UnitInterfaceTest {
      * Test that Unit implementations contain getters
      */
     @SuppressWarnings({"rawtypes"})
-    @SpecAssertion(section = "4.2.1", id = "421-A6")
+    @SpecAssertion(section = SECTION1, id = "421-A6")
     @Test(groups = { CORE }, description = "4.2.1 Ensure registered Unit classes implement getSymbol.")
     public void testGetSymbol() {
         for (Class type : TCKSetup.getConfiguration().getUnitClasses()) {
@@ -128,7 +133,7 @@ public class UnitInterfaceTest {
     /**
      * Test that Unit implementations override hashCode.
      */
-    @SpecAssertion(section = "4.2.1", id = "421-A7")
+    @SpecAssertion(section = SECTION1, id = "421-A7")
     @Test(groups = { CORE }, description = "4.2.1 Ensure registered Unit classes override hashCode.")
     public void testHashcode() {
         for (@SuppressWarnings("rawtypes")
@@ -140,7 +145,7 @@ public class UnitInterfaceTest {
     /**
      * Test that Unit implementations override toString.
      */
-    @SpecAssertion(section = "4.2.1", id = "421-A8")
+    @SpecAssertion(section = SECTION1, id = "421-A8")
     @Test(groups = { CORE }, description = "4.2.1 Ensure registered Unit classes override toString.")
     public void testToString() {
         for (@SuppressWarnings("rawtypes")
@@ -152,7 +157,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the alternate() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A1")
+    @SpecAssertion(section = SECTION2, id = "42121-A1")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the alternate() operation is implemented.")
     public void testUnit42121A1_Alternate() {
         for (@SuppressWarnings("rawtypes")
@@ -164,7 +169,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the divide(Unit) operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A2")
+    @SpecAssertion(section = SECTION2, id = "42121-A2")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the divide(Unit) operation is implemented.")
     public void testUnit42121A2_Divide() {
         for (@SuppressWarnings("rawtypes")
@@ -176,7 +181,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the divide(double) operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A3")
+    @SpecAssertion(section = SECTION2, id = "42121-A3")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the divide(double) operation is implemented.")
     public void testUnit42121A3_DivideByDouble() {
         for (@SuppressWarnings("rawtypes")
@@ -188,7 +193,7 @@ public class UnitInterfaceTest {
 	/**
 	 * Ensure the divide(Number) operation is implemented.
 	 */
-	@SpecAssertion(section = "4.2.1.2", id = "42121-A4")
+	@SpecAssertion(section = SECTION2, id = "42121-A4")
 	@Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the divide(Number) operation is implemented.")
 	public void testUnit42121A4_DivideByNumber() {
 		for (@SuppressWarnings("rawtypes")
@@ -200,7 +205,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the multiply() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A5")
+    @SpecAssertion(section = SECTION2, id = "42121-A5")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the multiply() operation is implemented.")
     public void testUnit42121A5_Multiply() {
         for (@SuppressWarnings("rawtypes")
@@ -212,7 +217,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the multiply(double) operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A6")
+    @SpecAssertion(section = SECTION2, id = "42121-A6")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the multiply(double) operation is implemented.")
     public void testUnit42121A6_MultiplyByDouble() {
         for (@SuppressWarnings("rawtypes")
@@ -224,7 +229,7 @@ public class UnitInterfaceTest {
 	/**
 	 * Ensure the multiply(Number) operation is implemented.
 	 */
-	@SpecAssertion(section = "4.2.1.2", id = "42121-A7")
+	@SpecAssertion(section = SECTION2, id = "42121-A7")
 	@Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the multiply(Number) operation is implemented.")
 	public void testUnit42121A7_MultiplyByNumber() {
 		for (@SuppressWarnings("rawtypes")
@@ -237,7 +242,7 @@ public class UnitInterfaceTest {
      * Ensure the prefix() operation is implemented.
      * @since 2.0
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A8")
+    @SpecAssertion(section = SECTION2, id = "42121-A8")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the prefix() operation is implemented.")
     public void testUnit42121A8_Prefix() {
         for (@SuppressWarnings("rawtypes")
@@ -250,7 +255,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the shift() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42121-A9")
+    @SpecAssertion(section = SECTION2, id = "42121-A9")
     @Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the shift(double) operation is implemented.")
     public void testUnit42121A9_ShiftByDouble() {
         for (@SuppressWarnings("rawtypes")
@@ -262,7 +267,7 @@ public class UnitInterfaceTest {
 	/**
 	 * Ensure the shift(Number) operation is implemented.
 	 */
-	@SpecAssertion(section = "4.2.1.2", id = "42121-A10")
+	@SpecAssertion(section = SECTION2, id = "42121-A10")
 	@Test(groups = { CORE }, description = "4.2.1.2.1 Ensure the shift(Number) operation is implemented.")
 	public void testUnit42121A10_ShiftByNumber() {
 		for (@SuppressWarnings("rawtypes")
@@ -274,7 +279,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the pow() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42122-A1")
+    @SpecAssertion(section = SECTION2, id = "42122-A1")
     @Test(groups = { CORE }, description = "4.2.1.2.2 Ensure the pow() operation is implemented.")
     public void testUnit42122Pow() {
         for (@SuppressWarnings("rawtypes")
@@ -286,7 +291,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the root() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42122-A2")
+    @SpecAssertion(section = SECTION2, id = "42122-A2")
     @Test(groups = { CORE }, description = "4.2.1.2.2 Ensure the root() operation is implemented.")
     public void testUnit42122Root() {
         for (@SuppressWarnings("rawtypes")
@@ -298,7 +303,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the transform() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42122-A3")
+    @SpecAssertion(section = SECTION2, id = "42122-A3")
     @Test(groups = { CORE }, description = "4.2.1.2.2 Ensure the transform() operation is implemented.")
     public void testUnit42122Transform() {
         for (@SuppressWarnings("rawtypes")
@@ -310,7 +315,7 @@ public class UnitInterfaceTest {
     /**
      * Ensure the inverse() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.1.2", id = "42123-A1")
+    @SpecAssertion(section = SECTION2, id = "42123-A1")
     @Test(groups = { CORE }, description = "4.2.1.2.3 Ensure the inverse() operation is implemented.")
     public void testUnit42123Inverse() {
         for (@SuppressWarnings("rawtypes")
@@ -322,48 +327,48 @@ public class UnitInterfaceTest {
     /**
      * Ensure the isCompatible() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.2", id = "422-A1")
-    @Test(groups = { CORE }, description = "4.2.2 Ensure the isCompatible() operation is implemented.")
-    public void testUnit422IsCompatible() {
+    @SpecAssertion(section = SECTION2, id = "42124-A1")
+    @Test(groups = { CORE }, description = "4.2.1 Ensure the isCompatible() operation is implemented.")
+    public void testUnit4221IsCompatible() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.3", type, "isCompatible", true);
+            testHasPublicMethod("Section 4.2.1.2.4", type, "isCompatible", true);
         }
     }
 
     /**
      * Ensure the asType() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.2", id = "422-A2")
-    @Test(groups = { CORE }, description = "4.2.2 Ensure the asType() operation is implemented.")
-    public void testUnit423AsType() {
+    @SpecAssertion(section = SECTION2, id = "42124-A2")
+    @Test(groups = { CORE }, description = "4.2.1 Ensure the asType() operation is implemented.")
+    public void testUnit4222AsType() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.2", type, "asType", true);
+            testHasPublicMethod("Section 4.2.1.2.4", type, "asType", true);
         }
     }
     
     /**
      * Ensure the getConverterTo() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A1")
-    @Test(groups = { CORE }, description = "4.2.3 Ensure the getConverterTo() operation is implemented.")
-    public void testUnit423GetConverterTo() {
+    @SpecAssertion(section = SECTION2, id = "42124-A3")
+    @Test(groups = { CORE }, description = "4.2.1 Ensure the getConverterTo() operation is implemented.")
+    public void testUnit4223GetConverterTo() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.3", type, "getConverterTo", true);
+            testHasPublicMethod("Section 4.2.1.2.4", type, "getConverterTo", true);
         }
     }
 
     /**
      * Ensure the getConverterToAny() operation is implemented.
      */
-    @SpecAssertion(section = "4.2.3", id = "423-A2")
-    @Test(groups = { CORE }, description = "4.2.3 Ensure the getConverterToAny() operation is implemented.")
-    public void testUnit423GetConverterToAny() {
+    @SpecAssertion(section = SECTION2, id = "42124-A4")
+    @Test(groups = { CORE }, description = "4.2.1 Ensure the getConverterToAny() operation is implemented.")
+    public void testUnit4224GetConverterToAny() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.3", type, "getConverterToAny", true);
+            testHasPublicMethod("Section 4.2.1.2.4", type, "getConverterToAny", true);
         }
     }
 }

@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -63,12 +63,12 @@ public class ObtainingUnitsTest {
 	    + " Units Obtained from Unit Systems")
     @SpecAssertion(section = SECTION1, id = "551-A1")
     public void testGetUnitsFromSystemOfUnits() {
-	for (SystemOfUnits sou : ServiceProvider.current()
-		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
-	    for (Unit u : sou.getUnits()) {
-		assertNotNull("Section " + SECTION1 + ": A Unit is missing from " + sou.getName(), u);
-	    }
-	}
+		for (SystemOfUnits sou : ServiceProvider.current()
+			.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
+		    for (Unit u : sou.getUnits()) {
+		    	assertNotNull("Section " + SECTION1 + ": A Unit is missing from " + sou.getName(), u);
+		    }
+		}
     }
     
     private static final String SECTION2 = "5.5.2";
@@ -81,17 +81,21 @@ public class ObtainingUnitsTest {
 	    + " Units Obtained by Symbol Parsing")
     @SpecAssertion(section = SECTION2, id = "552-A1")
     public void testGetUnitsFromUnitString() {
-	UnitFormat format = ServiceProvider.current().getUnitFormatService().getUnitFormat();
-	for (SystemOfUnits sou : ServiceProvider.current()
-		.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
-	    for (Unit u : sou.getUnits()) {
-		assertNotNull("Section " + SECTION2 + ": A Unit is missing from " + sou.getName(), u);
-		if (u.getSymbol() != null) {
-		    String s = u.toString();
-		    Unit p = format.parse(s);
-		    assertEquals("Section " + SECTION2 + ": Unit could not be parsed for '" + s + "'", u, p);
+	final UnitFormat format = ServiceProvider.current().getFormatService().getUnitFormat();
+		System.out.println("Fmt: " + format.toString());
+		for (SystemOfUnits sou : ServiceProvider.current()
+			.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
+			int i = 1;
+		    for (Unit u : sou.getUnits()) {
+		    	assertNotNull("Section " + SECTION2 + ": A Unit is missing from " + sou.getName(), u);
+				if (u.getSymbol() != null) {
+				    String s = u.toString();
+				    System.out.println("S " + i + ": " + s + "(" + u.getSymbol() + ")");
+				    Unit p = format.parse(s);
+				    assertEquals("Section " + SECTION2 + ": Unit could not be parsed for '" + s + "'", u, p);
+				    i++;
+				}
+		    }
 		}
-	    }
-	}
     }
 }

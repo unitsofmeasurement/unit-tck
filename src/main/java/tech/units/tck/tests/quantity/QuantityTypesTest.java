@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *

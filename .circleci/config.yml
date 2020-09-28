@@ -1,88 +1,38 @@
-#
-# Units of Measurement TCK
-# Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
-#
-# All rights reserved.
-#
-# Redistribution and use in source and binary forms, with or without modification,
-# are permitted provided that the following conditions are met:
-#
-# 1. Redistributions of source code must retain the above copyright notice,
-#    this list of conditions and the following disclaimer.
-#
-# 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions
-#    and the following disclaimer in the documentation and/or other materials provided with the distribution.
-#
-# 3. Neither the name of JSR-385 nor the names of its contributors may be used to endorse or promote products
-#    derived from this software without specific prior written permission.
-#
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
-# THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
-# AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
-# EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
-
 # Java Maven CircleCI 2.0 configuration file
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
 version: 2
 jobs:
-  build:
+  test:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:9.0.4
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
+     
     working_directory: ~/repo
 
     environment:
       # Customize the JVM maximum heap limit
       MAVEN_OPTS: -Xmx3200m
-    
+      PROFILE: full
+      TEST_REPORTS: /tmp/test-reports
+      
     steps:
       - checkout
         
       # run tests!
-      - run: mvn --batch-mode test jacoco:report
+      - run: mvn test
       
-      - run: bash <(curl -s https://codecov.io/bash)
-  deployment:
-    docker:
-      # specify the version you desire here
-      - image: circleci/openjdk:9.0.4
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+      # copy TXT result to HTML report folder
+      - run:
+         cp ~/repo/./target/*.txt ~/repo/./target/tck-output
 
-    working_directory: ~/repo
-
-    environment:
-      # Customize the JVM maximum heap limit
-      MAVEN_OPTS: -Xmx3200m
-    
-    steps:
-      - checkout
-        
-      # run deployment!
-      - run: mvn --batch-mode deploy -Dmaven.test.skip -DcreateDocs=true -s settings.xml
+      # store test report folder as artifact
+      - store_artifacts:
+         path: ~/repo/./target/tck-output
+         
 workflows:
   version: 2
-  build_deploy:
+  test_tck:
     jobs:
-      - build
-      - deployment:
-          requires:
-            - build
+      - test

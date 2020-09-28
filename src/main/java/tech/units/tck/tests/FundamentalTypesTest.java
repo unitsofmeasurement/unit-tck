@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -42,7 +42,7 @@ import tech.units.tck.TCKSetup;
 /**
  * Tests for Fundamental Types
  *
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author  <a href="mailto:werner@units.tech">Werner Keil</a>
  * @version 1.2, July 11, 2018
  * @since 1.0
  */

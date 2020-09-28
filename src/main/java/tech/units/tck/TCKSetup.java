@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -31,15 +31,14 @@ package tech.units.tck;
 
 import java.util.ServiceLoader;
 
-import javax.inject.Singleton;
-
+import jakarta.inject.Singleton;
 import tech.units.tck.util.ServiceConfiguration;
 
 /**
  * Test setup used by the JSR 385 TCK.
  *
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.1, July 11, 2018
+ * @author <a href="mailto:werner@units.tech">Werner Keil</a>
+ * @version 2.1, July 7, 2019
  */
 @Singleton
 public final class TCKSetup {

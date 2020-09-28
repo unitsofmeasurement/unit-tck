@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -29,7 +29,7 @@
  */
 package tech.units.tck.util;
 
-import static tech.units.indriya.quantity.QuantityDimension.*;
+import static tech.units.indriya.unit.UnitDimension.*;
 
 import tech.units.indriya.format.EBNFUnitFormat;
 import tech.units.indriya.format.NumberDelimiterQuantityFormat;
@@ -39,12 +39,9 @@ import tech.units.indriya.function.AddConverter;
 import tech.units.indriya.function.ExpConverter;
 import tech.units.indriya.function.LogConverter;
 import tech.units.indriya.function.MultiplyConverter;
-import tech.units.indriya.function.RationalConverter;
 import tech.units.indriya.quantity.NumberQuantity;
-import tech.units.indriya.quantity.QuantityDimension;
+import tech.units.indriya.unit.UnitDimension;
 import tech.units.indriya.unit.Units;
-import tech.units.tck.util.ServiceConfiguration;
-
 import javax.measure.*;
 import javax.measure.format.QuantityFormat;
 import javax.measure.format.UnitFormat;
@@ -61,7 +58,7 @@ import java.util.*;
  * 
  * @author Werner Keil
  * @author Muhammed Almas
- * @version 1.2, February 21, 2019
+ * @version 2.0, September 28, 2020
  * @since 1.0
  */
 public final class TCKTestConfiguration implements ServiceConfiguration {
@@ -90,8 +87,9 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 
 	public Collection<UnitConverter> getUnitConverters4Test() {
 		return Arrays.asList(new UnitConverter[] { new AddConverter(1),
-				new ExpConverter(1), new LogConverter(1),
-				new MultiplyConverter(0), RationalConverter.of(2, 1), });
+				new ExpConverter(1), new LogConverter(1), MultiplyConverter.of(0d), 
+				MultiplyConverter.ofRational(2, 1), MultiplyConverter.ofPiExponent(10),
+				MultiplyConverter.ofTenExponent(2) });
 	}
 
 	public Collection<UnitFormat> getUnitFormats4Test() {
@@ -101,7 +99,7 @@ public final class TCKTestConfiguration implements ServiceConfiguration {
 
 	@SuppressWarnings("rawtypes")
 	public Collection<Class> getDimensionClasses() {
-		return Arrays.asList(new Class[] { QuantityDimension.class });
+		return Arrays.asList(new Class[] { UnitDimension.class });
 	}
 	
 	@SuppressWarnings("rawtypes")

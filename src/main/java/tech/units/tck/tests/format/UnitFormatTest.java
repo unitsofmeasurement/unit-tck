@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -49,7 +49,7 @@ import tech.units.tck.TCKSetup;
  * Tests for UnitFormat
  * @version 1.2, March 5, 2019
  * @since 1.0
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author  <a href="mailto:werner@units.tech">Werner Keil</a>
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class UnitFormatTest {

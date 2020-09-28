@@ -2,7 +2,7 @@
 <!--
 
     Units of Measurement TCK
-    Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+    Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
 
     All rights reserved.
 
@@ -103,15 +103,27 @@
 				</text>
 			</assertion>
 			<assertion id="421-A3">
-				<text>Ensure getName is implemented.
+				<text>Ensure registered Unit classes implement getSystemUnit.
 				</text>
 			</assertion>
 			<assertion id="421-A4">
-				<text>Ensure getSymbol is implemented.
+				<text>Ensure registered Unit classes implement getBaseUnits.
 				</text>
 			</assertion>
 			<assertion id="421-A5">
-				<text>Ensure the hashCode() operation is implemented.
+				<text>Ensure registered Unit classes implement getName.
+				</text>
+			</assertion>
+			<assertion id="421-A6">
+				<text>Ensure registered Unit classes implement getSymbol.
+				</text>
+			</assertion>
+			<assertion id="421-A7">
+				<text>Ensure registered Unit classes override hashCode.
+				</text>
+			</assertion>
+			<assertion id="421-A8">
+				<text>Ensure registered Unit classes override toString.
 				</text>
 			</assertion>
 		</group>
@@ -140,17 +152,19 @@
 				</text>
 			</assertion>
 			<assertion id="42121-A6">
-				<text>4.2.1.2.1 Ensure the multiply(double) operation is implemented.
+				<text>4.2.1.2.1 Ensure the multiply(double) operation is
+					implemented.
 				</text>
 			</assertion>
 			<assertion id="42121-A7">
-				<text>4.2.1.2.1 Ensure the multiply(Number) operation is implemented.
+				<text>4.2.1.2.1 Ensure the multiply(Number) operation is
+					implemented.
 				</text>
 			</assertion>
 			<assertion id="42121-A8">
 				<text>Ensure the prefix() operation is implemented.
 				</text>
-			</assertion>	
+			</assertion>
 			<assertion id="42121-A9">
 				<text>Ensure the shift(double) operation is implemented.
 				</text>
@@ -183,8 +197,27 @@
 				</text>
 			</assertion>
 		</group>
+		<group>
+			<text>Type Operations on Units</text>
+			<assertion id="42124-A1">
+				<text>4.2.1 Ensure the isCompatible() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42124-A2">
+				<text>4.2.1 Ensure the asType() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42124-A3">
+				<text>4.2.1 Ensure the getConverterTo() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="42124-A4">
+				<text>4.2.1 Ensure the getConverterToAny() operation is implemented.
+				</text>
+			</assertion>
+		</group>
 	</section>
-
+	
 	<section id="4.2.3" title="Unit Conversion">
 		<group>
 			<text>Setup</text>
@@ -195,7 +228,8 @@
 			</assertion>
 		</group>
 		<group>
-			<text>Basic Operations</text>
+			<text>Conversion Operations</text>
+			
 			<assertion id="423-A2">
 				<text>Ensure the equals() operation is implemented.
 				</text>
@@ -216,12 +250,29 @@
 				<text>Ensure the isLinear() method is implemented.
 				</text>
 			</assertion>
+			<assertion id="423-A7">
+				<text>Ensure the convert() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="423-A8">
+				<text>Ensure the convert() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="423-A9">
+				<text>Ensure the concatenate() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="423-A10">
+				<text>Ensure the getConversionSteps() operation is implemented.
+				</text>
+			</assertion>
 		</group>
 	</section>
 
-	<section id="4.2.4" title="Unit Dimension">
+	<section id="4.2.4" title="Prefix">
 		<group>
-			<text>Basic Operations</text>
+			<text>Prefix Operations</text>
+
 			<assertion id="424-A1">
 				<text>Ensure the equals() operation is implemented.
 				</text>
@@ -231,22 +282,53 @@
 				</text>
 			</assertion>
 			<assertion id="424-A3">
-				<text>Ensure registered Dimension classes override multiply.
+				<text>Ensure supported Prefix implementations override getName.
 				</text>
 			</assertion>
 			<assertion id="424-A4">
-				<text>Ensure registered Dimension classes override divide.
+				<text>Ensure supported Prefix implementations override getSymbol.
 				</text>
 			</assertion>
 			<assertion id="424-A5">
-				<text>Ensure registered Dimension classes override root.
+				<text>Ensure supported Prefix implementations override getValue.
 				</text>
 			</assertion>
 			<assertion id="424-A6">
+				<text>Ensure supported Prefix implementations override getExponent.
+				</text>
+			</assertion>
+		</group>
+	</section>
+
+	<section id="4.2.5" title="Unit Dimension">
+		<group>
+			<text>Dimension Operations</text>
+			
+			<assertion id="425-A1">
+				<text>Ensure the equals() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="425-A2">
+				<text>Ensure the hashCode() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="425-A3">
+				<text>Ensure registered Dimension classes override multiply.
+				</text>
+			</assertion>
+			<assertion id="425-A4">
+				<text>Ensure registered Dimension classes override divide.
+				</text>
+			</assertion>
+			<assertion id="425-A5">
+				<text>Ensure registered Dimension classes override root.
+				</text>
+			</assertion>
+			<assertion id="425-A6">
 				<text>Ensure registered Dimension classes override pow.
 				</text>
 			</assertion>
-			<assertion id="424-A7">
+			<assertion id="425-A7">
 				<text>Ensure registered Dimension classes override
 					getBaseDimensions.
 				</text>
@@ -259,6 +341,7 @@
 	<section id="4.3.1" title="Operations on Quantities">
 		<group>
 			<text>Basic Operations</text>
+			
 			<assertion id="431-A1">
 				<text>Ensure the asType() operation is implemented.
 				</text>
@@ -275,12 +358,20 @@
 				<text>Ensure the getScale() method is implemented.
 				</text>
 			</assertion>
-			<assertion id="441-A5">
+			<assertion id="431-A5">
 				<text>Ensure the getUnit() method is implemented.
 				</text>
 			</assertion>
 			<assertion id="431-A6">
 				<text>Ensure the getValue() method is implemented.
+				</text>
+			</assertion>
+			<assertion id="431-A7">
+				<text>Ensure the inverse() method is implemented.
+				</text>
+			</assertion>
+			<assertion id="431-A8">
+				<text>Ensure the to() method is implemented.
 				</text>
 			</assertion>
 		</group>
@@ -289,13 +380,39 @@
 		title="Operations on Quantities with same dimension as the operand">
 		<group>
 			<text>Result with same dimension</text>
+			
 			<assertion id="4311-A1">
 				<text>Ensure the add() operation is implemented.
 				</text>
 			</assertion>
+			<assertion id="4311-A4">
+				<text>Ensure the multiply() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="4311-A5">
+				<text>Ensure the divide() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="4311-A6">
+				<text>Ensure the sbtract() operation is implemented.
+				</text>
+			</assertion>
 		</group>
 	</section>
-
+	<section id="4.3.1.2"
+		title="Operations on Quantities with different dimension as the operand">
+		<group>
+			<text>Result with different dimension</text>
+			<assertion id="4312-A1">
+				<text>Ensure the divide() operation is implemented.
+				</text>
+			</assertion>
+			<assertion id="4312-A2">
+				<text>Ensure the multiply() operation is implemented.
+				</text>
+			</assertion>
+		</group>
+	</section>
 	<section id="4.4" title="Supported Quantities">
 		<group>
 			<text>Base Quantities</text>
@@ -347,7 +464,7 @@
 			</assertion>
 		</group>
 	</section>
-	
+
 	<section id="4.6" title="Quantity Formatting">
 		<group>
 			<text>QuantityFormat implementation</text>
@@ -380,100 +497,112 @@
 	</section>
 
 	<section id="5" title="SPI" />
-	<section id="5.1" title="Quantity Factory" />
-	<group>
-		<assertion id="51-A1">
-			<text>Ensure a QuantityFactory implementation exists for every
-				ServiceProvider
-			</text>
-		</assertion>
-		<assertion id="51-A2">
-			<text>Ensure every QuantityFactory creates quantities with the correct scale
-			</text>
-		</assertion>
-	</group>
-	<section id="5.2" title="System of Units" />
-	<group>
-		<assertion id="52-A1">
-			<text>Ensure at least one javax.measure.spi.SystemOfUnits
-				implementation is available
-			</text>
-		</assertion>
-		<assertion id="52-A2">
-			<text>Ensure the getName() method is implemented.
-			</text>
-		</assertion>
-		<assertion id="52-A3">
-			<text>Ensure the getUnit() method is implemented.
-			</text>
-		</assertion>
-		<assertion id="52-A4">
-			<text>Ensure the getUnit(String) method is implemented.
-			</text>
-		</assertion>
-		<assertion id="52-A5">
-			<text>Ensure the getUnits() method is implemented.
-			</text>
-		</assertion>
-		<assertion id="52-A6">
-			<text>Ensure the getUnits(Dimension) method is implemented.
-			</text>
-		</assertion>
-	</group>
-	<section id="5.3" title="Service Provider" />
-	<group>
-		<assertion id="53-A1">
-			<text>Available ServiceProviders are not null.
-			</text>
-		</assertion>
-		<assertion id="53-A2">
-			<text>ServiceProvider has available instances.
-			</text>
-		</assertion>
-		<assertion id="53-A3">
-			<text>ServiceProvider has a current instance.
-			</text>
-		</assertion>
-		<assertion id="53-A4">
-			<text>ServiceProvider has a priority.
-			</text>
-		</assertion>
-	</group>
-	<section id="5.4" title="Services" />
-	<group>
-		<assertion id="54-A1">
-			<text>Access available UnitFormatServices.
-			</text>
-		</assertion>
-		<assertion id="54-A2">
-			<text>Access Default UnitFormats in UnitFormatServices.
-			</text>
-		</assertion>
-		<assertion id="54-A3">
-			<text>Access available UnitFormats in UnitFormatServices.
-			</text>
-		</assertion>
-		<assertion id="54-A4">
-			<text>Access available SystemOfUnitsServices.
-			</text>
-		</assertion>
-		<assertion id="54-A5">
-			<text>Access default SystemOfUnits in SystemOfUnitsService.
-			</text>
-		</assertion>
-		<assertion id="54-A6">
-			<text>Access available Systems OfUnits in SystemOfUnitsService.
-			</text>
-		</assertion>
-		<assertion id="54-A7">
-			<text>Access Binary Prefixes in SystemOfUnitsService.
-			</text>
-		</assertion>
-		<assertion id="54-A8">
-			<text>Access Metric Prefixes in SystemOfUnitsService.
-			</text>
-		</assertion>
-	</group>
+	<section id="5.1" title="Quantity Factory">
+		<group>
+			<text>Ensure the Quantity Factory methods are implemented.</text>
+			<assertion id="51-A1">
+				<text>Ensure a QuantityFactory implementation exists for every
+					ServiceProvider
+				</text>
+			</assertion>
+			<assertion id="51-A2">
+				<text>Ensure every QuantityFactory creates quantities with the
+					correct scale
+				</text>
+			</assertion>
+		</group>
+	</section>
+	<section id="5.2" title="System of Units">
+		<group>
+			<text>System of Unit methods.</text>
+				
+			<assertion id="52-A1">
+				<text>Ensure at least one javax.measure.spi.SystemOfUnits
+					implementation is available
+				</text>
+			</assertion>
+			<assertion id="52-A2">
+				<text>Ensure the getName() method is implemented.
+				</text>
+			</assertion>
+			<assertion id="52-A3">
+				<text>Ensure the getUnit() method is implemented.
+				</text>
+			</assertion>
+			<assertion id="52-A4">
+				<text>Ensure the getUnit(String) method is implemented.
+				</text>
+			</assertion>
+			<assertion id="52-A5">
+				<text>Ensure the getUnits() method is implemented.
+				</text>
+			</assertion>
+			<assertion id="52-A6">
+				<text>Ensure the getUnits(Dimension) method is implemented.
+				</text>
+			</assertion>
+		</group>
+	</section>
+	<section id="5.3" title="Service Provider">
+		<group>
+			<text>ServiceProvider
+				</text>
+			<assertion id="53-A1">
+				<text>Available ServiceProviders are not null.
+				</text>
+			</assertion>
+			<assertion id="53-A2">
+				<text>ServiceProvider has available instances.
+				</text>
+			</assertion>
+			<assertion id="53-A3">
+				<text>ServiceProvider has a current instance.
+				</text>
+			</assertion>
+			<assertion id="53-A4">
+				<text>ServiceProvider has a priority.
+				</text>
+			</assertion>
+		</group>
+	</section>
+	<section id="5.4" title="Services">
+		<group>
+			<text>Services Methods</text>
+				
+			<assertion id="54-A1">
+				<text>Access available UnitFormatServices.
+				</text>
+			</assertion>
+			<assertion id="54-A2">
+				<text>Access Default UnitFormats in UnitFormatServices.
+				</text>
+			</assertion>
+			<assertion id="54-A3">
+				<text>Access available UnitFormats in FormatServices.
+				</text>
+			</assertion>
+			<assertion id="54-A4">
+				<text>Access available SystemOfUnitsServices.
+				</text>
+			</assertion>
+			<assertion id="54-A5">
+				<text>Access default SystemOfUnits in SystemOfUnitsService.
+				</text>
+			</assertion>
+			<assertion id="54-A6">
+				<text>Access available Systems OfUnits in SystemOfUnitsService.
+				</text>
+			</assertion>
+			<assertion id="54-A7">
+				<text>Access Binary Prefixes in SystemOfUnitsService.
+				</text>
+			</assertion>
+			<assertion id="54-A8">
+				<text>Access Metric Prefixes in SystemOfUnitsService.
+				</text>
+			</assertion>
+		</group>
+	</section>
 	<section id="5.5" title="Obtaining Unit Instances" />
 	<section id="5.5.1" title="Units Obtained from Unit Systems">
 		<group>

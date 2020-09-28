@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -48,19 +48,19 @@ import tech.units.tck.util.TestUtils;
  *
  * @author Werner Keil
  * @author Almas Shaikh
- * @version 1.0, August 16, 2016
+ * @version 1.1, July 5, 2019
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class UnitDimensionTest {
-    private static final String SECTION = "4.2.4";
+    private static final String SECTION = "4.2.5";
     
     /**
      * Test that Dimension implementations override equals.
      */
-    @SpecAssertion(section = SECTION, id = "424-A1")
+    @SpecAssertion(section = SECTION, id = "425-A1")
     @Test(groups = {"core"}, description = SECTION + " Ensure registered Dimension classes override equals.")
-    public void testUnitEquals() {
+    public void testEquals() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
             TestUtils.testHasPublicMethod("Section "+ SECTION, type, boolean.class, "equals", Object.class);
@@ -70,9 +70,9 @@ public class UnitDimensionTest {
     /**
      * Test that Dimension implementations override hashCode.
      */
-    @SpecAssertion(section = SECTION, id = "424-A2")
+    @SpecAssertion(section = SECTION, id = "425-A2")
     @Test(groups = {"core"}, description = SECTION + " Ensure registered Dimension classes override hashCode.")
-    public void testUnitHashcode() {
+    public void testHashcode() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
             TestUtils.testHasPublicMethod("Section "+ SECTION, type, int.class, "hashCode");
@@ -82,9 +82,9 @@ public class UnitDimensionTest {
     /**
      * Test that Dimension implementations override multiply.
      */
-    @SpecAssertion(section = SECTION, id = "424-A3")
+    @SpecAssertion(section = SECTION, id = "425-A3")
     @Test(groups = {"core"}, description = SECTION + " Ensure registered Dimension classes override multiply.")
-    public void testUnitMultiply() {
+    public void testMultiply() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
             TestUtils.testHasPublicMethod("Section "+ SECTION, type, Dimension.class, "multiply", Dimension.class);
@@ -94,9 +94,9 @@ public class UnitDimensionTest {
     /**
      * Test that Dimension implementations override divide.
      */
-    @SpecAssertion(section = SECTION, id = "424-A4")
+    @SpecAssertion(section = SECTION, id = "425-A4")
     @Test(groups = {"core"}, description = SECTION + " Ensure registered Dimension classes override divide.")
-    public void testUnitDivide() {
+    public void testDivide() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
             TestUtils.testHasPublicMethod("Section "+ SECTION, type, Dimension.class, "divide", Dimension.class);
@@ -106,9 +106,9 @@ public class UnitDimensionTest {
     /**
      * Test that Dimension implementations override root.
      */
-    @SpecAssertion(section = SECTION, id = "424-A5")
+    @SpecAssertion(section = SECTION, id = "425-A5")
     @Test(groups = {"core"}, description = SECTION + " Ensure registered Dimension classes override root.")
-    public void testUnitRoot() {
+    public void testRoot() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
             TestUtils.testHasPublicMethod("Section "+ SECTION, type, Dimension.class, "root", int.class);
@@ -118,9 +118,9 @@ public class UnitDimensionTest {
     /**
      * Test that Dimension implementations override pow.
      */
-    @SpecAssertion(section = SECTION, id = "424-A6")
+    @SpecAssertion(section = SECTION, id = "425-A6")
     @Test(groups = {"core"}, description = SECTION + " Ensure registered Dimension classes override pow.")
-    public void testUnitPow() {
+    public void testPow() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
             TestUtils.testHasPublicMethod("Section "+ SECTION, type, Dimension.class, "pow", int.class);
@@ -130,9 +130,9 @@ public class UnitDimensionTest {
     /**
      * Test that Dimension implementations override getBaseDimensions.
      */
-    @SpecAssertion(section = SECTION, id = "424-A7")
+    @SpecAssertion(section = SECTION, id = "425-A7")
     @Test(groups = {"core"}, description = SECTION + " Ensure registered Dimension classes override getBaseDimensions.")
-    public void testUnitGetProductDimensions() {
+    public void testGetBaseDimensions() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
             TestUtils.testHasPublicMethod("Section "+ SECTION, type, Map.class, "getBaseDimensions");

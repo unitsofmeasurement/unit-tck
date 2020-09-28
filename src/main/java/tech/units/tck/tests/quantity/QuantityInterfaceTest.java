@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -121,9 +121,20 @@ public class QuantityInterfaceTest {
     }
     
     /**
+     * Test that Quantity implementations override inverse.
+     */
+    @SpecAssertion(section = SECTION, id = "431-A7")
+    @Test(groups = {"core"}, description = "4.3.1.3 Ensure registered Quantity classes implement inverse method.")
+    public void testQuantityOp0Inverse() {
+        for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.3.1", type, "inverse");
+        }
+    }
+    
+    /**
      * Test that Quantity implementations override add.
      */
-    @SpecAssertion(section = "4.3.1.1", id = "4411-A1")
+    @SpecAssertion(section = "4.3.1.1", id = "4311-A1")
     @Test(groups = {"core"}, description = "4.3.1.1 Ensure registered Quantity classes implement add.")
     public void testQuantityOp1Add() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
@@ -132,31 +143,9 @@ public class QuantityInterfaceTest {
     }
 
     /**
-     * Test that Quantity implementations override multiply.
-     */
-    @SpecAssertion(section = "4.3.1.2", id = "4412-A1")
-    @Test(groups = {"core"}, description = "4.3.1.2 Ensure registered Quantity classes implement multiply.")
-    public void testQuantityOp2Multiply() {
-        for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.3.1.2", type, Quantity.class, "multiply", Quantity.class);
-        }
-    }
-
-    /**
-     * Test that Quantity implementations override divide.
-     */
-    @SpecAssertion(section = "4.3.1.2", id = "4412-A2")
-    @Test(groups = {"core"}, description = "4.3.1.2 Ensure registered Quantity classes implement divide.")
-    public void testQuantityOp2Divide() {
-        for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.3.1.2", type, Quantity.class, "divide", Quantity.class);
-        }
-    }
-
-    /**
      * Test that Quantity implementations override multiply with number as argument.
      */
-    @SpecAssertion(section = "4.3.1.1", id = "4411-A4")
+    @SpecAssertion(section = "4.3.1.1", id = "4311-A4")
     @Test(groups = {"core"}, description = "4.3.1.1 Ensure registered Quantity classes implement multiply by number.")
     public void testQuantityOp1MultiplyByNumber() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
@@ -167,7 +156,7 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override divide with number as argument.
      */
-    @SpecAssertion(section = "4.3.1.1", id = "4411-A5")
+    @SpecAssertion(section = "4.3.1.1", id = "4311-A5")
     @Test(groups = {"core"}, description = "4.3.1.1 Ensure registered Quantity classes implement divide by number.")
     public void testQuantityOp1DivideByNumber() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
@@ -178,7 +167,7 @@ public class QuantityInterfaceTest {
     /**
      * Test that Quantity implementations override subtract.
      */
-    @SpecAssertion(section = "4.3.1.1", id = "4411-A6")
+    @SpecAssertion(section = "4.3.1.1", id = "4311-A6")
     @Test(groups = {"core"}, description = "4.3.1.1 Ensure registered Quantity classes implement subtract.")
     public void testQuantityOp1Subtract() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
@@ -187,24 +176,35 @@ public class QuantityInterfaceTest {
     }
 
     /**
-     * Test that Quantity implementations override to method.
+     * Test that Quantity implementations override divide.
      */
-    @SpecAssertion(section = "4.3.1.2", id = "4412-A3")
-    @Test(groups = {"core"}, description = "4.3.1.2 Ensure registered Quantity classes implement to method.")
-    public void testQuantityOp2To() {
+    @SpecAssertion(section = "4.3.1.2", id = "4312-A1")
+    @Test(groups = {"core"}, description = "4.3.1.2 Ensure registered Quantity classes implement divide.")
+    public void testQuantityOp2Divide() {
         for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.3.1.2", type, Quantity.class, "to", Unit.class);
+            TestUtils.testHasPublicMethod("Section 4.3.1.2", type, Quantity.class, "divide", Quantity.class);
         }
     }
 
     /**
-     * Test that Quantity implementations override getUnit.
+     * Test that Quantity implementations override multiply.
      */
-    @SpecAssertion(section = "4.3.1.3", id = "431-A8")
-    @Test(groups = {"core"}, description = "4.3.1.3 Ensure registered Quantity classes implement inverse method.")
-    public void testQuantityOp3Inverse() {
-        for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod("Section 4.3.1.3", type, "inverse");
+    @SpecAssertion(section = "4.3.1.2", id = "4312-A2")
+    @Test(groups = {"core"}, description = "4.3.1.2 Ensure registered Quantity classes implement multiply.")
+    public void testQuantityOp2Multiply() {
+        for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.3.1.2", type, Quantity.class, "multiply", Quantity.class);
+        }
+    }
+    
+    /**
+     * Test that Quantity implementations override to method.
+     */
+    @SpecAssertion(section = "4.3.1", id = "431-A8")
+    @Test(groups = {"core"}, description = "4.3.1 Ensure registered Quantity classes implement to method.")
+    public void testQuantityOp0To() {
+        for (Class type : TCKSetup.getConfiguration().getQuantityClasses()) {
+            TestUtils.testHasPublicMethod("Section 4.3.1", type, Quantity.class, "to", Unit.class);
         }
     }
 }

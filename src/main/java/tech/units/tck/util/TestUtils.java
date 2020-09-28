@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -54,9 +54,9 @@ import org.mutabilitydetector.unittesting.MutabilityAssert;
 import org.mutabilitydetector.unittesting.MutabilityMatchers;
 import org.testng.Assert;
 
+import jakarta.inject.Singleton;
 import tech.units.tck.TCKValidationException;
 
-import javax.inject.Singleton;
 import javax.measure.*;
 import javax.measure.spi.*;
 
@@ -64,7 +64,7 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 1.2, May 12, 2019
+ * @version 2.0, September 28, 2020
  * @since 1.0
  */
 @Singleton
@@ -210,14 +210,14 @@ public class TestUtils {
 
     /**
      * 
-     * @param section
-     * @param type
-     * @param returnType
-     * @param name
-     * @param paramTypes
+     * @param section the section of the specification
+     * @param type the type to be checked.
+     * @param returnType the expected return type
+     * @param name the name of the method
+     * @param paramTypes the types of parameters if available
      * @deprecated use the simplified version on top of Reflections.org where possible
      */
-    public static void testHasPublicMethod(String section, Class<?> type, Class<?> returnType, String name, Class... paramTypes) {
+    public static void testHasPublicMethod(String section, Class<?> type, Class<?> returnType, String name, Class<?>... paramTypes) {
         Class<?> current = type;
         while (current != null) {
             for (Method m : current.getDeclaredMethods()) {
@@ -232,12 +232,13 @@ public class TestUtils {
                 + returnType.getName() + ", but does not: " + type.getName());
     }
 
-    private static final List<Class> PRIMITIVE_CLASSES = Collections
+    @SuppressWarnings("rawtypes")
+	private static final List<Class> PRIMITIVE_CLASSES = Collections
             .unmodifiableList(Arrays.asList(new Class[] { Object.class, Number.class, Enum.class }));
 
     /**
      * 
-     * @param section the section in the specification
+     * @param section the section of the specification
      * @param type the data type
      * @param trySuperclassFirst if tht super class if available should be tested first
      * @param returnType the expected return type
@@ -284,10 +285,9 @@ public class TestUtils {
     }
 
     /**
-     * 
-     * @param section
-     * @param type
-     * @param name
+     * @param section the section of the specification
+     * @param type the data type
+     * @param name the name of the method
      */
     public static void testHasPublicMethod(String section, Class<?> type, String name) {
         testHasPublicMethod(section, type, name, false);
@@ -341,7 +341,8 @@ public class TestUtils {
      * @throws TCKValidationException
      *             if test fails.
      */
-    public static void testHasNotPublicMethod(String section, Class type, Class returnType, String name, Class... paramTypes) {
+    @SuppressWarnings("rawtypes")
+	public static void testHasNotPublicMethod(String section, Class type, Class returnType, String name, Class... paramTypes) {
         Class current = type;
         while (current != null) {
             for (Method m : current.getDeclaredMethods()) {
@@ -379,7 +380,7 @@ public class TestUtils {
         Assert.assertEquals(value, m.invoke(instance), section + ": " + m.getName() + '(' + instance + ") returned invalid value:");
     }
 
-    static boolean testHasPublicStaticMethodOpt(String section, Class type, Class returnType, String methodName, Class... paramTypes) {
+    static boolean testHasPublicStaticMethodOpt(String section, @SuppressWarnings("rawtypes") Class type, @SuppressWarnings("rawtypes") Class returnType, String methodName, @SuppressWarnings("rawtypes") Class... paramTypes) {
         try {
             testHasPublicStaticMethod(section, type, returnType, methodName, paramTypes);
             return true;
@@ -400,7 +401,7 @@ public class TestUtils {
      *            the type to be checked.
      * @return true, if the instance is probably immutable.
      */
-    public static boolean testImmutableOpt(String section, Class type) {
+    public static boolean testImmutableOpt(String section, @SuppressWarnings("rawtypes") Class type) {
         try {
             testImmutable(section, type);
             return true;
@@ -420,7 +421,7 @@ public class TestUtils {
      *            the type to be checked.
      * @return true, if the type is probably serializable.
      */
-    public static boolean testSerializableOpt(String section, Class type) {
+    public static boolean testSerializableOpt(String section, @SuppressWarnings("rawtypes") Class type) {
         try {
             testSerializable(section, type);
             return true;

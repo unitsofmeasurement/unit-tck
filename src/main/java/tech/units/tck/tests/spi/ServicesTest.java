@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2019, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -79,7 +79,7 @@ public class ServicesTest {
 	// ************************ 5.4 Services
 	// ************************
 	/**
-	 * Access default UnitFormats in UnitFormatServices.
+	 * Access default UnitFormats in FormatServices.
 	 */
 	@Test(groups = { "spi" }, description = DESCRIPTION)
 	@SpecAssertion(section = SECTION, id = "54-A2")
@@ -99,7 +99,7 @@ public class ServicesTest {
 	// ************************ 5.4 Services
 	// ************************
 	/**
-	 * Access available UnitFormats in UnitFormatServices.
+	 * Access available UnitFormats in FormatServices.
 	 */
 	@Test(groups = { "spi" }, description = DESCRIPTION)
 	@SpecAssertion(section = SECTION, id = "54-A3")
@@ -108,7 +108,7 @@ public class ServicesTest {
 			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
 			FormatService service = provider.getFormatService();
 			assertNotNull("Section " + SECTION + ": FormatService is null", service);
-			assertNotNull("Section " + SECTION + ": Available UnitFormat names are null",
+			assertNotNull("Section " + SECTION + ": Available Format names are null",
 					service.getAvailableFormatNames());
 			assertFalse("Section " + SECTION + " No available UnitFormat names found",
 					service.getAvailableFormatNames().isEmpty());
