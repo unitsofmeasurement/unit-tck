@@ -82,18 +82,18 @@ public class ObtainingUnitsTest {
     @SpecAssertion(section = SECTION2, id = "552-A1")
     public void testGetUnitsFromUnitString() {
 	final UnitFormat format = ServiceProvider.current().getFormatService().getUnitFormat();
-		System.out.println("Fmt: " + format.toString());
+//		System.out.println("Fmt: " + format.toString()); FIXME For debugging, remove
 		for (SystemOfUnits sou : ServiceProvider.current()
 			.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
-			int i = 1;
+//			int i = 1;
 		    for (Unit u : sou.getUnits()) {
 		    	assertNotNull("Section " + SECTION2 + ": A Unit is missing from " + sou.getName(), u);
 				if (u.getSymbol() != null) {
 				    String s = u.toString();
-				    System.out.println("S " + i + ": " + s + "(" + u.getSymbol() + ")");
+//				    System.out.println("S " + i + ": " + s + "(" + u.getSymbol() + ")");
 				    Unit p = format.parse(s);
 				    assertEquals("Section " + SECTION2 + ": Unit could not be parsed for '" + s + "'", u, p);
-				    i++;
+//				    i++;
 				}
 		    }
 		}
