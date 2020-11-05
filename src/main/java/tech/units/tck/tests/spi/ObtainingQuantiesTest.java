@@ -113,6 +113,7 @@ public class ObtainingQuantiesTest {
     
     /**
      * Try parsing a quantity string for each registered unit.
+     * @since 2.1
      */
     @SuppressWarnings("rawtypes")
     @Test(groups = { "spi" }, description = SECTION
