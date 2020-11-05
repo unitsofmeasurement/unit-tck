@@ -39,7 +39,6 @@ import java.util.Set;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.format.QuantityFormat;
-import javax.measure.format.UnitFormat;
 import javax.measure.spi.QuantityFactory;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnits;
@@ -55,7 +54,7 @@ import tech.units.tck.util.TestUtils;
  * Test class for creating new quantities.
  * @author Werner Keil
  * @author Almas Shaikh
- * @version 1.0, August 16, 2016
+ * @version 2.0, November 5, 2020
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
