@@ -32,7 +32,8 @@ package tech.units.tck.tests.spi;
 import static org.testng.AssertJUnit.assertNotNull;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
-
+import static javax.measure.spi.FormatService.FormatType.UNIT_FORMAT;
+import static javax.measure.spi.FormatService.FormatType.QUANTITY_FORMAT;
 import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
@@ -43,7 +44,6 @@ import javax.measure.MetricPrefix;
 import javax.measure.spi.FormatService;
 import javax.measure.spi.ServiceProvider;
 import javax.measure.spi.SystemOfUnitsService;
-import javax.measure.spi.UnitFormatService;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
@@ -53,7 +53,7 @@ import org.testng.annotations.Test;
  * Test class for Services.
  * 
  * @author Werner Keil
- * @version 1.2, January 16, 2019
+ * @version 2.0, November 5, 2020
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -64,14 +64,14 @@ public class ServicesTest {
 	// ************************ 5.4 Services
 	// ************************
 	/**
-	 * Access available UnitFormatServices.
+	 * Access available FormatServices.
 	 */
 	@Test(groups = { "spi" }, description = DESCRIPTION)
-	@SpecAssertion(section = SECTION, id = "54-A1")
+	@SpecAssertion(section = SECTION, id = "54-A01")
 	public void testFormatService() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
 			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
-			UnitFormatService service = provider.getFormatService();
+			FormatService service = provider.getFormatService();
 			assertNotNull("Section " + SECTION + ": FormatService is null", service);
 		}
 	}
@@ -79,20 +79,41 @@ public class ServicesTest {
 	// ************************ 5.4 Services
 	// ************************
 	/**
-	 * Access default UnitFormats in FormatServices.
+	 * Access available QuantityFormats in FormatServices.
+	 * @since 2.1
 	 */
 	@Test(groups = { "spi" }, description = DESCRIPTION)
-	@SpecAssertion(section = SECTION, id = "54-A2")
-	public void testFormatServiceDefaultFormat() {
+	@SpecAssertion(section = SECTION, id = "54-A02")
+	public void testFormatServiceQuantityFormatsAvailable() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
 			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
 			FormatService service = provider.getFormatService();
-			assertNotNull("Section " + SECTION + ": UnitFormatService is null", service);
-			assertNotNull("Section " + SECTION + ": Default UnitFormat is null", service.getUnitFormat());
-			assertNotNull("Section " + SECTION + ": Available UnitFormat names are null",
-					service.getAvailableFormatNames());
-			assertFalse("Section " + SECTION + " No available UnitFormat names found",
-					service.getAvailableFormatNames().isEmpty());
+			assertNotNull("Section " + SECTION + ": FormatService is null", service);
+			assertNotNull("Section " + SECTION + ": Available QuantityFormat names are null",
+					service.getAvailableFormatNames(QUANTITY_FORMAT));
+			assertFalse("Section " + SECTION + " No available QuantityFormat names found",
+					service.getAvailableFormatNames(QUANTITY_FORMAT).isEmpty());
+		}
+	}
+	
+	// ************************ 5.4 Services
+	// ************************
+	/**
+	 * Access default QuantityFormat in FormatServices.
+	 * @since 2.1
+	 */
+	@Test(groups = { "spi" }, description = DESCRIPTION)
+	@SpecAssertion(section = SECTION, id = "54-A03")
+	public void testFormatServiceQuantityFormatsDefault() {
+		for (ServiceProvider provider : ServiceProvider.available()) {
+			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
+			FormatService service = provider.getFormatService();
+			assertNotNull("Section " + SECTION + ": FormatService is null", service);
+			assertNotNull("Section " + SECTION + ": Default QuantityFormat is null", service.getUnitFormat());
+			assertNotNull("Section " + SECTION + ": Available QuantityFormat names are null",
+					service.getAvailableFormatNames(QUANTITY_FORMAT));
+			assertFalse("Section " + SECTION + " No available QuantityFormat names found",
+					service.getAvailableFormatNames(QUANTITY_FORMAT).isEmpty());
 		}
 	}
 
@@ -102,16 +123,36 @@ public class ServicesTest {
 	 * Access available UnitFormats in FormatServices.
 	 */
 	@Test(groups = { "spi" }, description = DESCRIPTION)
-	@SpecAssertion(section = SECTION, id = "54-A3")
-	public void testFormatServiceAvailableFormats() {
+	@SpecAssertion(section = SECTION, id = "54-A04")
+	public void testFormatServiceUnitFormatsAvailable() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
 			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
 			FormatService service = provider.getFormatService();
 			assertNotNull("Section " + SECTION + ": FormatService is null", service);
-			assertNotNull("Section " + SECTION + ": Available Format names are null",
-					service.getAvailableFormatNames());
+			assertNotNull("Section " + SECTION + ": Available UnitFormat names are null",
+					service.getAvailableFormatNames(UNIT_FORMAT));
 			assertFalse("Section " + SECTION + " No available UnitFormat names found",
-					service.getAvailableFormatNames().isEmpty());
+					service.getAvailableFormatNames(UNIT_FORMAT).isEmpty());
+		}
+	}
+	
+	// ************************ 5.4 Services
+	// ************************
+	/**
+	 * Access default UnitFormats in FormatServices.
+	 */
+	@Test(groups = { "spi" }, description = DESCRIPTION)
+	@SpecAssertion(section = SECTION, id = "54-A05")
+	public void testFormatServiceUnitFormatsDefault() {
+		for (ServiceProvider provider : ServiceProvider.available()) {
+			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
+			FormatService service = provider.getFormatService();
+			assertNotNull("Section " + SECTION + ": FormatService is null", service);
+			assertNotNull("Section " + SECTION + ": Default UnitFormat is null", service.getUnitFormat());
+			assertNotNull("Section " + SECTION + ": Available UnitFormat names are null",
+					service.getAvailableFormatNames(UNIT_FORMAT));
+			assertFalse("Section " + SECTION + " No available UnitFormat names found",
+					service.getAvailableFormatNames(UNIT_FORMAT).isEmpty());
 		}
 	}
 
@@ -121,7 +162,7 @@ public class ServicesTest {
 	 * Access available SystemOfUnitsServices.
 	 */
 	@Test(groups = { "spi" }, description = DESCRIPTION)
-	@SpecAssertion(section = SECTION, id = "54-A4")
+	@SpecAssertion(section = SECTION, id = "54-A06")
 	public void testSystemOfUnitsService() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
 			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
@@ -136,7 +177,7 @@ public class ServicesTest {
 	 * Access default SystemOfUnits in SystemOfUnitsService.
 	 */
 	@Test(groups = { "spi" }, description = DESCRIPTION)
-	@SpecAssertion(section = SECTION, id = "54-A5")
+	@SpecAssertion(section = SECTION, id = "54-A07")
 	public void testSystemOfUnitsServiceDefaultSystem() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
 			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
@@ -152,7 +193,7 @@ public class ServicesTest {
 	 * Access available Systems OfUnits in SystemOfUnitsService.
 	 */
 	@Test(groups = { "spi" }, description = DESCRIPTION)
-	@SpecAssertion(section = SECTION, id = "54-A6")
+	@SpecAssertion(section = SECTION, id = "54-A08")
 	public void testSystemOfUnitsServiceAvailableSystems() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
 			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
@@ -170,7 +211,7 @@ public class ServicesTest {
 	 * @since 2.0
 	 */
 	@Test(groups = { "spi" }, description = DESCRIPTION)
-	@SpecAssertion(section = SECTION, id = "54-A7")
+	@SpecAssertion(section = SECTION, id = "54-A09")
 	public void testSystemOfUnitsServicePrefixBinary() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
 			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);
@@ -188,7 +229,7 @@ public class ServicesTest {
 	 * @since 2.0
 	 */
 	@Test(groups = { "spi" }, description = DESCRIPTION)
-	@SpecAssertion(section = SECTION, id = "54-A8")
+	@SpecAssertion(section = SECTION, id = "54-A10")
 	public void testSystemOfUnitsServicePrefixMetric() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
 			assertNotNull("Section " + SECTION + ": ServiceProvider is null", provider);

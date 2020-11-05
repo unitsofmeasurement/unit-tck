@@ -29,6 +29,7 @@
  */
 package tech.units.tck.tests.spi;
 
+import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
@@ -37,8 +38,11 @@ import java.util.Set;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
+import javax.measure.format.QuantityFormat;
+import javax.measure.format.UnitFormat;
 import javax.measure.spi.QuantityFactory;
 import javax.measure.spi.ServiceProvider;
+import javax.measure.spi.SystemOfUnits;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
@@ -81,7 +85,7 @@ public class ObtainingQuantiesTest {
      * Check a QuantityFactory for each registered type has create method.
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    @Test(groups = {"spi"}, description = SECTION + " Quantities Obtained from a factory has create method")
+    @Test(groups = {"spi"}, description = SECTION + " Quantities obtained from a factory has create method")
     @SpecAssertion(section = SECTION, id = "561-A2")
     public void testAccessToQuantityFactoryCreate() {
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
@@ -96,7 +100,7 @@ public class ObtainingQuantiesTest {
      * Check a QuantityFactory for each registered type has getSystemUnit method.
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    @Test(groups = {"spi"}, description = SECTION + " Quantities Obtained from a factory has getSystemUnit method")
+    @Test(groups = {"spi"}, description = SECTION + " Quantities obtained from a factory has getSystemUnit method")
     @SpecAssertion(section = SECTION, id = "561-A3")
     public void testAccessToQuantityFactoryGetSystemUnit() {
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
@@ -105,5 +109,32 @@ public class ObtainingQuantiesTest {
             QuantityFactory<?> factory = ServiceProvider.current().getQuantityFactory(clazz);
             TestUtils.testHasPublicMethod("Section " + SECTION, factory.getClass(), Unit.class, "getSystemUnit");
         }
+    }
+    
+    /**
+     * Try parsing a quantity string for each registered unit.
+     */
+    @SuppressWarnings("rawtypes")
+    @Test(groups = { "spi" }, description = SECTION
+	    + " Quantities obtained by string parsing")
+    @SpecAssertion(section = SECTION, id = "561-A4")
+    public void testGetQuantitiesFromString() {
+	final QuantityFormat format = ServiceProvider.current().getFormatService().getQuantityFormat();
+//		System.out.println("Fmt: " + format.toString()); TODO For debugging, remove or comment out
+		for (SystemOfUnits sou : ServiceProvider.current()
+			.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
+//			int i = 1;
+		    for (Unit u : sou.getUnits()) {
+		    	assertNotNull("Section " + SECTION + ": A Unit is missing from " + sou.getName(), u);
+				if (u.getSymbol() != null) {
+				    String s = u.toString();
+//				    System.out.println("S " + i + ": " + s + "(" + u.getSymbol() + ")");
+				    Quantity q = format.parse("1 " + s);
+				    assertEquals("Section " + SECTION + ": Quantity unit could not be parsed for '" + s + "'", u, q.getUnit());
+				    assertEquals("Section " + SECTION + ": Quantity value could not be parsed for '" + s + "'", 1, q.getValue());
+//				    i++;
+				}
+		    }
+		}
     }
 }

@@ -34,7 +34,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://jboss.com/products/weld/tech.units.tck/audit"
 	xsi:schemaLocation="http://jboss.com/products/weld/tech.units.tck/audit"
-	name="JSR 385 Units of Measurement" version="2.0.0" id="JSR 385"
+	name="JSR 385 Units of Measurement" version="2.1.0" id="JSR 385"
 	generateSectionIds="false">
 	<section id="0" title="TCK Setup">
 		<!-- Tests class TCKSetupTest -->
@@ -569,35 +569,43 @@
 		<group>
 			<text>Services Methods</text>
 				
-			<assertion id="54-A1">
-				<text>Access available UnitFormatServices.
+			<assertion id="54-A01">
+				<text>Access available FormatServices.
 				</text>
 			</assertion>
-			<assertion id="54-A2">
-				<text>Access Default UnitFormats in UnitFormatServices.
+			<assertion id="54-A02">
+				<text>Access available QuantityFormats in FormatServices.
 				</text>
 			</assertion>
-			<assertion id="54-A3">
-				<text>Access available UnitFormats in FormatServices.
-				</text>
-			</assertion>
-			<assertion id="54-A4">
+			<assertion id="54-A03">
+                <text>Access default QuantityFormat in FormatServices.
+                </text>
+            </assertion>			
+            <assertion id="54-A04">
+                <text>Access available UnitFormats in FormatServices.
+                </text>
+            </assertion>
+            <assertion id="54-A05">
+                <text>Access default UnitFormat in FormatServices.
+                </text>
+            </assertion>
+			<assertion id="54-A06">
 				<text>Access available SystemOfUnitsServices.
 				</text>
 			</assertion>
-			<assertion id="54-A5">
+			<assertion id="54-A07">
 				<text>Access default SystemOfUnits in SystemOfUnitsService.
 				</text>
 			</assertion>
-			<assertion id="54-A6">
+			<assertion id="54-A08">
 				<text>Access available Systems OfUnits in SystemOfUnitsService.
 				</text>
 			</assertion>
-			<assertion id="54-A7">
+			<assertion id="54-A09">
 				<text>Access Binary Prefixes in SystemOfUnitsService.
 				</text>
 			</assertion>
-			<assertion id="54-A8">
+			<assertion id="54-A10">
 				<text>Access Metric Prefixes in SystemOfUnitsService.
 				</text>
 			</assertion>
@@ -625,21 +633,25 @@
 	<section id="5.6" title="Obtaining Quantity Instances" />
 	<section id="5.6.1" title="Quantities Obtained from a factory">
 		<group>
-			<text>Quantities Obtained from a factory</text>
+			<text>Quantities obtained from a factory</text>
 			<assertion id="561-A1">
 				<text>Test QuantityFactoryService provides a QuantityFactory for
 					each base quantity.
 				</text>
 			</assertion>
 			<assertion id="561-A2">
-				<text>5.6.1 Quantities Obtained from a factory has create method
+				<text>5.6.1 Quantities obtained from a factory has create method
 				</text>
 			</assertion>
 			<assertion id="561-A3">
-				<text>5.6.1 Quantities Obtained from a factory has getSystemUnit
+				<text>5.6.1 Quantities obtained from a factory has getSystemUnit
 					method
 				</text>
 			</assertion>
+			<assertion id="561-A4">
+                <text>5.6.1 Quantities Obtained from a string representation
+                </text>
+            </assertion>
 		</group>
 	</section>
 </specification>
