@@ -64,7 +64,7 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.0, September 28, 2020
+ * @version 2.1, November 5, 2020
  * @since 1.0
  */
 @Singleton
@@ -90,6 +90,8 @@ public class TestUtils {
      */
     public static final String SYS_PROPERTY_VERBOSE = "tech.units.tck.verbose";
 
+    
+    
     private static final StringBuilder warnings = new StringBuilder();
 
     /**
@@ -215,7 +217,6 @@ public class TestUtils {
      * @param returnType the expected return type
      * @param name the name of the method
      * @param paramTypes the types of parameters if available
-     * @deprecated use the simplified version on top of Reflections.org where possible
      */
     public static void testHasPublicMethod(String section, Class<?> type, Class<?> returnType, String name, Class<?>... paramTypes) {
         Class<?> current = type;
@@ -342,7 +343,7 @@ public class TestUtils {
      *             if test fails.
      */
     @SuppressWarnings("rawtypes")
-	public static void testHasNotPublicMethod(String section, Class type, Class returnType, String name, Class... paramTypes) {
+	public static void testHasNotPublicMethod(String section, Class<?> type, Class<?> returnType, String name, Class<?>... paramTypes) {
         Class current = type;
         while (current != null) {
             for (Method m : current.getDeclaredMethods()) {

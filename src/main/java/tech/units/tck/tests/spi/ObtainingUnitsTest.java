@@ -46,12 +46,12 @@ import org.testng.annotations.Test;
 /**
  * Test class for obtaining units.
  * @author Werner Keil
- * @version 1.0, August 16, 2016
+ * @version 1.1, November 5, 2020
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class ObtainingUnitsTest {
-    private static final String SECTION1 = "5.5.1";
+    private static final String SECTION_NUM1 = "5.5.1";
 
     // ************************ 5.5 Obtaining Unit Instances
     // ************************
@@ -59,14 +59,14 @@ public class ObtainingUnitsTest {
      * Access a SystemOfUnits for each registered unit.
      */
     @SuppressWarnings("rawtypes")
-    @Test(groups = { "spi" }, description = SECTION1
+    @Test(groups = { "spi" }, description = SECTION_NUM1
 	    + " Units Obtained from Unit Systems")
-    @SpecAssertion(section = SECTION1, id = "551-A1")
+    @SpecAssertion(section = SECTION_NUM1, id = "551-A1")
     public void testGetUnitsFromSystemOfUnits() {
 		for (SystemOfUnits sou : ServiceProvider.current()
 			.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
 		    for (Unit u : sou.getUnits()) {
-		    	assertNotNull("Section " + SECTION1 + ": A Unit is missing from " + sou.getName(), u);
+		    	assertNotNull("Section " + SECTION_NUM1 + ": A Unit is missing from " + sou.getName(), u);
 		    }
 		}
     }

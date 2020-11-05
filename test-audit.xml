@@ -351,26 +351,30 @@
 				</text>
 			</assertion>
 			<assertion id="431-A3">
-				<text>Ensure the hashCode() operation is implemented.
-				</text>
-			</assertion>
-			<assertion id="431-A4">
 				<text>Ensure the getScale() method is implemented.
 				</text>
 			</assertion>
+			<assertion id="431-A4">
+                <text>Ensure the getUnit() method is implemented.
+                </text>
+            </assertion>
 			<assertion id="431-A5">
-				<text>Ensure the getUnit() method is implemented.
-				</text>
-			</assertion>
-			<assertion id="431-A6">
 				<text>Ensure the getValue() method is implemented.
 				</text>
 			</assertion>
-			<assertion id="431-A7">
+			<assertion id="431-A5">
+                <text>Ensure the hashCode() operation is implemented.
+                </text>
+            </assertion>
+            <assertion id="431-A6">
+                <text>Ensure the isEquivalentTo() operation is implemented.
+                </text>
+            </assertion>
+			<assertion id="431-A8">
 				<text>Ensure the inverse() method is implemented.
 				</text>
 			</assertion>
-			<assertion id="431-A8">
+			<assertion id="431-A9">
 				<text>Ensure the to() method is implemented.
 				</text>
 			</assertion>

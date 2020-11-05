@@ -43,14 +43,16 @@ import java.util.Collection;
 /**
  * Tests the ServiceConfiguration
  * @author Werner Keil
- * @version 1.0, August 16, 2016
+ * @version 1.1, November 5, 2020
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class TCKSetupTest{
 
+	private static final String SECTION_NUM = "0";
+	
     @SpecAssertion(
-            section = "0",
+            section = SECTION_NUM,
             id = "Setup",
             note = "Tests that a TestConfiguration is registered with the JDK ServiceLoader.")
     @Test(groups = { "core" }, description = "TCK Setup: ensure TCK Configuration is registered and available.")
@@ -60,7 +62,7 @@ public class TCKSetupTest{
     }
 
     @SpecAssertion(
-            section = "0",
+            section = SECTION_NUM,
             id = "Setup",
             note = "Checks that TestConfiguration.getQuantityClasses() returns a non empty collection of quantity " +
                     "implementations")

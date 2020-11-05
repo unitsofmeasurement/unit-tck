@@ -53,13 +53,13 @@ import tech.units.tck.TCKSetup;
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class QuantityFormatTest {
-	private static final String SECTION = "4.6";
+	private static final String SECTION_NUM = "4.6";
 	
     /**
      * Ensure at least one QuantityFormat implementation
      * is available/registered.
      */
-    @SpecAssertion(section = SECTION, id = "46-A1")
+    @SpecAssertion(section = SECTION_NUM, id = "46-A1")
     @Test(groups = { FORMAT }, description = "4.6 Ensure at least one QuantityFormat implementation is available/registered.")
     public void testEnsureGotQuantityFormat() {
         assertNotNull("TCK Configuration not available.", TCKSetup.getConfiguration());
@@ -69,7 +69,7 @@ public class QuantityFormatTest {
     /**
      * Ensure the format() operation is implemented.
      */
-    @SpecAssertion(section = SECTION, id = "46-A2")
+    @SpecAssertion(section = SECTION_NUM, id = "46-A2")
     @Test(groups = { FORMAT }, description = "4.6 Ensure the format() operation is implemented.")
     public void testQuantityFormatFormat() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
@@ -81,7 +81,7 @@ public class QuantityFormatTest {
     /**
      * Ensure the appendable format() operation is implemented.
      */
-    @SpecAssertion(section = SECTION, id = "46-A3")
+    @SpecAssertion(section = SECTION_NUM, id = "46-A3")
     @Test(groups = { FORMAT }, description = "4.6 Ensure the appendable format() operation is implemented.")
     public void testQuantityFormatFormatAppendable() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
@@ -93,7 +93,7 @@ public class QuantityFormatTest {
     /**
      * Ensure the isLocaleSensitive() method is implemented.
      */
-    @SpecAssertion(section = SECTION, id = "46-A4")
+    @SpecAssertion(section = SECTION_NUM, id = "46-A4")
     @Test(groups = { FORMAT }, description = "4.6 Ensure the isLocaleSensitive() method is implemented.")
     public void testQuantityFormatFormatIsLocalSensitive() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
@@ -105,7 +105,7 @@ public class QuantityFormatTest {
     /**
      * Ensure the parse() operation is implemented.
      */
-    @SpecAssertion(section = SECTION, id = "46-A5")
+    @SpecAssertion(section = SECTION_NUM, id = "46-A5")
     @Test(groups = { FORMAT }, description = "4.6 Ensure the parse() operation is implemented.")
     public void testQuantityFormatParse() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
