@@ -48,13 +48,13 @@ import org.testng.annotations.Test;
 /**
  * Test class for {@link ServiceProvider}.
  * @author Werner Keil
- * @version 1.0, August 16, 2016
+ * @version 1.1, November 6, 2020
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class ServiceProviderTest {
-    private static final String SECTION = "5.3";
-    private static final String DESCRIPTION = SECTION + " Service Provider";
+    private static final String SECTION_NUM = "5.3";
+    private static final String DESCRIPTION = SECTION_NUM + " Service Provider";
 
     // ************************ 5.3 Service Provider
     // ************************
@@ -62,21 +62,21 @@ public class ServiceProviderTest {
      * Access available service providers.
      */
     @Test(groups = {"spi"}, description = DESCRIPTION)
-    @SpecAssertion(section = SECTION, id = "53-A1")
+    @SpecAssertion(section = SECTION_NUM, id = "53-A1")
     public void testAvailable() {
 	List<ServiceProvider> spa = ServiceProvider.available();
-        assertNotNull("Section " + SECTION + ": available ServiceProviders is null", spa);
+        assertNotNull("Section " + SECTION_NUM + ": available ServiceProviders is null", spa);
     }
     
     /**
      * Available service providers not empty.
      */
     @Test(groups = {"spi"}, description = DESCRIPTION)
-    @SpecAssertion(section = SECTION, id = "53-A2")
+    @SpecAssertion(section = SECTION_NUM, id = "53-A2")
     public void testAvailableNotEmpty() {
 	List<ServiceProvider> spa = ServiceProvider.available();
-        assertNotNull("Section " + SECTION + ": available ServiceProviders is null", spa);
-        assertFalse("Section " + SECTION + ": No available ServiceProviders found", spa.isEmpty());
+        assertNotNull("Section " + SECTION_NUM + ": available ServiceProviders is null", spa);
+        assertFalse("Section " + SECTION_NUM + ": No available ServiceProviders found", spa.isEmpty());
     }
     
     // ************************ 5.3 Service Provider
@@ -85,10 +85,10 @@ public class ServiceProviderTest {
      * Access current ServiceProvider.
      */
     @Test(groups = {"spi"}, description = DESCRIPTION)
-    @SpecAssertion(section = SECTION, id = "53-A3")
+    @SpecAssertion(section = SECTION_NUM, id = "53-A3")
     public void testCurrent() {
 	ServiceProvider sp = ServiceProvider.current();
-        assertNotNull("Section " + SECTION + ": No current ServiceProvider found", sp);
+        assertNotNull("Section " + SECTION_NUM + ": No current ServiceProvider found", sp);
     }
     
     // ************************ 5.3 Service Provider
@@ -97,12 +97,12 @@ public class ServiceProviderTest {
      * Access a ServiceProvider priority.
      */
     @Test(groups = {"spi"}, description = DESCRIPTION)
-    @SpecAssertion(section = SECTION, id = "53-A4")
+    @SpecAssertion(section = SECTION_NUM, id = "53-A4")
     public void testPriority() {
 	ServiceProvider sp = ServiceProvider.current();
-	assertThat("Section " + SECTION + ": Priority should be a valid int", sp.getPriority(),
+	assertThat("Section " + SECTION_NUM + ": Priority should be a valid int", sp.getPriority(),
 		greaterThanOrEqualTo(Integer.MIN_VALUE));
-	assertThat("Section " + SECTION + ": Priority should be a valid int", sp.getPriority(),
+	assertThat("Section " + SECTION_NUM + ": Priority should be a valid int", sp.getPriority(),
 		lessThanOrEqualTo(Integer.MAX_VALUE));
     }
 }

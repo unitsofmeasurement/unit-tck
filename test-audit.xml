@@ -362,11 +362,11 @@
 				<text>Ensure the getValue() method is implemented.
 				</text>
 			</assertion>
-			<assertion id="431-A5">
+			<assertion id="431-A6">
                 <text>Ensure the hashCode() operation is implemented.
                 </text>
             </assertion>
-            <assertion id="431-A6">
+            <assertion id="431-A7">
                 <text>Ensure the isEquivalentTo() operation is implemented.
                 </text>
             </assertion>
