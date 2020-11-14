@@ -232,6 +232,13 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
                 fileWriter.write("**** " + SPEC_ID + " - Units of Measurement, Technical Compatibility Kit, version " + TCK_VERSION + "\n");
                 fileWriter.write("*****************************************************************************************\n\n");
                 fileWriter.write("Executed on " + new java.util.Date() + "\n");
+                fileWriter.write("Operating System " 
+                  + System.getProperty("os.name") + " " 
+                  + System.getProperty("os.version") + " "
+                  + System.getProperty("os.arch") + "\n");
+                fileWriter.write("Java " 
+                        + System.getProperty("java.version") + " (" 
+                        + System.getProperty("java.vendor") + ") \n");
                 fileWriter.write("Using " + profile.getDescription() + " profile\n\n");
                 // System.out:
                 consoleWriter.write("*****************************************************************************************\n");
