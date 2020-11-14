@@ -36,7 +36,7 @@ import tech.uom.lib.common.function.DescriptionSupplier;
  * 
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
  * @author <a href="mailto:thodoris.bais@gmail.com">Thodoris Bais</a>
- * @version 2.2, May 12, 2019
+ * @version 2.3, Nobember 15, 2020
  * @since 1.0
  */
 public final class TestGroups {

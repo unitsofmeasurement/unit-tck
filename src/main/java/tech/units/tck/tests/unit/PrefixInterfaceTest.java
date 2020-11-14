@@ -29,6 +29,7 @@
  */
 package tech.units.tck.tests.unit;
 
+import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import org.jboss.test.audit.annotations.SpecAssertion;
@@ -42,7 +43,7 @@ import tech.units.tck.util.TestUtils;
  * Tests for Unit Conversion
  *
  * @author Werner Keil
- * @version 1.2, July 7, 2019
+ * @version 2.0, November 15, 2020
  * @since 2.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -52,26 +53,24 @@ public class PrefixInterfaceTest {
     /**
      * Test that Dimension implementations override equals.
      */
-    @SuppressWarnings("deprecation")
-	@SpecAssertion(section = SECTION, id = "424-A1")
+    @SpecAssertion(section = SECTION, id = "424-A1")
     @Test(groups = {"core"}, description = SECTION + " Ensure supported Prefix classes override equals.")
     public void testEquals() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
-            TestUtils.testHasPublicMethod("Section "+ SECTION, type, boolean.class, "equals", Object.class);
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, boolean.class, "equals", Object.class);
         }
     }
 
     /**
      * Test that Dimension implementations override hashCode.
      */
-    @SuppressWarnings("deprecation")
-	@SpecAssertion(section = SECTION, id = "424-A2")
+    @SpecAssertion(section = SECTION, id = "424-A2")
     @Test(groups = {"core"}, description = SECTION + " Ensure supported Prefix classes override hashCode.")
     public void testHashcode() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
-            TestUtils.testHasPublicMethod("Section "+ SECTION, type, int.class, "hashCode");
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, int.class, "hashCode");
         }
     }
 
@@ -102,26 +101,24 @@ public class PrefixInterfaceTest {
     /**
      * Test that Prefix implementations override getValue.
      */
-    @SuppressWarnings("deprecation")
-	@SpecAssertion(section = SECTION, id = "424-A5")
+    @SpecAssertion(section = SECTION, id = "424-A5")
     @Test(groups = {"core"}, description = SECTION + " Ensure supported Prefix implementations override getValue.")
     public void testGetValue() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
-            TestUtils.testHasPublicMethod("Section "+ SECTION, type, Number.class, "getValue");
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, Number.class, "getValue");
         }
     }
     
     /**
      * Test that Prefix implementations override getExponent.
      */
-    @SuppressWarnings("deprecation")
-	@SpecAssertion(section = SECTION, id = "424-A6")
+    @SpecAssertion(section = SECTION, id = "424-A6")
     @Test(groups = {"core"}, description = SECTION + " Ensure supported Prefix implementations override getExponent.")
     public void testGetXponent() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
-            TestUtils.testHasPublicMethod("Section "+ SECTION, type, int.class, "getExponent");
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, int.class, "getExponent");
         }
     }
 }

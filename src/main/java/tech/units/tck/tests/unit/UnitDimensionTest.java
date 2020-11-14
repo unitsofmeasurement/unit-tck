@@ -29,6 +29,7 @@
  */
 package tech.units.tck.tests.unit;
 
+import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 
@@ -48,7 +49,7 @@ import tech.units.tck.util.TestUtils;
  *
  * @author Werner Keil
  * @author Almas Shaikh
- * @version 1.1, July 5, 2019
+ * @version 2.0, November 15, 2020
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -63,7 +64,7 @@ public class UnitDimensionTest {
     public void testEquals() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
-            TestUtils.testHasPublicMethod("Section "+ SECTION, type, boolean.class, "equals", Object.class);
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, boolean.class, "equals", Object.class);
         }
     }
 
@@ -75,7 +76,7 @@ public class UnitDimensionTest {
     public void testHashcode() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
-            TestUtils.testHasPublicMethod("Section "+ SECTION, type, int.class, "hashCode");
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, int.class, "hashCode");
         }
     }
 
@@ -87,7 +88,7 @@ public class UnitDimensionTest {
     public void testMultiply() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
-            TestUtils.testHasPublicMethod("Section "+ SECTION, type, Dimension.class, "multiply", Dimension.class);
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, Dimension.class, "multiply", Dimension.class);
         }
     }
 
@@ -99,7 +100,7 @@ public class UnitDimensionTest {
     public void testDivide() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
-            TestUtils.testHasPublicMethod("Section "+ SECTION, type, Dimension.class, "divide", Dimension.class);
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, Dimension.class, "divide", Dimension.class);
         }
     }
 
@@ -111,7 +112,7 @@ public class UnitDimensionTest {
     public void testRoot() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
-            TestUtils.testHasPublicMethod("Section "+ SECTION, type, Dimension.class, "root", int.class);
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, Dimension.class, "root", int.class);
         }
     }
 
@@ -123,7 +124,7 @@ public class UnitDimensionTest {
     public void testPow() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
-            TestUtils.testHasPublicMethod("Section "+ SECTION, type, Dimension.class, "pow", int.class);
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, Dimension.class, "pow", int.class);
         }
     }
 
@@ -135,7 +136,7 @@ public class UnitDimensionTest {
     public void testGetBaseDimensions() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getDimensionClasses()) {
-            TestUtils.testHasPublicMethod("Section "+ SECTION, type, Map.class, "getBaseDimensions");
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, Map.class, "getBaseDimensions");
         }
     }
 }

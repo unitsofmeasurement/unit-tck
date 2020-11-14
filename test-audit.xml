@@ -123,6 +123,10 @@
 				</text>
 			</assertion>
 			<assertion id="421-A8">
+                <text>Ensure registered Unit classes override isEquivalentTo.
+                </text>
+            </assertion>
+			<assertion id="421-A9">
 				<text>Ensure registered Unit classes override toString.
 				</text>
 			</assertion>
