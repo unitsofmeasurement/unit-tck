@@ -29,6 +29,7 @@
  */
 package tech.units.tck.tests.format;
 
+import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.util.TestGroups.FORMAT;
@@ -47,19 +48,20 @@ import tech.units.tck.TCKSetup;
 
 /**
  * Tests for UnitFormat
- * @version 1.2, March 5, 2019
+ * @version 2.0, November 15, 2020
  * @since 1.0
  * @author  <a href="mailto:werner@units.tech">Werner Keil</a>
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class UnitFormatTest {
-
+	private static final String SECTION_NUM = "4.5";
+	
     /**
      * Ensure at least one UnitFormat implementation
      * is available/registered.
      */
-    @SpecAssertion(section = "4.5", id = "45-A1")
-    @Test(groups = { FORMAT }, description = "4.5 Ensure at least one UnitFormat implementation is available/registered.")
+    @SpecAssertion(section = SECTION_NUM, id = "45-A1")
+    @Test(groups = { FORMAT }, description = SECTION_NUM + "Ensure at least one UnitFormat implementation is available/registered.")
     public void testEnsureGotUnitFormat() {
         assertNotNull("TCK Configuration not available.", TCKSetup.getConfiguration());
         assertFalse(TCKSetup.getConfiguration().getUnitFormats4Test().isEmpty());
@@ -68,60 +70,60 @@ public class UnitFormatTest {
     /**
      * Ensure the format() operation is implemented.
      */
-    @SpecAssertion(section = "4.5", id = "45-A2")
-    @Test(groups = { FORMAT }, description = "4.5 Ensure the format() operation is implemented.")
+    @SpecAssertion(section = SECTION_NUM, id = "45-A2")
+    @Test(groups = { FORMAT }, description = SECTION_NUM + "Ensure the format() operation is implemented.")
     public void testUnitFormatFormat() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            testHasPublicMethod("Section 4.5", type, false, String.class, "format", Unit.class);
+            testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, type, false, String.class, "format", Unit.class);
         }
     }
     
     /**
      * Ensure the appendable format() operation is implemented.
      */
-    @SpecAssertion(section = "4.5", id = "45-A3")
-    @Test(groups = { FORMAT }, description = "4.5 Ensure the appendable format() operation is implemented.")
+    @SpecAssertion(section = SECTION_NUM, id = "45-A3")
+    @Test(groups = { FORMAT }, description = SECTION_NUM + "Ensure the appendable format() operation is implemented.")
     public void testUnitFormatFormatAppendable() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            testHasPublicMethod("Section 4.5", type, false, Appendable.class, "format", Unit.class, Appendable.class);
+            testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, type, false, Appendable.class, "format", Unit.class, Appendable.class);
         }
     }
     
     /**
      * Ensure the isLocaleSensitive() method is implemented.
      */
-    @SpecAssertion(section = "4.5", id = "45-A4")
-    @Test(groups = { FORMAT }, description = "4.5 Ensure the isLocaleSensitive() method is implemented.")
+    @SpecAssertion(section = SECTION_NUM, id = "45-A4")
+    @Test(groups = { FORMAT }, description = SECTION_NUM + "Ensure the isLocaleSensitive() method is implemented.")
     public void testUnitFormatFormatIsLocalSensitive() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            testHasPublicMethod("Section 4.5", type, "isLocaleSensitive", false);
+            testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, type, "isLocaleSensitive", false);
         }
     }
     
     /**
      * Ensure the label() operation is implemented.
      */
-    @SpecAssertion(section = "4.5", id = "45-A5")
-    @Test(groups = { FORMAT }, description = "4.5 Ensure the label() operation is implemented.")
+    @SpecAssertion(section = SECTION_NUM, id = "45-A5")
+    @Test(groups = { FORMAT }, description = SECTION_NUM + "Ensure the label() operation is implemented.")
     public void testUnitFormatLabel() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            testHasPublicMethod("Section 4.5", type, "label", true);
+            testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, type, "label", true);
         }
     }
     
     /**
      * Ensure the parse() operation is implemented.
      */
-    @SpecAssertion(section = "4.5", id = "45-A6")
-    @Test(groups = { FORMAT }, description = "4.5 Ensure the parse() operation is implemented.")
+    @SpecAssertion(section = SECTION_NUM, id = "45-A6")
+    @Test(groups = { FORMAT }, description = SECTION_NUM + "Ensure the parse() operation is implemented.")
     public void testUnitFormatParse() {
         for (UnitFormat format : TCKSetup.getConfiguration().getUnitFormats4Test()) {
         	Class<?> type = format.getClass();
-            testHasPublicMethod("Section 4.5", type, "parse", true);
+            testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, type, "parse", true);
         }
     }
 }

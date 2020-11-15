@@ -64,7 +64,7 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.1, November 5, 2020
+ * @version 2.2, November 15, 2020
  * @since 1.0
  */
 @Singleton
@@ -88,9 +88,7 @@ public class TestUtils {
     /**
      * Name of the system property to set the <code>verbose</code> flag
      */
-    public static final String SYS_PROPERTY_VERBOSE = "tech.units.tck.verbose";
-
-    
+    public static final String SYS_PROPERTY_VERBOSE = "tech.units.tck.verbose";   
     
     private static final StringBuilder warnings = new StringBuilder();
 

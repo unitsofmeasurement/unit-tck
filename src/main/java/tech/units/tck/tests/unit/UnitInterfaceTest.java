@@ -172,7 +172,7 @@ public class UnitInterfaceTest {
     public void testUnit42121A1_Alternate() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.1", type, "alternate", true);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, "alternate", true);
         }
     }
     
@@ -184,7 +184,7 @@ public class UnitInterfaceTest {
     public void testUnit42121A2_Divide() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "divide", Unit.class);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "divide", Unit.class);
         }
     }
     
@@ -196,7 +196,7 @@ public class UnitInterfaceTest {
     public void testUnit42121A3_DivideByDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "divide", double.class);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "divide", double.class);
         }
     }
 
@@ -208,7 +208,7 @@ public class UnitInterfaceTest {
 	public void testUnit42121A4_DivideByNumber() {
 		for (@SuppressWarnings("rawtypes")
 			Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-			testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "divide", Number.class);
+			testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "divide", Number.class);
 		}
 	}
     
@@ -220,7 +220,7 @@ public class UnitInterfaceTest {
     public void testUnit42121A5_Multiply() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "multiply", Unit.class);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "multiply", Unit.class);
         }
     } 
 
@@ -232,7 +232,7 @@ public class UnitInterfaceTest {
     public void testUnit42121A6_MultiplyByDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "multiply", double.class);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "multiply", double.class);
         }
     }
 
@@ -244,7 +244,7 @@ public class UnitInterfaceTest {
 	public void testUnit42121A7_MultiplyByNumber() {
 		for (@SuppressWarnings("rawtypes")
 			Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-			testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "multiply", Number.class);
+			testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "multiply", Number.class);
 		}
 	}
     
@@ -257,7 +257,7 @@ public class UnitInterfaceTest {
     public void testUnit42121A8_Prefix() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.1", type, false, Unit.class, "prefix", Prefix.class);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, false, Unit.class, "prefix", Prefix.class);
         }
     }
     
@@ -269,7 +269,7 @@ public class UnitInterfaceTest {
     public void testUnit42121A9_ShiftByDouble() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-			testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "shift", double.class);
+			testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "shift", double.class);
         }
     }
 
@@ -281,7 +281,7 @@ public class UnitInterfaceTest {
 	public void testUnit42121A10_ShiftByNumber() {
 		for (@SuppressWarnings("rawtypes")
 			Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-			testHasPublicMethod("Section 4.2.1.2.1", type, Unit.class, "shift", Number.class);
+			testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "shift", Number.class);
 		}
 	}
       
@@ -293,7 +293,7 @@ public class UnitInterfaceTest {
     public void testUnit42122Pow() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.2", type, "pow", true);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.2", type, "pow", true);
         }
     }
     
@@ -305,7 +305,7 @@ public class UnitInterfaceTest {
     public void testUnit42122Root() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.2", type, "root", true);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.2", type, "root", true);
         }
     }
 
@@ -317,7 +317,7 @@ public class UnitInterfaceTest {
     public void testUnit42122Transform() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.2", type, "transform", true);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.2", type, "transform", true);
         }
     }
     
@@ -329,7 +329,7 @@ public class UnitInterfaceTest {
     public void testUnit42123Inverse() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.3", type, "inverse", false);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.3", type, "inverse", false);
         }
     }
 
@@ -341,7 +341,7 @@ public class UnitInterfaceTest {
     public void testUnit4221IsCompatible() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.4", type, "isCompatible", true);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.4", type, "isCompatible", true);
         }
     }
 
@@ -353,7 +353,7 @@ public class UnitInterfaceTest {
     public void testUnit4222AsType() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.4", type, "asType", true);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.4", type, "asType", true);
         }
     }
     
@@ -365,7 +365,7 @@ public class UnitInterfaceTest {
     public void testUnit4223GetConverterTo() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.4", type, "getConverterTo", true);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.4", type, "getConverterTo", true);
         }
     }
 
@@ -377,7 +377,7 @@ public class UnitInterfaceTest {
     public void testUnit4224GetConverterToAny() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod("Section 4.2.1.2.4", type, "getConverterToAny", true);
+            testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.4", type, "getConverterToAny", true);
         }
     }
 }
