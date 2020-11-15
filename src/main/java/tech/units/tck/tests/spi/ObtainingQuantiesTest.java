@@ -31,8 +31,11 @@ package tech.units.tck.tests.spi;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
+import static tech.units.tck.TCKRunner.MEASURE_PACKAGE;
+import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
+import static tech.units.tck.util.TestGroups.SPI;
 
 import java.util.Set;
 
@@ -54,13 +57,11 @@ import tech.units.tck.util.TestUtils;
  * Test class for creating new quantities.
  * @author Werner Keil
  * @author Almas Shaikh
- * @version 2.0, November 5, 2020
+ * @version 2.1, November 15, 2020
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class ObtainingQuantiesTest {
-
-    private static final String MEASURE_PACKAGE = "javax.measure";
     private static final String SECTION_NUM = "5.6.1";
     
     // ************************ 5.6 Obtaining Quantity Instances
@@ -76,7 +77,7 @@ public class ObtainingQuantiesTest {
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
             QuantityFactory<?> factory = ServiceProvider.current().getQuantityFactory(clazz);
-            assertNotNull("Section " + SECTION_NUM + ": No QuantityFactory available for " + clazz.getSimpleName(), factory);
+            assertNotNull(SECTION_PREFIX + SECTION_NUM + ": No QuantityFactory available for " + clazz.getSimpleName(), factory);
         }
     }
 
@@ -84,14 +85,14 @@ public class ObtainingQuantiesTest {
      * Check a QuantityFactory for each registered type has create method.
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    @Test(groups = {"spi"}, description = SECTION_NUM + " Quantities obtained from a factory has create method")
+    @Test(groups = { SPI }, description = SECTION_NUM + " Quantities obtained from a factory has create method")
     @SpecAssertion(section = SECTION_NUM, id = "561-A2")
     public void testAccessToQuantityFactoryCreate() {
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
             QuantityFactory<?> factory = ServiceProvider.current().getQuantityFactory(clazz);
-            TestUtils.testHasPublicMethod("Section " + SECTION_NUM, factory.getClass(), Quantity.class, "create", Number.class, Unit.class);
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, factory.getClass(), Quantity.class, "create", Number.class, Unit.class);
         }
     }
 
@@ -99,14 +100,14 @@ public class ObtainingQuantiesTest {
      * Check a QuantityFactory for each registered type has getSystemUnit method.
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    @Test(groups = {"spi"}, description = SECTION_NUM + " Quantities obtained from a factory has getSystemUnit method")
+    @Test(groups = { SPI }, description = SECTION_NUM + " Quantities obtained from a factory has getSystemUnit method")
     @SpecAssertion(section = SECTION_NUM, id = "561-A3")
     public void testAccessToQuantityFactoryGetSystemUnit() {
         Reflections reflections = new Reflections(MEASURE_PACKAGE);
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
             QuantityFactory<?> factory = ServiceProvider.current().getQuantityFactory(clazz);
-            TestUtils.testHasPublicMethod("Section " + SECTION_NUM, factory.getClass(), Unit.class, "getSystemUnit");
+            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, factory.getClass(), Unit.class, "getSystemUnit");
         }
     }
     
@@ -115,7 +116,7 @@ public class ObtainingQuantiesTest {
      * @since 2.1
      */
     @SuppressWarnings("rawtypes")
-    @Test(groups = { "spi" }, description = SECTION_NUM
+    @Test(groups = { SPI }, description = SECTION_NUM
 	    + " Quantities obtained by string parsing")
     @SpecAssertion(section = SECTION_NUM, id = "561-A4")
     public void testGetQuantitiesFromString() {
@@ -125,13 +126,13 @@ public class ObtainingQuantiesTest {
 			.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
 //			int i = 1;
 		    for (Unit u : sou.getUnits()) {
-		    	assertNotNull("Section " + SECTION_NUM + ": A Unit is missing from " + sou.getName(), u);
+		    	assertNotNull(SECTION_PREFIX + SECTION_NUM + ": A Unit is missing from " + sou.getName(), u);
 				if (u.getSymbol() != null) {
 				    String s = u.toString();
 //				    System.out.println("S " + i + ": " + s + "(" + u.getSymbol() + ")");
 				    Quantity q = format.parse("1 " + s);
-				    assertEquals("Section " + SECTION_NUM + ": Quantity unit could not be parsed for '" + s + "'", u, q.getUnit());
-				    assertEquals("Section " + SECTION_NUM + ": Quantity value could not be parsed for '" + s + "'", 1, q.getValue());
+				    assertEquals(SECTION_PREFIX + SECTION_NUM + ": Quantity unit could not be parsed for '" + s + "'", u, q.getUnit());
+				    assertEquals(SECTION_PREFIX + SECTION_NUM + ": Quantity value could not be parsed for '" + s + "'", 1, q.getValue());
 //				    i++;
 				}
 		    }

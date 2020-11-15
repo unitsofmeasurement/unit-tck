@@ -32,6 +32,7 @@ package tech.units.tck.tests.unit;
 import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
+import static tech.units.tck.util.TestGroups.CORE;
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.annotations.Test;
@@ -54,7 +55,7 @@ public class PrefixInterfaceTest {
      * Test that Dimension implementations override equals.
      */
     @SpecAssertion(section = SECTION, id = "424-A1")
-    @Test(groups = {"core"}, description = SECTION + " Ensure supported Prefix classes override equals.")
+    @Test(groups = { CORE }, description = SECTION + " Ensure supported Prefix classes override equals.")
     public void testEquals() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
@@ -66,7 +67,7 @@ public class PrefixInterfaceTest {
      * Test that Dimension implementations override hashCode.
      */
     @SpecAssertion(section = SECTION, id = "424-A2")
-    @Test(groups = {"core"}, description = SECTION + " Ensure supported Prefix classes override hashCode.")
+    @Test(groups = { CORE }, description = SECTION + " Ensure supported Prefix classes override hashCode.")
     public void testHashcode() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
@@ -78,7 +79,7 @@ public class PrefixInterfaceTest {
 	 * Test that Prefix implementations override getName.
 	 */
 	@SpecAssertion(section = SECTION, id = "424-A3")
-	@Test(groups = { "core" }, description = SECTION + " Ensure supported Prefix implementations override getName.")
+	@Test(groups = { CORE }, description = SECTION + " Ensure supported Prefix implementations override getName.")
 	public void testGetName() {
 		for (@SuppressWarnings("rawtypes")
 		Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
@@ -90,7 +91,7 @@ public class PrefixInterfaceTest {
 	 * Test that Prefix implementations override getSymbol.
 	 */
 	@SpecAssertion(section = SECTION, id = "424-A4")
-	@Test(groups = { "core" }, description = SECTION + " Ensure supported Prefix implementations override getSymbol.")
+	@Test(groups = { CORE }, description = SECTION + " Ensure supported Prefix implementations override getSymbol.")
 	public void testGetSymbol() {
 		for (@SuppressWarnings("rawtypes")
 		Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
@@ -102,7 +103,7 @@ public class PrefixInterfaceTest {
      * Test that Prefix implementations override getValue.
      */
     @SpecAssertion(section = SECTION, id = "424-A5")
-    @Test(groups = {"core"}, description = SECTION + " Ensure supported Prefix implementations override getValue.")
+    @Test(groups = { CORE }, description = SECTION + " Ensure supported Prefix implementations override getValue.")
     public void testGetValue() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
@@ -114,7 +115,7 @@ public class PrefixInterfaceTest {
      * Test that Prefix implementations override getExponent.
      */
     @SpecAssertion(section = SECTION, id = "424-A6")
-    @Test(groups = {"core"}, description = SECTION + " Ensure supported Prefix implementations override getExponent.")
+    @Test(groups = { CORE }, description = SECTION + " Ensure supported Prefix implementations override getExponent.")
     public void testGetXponent() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {

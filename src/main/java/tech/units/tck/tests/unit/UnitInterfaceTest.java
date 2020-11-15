@@ -141,10 +141,10 @@ public class UnitInterfaceTest {
     }
     
     /**
-     * Test that Unit implementations override hashCode.
+     * Test that Unit implementations implement isEquivalentTo.
      */
     @SpecAssertion(section = SECTION_NUM1, id = "421-A8")
-    @Test(groups = { CORE }, description = SECTION_NUM1 + " Ensure registered Unit classes override isEquivalentTo.")
+    @Test(groups = { CORE }, description = SECTION_NUM1 + " Ensure registered Unit classes implement isEquivalentTo.")
     public void testIsEquivalentTo() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
@@ -257,7 +257,6 @@ public class UnitInterfaceTest {
     public void testUnit42121A8_Prefix() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            //testHasPublicMethod("Section 4.2.1.2.1", type, "prefix", true);
             testHasPublicMethod("Section 4.2.1.2.1", type, false, Unit.class, "prefix", Prefix.class);
         }
     }

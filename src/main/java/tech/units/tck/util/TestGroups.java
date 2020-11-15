@@ -36,7 +36,7 @@ import tech.uom.lib.common.function.DescriptionSupplier;
  * 
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
  * @author <a href="mailto:thodoris.bais@gmail.com">Thodoris Bais</a>
- * @version 2.3, Nobember 15, 2020
+ * @version 2.3, November 15, 2020
  * @since 1.0
  */
 public final class TestGroups {
@@ -88,7 +88,7 @@ public final class TestGroups {
      * Some of the most common profiles (used by {@link tech.units.tck.TCKRunner}) are:
      * <ul>
      * <li>{@link #MINIMAL} - used to include tests for the core elements of the API. These tests are <b>mandatory</b> for every implementation.</li>
-     * <li>{@link #FORMAT} - formatting tests used to include tests for elements in <tt>javax.measure.format</tt>.</li>
+     * <li>{@link #FORMAT} - formatting tests used to include tests for elements in <code>javax.measure.format</code>.</li>
      * <li>{@link #FULL} - All tests in the JSR 385 TCK.</li>
      * </ul>
      *

@@ -95,6 +95,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
     
 	// General String Constants
 	public static final String SECTION_PREFIX = "Section ";
+	public static final String MEASURE_PACKAGE = "javax.measure";
 	
 	// TCK Constants
     public static final String SPEC_ID = "JSR 385";
@@ -233,9 +234,9 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
                 fileWriter.write("*****************************************************************************************\n\n");
                 fileWriter.write("Executed on " + new java.util.Date() + "\n");
                 fileWriter.write("Operating System " 
-                  + System.getProperty("os.name") + " " 
-                  + System.getProperty("os.version") + " "
-                  + System.getProperty("os.arch") + "\n");
+                  + System.getProperty("os.name") + " (" 
+                  + System.getProperty("os.version") + ", "
+                  + System.getProperty("os.arch") + ") \n");
                 fileWriter.write("Java " 
                         + System.getProperty("java.version") + " (" 
                         + System.getProperty("java.vendor") + ") \n");

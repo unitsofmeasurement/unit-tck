@@ -33,6 +33,7 @@ import static org.testng.AssertJUnit.*;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.TCKSetup.*;
+import static tech.units.tck.util.TestGroups.CORE;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
@@ -43,7 +44,7 @@ import java.util.Collection;
 /**
  * Tests the ServiceConfiguration
  * @author Werner Keil
- * @version 1.1, November 5, 2020
+ * @version 1.2, November 15, 2020
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -55,7 +56,7 @@ public class TCKSetupTest{
             section = SECTION_NUM,
             id = "Setup",
             note = "Tests that a TestConfiguration is registered with the JDK ServiceLoader.")
-    @Test(groups = { "core" }, description = "TCK Setup: ensure TCK Configuration is registered and available.")
+    @Test(groups = { CORE }, description = "TCK Setup: ensure TCK Configuration is registered and available.")
     public void testTestSetup(){
         assertTrue("TCK Configuration not available.", getConfiguration() != null);
         assertNotNull(getConfiguration());
@@ -66,7 +67,7 @@ public class TCKSetupTest{
             id = "Setup",
             note = "Checks that TestConfiguration.getQuantityClasses() returns a non empty collection of quantity " +
                     "implementations")
-    @Test(groups = { "core" }, description = "Checks that Quantity classes are registered for testing.")
+    @Test(groups = { CORE }, description = "Checks that Quantity classes are registered for testing.")
     public void testQuantityConfiguration(){
         @SuppressWarnings("rawtypes")
 	Collection<Class> quantityClasses = getConfiguration().getQuantityClasses();

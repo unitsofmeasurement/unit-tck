@@ -43,18 +43,20 @@ import tech.units.tck.TCKSetup;
  * Tests for Fundamental Types
  *
  * @author  <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 1.2, July 11, 2018
+ * @version 2.0, November 15, 2020
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class FundamentalTypesTest {
 
+	private static final String SECTION = "4.1";
+	
     /**
      * Ensure at least one Unit implementation
      * is available/registered.
      */
-    @SpecAssertion(section = "4.1", id = "41-A1")
-    @Test(groups = { "core" }, description = "4.1 Ensure at least one Unit implementation is available/registered.")
+    @SpecAssertion(section = SECTION, id = "41-A1")
+    @Test(groups = { "core" }, description = SECTION + " Ensure at least one Unit implementation is available/registered.")
     public void testEnsureGotUnit() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getUnitClasses().isEmpty());
@@ -64,8 +66,8 @@ public class FundamentalTypesTest {
      * Ensure at least one Dimension implementation
      * is available/registered.
      */
-    @SpecAssertion(section = "4.1", id = "41-A2")
-    @Test(groups = { "core" }, description = "4.1 Ensure at least one Dimension implementation is available/registered.")
+    @SpecAssertion(section = SECTION, id = "41-A2")
+    @Test(groups = { "core" }, description = SECTION + " Ensure at least one Dimension implementation is available/registered.")
     public void testEnsureHasDimension() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getDimensionClasses().isEmpty());
@@ -75,8 +77,8 @@ public class FundamentalTypesTest {
      * Ensure at least one Prefix implementation
      * is available/registered.
      */
-    @SpecAssertion(section = "4.1", id = "41-A3")
-    @Test(groups = { "core" }, description = "4.1 Ensure at least one Prefix implementation is available/registered.")
+    @SpecAssertion(section = SECTION, id = "41-A3")
+    @Test(groups = { "core" }, description = SECTION + " Ensure at least one Prefix implementation is available/registered.")
     public void testEnsureHasPrefix() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getPrefixClasses().isEmpty());
@@ -87,8 +89,8 @@ public class FundamentalTypesTest {
      * Ensure at least one Quantity implementation
      * is available/registered.
      */
-    @SpecAssertion(section = "4.1", id = "41-A4")
-    @Test(groups = { "core" }, description = "4.1 Ensure at least one Quantity implementation is available/registered.")
+    @SpecAssertion(section = SECTION, id = "41-A4")
+    @Test(groups = { "core" }, description = SECTION + " Ensure at least one Quantity implementation is available/registered.")
     public void testEnsureHasQuantity() {
         AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
         AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getQuantityClasses().isEmpty());
