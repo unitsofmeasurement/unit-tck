@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  test:
+  build:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:9.0.4
@@ -30,9 +30,27 @@ jobs:
       # store test report folder as artifact
       - store_artifacts:
          path: ~/repo/./target/tck-output
-         
+  deployment:
+    docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:11.0-jdk-buster-node-browsers-legacy
+
+    working_directory: ~/repo
+
+    environment:
+      # Customize the JVM maximum heap limit
+      MAVEN_OPTS: -Xmx3200m
+    
+    steps:
+      - checkout
+       
+      # run deployment!
+      - run: mvn deploy -Dmaven.test.skip -DcreateDocs=true -s settings.xml      
 workflows:
   version: 2
-  test_tck:
+  build_tck:
     jobs:
-      - test
+      - build
+      - deployment:
+          requires:
+            - build
