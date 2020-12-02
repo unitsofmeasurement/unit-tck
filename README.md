@@ -65,10 +65,3 @@ To override the default TCK report file
 -Dtech.units.tck.verbose=yes/no
 ```
 To toggle the `verbose` option of the TCK for extended test output. The default is `false`. And you normally won't need to set this unless you require detailed analysis or issue resolution.
-
----
-**NOTE**
-
-Starting with release **1.1** the groupId of this Parent POM changes from a "virtual" domain **tec.units** to **tech.units**. Laying the ground for the 2.x releases.
-
----
