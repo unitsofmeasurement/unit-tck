@@ -83,7 +83,7 @@ import tech.uom.lib.common.function.Versioned;
  * Main class for executing the JSR 385 TCK.
  * 
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.2, November 15, 2020
+ * @version 2.2.1, December 2, 2020
  * @since 1.0
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
@@ -99,8 +99,8 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 	
 	// TCK Constants
     public static final String SPEC_ID = "JSR 385";
-    public static final String SPEC_VERSION = "2.1.0";
-	private static final String TCK_VERSION = "2.1.0";
+    public static final String SPEC_VERSION = "2.1.1";
+	private static final String TCK_VERSION = "2.1.1";
 	
     private final Profile profile;
 
