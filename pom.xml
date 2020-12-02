@@ -19,7 +19,7 @@
 	</parent>
 	<licenses>
 		<license>
-			<name>BSD</name>
+			<name>BSD3</name>
 			<url>LICENSE</url>
 		</license>
 	</licenses>
