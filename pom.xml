@@ -11,7 +11,8 @@
 		<url>http://unitsofmeasurement.github.io</url>
 	</organization>
 	<description>Units of Measurement (JSR 385) TCK.</description>
-	
+    <version>2.1.1-SNAPSHOT</version>
+    	
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
@@ -449,6 +450,5 @@
 				</plugins>
 			</build>
 		</profile>
-	</profiles>
-	<version>2.1.1-SNAPSHOT</version>
+	</profiles>	
 </project>
