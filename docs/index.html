@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+    Units of Measurement - TCK
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="keilw">
+    <meta name="description" content="Static blog generated with JBake">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/base.css">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav icon -->
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  </head>
+  <body>      
+    <nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Units of Measurement</a>
+        </div>
+        
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/pages/about.html">About</a></li>
+            <!--li><a href="/pages/contact.html">Contact</a></li-->
+            <li><a href="/pages/calendar.html">Calendar</a></li>
+                 <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Links <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li class="nav-header">JSR 385</li>
+                    <li><a href="https://docs.google.com/document/d/12KhosAFriGCczBs6gwtJJDfg_QlANT92_lhxUWO2gCY">Specification</a></li>
+                    <li><a href="https://unitsofmeasurement.github.io/unit-api">API</a></li>
+                    <li><a href="https://unitsofmeasurement.github.io/unit-api/site/apidocs/index.html">JavaDoc (API)</a></li>
+                    <li><a href="https://unitsofmeasurement.github.io/indriya">Reference Implementation</a></li>
+                    <li><a href="https://jcp.org/en/jsr/detail?id=385">Detail Page</a></li>  
+                    <li class="divider"></li>                    
+                    <li><a href="">TCK (Technical Compatibility Kit)</a></li>
+                    <li><a href="https://unitsofmeasurement.github.io/uom-demos" target="_top">Units Demos</a></li>
+                    <li><a href="https://unitsofmeasurement.gitbooks.io/uom-guide/content/">Guide Book</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">Extensions</li>
+                    <li><a href="https://unitsofmeasurement.github.io/uom-lib" target="_top">Units Libraries</a></li>
+                    <li><a href="http://uom.si">SI Units</a></li>
+                    <li><a href="http://www.uom.systems" target="_top">Unit Systems</a></li>
+                 <!---    li class="nav-header">Sandbox</li>
+                    <li><a href="sandbox.html">Sandbox</a></li -->
+                    <li class="divider"></li>
+                    <li class="nav-header">Additional Information</li>                    
+                    <li><a href="https://bintray.com/unitsofmeasurement">Units of Measurement on Bintray</a></li>
+                    <li><a href="https://unitsofmeasurement.github.io/pages/references.html" target="_top">References</a></li>
+                  </ul>
+                </li>
+          </ul>
+        
+        <!-- Right navigation -->
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/archive.html"><i class="fa fa-list"></i> Archive</a></li>
+          <li><a href="/feed.xml" title="Rss"><i class="fa fa-rss"></i> Feed</a></li>
+        </ul>
+        <!-- Right navigation end -->
+
+      </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav><!-- /.navbar -->
+
+  
+    <!-- Begin page content -->
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-12">
+          <article>
+            <h2>TCK</h2>
+            <p>JSR 385 - Technology Compatibility Kit (TCK)</p>
+<p><img src="img/240px-Logo_TCK.png" alt="alt text" title="TCK" /></p>
+
+<p>The current module contains the technology compatibility kit of JSR 385.</p>
+<p>To setup the TCK with your implementation you must follow the following steps:</p>
+<ol>
+<li>Create a new Maven project. You could also use compatible alternatives like Gradle.</li>
+<li>Add this TCK and your implementation as dependency.</li>
+<li>Implement a class of type tech.units.tck.TestSetup, read the Javadoc, what
+you must provide with this class.</li>
+</ol>
+<h2><a id="user-content-running" class="anchor" aria-hidden="true" href="#running"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Running</h2>
+<p>To run the TCK, simply execute</p>
+<pre><code>mvn clean test
+</code></pre>
+<ol>
+<li>Go to target - where you can find your TCK test results.</li>
+</ol>
+<p>For help on using the TCK you may execute</p>
+<pre><code>mvn exec:java
+</code></pre>
+<p>This will only print instructions, to run the TCK you need to execute it through TestNG.</p>
+<p>To get version information you may execute</p>
+<pre><code>mvn exec:java -Pversion
+</code></pre>
+
+	The JSR is lead by Jean-Marie Dautelle (<a href="https://github.com/dautelle" class="user-mention">@dautelle</a>), 
+	Werner Keil (<a href="https://github.com/keilw" class="user-mention">@keilw</a>) and Otavio Santana (<a href="https://github.com/otaviojava" class="user-mention">@otaviojava</a>).
+	<br/>You can access the API by adding the following Maven
+	dependencies:</p>
+	<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;tech.units&lt;/groupId&gt;
+  &lt;artifactId&gt;unit-tck&lt;/artifactId&gt;
+  &lt;version&gt;2.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+
+	For JSR 363 use <code>
+	  &lt;groupId&gt;tec.units&lt;/groupId&gt;
+	  &lt;version&gt;1.0.x&lt;/version&gt;</code>.<br>
+	  
+	
+	<p>Further versions can be found <a href="https://search.maven.org/search?q=unit-tck" target="_blank">here</a>.</p>
+<p>
+Release artifacts should be accessible from the following repositories:
+<ul>
+<li>Maven Central</li>
+<li>JCenter by Bintray</li>
+</ul>
+</p>
+
+<p>Though it is possible to only reference the API from your application, you should also add an implementation like the <a href="/../indriya">Indriya</a> reference implementation.
+On the other hand you may leave the API out if you already declare Indriya, especially using the JPMS (Jigsaw) since the implementation also declares Unit-API as a "transitive" dependency.</p>
+	
+	
+  </article>
+        </div> <!-- /.col-md-12 -->
+      </div> <!-- /.row -->
+
+      </div><!-- /.container -->
+
+    <footer>
+      <div class="container">
+        <hr>
+        <div class="row">
+          <div class="col-xs-10">
+            <p class="text-muted credit">&copy; Units of Measurement project 2021 | Mixed with <a href="http://getbootstrap.com/">Bootstrap v3.1.1</a> | Baked with <a href="http://jbake.org">JBake v2.6.5</a> | <i title="Linux" class="fa fa-linux"></i></p>
+          </div>
+          <div class="col-xs-2 gotop">
+            <a href="#"><i class="fa fa-arrow-circle-up"> top</i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/gist-embed/1.6/gist-embed.min.js"></script>
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+    <script type="text/javascript">
+      <!-- load prettify only when needed -->
+      $(document).ready(function(){
+        var prettify = false;
+        var classToAdd = 'prettyprint snippet';
+        $("pre > code").each(function() {
+          $("pre > code").parent().addClass(classToAdd);
+          prettify = true;
+        });
+        if(prettify) {
+          prettyPrint();
+        }
+      });
+    </script>
+
+
+  </body>
+</html>
