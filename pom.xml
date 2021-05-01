@@ -148,7 +148,7 @@
                     <header>src/main/config/header.txt</header>
                     <properties>
                         <owner>Jean-Marie Dautelle, Werner Keil, Otavio Santana</owner>
-                        <currentYear>2020</currentYear>
+                        <currentYear>2021</currentYear>
                     </properties>
                     <excludes>
                     	<exclude>.editorconfig</exclude>
@@ -388,7 +388,17 @@
             <id>ossrh-snapshot</id>
             <name>OSSRH Snapshots</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </repository>       
+        </repository>
+            <repository>
+            <id>jboss-maven2-brew</id>
+            <name>JBoss Maven 2 Brew Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>jboss-maven2-snapshots</id>
+            <name>JBoss Maven 2 Brew Repository</name>
+            <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
+        </repository>
     </repositories>
 	
     <!-- Deployment to public servers -->
