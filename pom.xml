@@ -35,8 +35,8 @@
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
 	<properties>
-		<jsr.version>2.1.1</jsr.version>
-		<ri.version>2.1.1</ri.version>
+		<jsr.version>2.1.2</jsr.version>
+		<ri.version>2.1.2</ri.version>
 		<jdkVersion>1.8</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
@@ -451,4 +451,5 @@
 			</build>
 		</profile>
 	</profiles>	
+	<version>2.1.2-SNAPSHOT</version>
 </project>
