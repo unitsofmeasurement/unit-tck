@@ -11,7 +11,7 @@
 		<url>http://unitsofmeasurement.github.io</url>
 	</organization>
 	<description>Units of Measurement (JSR 385) TCK.</description>
-    	
+
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
@@ -42,7 +42,7 @@
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<testng.version>7.0.0</testng.version>
-		<jakarta.inject.version>2.0.0</jakarta.inject.version>		
+		<jakarta.inject.version>2.0.0</jakarta.inject.version>
 		<jboss.test.audit.version>2.0.0.Final</jboss.test.audit.version>
 		<reflections.version>0.9.12</reflections.version>
 	</properties>
@@ -53,7 +53,13 @@
 				<groupId>tech.units</groupId>
 				<artifactId>indriya</artifactId>
 				<version>${ri.version}</version>
+				<scope>test</scope>
 				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>tech.uom.lib</groupId>
+				<artifactId>uom-lib-common</artifactId>
+				<version>2.1</version>
 			</dependency>
 
             <dependency>
@@ -92,7 +98,12 @@
 		<dependency>
 			<groupId>tech.units</groupId>
 			<artifactId>indriya</artifactId>
+			<scope>test</scope>
 			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>tech.uom.lib</groupId>
+			<artifactId>uom-lib-common</artifactId>
 		</dependency>
 
          <dependency>
@@ -324,7 +335,7 @@
 								<noqualifier>all</noqualifier>   <!-- Omit qualifying package name before class names in output. -->
 								<quiet>true</quiet>              <!-- Shuts off non-error and non-warning messages. -->
 								<keywords>true</keywords>        <!-- Adds HTML meta keyword tags to the generated files. -->
-								<!-- Creates links to existing javadoc-generated documentation of 
+								<!-- Creates links to existing javadoc-generated documentation of
 									external referenced classes. -->
 								<links>
 									<link>http://docs.oracle.com/javase/7/docs/api/</link>
@@ -404,7 +415,7 @@
             <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
         </repository>
     </repositories>
-	
+
     <!-- Deployment to public servers -->
     <distributionManagement>
         <snapshotRepository>
@@ -450,6 +461,6 @@
 				</plugins>
 			</build>
 		</profile>
-	</profiles>	
+	</profiles>
 	<version>2.1.2-SNAPSHOT</version>
 </project>
