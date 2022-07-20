@@ -63,7 +63,7 @@ import tech.units.tck.util.TestUtils;
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class ObtainingQuantiesTest {
     private static final String SECTION_NUM = "5.6.1";
-    
+
     // ************************ 5.6 Obtaining Quantity Instances
     // ************************
     /**
@@ -110,7 +110,7 @@ public class ObtainingQuantiesTest {
             TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, factory.getClass(), Unit.class, "getSystemUnit");
         }
     }
-    
+
     /**
      * Try parsing a quantity string for each registered unit.
      * @since 2.1
@@ -132,7 +132,7 @@ public class ObtainingQuantiesTest {
 //				    System.out.println("S " + i + ": " + s + "(" + u.getSymbol() + ")");
 				    Quantity q = format.parse("1 " + s);
 				    assertEquals(SECTION_PREFIX + SECTION_NUM + ": Quantity unit could not be parsed for '" + s + "'", u, q.getUnit());
-				    assertEquals(SECTION_PREFIX + SECTION_NUM + ": Quantity value could not be parsed for '" + s + "'", 1, q.getValue());
+				    assertEquals(SECTION_PREFIX + SECTION_NUM + ": Quantity value could not be parsed for '" + s + "'", 1, q.getValue().doubleValue(), 0);
 //				    i++;
 				}
 		    }
