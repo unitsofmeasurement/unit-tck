@@ -63,6 +63,6 @@ To override the default output directory
 ```
 To override the default TCK report file
 ```
--Dtech.units.tck.verbose=yes/no
+-Dtech.units.tck.verbose=true/false
 ```
 To toggle the `verbose` option of the TCK for extended test output. The default is `false`. And you normally won't need to set this unless you require detailed analysis or issue resolution.
