@@ -45,7 +45,7 @@ import java.util.ServiceLoader;
  * interface and register it using the {@link ServiceLoader}.
  *
  * @author Werner Keil
- * @version 2.0, November 15, 2020
+ * @version 2.1, December 5, 2022
  * @since 1.0
  */
 public interface ServiceConfiguration{
@@ -95,7 +95,7 @@ public interface ServiceConfiguration{
      * must not return <code>null</code>, but could be empty in certain profiles.
      * 
      * @return the list of quantity types to be checked, not <code>null</code>. 
-     * It is allowed to return an empty list here, which will return a collection with all implemented amount classes, not null.
+     * It is allowed to return an empty list here, which will return a collection with all implemented quantity classes, not null.
      */
     @SuppressWarnings("rawtypes")
     Collection<Class<? extends Quantity>> getSupportedQuantityTypes();
