@@ -14,7 +14,7 @@ To setup the TCK with your implementation you must follow the following steps:
 
  1. Create a new Maven project. You could also use compatible alternatives like Gradle.
  2. Add this TCK and your implementation as dependency.
- 3. Implement a class of type tech.units.tck.util.ServiceConfiguration, read the Javadoc, what 
+ 3. Implement a class of type `tech.units.tck.util.ServiceConfiguration`, read the Javadoc, what 
   you must provide with this class.
   
 ## Running
