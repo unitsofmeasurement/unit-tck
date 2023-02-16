@@ -1,6 +1,6 @@
 /*
  * Units of Measurement TCK
- * Copyright © 2005-2020, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
+ * Copyright © 2005-2023, Jean-Marie Dautelle, Werner Keil, Otavio Santana.
  *
  * All rights reserved.
  *
@@ -29,14 +29,11 @@
  */
 package tech.units.tck.util;
 
-import javax.measure.Dimension;
-import javax.measure.Prefix;
-import javax.measure.Quantity;
-import javax.measure.Unit;
-import javax.measure.UnitConverter;
+import javax.measure.*;
 import javax.measure.format.QuantityFormat;
 import javax.measure.format.UnitFormat;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.ServiceLoader;
 
@@ -60,7 +57,7 @@ public interface ServiceConfiguration{
      */
     @SuppressWarnings("rawtypes")
     Collection<Class> getQuantityClasses();
-    
+
     /**
      * List a collection of {@link Unit} implementations.<p>
      * This enables the TCK to check the basic implementation compliance.
@@ -69,7 +66,7 @@ public interface ServiceConfiguration{
      */
     @SuppressWarnings("rawtypes")
     Collection<Class> getUnitClasses();
-    
+
     /**
      * List a collection of {@link Dimension} implementations.<p>
      * This enables the TCK to check the basic implementation compliance.
@@ -78,7 +75,7 @@ public interface ServiceConfiguration{
      */
     @SuppressWarnings("rawtypes")
     Collection<Class> getDimensionClasses();
-    
+
     /**
      * List a collection of {@link Prefix} implementations.<p>
      * This enables the TCK to check the basic implementation compliance.
@@ -87,23 +84,24 @@ public interface ServiceConfiguration{
      * @since 2.0
      */
     @SuppressWarnings("rawtypes")
-    Collection<Class> getPrefixClasses();
-    // Although this is already given by the API it allows to check for additional implementations
-    
+    default Collection<Class> getPrefixClasses() {
+		return Arrays.asList(new Class[] { BinaryPrefix.class, MetricPrefix.class });
+	}
+
     /**
      * Return a collection with all supported {@link Quantity} types. The list
      * must not return <code>null</code>, but could be empty in certain profiles.
-     * 
-     * @return the list of quantity types to be checked, not <code>null</code>. 
+     *
+     * @return the list of quantity types to be checked, not <code>null</code>.
      * It is allowed to return an empty list here, which will return a collection with all implemented quantity classes, not null.
      */
     @SuppressWarnings("rawtypes")
     Collection<Class<? extends Quantity>> getSupportedQuantityTypes();
-    
+
     /**
      * Returns a matching unit for the specified quantity type.
      * This is a "helper method" to avoid direct references to {@code SystemOfUnits} or implementations in profiles without SPI.
-     * 
+     *
      * @param <Q>
      *            the compile-time quantity type.
      * @param quantityType
@@ -119,7 +117,7 @@ public interface ServiceConfiguration{
      * disable certain TCK tests, e.g. if the result isn't needed by a particular profile.
      */
     Collection<? extends Unit<?>> getUnits4Test();
-    
+
     /**
      * This method returns the base dimensions to be tested for requirements and recommendations.
      *
@@ -135,7 +133,7 @@ public interface ServiceConfiguration{
      * disable TCK tests for UnitConverter instances.
      */
     Collection<UnitConverter> getUnitConverters4Test();
-    
+
     /**
      * This method allows instances of UnitFormat to be tested for requirements and recommendations.
      *
@@ -143,7 +141,7 @@ public interface ServiceConfiguration{
      * disable certain TCK tests, e.g. if the result isn't needed by a particular profile.
      */
     Collection<UnitFormat> getUnitFormats4Test();
-    
+
     /**
      * This method allows instances of QuantityFormat to be tested for requirements and recommendations.
      *

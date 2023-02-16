@@ -158,7 +158,7 @@
                     <header>src/main/config/header.txt</header>
                     <properties>
                         <owner>Jean-Marie Dautelle, Werner Keil, Otavio Santana</owner>
-                        <currentYear>2021</currentYear>
+                        <currentYear>2023</currentYear>
                     </properties>
                     <excludes>
                     	<exclude>.editorconfig</exclude>
@@ -167,6 +167,7 @@
                         <exclude>**/pom.xml</exclude>
                         <exclude>**/README</exclude>
                         <exclude>**/settings.xml</exclude>
+						<exclude>docs/**</exclude>
                         <exclude>src/test/resources/**</exclude>
                         <exclude>src/main/resources/**</exclude>
                         <exclude>src/etc/**</exclude>
