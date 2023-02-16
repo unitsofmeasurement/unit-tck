@@ -64,7 +64,7 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.2, November 15, 2020
+ * @version 2.3, February 16, 2023
  * @since 1.0
  */
 @Singleton
@@ -88,8 +88,8 @@ public class TestUtils {
     /**
      * Name of the system property to set the <code>verbose</code> flag
      */
-    public static final String SYS_PROPERTY_VERBOSE = "tech.units.tck.verbose";   
-    
+    public static final String SYS_PROPERTY_VERBOSE = "tech.units.tck.verbose";
+
     private static final StringBuilder warnings = new StringBuilder();
 
     /**
@@ -106,7 +106,7 @@ public class TestUtils {
         for (int i = 0; i < precision; i++) {
             b.append(String.valueOf(i % 10));
         }
-        return new Double(b.toString());
+        return Double.valueOf(b.toString());
     }
 
     static Number createNumberWithScale(QuantityFactory<?> f, int scale) {
@@ -115,7 +115,7 @@ public class TestUtils {
         for (int i = 0; i < scale; i++) {
             b.append(String.valueOf(i % 10));
         }
-        return new Double(b.toString());
+        return Double.valueOf(b.toString());
     }
 
     /**
@@ -198,7 +198,7 @@ public class TestUtils {
 
     /**
      * Tests if the given type is comparable.
-     * 
+     *
      * @param section
      *            the section of the spec under test
      * @param type
@@ -209,7 +209,7 @@ public class TestUtils {
     }
 
     /**
-     * 
+     *
      * @param section the section of the specification
      * @param type the type to be checked.
      * @param returnType the expected return type
@@ -220,7 +220,7 @@ public class TestUtils {
         Class<?> current = type;
         while (current != null) {
             for (Method m : current.getDeclaredMethods()) {
-                if (returnType.equals(returnType) && m.getName().equals(name) && ((m.getModifiers() & PUBLIC) != 0)
+                if (returnType.equals(m.getReturnType()) && m.getName().equals(name) && ((m.getModifiers() & PUBLIC) != 0)
                         && Arrays.equals(m.getParameterTypes(), paramTypes)) {
                     return;
                 }
@@ -236,7 +236,7 @@ public class TestUtils {
             .unmodifiableList(Arrays.asList(new Class[] { Object.class, Number.class, Enum.class }));
 
     /**
-     * 
+     *
      * @param section the section of the specification
      * @param type the data type
      * @param trySuperclassFirst if tht super class if available should be tested first
@@ -259,7 +259,7 @@ public class TestUtils {
 
     /**
      * Tests if the given type has a public method with the given signature.
-     * 
+     *
      * @param section
      *            the section of the spec under test
      * @param type
@@ -294,7 +294,7 @@ public class TestUtils {
 
     /**
      * Tests if the given type has a public static method with the given signature.
-     * 
+     *
      * @param section
      *            the section of the spec under test
      * @param type
@@ -326,7 +326,7 @@ public class TestUtils {
 
     /**
      * Tests if the given type has not a public method with the given signature.
-     * 
+     *
      * @param section
      *            the section of the spec under test
      * @param type
@@ -356,7 +356,7 @@ public class TestUtils {
 
     /**
      * Checks the returned value, when calling a given method.
-     * 
+     *
      * @param section
      *            the section of the spec under test
      * @param value
@@ -393,7 +393,7 @@ public class TestUtils {
 
     /**
      * Test for immutability (optional recommendation), writes a warning if not given.
-     * 
+     *
      * @param section
      *            the section of the spec under test
      * @param type
@@ -413,7 +413,7 @@ public class TestUtils {
 
     /**
      * Test for serializable (optional recommendation), writes a warning if not given.
-     * 
+     *
      * @param section
      *            the section of the spec under test
      * @param type
@@ -433,7 +433,7 @@ public class TestUtils {
 
     /**
      * Test for serializable (optional recommendation), writes a warning if not given.
-     * 
+     *
      * @param section
      *            the section of the spec under test
      * @param instance

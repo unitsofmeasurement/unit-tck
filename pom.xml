@@ -41,10 +41,12 @@
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
-		<testng.version>7.6.1</testng.version>
-		<jakarta.inject.version>2.0.0</jakarta.inject.version>
+		<testng.version>7.7.1</testng.version>
+		<jakarta.inject.version>2.0.1</jakarta.inject.version>
 		<jboss.test.audit.version>2.0.0.Final</jboss.test.audit.version>
-		<reflections.version>0.9.12</reflections.version>
+		<hamcrest.version>2.2</hamcrest.version>
+		<mutabilitydetector.version>0.10.6</mutabilitydetector.version>
+		<reflections.version>0.10.2</reflections.version>
 	</properties>
 
 	<dependencyManagement>
@@ -78,14 +80,19 @@
 				<version>${slf4j.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-library</artifactId>
+				<version>${hamcrest.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mutabilitydetector</groupId>
+				<artifactId>MutabilityDetector</artifactId>
+				<version>${mutabilitydetector.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>org.reflections</groupId>
 				<artifactId>reflections</artifactId>
 				<version>${reflections.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.hamcrest</groupId>
-				<artifactId>hamcrest-library</artifactId>
-				<version>2.2</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -134,7 +141,6 @@
 		<dependency>
 			<groupId>org.mutabilitydetector</groupId>
 			<artifactId>MutabilityDetector</artifactId>
-			<version>0.10.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.test-audit</groupId>

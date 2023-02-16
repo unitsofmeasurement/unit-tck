@@ -48,15 +48,15 @@ import tech.units.tck.TCKSetup;
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
  * @author Almas Shaikh
- * @version 2.1.1, December 2, 2020
+ * @version 2.2, February 16, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class UnitInterfaceTest {
 	/** Section constants */
-	private static final String SECTION_NUM1 = "4.2.1";	
+	private static final String SECTION_NUM1 = "4.2.1";
 	private static final String SECTION_NUM2 = "4.2.1.2";
-	
+
     /**
      * Test that Unit implementations override equals.
      */
@@ -65,7 +65,7 @@ public class UnitInterfaceTest {
     public void testEquals() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod(SECTION_PREFIX + SECTION_NUM1, type, "equals", true);
+			testHasPublicMethod(SECTION_PREFIX + SECTION_NUM1, type, true, boolean.class,"equals", Object.class);
         }
     }
 
@@ -137,10 +137,11 @@ public class UnitInterfaceTest {
     public void testHashcode() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod(SECTION_PREFIX + SECTION_NUM1, type, "hashCode");
+            //testHasPublicMethod(SECTION_PREFIX + SECTION_NUM1, type, "hashCode");
+			testHasPublicMethod(SECTION_PREFIX + SECTION_NUM1, type, int.class, "hashCode");
         }
     }
-    
+
     /**
      * Test that Unit implementations implement isEquivalentTo.
      */
@@ -151,8 +152,8 @@ public class UnitInterfaceTest {
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
         	testHasPublicMethod(SECTION_PREFIX + SECTION_NUM1, type, "isEquivalentTo", true);
         }
-    }    
-    
+    }
+
     /**
      * Test that Unit implementations override toString.
      */
@@ -161,7 +162,8 @@ public class UnitInterfaceTest {
     public void testToString() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
-            testHasPublicMethod(SECTION_PREFIX + SECTION_NUM1, type, "toString");
+            //testHasPublicMethod(SECTION_PREFIX + SECTION_NUM1, type, "toString");
+			testHasPublicMethod(SECTION_PREFIX + SECTION_NUM1, type, false, String.class, "toString");
         }
     }
 
@@ -176,7 +178,7 @@ public class UnitInterfaceTest {
             testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, "alternate", true);
         }
     }
-    
+
     /**
      * Ensure the divide(Unit) operation is implemented.
      */
@@ -188,7 +190,7 @@ public class UnitInterfaceTest {
             testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "divide", Unit.class);
         }
     }
-    
+
     /**
      * Ensure the divide(double) operation is implemented.
      */
@@ -212,7 +214,7 @@ public class UnitInterfaceTest {
 			testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "divide", Number.class);
 		}
 	}
-    
+
     /**
      * Ensure the multiply() operation is implemented.
      */
@@ -223,7 +225,7 @@ public class UnitInterfaceTest {
         Class type : TCKSetup.getConfiguration().getUnitClasses()) {
             testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "multiply", Unit.class);
         }
-    } 
+    }
 
     /**
      * Ensure the multiply(double) operation is implemented.
@@ -248,7 +250,7 @@ public class UnitInterfaceTest {
 			testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "multiply", Number.class);
 		}
 	}
-    
+
     /**
      * Ensure the prefix() operation is implemented.
      * @since 2.0
@@ -261,7 +263,7 @@ public class UnitInterfaceTest {
             testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, false, Unit.class, "prefix", Prefix.class);
         }
     }
-    
+
     /**
      * Ensure the shift() operation is implemented.
      */
@@ -285,7 +287,7 @@ public class UnitInterfaceTest {
 			testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.1", type, Unit.class, "shift", Number.class);
 		}
 	}
-      
+
     /**
      * Ensure the pow() operation is implemented.
      */
@@ -297,7 +299,7 @@ public class UnitInterfaceTest {
             testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.2", type, "pow", true);
         }
     }
-    
+
     /**
      * Ensure the root() operation is implemented.
      */
@@ -321,7 +323,7 @@ public class UnitInterfaceTest {
             testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.2", type, "transform", true);
         }
     }
-    
+
     /**
      * Ensure the inverse() operation is implemented.
      */
@@ -357,7 +359,7 @@ public class UnitInterfaceTest {
             testHasPublicMethod(SECTION_PREFIX + "4.2.1.2.4", type, "asType", true);
         }
     }
-    
+
     /**
      * Ensure the getConverterTo() operation is implemented.
      */

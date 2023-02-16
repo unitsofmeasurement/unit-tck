@@ -55,7 +55,7 @@ import tech.units.tck.TCKSetup;
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class QuantityFormatTest {
 	private static final String SECTION_NUM = "4.6";
-	
+
     /**
      * Ensure at least one QuantityFormat implementation
      * is available/registered.
@@ -66,7 +66,7 @@ public class QuantityFormatTest {
         assertNotNull("TCK Configuration not available.", TCKSetup.getConfiguration());
         assertFalse(TCKSetup.getConfiguration().getQuantityFormats4Test().isEmpty());
     }
-    
+
     /**
      * Ensure the format() operation is implemented.
      */
@@ -75,10 +75,10 @@ public class QuantityFormatTest {
     public void testQuantityFormatFormat() {
         for (QuantityFormat format : TCKSetup.getConfiguration().getQuantityFormats4Test()) {
         	Class<?> type = format.getClass();
-            testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, type, false, Appendable.class, "format", Quantity.class);
+            testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, type, false, Appendable.class, "format", Quantity.class, Appendable.class);
         }
     }
-    
+
     /**
      * Ensure the appendable format() operation is implemented.
      */
@@ -90,7 +90,7 @@ public class QuantityFormatTest {
             testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, type, false, Appendable.class, "format", Quantity.class, Appendable.class);
         }
     }
-    
+
     /**
      * Ensure the isLocaleSensitive() method is implemented.
      */
@@ -102,7 +102,7 @@ public class QuantityFormatTest {
             testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, type, "isLocaleSensitive", false);
         }
     }
-    
+
     /**
      * Ensure the parse() operation is implemented.
      */

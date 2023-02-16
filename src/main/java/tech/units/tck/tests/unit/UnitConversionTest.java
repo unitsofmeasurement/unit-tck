@@ -33,6 +33,8 @@ import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.util.TestGroups.CORE;
+import static tech.units.tck.util.TestUtils.testHasPublicMethod;
+
 import java.util.List;
 import javax.measure.UnitConverter;
 import org.jboss.test.audit.annotations.SpecAssertion;
@@ -48,13 +50,13 @@ import tech.units.tck.util.TestUtils;
  *
  * @author Werner Keil
  * @author Almas Shaikh
- * @version 2.0, November 15, 2020
+ * @version 2.1, February 16, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class UnitConversionTest {
     private static final String SECTION = "4.2.3";
-    
+
     /**
      * Ensure at least one UnitConverter implementation is available/registered.
      */
@@ -73,7 +75,7 @@ public class UnitConversionTest {
     public void testUnitConverterEquals() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, "equals", true);
+			testHasPublicMethod(SECTION_PREFIX + SECTION, type, true, boolean.class,"equals", Object.class);
         }
     }
 
@@ -85,7 +87,7 @@ public class UnitConversionTest {
     public void testUnitConverterHashcode() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, "hashCode");
+			testHasPublicMethod(SECTION_PREFIX + SECTION, type, true, int.class,"hashCode");
         }
     }
 
@@ -97,7 +99,7 @@ public class UnitConversionTest {
     public void testUnitConverterInvert() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, "inverse");
+            testHasPublicMethod(SECTION_PREFIX + SECTION, type, "inverse");
         }
     }
 
@@ -109,7 +111,7 @@ public class UnitConversionTest {
     public void testUnitConverterIsIdentity() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, "isIdentity");
+            testHasPublicMethod(SECTION_PREFIX + SECTION, type, "isIdentity");
         }
     }
 
@@ -121,7 +123,7 @@ public class UnitConversionTest {
     public void testUnitConverterIsLinear() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, "isLinear");
+            testHasPublicMethod(SECTION_PREFIX + SECTION, type, "isLinear");
         }
     }
 
@@ -133,7 +135,7 @@ public class UnitConversionTest {
     public void testUnitConverterConvert() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, Number.class, "convert", Number.class);
+            testHasPublicMethod(SECTION_PREFIX + SECTION, type, Number.class, "convert", Number.class);
         }
     }
 
@@ -145,7 +147,7 @@ public class UnitConversionTest {
     public void testUnitConverterConvertWithDouble() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, double.class, "convert", double.class);
+            testHasPublicMethod(SECTION_PREFIX + SECTION, type, double.class, "convert", double.class);
         }
     }
 
@@ -157,7 +159,7 @@ public class UnitConversionTest {
     public void testUnitConverterConcatenate() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, UnitConverter.class, "concatenate", UnitConverter.class);
+            testHasPublicMethod(SECTION_PREFIX + SECTION, type, UnitConverter.class, "concatenate", UnitConverter.class);
         }
     }
 
@@ -169,7 +171,7 @@ public class UnitConversionTest {
     public void testUnitConverterGetConversionSteps() {
         for (UnitConverter converter : TCKSetup.getConfiguration().getUnitConverters4Test()) {
             Class<?> type = converter.getClass();
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, List.class, "getConversionSteps");
+            testHasPublicMethod(SECTION_PREFIX + SECTION, type, List.class, "getConversionSteps");
         }
     }
 }

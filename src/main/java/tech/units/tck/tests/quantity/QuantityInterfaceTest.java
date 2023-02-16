@@ -33,6 +33,7 @@ import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.util.TestGroups.CORE;
+import static tech.units.tck.util.TestUtils.testHasPublicMethod;
 
 import javax.measure.Quantity;
 import javax.measure.Unit;
@@ -49,13 +50,13 @@ import tech.units.tck.util.TestUtils;
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
  * @author Almas Shaikh
- * @version 2.0, November 15, 2020
+ * @version 2.1, February 16, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class QuantityInterfaceTest {
     private static final String SECTION_NUM = "4.3.1";
-    
+
     /**
      * Test that Quantity implementations override asType method.
      */
@@ -73,10 +74,10 @@ public class QuantityInterfaceTest {
     @Test(groups = { CORE }, description = SECTION_NUM + " Ensure registered Quantity classes override equals.")
     public void testQuantityEquals() {
         for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod(SECTION_PREFIX +  SECTION_NUM, type, "equals", true);
+			testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, type, true, boolean.class,"equals", Object.class);
         }
     }
-    
+
     /**
      * Test that Quantity implementations override getScale.
      */
@@ -118,10 +119,10 @@ public class QuantityInterfaceTest {
     @Test(groups = { CORE }, description = SECTION_NUM + " Ensure registered Quantity classes override hashCode.")
     public void testQuantityHashCode() {
         for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, type, "hashCode");
+			testHasPublicMethod(SECTION_PREFIX + SECTION_NUM, type, int.class, "hashCode");
         }
     }
-    
+
     /**
      * Test that Quantity implementations override to method.
      */
@@ -132,7 +133,7 @@ public class QuantityInterfaceTest {
         	TestUtils.testHasPublicMethod(SECTION_PREFIX +  SECTION_NUM, type, "isEquivalentTo", true);
         }
     }
-    
+
     /**
      * Test that Quantity implementations override inverse.
      */
@@ -143,7 +144,7 @@ public class QuantityInterfaceTest {
             TestUtils.testHasPublicMethod(SECTION_PREFIX +  SECTION_NUM, type, "inverse");
         }
     }
-    
+
     /**
      * Test that Quantity implementations override add.
      */
@@ -151,7 +152,7 @@ public class QuantityInterfaceTest {
     @Test(groups = { CORE }, description = "4.3.1.1 Ensure registered Quantity classes implement add.")
     public void testQuantityOp1Add() {
         for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + "4.3.1.1", type, Quantity.class, "add", Quantity.class);
+            testHasPublicMethod(SECTION_PREFIX + "4.3.1.1", type, Quantity.class, "add", Quantity.class);
         }
     }
 
@@ -209,7 +210,7 @@ public class QuantityInterfaceTest {
             TestUtils.testHasPublicMethod(SECTION_PREFIX + "4.3.1.2", type, Quantity.class, "multiply", Quantity.class);
         }
     }
-    
+
     /**
      * Test that Quantity implementations override to method.
      */
@@ -219,5 +220,5 @@ public class QuantityInterfaceTest {
         for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
             TestUtils.testHasPublicMethod(SECTION_PREFIX +  SECTION_NUM, type, Quantity.class, "to", Unit.class);
         }
-    }        
+    }
 }

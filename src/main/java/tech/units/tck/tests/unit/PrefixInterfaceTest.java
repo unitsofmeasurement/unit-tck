@@ -33,6 +33,8 @@ import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.util.TestGroups.CORE;
+import static tech.units.tck.util.TestUtils.testHasPublicMethod;
+
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.annotations.Test;
@@ -40,17 +42,20 @@ import org.testng.annotations.Test;
 import tech.units.tck.TCKSetup;
 import tech.units.tck.util.TestUtils;
 
+import javax.measure.Dimension;
+import java.util.Set;
+
 /**
  * Tests for Unit Conversion
  *
  * @author Werner Keil
- * @version 2.0, November 15, 2020
+ * @version 2.1, February 16, 2023
  * @since 2.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class PrefixInterfaceTest {
     private static final String SECTION = "4.2.4";
-    
+
     /**
      * Test that Dimension implementations override equals.
      */
@@ -59,7 +64,7 @@ public class PrefixInterfaceTest {
     public void testEquals() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, boolean.class, "equals", Object.class);
+            testHasPublicMethod(SECTION_PREFIX + SECTION, type, boolean.class, "equals", Object.class);
         }
     }
 
@@ -71,7 +76,8 @@ public class PrefixInterfaceTest {
     public void testHashcode() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, int.class, "hashCode");
+            //TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, int.class, "hashCode");
+			testHasPublicMethod(SECTION_PREFIX + SECTION, type, true, int.class,"hashCode");
         }
     }
 
@@ -83,10 +89,10 @@ public class PrefixInterfaceTest {
 	public void testGetName() {
 		for (@SuppressWarnings("rawtypes")
 		Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
-			TestUtils.testHasPublicMethod("Section " + SECTION, type, "getName", true);
+			testHasPublicMethod("Section " + SECTION, type, "getName", true);
 		}
 	}
-	
+
 	/**
 	 * Test that Prefix implementations override getSymbol.
 	 */
@@ -95,7 +101,7 @@ public class PrefixInterfaceTest {
 	public void testGetSymbol() {
 		for (@SuppressWarnings("rawtypes")
 		Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
-			TestUtils.testHasPublicMethod("Section " + SECTION, type, "getSymbol", true);
+			testHasPublicMethod("Section " + SECTION, type, "getSymbol", true);
 		}
 	}
 
@@ -107,10 +113,10 @@ public class PrefixInterfaceTest {
     public void testGetValue() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, Number.class, "getValue");
+            testHasPublicMethod(SECTION_PREFIX + SECTION, type, Number.class, "getValue");
         }
     }
-    
+
     /**
      * Test that Prefix implementations override getExponent.
      */
@@ -119,7 +125,7 @@ public class PrefixInterfaceTest {
     public void testGetXponent() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
-            TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, int.class, "getExponent");
+            testHasPublicMethod(SECTION_PREFIX + SECTION, type, int.class, "getExponent");
         }
     }
 }
