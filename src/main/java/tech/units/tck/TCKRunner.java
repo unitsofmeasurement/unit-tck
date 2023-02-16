@@ -81,33 +81,33 @@ import tech.uom.lib.common.function.Versioned;
 
 /**
  * Main class for executing the JSR 385 TCK.
- * 
+ *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.2.1, December 2, 2020
+ * @version 2.3, February 16, 2023
  * @since 1.0
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
 
     /**
-     * 
+     *
      */
     //private static final long serialVersionUID = 3189431432291353154L;
-    
+
 	// General String Constants
 	public static final String SECTION_PREFIX = "Section ";
 	public static final String MEASURE_PACKAGE = "javax.measure";
-	
+
 	// TCK Constants
     public static final String SPEC_ID = "JSR 385";
-    public static final String SPEC_VERSION = "2.1.1";
-	private static final String TCK_VERSION = "2.1.1";
-	
+    public static final String SPEC_VERSION = "2.2-SNAPSHOT";
+	private static final String TCK_VERSION = "2.2-SNAPSHOT";
+
     private final Profile profile;
 
     public TCKRunner() {
         setName(SPEC_ID + " - TCK " + TCK_VERSION);
         final XmlTest test = new XmlTest(this);
-        profile = Profile.valueOf((System.getProperty(SYS_PROPERTY_PROFILE, 
+        profile = Profile.valueOf((System.getProperty(SYS_PROPERTY_PROFILE,
         		Profile.FULL.name()).toUpperCase()));
         for (String group : profile.getGroups()) {
             test.addIncludedGroup(group);
@@ -143,7 +143,7 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
      * <li>-Dtech.units.tck.reportFile=targetFile.txt for defining the TCK result summary report
      * target file (default: ./target/tck-results.txt).</li>
      * </ul>
-     * 
+     *
      * @param args Optional arguments to control TCK execution
      */
     @Override
@@ -233,12 +233,12 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
                 fileWriter.write("**** " + SPEC_ID + " - Units of Measurement, Technical Compatibility Kit, version " + TCK_VERSION + "\n");
                 fileWriter.write("*****************************************************************************************\n\n");
                 fileWriter.write("Executed on " + new java.util.Date() + "\n");
-                fileWriter.write("Operating System " 
-                  + System.getProperty("os.name") + " (" 
+                fileWriter.write("Operating System "
+                  + System.getProperty("os.name") + " ("
                   + System.getProperty("os.version") + ", "
                   + System.getProperty("os.arch") + ") \n");
-                fileWriter.write("Java " 
-                        + System.getProperty("java.version") + " (" 
+                fileWriter.write("Java "
+                        + System.getProperty("java.version") + " ("
                         + System.getProperty("java.vendor") + ") \n");
                 fileWriter.write("Using " + profile.getDescription() + " profile\n\n");
                 // System.out:

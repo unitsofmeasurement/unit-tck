@@ -34,7 +34,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://jboss.com/products/weld/tech.units.tck/audit"
 	xsi:schemaLocation="http://jboss.com/products/weld/tech.units.tck/audit"
-	name="JSR 385 Units of Measurement" version="2.1.1" id="JSR 385"
+	name="JSR 385 Units of Measurement" version="2.2-SNAPSHOT" id="JSR 385"
 	generateSectionIds="false">
 	<section id="0" title="TCK Setup">
 		<!-- Tests class TCKSetupTest -->
@@ -221,7 +221,7 @@
 			</assertion>
 		</group>
 	</section>
-	
+
 	<section id="4.2.3" title="Unit Conversion">
 		<group>
 			<text>Setup</text>
@@ -233,7 +233,7 @@
 		</group>
 		<group>
 			<text>Conversion Operations</text>
-			
+
 			<assertion id="423-A2">
 				<text>Ensure the equals() operation is implemented.
 				</text>
@@ -307,7 +307,7 @@
 	<section id="4.2.5" title="Unit Dimension">
 		<group>
 			<text>Dimension Operations</text>
-			
+
 			<assertion id="425-A1">
 				<text>Ensure the equals() operation is implemented.
 				</text>
@@ -345,7 +345,7 @@
 	<section id="4.3.1" title="Operations on Quantities">
 		<group>
 			<text>Basic Operations</text>
-			
+
 			<assertion id="431-A1">
 				<text>Ensure the asType() operation is implemented.
 				</text>
@@ -388,7 +388,7 @@
 		title="Operations on Quantities with same dimension as the operand">
 		<group>
 			<text>Result with same dimension</text>
-			
+
 			<assertion id="4311-A1">
 				<text>Ensure the add() operation is implemented.
 				</text>
@@ -523,7 +523,7 @@
 	<section id="5.2" title="System of Units">
 		<group>
 			<text>System of Unit methods.</text>
-				
+
 			<assertion id="52-A1">
 				<text>Ensure at least one javax.measure.spi.SystemOfUnits
 					implementation is available
@@ -576,7 +576,7 @@
 	<section id="5.4" title="Services">
 		<group>
 			<text>Services Methods</text>
-				
+
 			<assertion id="54-A01">
 				<text>Access available FormatServices.
 				</text>
@@ -588,7 +588,7 @@
 			<assertion id="54-A03">
                 <text>Access default QuantityFormat in FormatServices.
                 </text>
-            </assertion>			
+            </assertion>
             <assertion id="54-A04">
                 <text>Access available UnitFormats in FormatServices.
                 </text>
