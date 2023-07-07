@@ -44,7 +44,7 @@ import java.util.Collection;
 /**
  * Tests the ServiceConfiguration
  * @author Werner Keil
- * @version 1.2, November 15, 2020
+ * @version 2.0, July 7, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -52,16 +52,17 @@ public class TCKSetupTest{
 
 	private static final String SECTION_NUM = "0";
 	
+	/** Tests the test setup */
     @SpecAssertion(
             section = SECTION_NUM,
             id = "Setup",
             note = "Tests that a TestConfiguration is registered with the JDK ServiceLoader.")
     @Test(groups = { CORE }, description = "TCK Setup: ensure TCK Configuration is registered and available.")
     public void testTestSetup(){
-        assertTrue("TCK Configuration not available.", getConfiguration() != null);
-        assertNotNull(getConfiguration());
+        assertNotNull("TCK Configuration not available.", getConfiguration());
     }
 
+    /** Tests the quantity configuration */
     @SpecAssertion(
             section = SECTION_NUM,
             id = "Setup",

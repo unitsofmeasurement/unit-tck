@@ -57,7 +57,7 @@ import tech.units.tck.util.TestUtils;
  * Test class for creating new quantities.
  * @author Werner Keil
  * @author Almas Shaikh
- * @version 2.1, November 15, 2020
+ * @version 2.2, July 7, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -121,19 +121,15 @@ public class ObtainingQuantiesTest {
     @SpecAssertion(section = SECTION_NUM, id = "561-A4")
     public void testGetQuantitiesFromString() {
 	final QuantityFormat format = ServiceProvider.current().getFormatService().getQuantityFormat();
-//		System.out.println("Fmt: " + format.toString()); TODO For debugging, remove or comment out
 		for (SystemOfUnits sou : ServiceProvider.current()
 			.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
-//			int i = 1;
 		    for (Unit u : sou.getUnits()) {
 		    	assertNotNull(SECTION_PREFIX + SECTION_NUM + ": A Unit is missing from " + sou.getName(), u);
 				if (u.getSymbol() != null) {
 				    String s = u.toString();
-//				    System.out.println("S " + i + ": " + s + "(" + u.getSymbol() + ")");
 				    Quantity q = format.parse("1 " + s);
 				    assertEquals(SECTION_PREFIX + SECTION_NUM + ": Quantity unit could not be parsed for '" + s + "'", u, q.getUnit());
 				    assertEquals(SECTION_PREFIX + SECTION_NUM + ": Quantity value could not be parsed for '" + s + "'", 1, q.getValue().doubleValue(), 0);
-//				    i++;
 				}
 		    }
 		}

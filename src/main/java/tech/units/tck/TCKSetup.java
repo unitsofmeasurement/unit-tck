@@ -38,7 +38,7 @@ import tech.units.tck.util.ServiceConfiguration;
  * Test setup used by the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.1, July 7, 2019
+ * @version 2.2, July 7, 2023
  */
 @Singleton
 public final class TCKSetup {
@@ -59,6 +59,10 @@ public final class TCKSetup {
 		}
 	}
 
+	/**
+	 * Returns the {@link ServiceConfiguration} loaded by the {@link ServiceLoader}.
+	 * @return the loaded {@link ServiceConfiguration}.
+	 */
 	public static final ServiceConfiguration getConfiguration() {
 		return TEST_CONFIG;
 	}

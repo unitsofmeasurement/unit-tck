@@ -64,7 +64,7 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.3, February 16, 2023
+ * @version 2.4, July 7, 2023
  * @since 1.0
  */
 @Singleton
@@ -90,6 +90,16 @@ public class TestUtils {
      */
     public static final String SYS_PROPERTY_VERBOSE = "tech.units.tck.verbose";
 
+    /**
+     * Number of binary prefixes
+     */
+    public static final int NUM_OF_BINARY_PREFIXES = 8;
+    
+    /**
+     * Number of metric (SI) prefixes
+     */
+    public static final int NUM_OF_METRIC_PREFIXES = 24;
+    
     private static final StringBuilder warnings = new StringBuilder();
 
     /**
@@ -375,8 +385,8 @@ public class TestUtils {
      */
     public static void assertValue(String section, Object value, String methodName, Object instance)
             throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        Method m = instance.getClass().getDeclaredMethod(methodName);
-        Assert.assertEquals(value, m.invoke(instance), section + ": " + m.getName() + '(' + instance + ") returned invalid value:");
+        final Method m = instance.getClass().getDeclaredMethod(methodName);
+        Assert.assertEquals(m.invoke(instance), value, section + ": " + m.getName() + '(' + instance + ") returned invalid value:");
     }
 
     static boolean testHasPublicStaticMethodOpt(String section, @SuppressWarnings("rawtypes") Class type, @SuppressWarnings("rawtypes") Class returnType, String methodName, @SuppressWarnings("rawtypes") Class... paramTypes) {

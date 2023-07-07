@@ -35,7 +35,7 @@ import javax.measure.MeasurementException;
  * This exception indicates that an error has occurred while performing a TCK validate operation.
  *
  * @author Werner Keil
- * @version 1.0, August 15, 2016
+ * @version 2.0, July 7, 2023
  * @since 1.0
  */
 public final class TCKValidationException extends MeasurementException {
@@ -45,11 +45,26 @@ public final class TCKValidationException extends MeasurementException {
 	 */
 	private static final long serialVersionUID = 4460859275523826283L;
 
+    /**
+     * Constructs a {@code TCKValidationException} with the given message.
+     *
+     * @param message
+     *            the detail message, or {@code null} if none.
+     */
 	public TCKValidationException(String message) {
 		super(message);
 	}
 
-	public TCKValidationException(String message, Throwable e) {
-		super(message, e);
+    /**
+     * Constructs a {@code TCKValidationException} with the given message and cause.
+     *
+     * @param message
+     *            the detail message, or {@code null} if none.
+     * @param c
+     *            the cause of this exception, or {@code null} if none.
+     *
+     */
+	public TCKValidationException(String message, Throwable c) {
+		super(message, c);
 	}
 }

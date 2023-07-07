@@ -34,6 +34,8 @@ import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.util.TestGroups.SPI;
+import static tech.units.tck.util.TestUtils.NUM_OF_BINARY_PREFIXES;
+import static tech.units.tck.util.TestUtils.NUM_OF_METRIC_PREFIXES;
 import static javax.measure.spi.FormatService.FormatType.UNIT_FORMAT;
 import static javax.measure.spi.FormatService.FormatType.QUANTITY_FORMAT;
 import java.util.Set;
@@ -55,7 +57,7 @@ import org.testng.annotations.Test;
  * Test class for Services.
  * 
  * @author Werner Keil
- * @version 2.1, November 15, 2020
+ * @version 2.2, July 7, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -208,6 +210,8 @@ public class ServicesTest {
 		}
 	}
 
+	// ************************ 5.4 Services
+	// ************************
 	/**
 	 * Access Binary Prefixes in SystemOfUnitsService.
 	 * @since 2.0
@@ -222,10 +226,12 @@ public class ServicesTest {
 			Set<BinaryPrefix> prefixes = service.getPrefixes(BinaryPrefix.class);
 			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": Binary Prefixes are null", prefixes);
 			assertFalse(SECTION_PREFIX + SECTION_NUM + " No Binary Prefixes found", prefixes.isEmpty());
-			assertEquals(8, prefixes.size(), SECTION_PREFIX + SECTION_NUM + " Wrong Number of Binary Prefixes");
+			assertEquals(prefixes.size(), NUM_OF_BINARY_PREFIXES, SECTION_PREFIX + SECTION_NUM + " Wrong Number of Binary Prefixes");
 		}
 	}
 	
+	// ************************ 5.4 Services
+	// ************************
 	/**
 	 * Access Metric Prefixes in SystemOfUnitsService.
 	 * @since 2.0
@@ -240,7 +246,7 @@ public class ServicesTest {
 			Set<MetricPrefix> prefixes = service.getPrefixes(MetricPrefix.class);
 			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": Metric Prefixes are null", prefixes);
 			assertFalse(SECTION_PREFIX + SECTION_NUM + " No Metric Prefixes found", prefixes.isEmpty());
-			assertEquals(20, prefixes.size(), SECTION_PREFIX + SECTION_NUM + " Wrong Number of Metric Prefixes");
+			assertEquals(prefixes.size(), NUM_OF_METRIC_PREFIXES, SECTION_PREFIX + SECTION_NUM + " Wrong Number of Metric Prefixes");
 		}
 	}
 }

@@ -33,12 +33,11 @@ import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
 
-import tech.units.tck.TCKRunner;
-
 import javax.tools.Tool;
 
 /**
  * Created by keilw on 21.12.14.
+ * @version 2.0, July 7, 2023
  */
 public class TCKRunnerTest {
 
@@ -46,6 +45,6 @@ public class TCKRunnerTest {
     public static void testTCKRunner() {
         final Tool runner = new TCKRunner();
         int returnCode = runner.run(System.in, System.out, System.err, new String[]{TCKRunner.class.getName()});
-        assertEquals(0, returnCode);
+        assertEquals(returnCode, 0);
     }
 }

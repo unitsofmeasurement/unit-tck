@@ -35,17 +35,17 @@ import tech.uom.lib.common.function.DescriptionSupplier;
  * TestNG groups and profiles used in the JSR 385 TCK.
  * 
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @author <a href="mailto:thodoris.bais@gmail.com">Thodoris Bais</a>
- * @version 2.3, November 15, 2020
+ * @author <a href="mailto:thodoris.bais@gmail.com">Teo Bais</a>
+ * @version 2.4, July 7, 2023
  * @since 1.0
  */
 public final class TestGroups {
     // String constants
-    public static final String CORE = "core";
-    public static final String FORMAT = "format";
-    public static final String BASE_QUANTITY = "base_quantity";
-    public static final String DERIVED_QUANTITY = "derived_quantity";
-    public static final String SPI = "spi";
+    /** Core group */ public static final String CORE = "core";
+    /** Format group */ public static final String FORMAT = "format";
+    /** Base Quantity group */ public static final String BASE_QUANTITY = "base_quantity";
+    /** Derived Quantity group */ public static final String DERIVED_QUANTITY = "derived_quantity";
+    /** SPI group */ public static final String SPI = "spi";
 
     /**
      * Minimal groups
@@ -93,17 +93,17 @@ public final class TestGroups {
      * </ul>
      *
      * @author Werner Keil
-     * @version 1.2
+     * @version 2.0
      * @since 1.0
      */
     public enum Profile implements DescriptionSupplier {
-        MINIMAL("Minimal", MINIMAL_GROUPS), //
-        FORMAT("Format", FORMAT_GROUPS), //
-        BASE_QUANTITY("Base Quantity", BASE_QUANTITY_GROUPS), //
-        QUANTITY("Quantity", QUANTITY_GROUPS), //
-        QUANTITY_FORMAT("Quantity and Format", QUANTITY_GROUPS_AND_FORMAT), //
-        SPI("SPI", SPI_GROUPS, false), //
-        FULL("Full", ALL_GROUPS, true);
+        /** Minimal Profile */ MINIMAL("Minimal", MINIMAL_GROUPS), //
+        /** Format Profile */ FORMAT("Format", FORMAT_GROUPS), //
+        /** Base Quantity Profile */ BASE_QUANTITY("Base Quantity", BASE_QUANTITY_GROUPS), //
+        /** Quantity Profile */ QUANTITY("Quantity", QUANTITY_GROUPS), //
+        /** Quantity/Format Profile */ QUANTITY_FORMAT("Quantity and Format", QUANTITY_GROUPS_AND_FORMAT), //
+        /** SPI Profile */ SPI("SPI", SPI_GROUPS), //
+        /** Full Profile */ FULL("Full", ALL_GROUPS, true);
 
         private final String description;
         private final boolean isDefault;
@@ -128,8 +128,16 @@ public final class TestGroups {
             return description;
         }
 
+        /**
+         * Returns the test groups
+         * @return test groups
+         */
         public String[] getGroups() { return groups; }
 
+        /**
+         * Returns true for the default profile
+         * @return true for the default profile
+         */
         public boolean isDefault() {
             return isDefault;
         }

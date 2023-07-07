@@ -83,7 +83,7 @@ import tech.uom.lib.common.function.Versioned;
  * Main class for executing the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.3, February 16, 2023
+ * @version 2.4, July 7, 2023
  * @since 1.0
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
@@ -94,16 +94,19 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
     //private static final long serialVersionUID = 3189431432291353154L;
 
 	// General String Constants
-	public static final String SECTION_PREFIX = "Section ";
-	public static final String MEASURE_PACKAGE = "javax.measure";
+	/** Section prefix */ public static final String SECTION_PREFIX = "Section ";
+	/** JSR Base package */ public static final String MEASURE_PACKAGE = "javax.measure";
 
 	// TCK Constants
-    public static final String SPEC_ID = "JSR 385";
-    public static final String SPEC_VERSION = "2.2-SNAPSHOT";
-	private static final String TCK_VERSION = "2.2-SNAPSHOT";
+	/** The Spec ID */ public static final String SPEC_ID = "JSR 385";
+    /** The Spec Version */ public static final String SPEC_VERSION = "2.2";
+    /** The TCK Version */ private static final String TCK_VERSION = "2.2";
 
+    private static final String MSG_FAILED = "[FAILED]  ";
+    
     private final Profile profile;
 
+    /** Default constructor */
     public TCKRunner() {
         setName(SPEC_ID + " - TCK " + TCK_VERSION);
         final XmlTest test = new XmlTest(this);
@@ -181,15 +184,15 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         return Collections.unmodifiableSet(new HashSet<>(Arrays.asList(new SourceVersion[] {SourceVersion.RELEASE_5, SourceVersion.RELEASE_6, SourceVersion.RELEASE_7})));
     }
 
+    /** Main method
+     * @param args the arguments 
+     */
     public static final void main(String... args) {
         if (args.length > 0 && "-version".equalsIgnoreCase(args[0])) {
             showVersion();
-        } else { // (args.length > 0 && "-help".equalsIgnoreCase(args[0])) {
+        } else {
             showHelp();
-        } /*
-           * else { final Tool runner = new TCKRunner(); runner.run(System.in, System.out,
-           * System.err, new String[]{TCKRunner.class.getName()}); }
-           */
+        }
     }
 
     private static void showHelp() {
@@ -215,7 +218,8 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         System.out.println(SPEC_ID + " - Units of Measurement, Technical Compatibility Kit, version \"" + TCK_VERSION + "\"\n");
     }
 
-    public static final class Reporter extends TestListenerAdapter {
+    /** The Test Reporter */
+    private static final class Reporter extends TestListenerAdapter {
         private int count = 0;
         private int skipped = 0;
         private int failed = 0;
@@ -267,9 +271,9 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
                         PrintWriter w = new PrintWriter(sw);
                         tr.getThrowable().printStackTrace(w);
                         w.flush();
-                        log("[FAILED]  " + testAnnot.description() + "(" + location + "):\n" + sw.toString());
+                        log(MSG_FAILED + testAnnot.description() + "(" + location + "):\n" + sw.toString());
                     } else {
-                        log("[FAILED]  " + testAnnot.description() + "(" + location + ")");
+                        log(MSG_FAILED + testAnnot.description() + "(" + location + ")");
                     }
                 } else {
                     if (tr.getThrowable() != null) {
@@ -277,9 +281,9 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
                         PrintWriter w = new PrintWriter(sw);
                         tr.getThrowable().printStackTrace(w);
                         w.flush();
-                        log("[FAILED]  " + location + ":\n" + sw.toString());
+                        log(MSG_FAILED + location + ":\n" + sw.toString());
                     } else {
-                        log("[FAILED]  " + location);
+                        log(MSG_FAILED + location);
                     }
                 }
             } catch (IOException e) {
