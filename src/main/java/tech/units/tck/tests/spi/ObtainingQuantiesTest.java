@@ -29,8 +29,8 @@
  */
 package tech.units.tck.tests.spi;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 import static tech.units.tck.TCKRunner.MEASURE_PACKAGE;
 import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
@@ -77,7 +77,7 @@ public class ObtainingQuantiesTest {
         Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
         for (Class clazz : subTypes) {
             QuantityFactory<?> factory = ServiceProvider.current().getQuantityFactory(clazz);
-            assertNotNull(SECTION_PREFIX + SECTION_NUM + ": No QuantityFactory available for " + clazz.getSimpleName(), factory);
+            assertNotNull(factory, SECTION_PREFIX + SECTION_NUM + ": No QuantityFactory available for " + clazz.getSimpleName());
         }
     }
 
@@ -124,12 +124,12 @@ public class ObtainingQuantiesTest {
 		for (SystemOfUnits sou : ServiceProvider.current()
 			.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
 		    for (Unit u : sou.getUnits()) {
-		    	assertNotNull(SECTION_PREFIX + SECTION_NUM + ": A Unit is missing from " + sou.getName(), u);
+		    	assertNotNull(u, SECTION_PREFIX + SECTION_NUM + ": A Unit is missing from " + sou.getName());
 				if (u.getSymbol() != null) {
 				    String s = u.toString();
 				    Quantity q = format.parse("1 " + s);
-				    assertEquals(SECTION_PREFIX + SECTION_NUM + ": Quantity unit could not be parsed for '" + s + "'", u, q.getUnit());
-				    assertEquals(SECTION_PREFIX + SECTION_NUM + ": Quantity value could not be parsed for '" + s + "'", 1, q.getValue().doubleValue(), 0);
+				    assertEquals(u, q.getUnit(), SECTION_PREFIX + SECTION_NUM + ": Quantity unit could not be parsed for '" + s + "'");
+				    assertEquals(1, q.getValue().doubleValue(), 0, SECTION_PREFIX + SECTION_NUM + ": Quantity value could not be parsed for '" + s + "'");
 				}
 		    }
 		}

@@ -29,8 +29,8 @@
  */
 package tech.units.tck.tests.spi;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
@@ -47,7 +47,7 @@ import org.testng.annotations.Test;
 /**
  * Test class for obtaining units.
  * @author Werner Keil
- * @version 1.2, November 15, 2020
+ * @version 2.0, August 31, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -68,7 +68,7 @@ public class ObtainingUnitsTest {
 		for (SystemOfUnits sou : ServiceProvider.current()
 			.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
 		    for (Unit u : sou.getUnits()) {
-		    	assertNotNull(SECTION_PREFIX + SECTION_NUM1 + ": A Unit is missing from " + sou.getName(), u);
+		    	assertNotNull(u, SECTION_PREFIX + SECTION_NUM1 + ": A Unit is missing from " + sou.getName());
 		    }
 		}
     }    
@@ -87,12 +87,12 @@ public class ObtainingUnitsTest {
 			.getSystemOfUnitsService().getAvailableSystemsOfUnits()) {
 //			int i = 1;
 		    for (Unit u : sou.getUnits()) {
-		    	assertNotNull(SECTION_PREFIX + SECTION_NUM2 + ": A Unit is missing from " + sou.getName(), u);
+		    	assertNotNull(u, SECTION_PREFIX + SECTION_NUM2 + ": A Unit is missing from " + sou.getName());
 				if (u.getSymbol() != null) {
 				    String s = u.toString();
 //				    System.out.println("S " + i + ": " + s + "(" + u.getSymbol() + ")");
 				    Unit p = format.parse(s);
-				    assertEquals(SECTION_PREFIX + SECTION_NUM2 + ": Unit could not be parsed for '" + s + "'", u, p);
+				    assertEquals(u, p, SECTION_PREFIX + SECTION_NUM2 + ": Unit could not be parsed for '" + s + "'");
 //				    i++;
 				}
 		    }

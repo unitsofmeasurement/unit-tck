@@ -37,9 +37,8 @@
 	<properties>
 		<jsr.version>2.2</jsr.version>
 		<ri.version>2.2</ri.version>
-		<jdkVersion>1.8</jdkVersion>
+		<jdkVersion>9</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
-		<maven.compile.targetLevel>1.8</maven.compile.targetLevel>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
 		<testng.version>7.8.0</testng.version>
 		<jakarta.inject.version>2.0.1</jakarta.inject.version>
@@ -80,11 +79,6 @@
 				<version>${slf4j.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.hamcrest</groupId>
-				<artifactId>hamcrest-library</artifactId>
-				<version>${hamcrest.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>org.mutabilitydetector</groupId>
 				<artifactId>MutabilityDetector</artifactId>
 				<version>${mutabilitydetector.version}</version>
@@ -122,10 +116,6 @@
 			<artifactId>testng</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-library</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
@@ -155,40 +145,40 @@
 	</dependencies>
 
 	<build>
-	<pluginManagement>
-	   <plugins>
-	           <plugin>
-                <groupId>com.mycila</groupId>
-                <artifactId>license-maven-plugin</artifactId>
-                <configuration>
-                    <header>src/main/config/header.txt</header>
-                    <properties>
-                        <owner>Jean-Marie Dautelle, Werner Keil, Otavio Santana</owner>
-                        <currentYear>2023</currentYear>
-                    </properties>
-                    <excludes>
-                    	<exclude>.editorconfig</exclude>
-						<exclude>.gitattributes</exclude>
-						<exclude>.circleci/**</exclude>
-                        <exclude>**/pom.xml</exclude>
-                        <exclude>**/README</exclude>
-                        <exclude>**/settings.xml</exclude>
-						<exclude>docs/**</exclude>
-                        <exclude>src/test/resources/**</exclude>
-                        <exclude>src/main/resources/**</exclude>
-                        <exclude>src/etc/**</exclude>
-                        <exclude>src/main/config/**</exclude>
-                    </excludes>
-                    <headerDefinitions>
-                        <headerDefinition>src/main/config/headers.xml</headerDefinition>
-                    </headerDefinitions>
-                    <mapping>
-                        <java>JAVA_STYLE</java>
-                    </mapping>
-                </configuration>
-            </plugin>
-        </plugins>
-	</pluginManagement>
+		<pluginManagement>
+		   <plugins>
+		           <plugin>
+	                <groupId>com.mycila</groupId>
+	                <artifactId>license-maven-plugin</artifactId>
+	                <configuration>
+	                    <header>src/main/config/header.txt</header>
+	                    <properties>
+	                        <owner>Jean-Marie Dautelle, Werner Keil, Otavio Santana</owner>
+	                        <currentYear>2023</currentYear>
+	                    </properties>
+	                    <excludes>
+	                    	<exclude>.editorconfig</exclude>
+							<exclude>.gitattributes</exclude>
+							<exclude>.circleci/**</exclude>
+	                        <exclude>**/pom.xml</exclude>
+	                        <exclude>**/README</exclude>
+	                        <exclude>**/settings.xml</exclude>
+							<exclude>docs/**</exclude>
+	                        <exclude>src/test/resources/**</exclude>
+	                        <exclude>src/main/resources/**</exclude>
+	                        <exclude>src/etc/**</exclude>
+	                        <exclude>src/main/config/**</exclude>
+	                    </excludes>
+	                    <headerDefinitions>
+	                        <headerDefinition>src/main/config/headers.xml</headerDefinition>
+	                    </headerDefinitions>
+	                    <mapping>
+	                        <java>JAVA_STYLE</java>
+	                    </mapping>
+	                </configuration>
+	            </plugin>
+	        </plugins>
+		</pluginManagement>
 		<plugins>
 			<!-- ======================================================= -->
 			<!-- Compilation -->
@@ -196,11 +186,35 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${project.build.javaVersion}</source>
-					<target>${project.build.javaVersion}</target>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
+				<executions>
+					<execution>
+						<id>default-compile</id>
+						<configuration>
+							<!-- compile everything to ensure module-info contains right entries -->
+							<!-- required when JAVA_HOME is JDK 8 or below -->
+							<release>${jdkVersion}</release>
+							<source>${jdkVersion}</source>
+							<argLine>
+    							--add-exports org.jboss.test.audit.annotations/org.jboss.test.audit.config=ALL-UNNAMED 
+    							--add-opens tech.units.tck=ALL-UNNAMED
+							</argLine>					
+						</configuration>
+					</execution>
+					<execution>
+						<id>base-compile</id>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<!-- recompile everything for target VM except the module-info.java -->
+						<configuration>
+							<release>8</release>
+							<source>8</source>
+							<excludes>
+								<exclude>module-info.java</exclude>
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- ======================================================= -->

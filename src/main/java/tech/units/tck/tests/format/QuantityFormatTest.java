@@ -35,7 +35,7 @@ import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.util.TestGroups.FORMAT;
 import static tech.units.tck.util.TestUtils.testHasPublicMethod;
 import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.Assert.assertNotNull;
 
 import javax.measure.Quantity;
 import javax.measure.format.QuantityFormat;
@@ -48,7 +48,7 @@ import tech.units.tck.TCKSetup;
 
 /**
  * Tests for QuantityFormat
- * @version 2.1, November 15, 2020
+ * @version 2.2, August 31, 2023
  * @since 2.0
  * @author  <a href="mailto:werner@units.tech">Werner Keil</a>
  */
@@ -63,7 +63,7 @@ public class QuantityFormatTest {
     @SpecAssertion(section = SECTION_NUM, id = "46-A1")
     @Test(groups = { FORMAT }, description = SECTION_NUM + " Ensure at least one QuantityFormat implementation is available/registered.")
     public void testEnsureGotQuantityFormat() {
-        assertNotNull("TCK Configuration not available.", TCKSetup.getConfiguration());
+        assertNotNull(TCKSetup.getConfiguration(), "TCK Configuration not available.");
         assertFalse(TCKSetup.getConfiguration().getQuantityFormats4Test().isEmpty());
     }
 

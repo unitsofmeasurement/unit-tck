@@ -29,15 +29,15 @@
  */
 package tech.units.tck.tests.spi;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 import static tech.units.tck.TCKRunner.MEASURE_PACKAGE;
 import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
-import static tech.units.tck.util.TestGroups.CORE;
 
 import java.util.Set;
+
 import javax.measure.Quantity;
 import javax.measure.Quantity.Scale;
 import javax.measure.Unit;
@@ -53,7 +53,7 @@ import org.testng.annotations.Test;
  * Tests for QuantityFactory
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.0, November 15, 2020
+ * @version 2.3, September 24, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -68,12 +68,12 @@ public class QuantityFactoryTest {
     @SpecAssertion(section = SECTION, id = "51-A1")
     public void testQuantityFactoryExists() {
         for (ServiceProvider provider : ServiceProvider.available()) {
-            assertNotNull(SECTION_PREFIX + SECTION+ ": ServiceProvider is null", provider);
+            assertNotNull(provider, SECTION_PREFIX + SECTION+ ": ServiceProvider is null");
             Reflections reflections = new Reflections(MEASURE_PACKAGE);
             Set<Class<? extends Quantity>> subTypes = reflections.getSubTypesOf(Quantity.class);
             for (Class clazz : subTypes) {
                 QuantityFactory<?> factory = provider.getQuantityFactory(clazz);
-                assertNotNull(SECTION_PREFIX + SECTION+ ": No QuantityFactory available for " + clazz.getSimpleName() + " in " + provider, factory);
+                assertNotNull(factory, SECTION_PREFIX + SECTION+ ": No QuantityFactory available for " + clazz.getSimpleName() + " in " + provider);
             }
         }
     }

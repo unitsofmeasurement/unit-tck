@@ -29,7 +29,7 @@
  */
 package tech.units.tck.tests.spi;
 
-import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.Assert.assertNotNull;
 import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
@@ -53,7 +53,7 @@ import tech.units.tck.util.TestUtils;
  * Tests for SystemOfUnits
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.1, November 15, 2020
+ * @version 2.2, September 24, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -68,8 +68,7 @@ public class SystemOfUnitsTest {
 	    + " Ensure a SystemOfUnits implementation exists for every ServiceProvider")
     public void testEnsureGotSystemOfUnits() {
     	for (ServiceProvider provider : ServiceProvider.available()) {
-    	    assertNotNull(SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null",
-    		    provider);
+    	    assertNotNull(provider,	SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
     	    AssertJUnit.assertNotNull("SystemOfUnits is null for " + provider,
     		    provider.getSystemOfUnitsService()
     			    .getAvailableSystemsOfUnits());

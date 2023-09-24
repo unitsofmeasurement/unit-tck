@@ -29,10 +29,9 @@
  */
 package tech.units.tck.tests.spi;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
-import static org.hamcrest.number.OrderingComparison.lessThanOrEqualTo;
-import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
+
 import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
@@ -50,7 +49,7 @@ import org.testng.annotations.Test;
 /**
  * Test class for {@link ServiceProvider}.
  * @author Werner Keil
- * @version 1.2, November 15, 2020
+ * @version 2.0, August 31, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -67,7 +66,7 @@ public class ServiceProviderTest {
     @SpecAssertion(section = SECTION_NUM, id = "53-A1")
     public void testAvailable() {
 	List<ServiceProvider> spa = ServiceProvider.available();
-        assertNotNull(SECTION_PREFIX + SECTION_NUM + ": available ServiceProviders is null", spa);
+        assertNotNull(spa, SECTION_PREFIX + SECTION_NUM + ": available ServiceProviders is null");
     }
     
     /**
@@ -77,7 +76,7 @@ public class ServiceProviderTest {
     @SpecAssertion(section = SECTION_NUM, id = "53-A2")
     public void testAvailableNotEmpty() {
 	List<ServiceProvider> spa = ServiceProvider.available();
-        assertNotNull(SECTION_PREFIX + SECTION_NUM + ": available ServiceProviders is null", spa);
+        assertNotNull(spa, SECTION_PREFIX + SECTION_NUM + ": available ServiceProviders is null");
         assertFalse(SECTION_PREFIX + SECTION_NUM + ": No available ServiceProviders found", spa.isEmpty());
     }
     
@@ -90,7 +89,7 @@ public class ServiceProviderTest {
     @SpecAssertion(section = SECTION_NUM, id = "53-A3")
     public void testCurrent() {
 	ServiceProvider sp = ServiceProvider.current();
-        assertNotNull(SECTION_PREFIX + SECTION_NUM + ": No current ServiceProvider found", sp);
+        assertNotNull(sp, SECTION_PREFIX + SECTION_NUM + ": No current ServiceProvider found");
     }
     
     // ************************ 5.3 Service Provider
@@ -101,10 +100,8 @@ public class ServiceProviderTest {
     @Test(groups = { SPI }, description = DESCRIPTION)
     @SpecAssertion(section = SECTION_NUM, id = "53-A4")
     public void testPriority() {
-	ServiceProvider sp = ServiceProvider.current();
-	assertThat(SECTION_PREFIX + SECTION_NUM + ": Priority should be a valid int", sp.getPriority(),
-		greaterThanOrEqualTo(Integer.MIN_VALUE));
-	assertThat(SECTION_PREFIX + SECTION_NUM + ": Priority should be a valid int", sp.getPriority(),
-		lessThanOrEqualTo(Integer.MAX_VALUE));
+	final ServiceProvider sp = ServiceProvider.current();
+	assertTrue((sp.getPriority() >= Integer.MIN_VALUE && sp.getPriority() <= Integer.MAX_VALUE), 
+			SECTION_PREFIX + SECTION_NUM + ": Priority should be a valid int");
     }
 }

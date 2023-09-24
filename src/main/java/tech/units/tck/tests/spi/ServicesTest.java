@@ -29,7 +29,7 @@
  */
 package tech.units.tck.tests.spi;
 
-import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.Assert.assertNotNull;
 import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
@@ -57,7 +57,7 @@ import org.testng.annotations.Test;
  * Test class for Services.
  * 
  * @author Werner Keil
- * @version 2.2, July 7, 2023
+ * @version 2.3, August 31, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -74,9 +74,9 @@ public class ServicesTest {
 	@SpecAssertion(section = SECTION_NUM, id = "54-A01")
 	public void testFormatService() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null", provider);
+			assertNotNull(provider, SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
 			FormatService service = provider.getFormatService();
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": FormatService is null", service);
+			assertNotNull(service, SECTION_PREFIX + SECTION_NUM + ": FormatService is null");
 		}
 	}
 
@@ -90,11 +90,11 @@ public class ServicesTest {
 	@SpecAssertion(section = SECTION_NUM, id = "54-A02")
 	public void testFormatServiceQuantityFormatsAvailable() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null", provider);
-			FormatService service = provider.getFormatService();
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": FormatService is null", service);
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": Available QuantityFormat names are null",
-					service.getAvailableFormatNames(QUANTITY_FORMAT));
+			assertNotNull(provider, SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
+			final FormatService service = provider.getFormatService();
+			assertNotNull(service, SECTION_PREFIX + SECTION_NUM + ": FormatService is null");
+			assertNotNull(service.getAvailableFormatNames(QUANTITY_FORMAT),
+					SECTION_PREFIX + SECTION_NUM + ": Available QuantityFormat names are null");
 			assertFalse(SECTION_PREFIX + SECTION_NUM + " No available QuantityFormat names found",
 					service.getAvailableFormatNames(QUANTITY_FORMAT).isEmpty());
 		}
@@ -110,12 +110,12 @@ public class ServicesTest {
 	@SpecAssertion(section = SECTION_NUM, id = "54-A03")
 	public void testFormatServiceQuantityFormatsDefault() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null", provider);
-			FormatService service = provider.getFormatService();
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": FormatService is null", service);
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": Default QuantityFormat is null", service.getUnitFormat());
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": Available QuantityFormat names are null",
-					service.getAvailableFormatNames(QUANTITY_FORMAT));
+			assertNotNull(provider, SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
+			final FormatService service = provider.getFormatService();
+			assertNotNull(service, SECTION_PREFIX + SECTION_NUM + ": FormatService is null");
+			assertNotNull(service.getUnitFormat(), SECTION_PREFIX + SECTION_NUM + ": Default QuantityFormat is null");
+			assertNotNull(service.getAvailableFormatNames(QUANTITY_FORMAT), 
+					SECTION_PREFIX + SECTION_NUM + ": Available QuantityFormat names are null");
 			assertFalse(SECTION_PREFIX + SECTION_NUM + " No available QuantityFormat names found",
 					service.getAvailableFormatNames(QUANTITY_FORMAT).isEmpty());
 		}
@@ -130,11 +130,11 @@ public class ServicesTest {
 	@SpecAssertion(section = SECTION_NUM, id = "54-A04")
 	public void testFormatServiceUnitFormatsAvailable() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null", provider);
-			FormatService service = provider.getFormatService();
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": FormatService is null", service);
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": Available UnitFormat names are null",
-					service.getAvailableFormatNames(UNIT_FORMAT));
+			assertNotNull(provider, SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
+			final FormatService service = provider.getFormatService();
+			assertNotNull(service, SECTION_PREFIX + SECTION_NUM + ": FormatService is null");
+			assertNotNull(service.getAvailableFormatNames(UNIT_FORMAT),
+					SECTION_PREFIX + SECTION_NUM + ": Available UnitFormat names are null");
 			assertFalse(SECTION_PREFIX + SECTION_NUM + " No available UnitFormat names found",
 					service.getAvailableFormatNames(UNIT_FORMAT).isEmpty());
 		}
@@ -149,12 +149,12 @@ public class ServicesTest {
 	@SpecAssertion(section = SECTION_NUM, id = "54-A05")
 	public void testFormatServiceUnitFormatsDefault() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null", provider);
+			assertNotNull(provider, SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
 			FormatService service = provider.getFormatService();
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": FormatService is null", service);
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": Default UnitFormat is null", service.getUnitFormat());
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": Available UnitFormat names are null",
-					service.getAvailableFormatNames(UNIT_FORMAT));
+			assertNotNull(service, SECTION_PREFIX + SECTION_NUM + ": FormatService is null");
+			assertNotNull(service.getUnitFormat(), SECTION_PREFIX + SECTION_NUM + ": Default UnitFormat is null");
+			assertNotNull(service.getAvailableFormatNames(UNIT_FORMAT),
+					SECTION_PREFIX + SECTION_NUM + ": Available UnitFormat names are null");
 			assertFalse(SECTION_PREFIX + SECTION_NUM + " No available UnitFormat names found",
 					service.getAvailableFormatNames(UNIT_FORMAT).isEmpty());
 		}
@@ -169,9 +169,9 @@ public class ServicesTest {
 	@SpecAssertion(section = SECTION_NUM, id = "54-A06")
 	public void testSystemOfUnitsService() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null", provider);
+			assertNotNull(provider, SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
 			SystemOfUnitsService service = provider.getSystemOfUnitsService();
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": SystemOfUnitsService is null", service);
+			assertNotNull(service, SECTION_PREFIX + SECTION_NUM + ": SystemOfUnitsService is null");
 		}
 	}
 
@@ -184,10 +184,10 @@ public class ServicesTest {
 	@SpecAssertion(section = SECTION_NUM, id = "54-A07")
 	public void testSystemOfUnitsServiceDefaultSystem() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null", provider);
-			SystemOfUnitsService service = provider.getSystemOfUnitsService();
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": SystemOfUnitsService is null", service);
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": Default SystemOfUnits is null", service.getSystemOfUnits());
+			assertNotNull(provider, SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
+			final SystemOfUnitsService service = provider.getSystemOfUnitsService();
+			assertNotNull(service, SECTION_PREFIX + SECTION_NUM + ": SystemOfUnitsService is null");
+			assertNotNull(service.getSystemOfUnits(), SECTION_PREFIX + SECTION_NUM + ": Default SystemOfUnits is null");
 		}
 	}
 
@@ -200,11 +200,11 @@ public class ServicesTest {
 	@SpecAssertion(section = SECTION_NUM, id = "54-A08")
 	public void testSystemOfUnitsServiceAvailableSystems() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null", provider);
+			assertNotNull(provider, SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
 			SystemOfUnitsService service = provider.getSystemOfUnitsService();
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": SystemOfUnitsService is null", service);
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": Available SystemOfUnits are null",
-					service.getAvailableSystemsOfUnits());
+			assertNotNull(service, SECTION_PREFIX + SECTION_NUM + ": SystemOfUnitsService is null");
+			assertNotNull(service.getAvailableSystemsOfUnits(),
+					SECTION_PREFIX + SECTION_NUM + ": Available SystemOfUnits are null");
 			assertFalse(SECTION_PREFIX + SECTION_NUM + " No available SystemOfUnits found",
 					service.getAvailableSystemsOfUnits().isEmpty());
 		}
@@ -220,11 +220,11 @@ public class ServicesTest {
 	@SpecAssertion(section = SECTION_NUM, id = "54-A09")
 	public void testSystemOfUnitsServicePrefixBinary() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null", provider);
+			assertNotNull(provider, SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
 			final SystemOfUnitsService service = provider.getSystemOfUnitsService();
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": SystemOfUnitsService is null", service);
+			assertNotNull(service, SECTION_PREFIX + SECTION_NUM + ": SystemOfUnitsService is null");
 			Set<BinaryPrefix> prefixes = service.getPrefixes(BinaryPrefix.class);
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": Binary Prefixes are null", prefixes);
+			assertNotNull(prefixes, SECTION_PREFIX + SECTION_NUM + ": Binary Prefixes are null");
 			assertFalse(SECTION_PREFIX + SECTION_NUM + " No Binary Prefixes found", prefixes.isEmpty());
 			assertEquals(prefixes.size(), NUM_OF_BINARY_PREFIXES, SECTION_PREFIX + SECTION_NUM + " Wrong Number of Binary Prefixes");
 		}
@@ -240,11 +240,11 @@ public class ServicesTest {
 	@SpecAssertion(section = SECTION_NUM, id = "54-A10")
 	public void testSystemOfUnitsServicePrefixMetric() {
 		for (ServiceProvider provider : ServiceProvider.available()) {
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null", provider);
+			assertNotNull(provider, SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
 			final SystemOfUnitsService service = provider.getSystemOfUnitsService();
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": SystemOfUnitsService is null", service);
+			assertNotNull(service, SECTION_PREFIX + SECTION_NUM + ": SystemOfUnitsService is null");
 			Set<MetricPrefix> prefixes = service.getPrefixes(MetricPrefix.class);
-			assertNotNull(SECTION_PREFIX + SECTION_NUM + ": Metric Prefixes are null", prefixes);
+			assertNotNull(prefixes, SECTION_PREFIX + SECTION_NUM + ": Metric Prefixes are null");
 			assertFalse(SECTION_PREFIX + SECTION_NUM + " No Metric Prefixes found", prefixes.isEmpty());
 			assertEquals(prefixes.size(), NUM_OF_METRIC_PREFIXES, SECTION_PREFIX + SECTION_NUM + " Wrong Number of Metric Prefixes");
 		}

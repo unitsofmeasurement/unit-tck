@@ -30,12 +30,15 @@
 package tech.units.tck.util;
 
 import static java.lang.reflect.Modifier.PUBLIC;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
 import static org.reflections.ReflectionUtils.getAllMethods;
 import static org.reflections.ReflectionUtils.withModifier;
 import static org.reflections.ReflectionUtils.withName;
 import static org.reflections.ReflectionUtils.withParametersCount;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.fail;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
@@ -64,7 +67,7 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.4, July 7, 2023
+ * @version 2.5, August 30, 2023
  * @since 1.0
  */
 @Singleton
@@ -203,7 +206,7 @@ public class TestUtils {
                 return;
             }
         }
-        Assert.fail(section + ": Class must implement " + iface.getName() + ", but does not: " + type.getName());
+        fail(section + ": Class must implement " + iface.getName() + ", but does not: " + type.getName());
     }
 
     /**
@@ -289,8 +292,8 @@ public class TestUtils {
         } else {
             getters = getAllMethods(type, withModifier(PUBLIC), withName(name), withParametersCount(0));
         }
-        assertThat(getters.size(), greaterThanOrEqualTo(1)); // interface plus
-        // at least one implementation
+        assertNotNull(getters);
+        assertTrue(getters.size() >= 1); // interface plus at least one implementation
     }
 
     /**
@@ -386,7 +389,7 @@ public class TestUtils {
     public static void assertValue(String section, Object value, String methodName, Object instance)
             throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         final Method m = instance.getClass().getDeclaredMethod(methodName);
-        Assert.assertEquals(m.invoke(instance), value, section + ": " + m.getName() + '(' + instance + ") returned invalid value:");
+        assertEquals(m.invoke(instance), value, section + ": " + m.getName() + '(' + instance + ") returned invalid value:");
     }
 
     static boolean testHasPublicStaticMethodOpt(String section, @SuppressWarnings("rawtypes") Class type, @SuppressWarnings("rawtypes") Class returnType, String methodName, @SuppressWarnings("rawtypes") Class... paramTypes) {

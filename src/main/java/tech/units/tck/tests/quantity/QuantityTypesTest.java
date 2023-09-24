@@ -29,8 +29,8 @@
  */
 package tech.units.tck.tests.quantity;
 
-import static org.testng.AssertJUnit.assertEquals;
-import static org.testng.AssertJUnit.assertNotNull;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertNotNull;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 
@@ -53,25 +53,26 @@ import javax.measure.Unit;
 /**
  * Test class for quantities
  * @author Werner Keil
- * @version 1.2, February 21, 2019
+ * @version 2.0, August 31, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
 public class QuantityTypesTest {
 	private static final Logger logger = LoggerFactory.getLogger(QuantityTypesTest.class);
-
+	
 	// ************************ 4.4 Supported Quantities
 	// ************************
+	private static final String SECTION_NUM = "4.4";
 
 	/**
 	 * Check if all SI Base Quantities are used.
 	 */
-	@Test(groups = { "base_quantity" }, description = "4.4 Ensure all SI Base Quantities are used by an implementation")
-	@SpecAssertion(section = "4.4", id = "44-A1")
+	@Test(groups = { "base_quantity" }, description = SECTION_NUM + " Ensure all SI Base Quantities are used by an implementation")
+	@SpecAssertion(section = SECTION_NUM, id = "44-A1")
 	public void testContainsBaseDimensions() {
 		final Collection<Dimension> baseDimensions = TCKSetup.getConfiguration().getBaseDimensions();
 		final Map<Dimension, Unit<?>> foundUnits = new HashMap<>();
-		assertEquals("Section 4.4: Number of SI Base Dimensions does not match", 7, baseDimensions.size());
+		assertEquals(7, baseDimensions.size(), "Section " + SECTION_NUM + ": Number of SI Base Dimensions does not match");
 		final Collection<? extends Unit<?>> units = TCKSetup.getConfiguration().getUnits4Test();
 		for (Unit<?> unit : units) {
 			Dimension dim = unit.getDimension();
@@ -81,22 +82,22 @@ public class QuantityTypesTest {
 			}
 		}
 		for (Dimension dimension : baseDimensions) {
-			Unit<?> unit = foundUnits.get(dimension);
-			assertNotNull("Section 4.4: SI Base Dimension " + dimension + " not found", unit);
+			final Unit<?> unit = foundUnits.get(dimension);
+			assertNotNull(unit, "Section " + SECTION_NUM + ": SI Base Dimension " + dimension + " not found");
 		}
 	}
 	
 	/**
 	 * Ensure all Supported Quantities are used by an implementation.
 	 */
-	@Test(groups = { "derived_quantity" }, description = "4.4 Ensure all Supported Quantities are used by an implementation")
-	@SpecAssertion(section = "4.4", id = "44-A2")
+	@Test(groups = { "derived_quantity" }, description = SECTION_NUM + " Ensure all Supported Quantities are used by an implementation")
+	@SpecAssertion(section = SECTION_NUM, id = "44-A2")
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void testContainsQuantities() {
 		final Collection<Class<? extends Quantity>> quantityTypes = TCKSetup.getConfiguration().getSupportedQuantityTypes();
 		for (Class c : quantityTypes) {
-			Unit unit = TCKSetup.getConfiguration().getUnit4Type(c);
-			assertNotNull("Section 4.4: Quantity type " + c + " not found", unit);
+			final Unit unit = TCKSetup.getConfiguration().getUnit4Type(c);
+			assertNotNull(unit, "Section " + SECTION_NUM + ": Quantity type " + c + " not found");
 		}
 	}
 }
