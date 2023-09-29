@@ -43,8 +43,10 @@ module tech.units.tck {
     requires java.compiler;
     requires org.testng;
     requires org.reflections;
-    requires MutabilityDetector;
-    
+    //requires MutabilityDetector;
+    requires org.slf4j;
     requires jboss.test.audit.api;
     requires jboss.test.audit.impl;
+    
+    uses tech.units.tck.util.ServiceConfiguration;
 }

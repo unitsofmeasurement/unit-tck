@@ -32,6 +32,8 @@ module tech.units.tck {
     exports tech.units.tck.tests;
     exports tech.units.tck.tests.format;
     exports tech.units.tck.tests.quantity;
+    exports tech.units.tck.tests.spi;
+    exports tech.units.tck.tests.unit;
     
     requires tech.units.indriya;
     requires transitive java.measure;
@@ -41,8 +43,13 @@ module tech.units.tck {
     requires java.compiler;
     requires org.testng;
     requires org.reflections;
-    requires MutabilityDetector;
-    
+    //requires MutabilityDetector;
+    requires org.slf4j;
     requires jboss.test.audit.api;
     requires jboss.test.audit.impl;
+    
+    uses tech.units.tck.util.ServiceConfiguration;
+    
+    provides tech.units.tck.util.ServiceConfiguration with
+    tech.units.tck.util.TCKTestConfiguration;
 }
