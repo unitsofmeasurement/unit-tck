@@ -52,19 +52,16 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-import org.testng.Assert;
-
 import jakarta.inject.Singleton;
 import tech.units.tck.TCKValidationException;
 
-import javax.measure.*;
 import javax.measure.spi.*;
 
 /**
  * Test utilities used in the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.5, August 30, 2023
+ * @version 2.6, September 30, 2023
  * @since 1.0
  */
 @Singleton
@@ -129,7 +126,7 @@ public class TestUtils {
     }
 
     /**
-     * Tests the given object being (effectively) serializable by serializing it.
+     * Tests the given object being serializable.
      *
      * @param section
      *            the section of the spec under test
@@ -155,6 +152,7 @@ public class TestUtils {
      *             if test fails.
      */
     public static void testImmutable(String section, Class<?> type) {
+    	System.out.println("Testing Immutability...");
 //        try {
 //            MutabilityAssert.assertInstancesOf(type, MutabilityMatchers.areImmutable(),
 //                    AllowedReason.provided(Dimension.class, Quantity.class, Unit.class, UnitConverter.class).areAlsoImmutable(),
@@ -181,7 +179,7 @@ public class TestUtils {
         try (ObjectOutputStream oos = new ObjectOutputStream(new ByteArrayOutputStream())) {
             oos.writeObject(o);
         } catch (Exception e) {
-            throw new TCKValidationException("Class must be serializable, but serialization failed: " + o.getClass().getName(), e);
+            throw new TCKValidationException("Class should be serializable, but serialization failed: " + o.getClass().getName(), e);
         }
     }
 

@@ -94,6 +94,12 @@
 			<artifactId>indriya</artifactId>
 			<scope>test</scope>
 			<type>jar</type>
+			<exclusions>
+        		<exclusion>  <!-- declare the exclusion here -->
+          			<groupId>org.apiguardian</groupId>
+            		<artifactId>apiguardian-api</artifactId>
+        		</exclusion>
+      		</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>tech.uom.lib</groupId>
