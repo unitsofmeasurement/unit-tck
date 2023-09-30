@@ -95,7 +95,7 @@
 			<scope>test</scope>
 			<type>jar</type>
 			<exclusions>
-        		<exclusion>  <!-- declare the exclusion here -->
+        		<exclusion>
           			<groupId>org.apiguardian</groupId>
             		<artifactId>apiguardian-api</artifactId>
         		</exclusion>
@@ -459,13 +459,6 @@
     </distributionManagement>
 
 	<profiles>
-		<profile>
-			<id>jdk8</id>
-			<properties>
-				<jdkVersion>1.8</jdkVersion>
-			</properties>
-		</profile>
-
 		<profile>
 			<id>version</id>
 			<build>
