@@ -142,7 +142,7 @@ public class TestUtils {
     }
 
     /**
-     * Tests the given class being serializable.
+     * Tests the given class being immutable.
      *
      * @param section
      *            the section of the spec under test
@@ -152,7 +152,6 @@ public class TestUtils {
      *             if test fails.
      */
     public static void testImmutable(String section, Class<?> type) {
-    	System.out.println("Testing Immutability...");
 //        try {
 //            MutabilityAssert.assertInstancesOf(type, MutabilityMatchers.areImmutable(),
 //                    AllowedReason.provided(Dimension.class, Quantity.class, Unit.class, UnitConverter.class).areAlsoImmutable(),
