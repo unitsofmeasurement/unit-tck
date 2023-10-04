@@ -33,8 +33,12 @@ import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.util.TestGroups.FORMAT;
+import static tech.units.tck.util.TestUtils.MSG_NO_TCK_CONFIG;
 import static tech.units.tck.util.TestUtils.testHasPublicMethod;
-import static org.testng.AssertJUnit.assertFalse;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNot.not;
 import static org.testng.Assert.assertNotNull;
 
 import javax.measure.Quantity;
@@ -48,7 +52,7 @@ import tech.units.tck.TCKSetup;
 
 /**
  * Tests for QuantityFormat
- * @version 2.2, August 31, 2023
+ * @version 2.3, October 4, 2023
  * @since 2.0
  * @author  <a href="mailto:werner@units.tech">Werner Keil</a>
  */
@@ -63,8 +67,8 @@ public class QuantityFormatTest {
     @SpecAssertion(section = SECTION_NUM, id = "46-A1")
     @Test(groups = { FORMAT }, description = SECTION_NUM + " Ensure at least one QuantityFormat implementation is available/registered.")
     public void testEnsureGotQuantityFormat() {
-        assertNotNull(TCKSetup.getConfiguration(), "TCK Configuration not available.");
-        assertFalse(TCKSetup.getConfiguration().getQuantityFormats4Test().isEmpty());
+        assertNotNull(TCKSetup.getConfiguration(), MSG_NO_TCK_CONFIG);
+        assertThat("No QuantityFormat implementation found.", TCKSetup.getConfiguration().getQuantityFormats4Test(), is(not(empty())));
     }
 
     /**

@@ -43,7 +43,7 @@ module tech.units.tck {
     requires java.compiler;
     requires org.testng;
     requires org.reflections;
-    //requires MutabilityDetector;
+    requires org.hamcrest;
     requires org.slf4j;
     requires jboss.test.audit.api;
     requires jboss.test.audit.impl;

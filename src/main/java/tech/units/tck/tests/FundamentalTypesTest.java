@@ -31,10 +31,17 @@ package tech.units.tck.tests;
 
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
+import static tech.units.tck.util.TestUtils.MSG_NO_TCK_CONFIG;
+import static tech.units.tck.util.TestUtils.NUM_OF_PREFIX_TYPES;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNot.not;
+import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
+import static org.testng.Assert.assertNotNull;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import tech.units.tck.TCKSetup;
@@ -43,7 +50,7 @@ import tech.units.tck.TCKSetup;
  * Tests for Fundamental Types
  *
  * @author  <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.0, November 15, 2020
+ * @version 2.1, October 4, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -58,8 +65,8 @@ public class FundamentalTypesTest {
     @SpecAssertion(section = SECTION, id = "41-A1")
     @Test(groups = { "core" }, description = SECTION + " Ensure at least one Unit implementation is available/registered.")
     public void testEnsureGotUnit() {
-        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
-        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getUnitClasses().isEmpty());
+    	assertNotNull(TCKSetup.getConfiguration(), MSG_NO_TCK_CONFIG);
+    	assertThat("No Unit implementation found.", TCKSetup.getConfiguration().getUnitClasses(), is(not(empty())));
     }
     
     /**
@@ -69,8 +76,8 @@ public class FundamentalTypesTest {
     @SpecAssertion(section = SECTION, id = "41-A2")
     @Test(groups = { "core" }, description = SECTION + " Ensure at least one Dimension implementation is available/registered.")
     public void testEnsureHasDimension() {
-        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
-        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getDimensionClasses().isEmpty());
+    	assertNotNull(TCKSetup.getConfiguration(), MSG_NO_TCK_CONFIG);
+    	assertThat("No Dimension implementation found.", TCKSetup.getConfiguration().getDimensionClasses(), is(not(empty())));
     }
     
     /**
@@ -80,9 +87,10 @@ public class FundamentalTypesTest {
     @SpecAssertion(section = SECTION, id = "41-A3")
     @Test(groups = { "core" }, description = SECTION + " Ensure at least one Prefix implementation is available/registered.")
     public void testEnsureHasPrefix() {
-        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
-        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getPrefixClasses().isEmpty());
-        AssertJUnit.assertTrue(TCKSetup.getConfiguration().getPrefixClasses().size() >= 2); // The 2 API prefixes must be there
+    	assertNotNull(TCKSetup.getConfiguration(), MSG_NO_TCK_CONFIG);
+    	assertThat("No Prefix implementation found.", TCKSetup.getConfiguration().getPrefixClasses(), is(not(empty())));
+    	assertThat(TCKSetup.getConfiguration().getPrefixClasses().size(), 
+    			greaterThanOrEqualTo(NUM_OF_PREFIX_TYPES)); // The API prefixes must be there
     }
     
     /**
@@ -92,7 +100,7 @@ public class FundamentalTypesTest {
     @SpecAssertion(section = SECTION, id = "41-A4")
     @Test(groups = { "core" }, description = SECTION + " Ensure at least one Quantity implementation is available/registered.")
     public void testEnsureHasQuantity() {
-        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
-        AssertJUnit.assertTrue(!TCKSetup.getConfiguration().getQuantityClasses().isEmpty());
+    	assertNotNull(TCKSetup.getConfiguration(), MSG_NO_TCK_CONFIG);
+    	assertThat("No Quantity implementation found.", TCKSetup.getConfiguration().getQuantityClasses(), is(not(empty())));
     }
 }

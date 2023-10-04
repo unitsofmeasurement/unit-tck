@@ -29,6 +29,10 @@
  */
 package tech.units.tck.tests.spi;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNot.not;
 import static org.testng.Assert.assertNotNull;
 import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
@@ -44,7 +48,6 @@ import javax.measure.spi.SystemOfUnits;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import tech.units.tck.util.TestUtils;
@@ -53,7 +56,7 @@ import tech.units.tck.util.TestUtils;
  * Tests for SystemOfUnits
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.2, September 24, 2023
+ * @version 2.3, October 4, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -69,12 +72,11 @@ public class SystemOfUnitsTest {
     public void testEnsureGotSystemOfUnits() {
     	for (ServiceProvider provider : ServiceProvider.available()) {
     	    assertNotNull(provider,	SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
-    	    AssertJUnit.assertNotNull("SystemOfUnits is null for " + provider,
-    		    provider.getSystemOfUnitsService()
-    			    .getAvailableSystemsOfUnits());
-    	    AssertJUnit.assertFalse("SystemOfUnits not found in " + provider,
-    		    provider.getSystemOfUnitsService()
-    			    .getAvailableSystemsOfUnits().isEmpty());
+    	    assertNotNull(provider.getSystemOfUnitsService(), String.format("SystemOfUnitsService is null for %s", provider));
+    	    assertNotNull(provider.getSystemOfUnitsService().getAvailableSystemsOfUnits(), 
+    	    		String.format("Available SystemOfUnits is null for %s", provider));
+    	    assertThat(String.format("SystemOfUnits not found in %s", provider), 
+    	    		provider.getSystemOfUnitsService().getAvailableSystemsOfUnits(), is(not(empty())));
     	}
     }
 

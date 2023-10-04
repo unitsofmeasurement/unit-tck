@@ -144,7 +144,7 @@ public class QuantityInterfaceTest {
             TestUtils.testHasPublicMethod(SECTION_PREFIX +  SECTION_NUM, type, "inverse");
         }
     }
-
+    
     /**
      * Test that Quantity implementations override add.
      */
@@ -221,4 +221,16 @@ public class QuantityInterfaceTest {
             TestUtils.testHasPublicMethod(SECTION_PREFIX +  SECTION_NUM, type, Quantity.class, "to", Unit.class);
         }
     }
+    
+    /**
+     * Test that Quantity implementations are comparable.
+     */
+    @SpecAssertion(section = SECTION_NUM, id = "431-A10")
+    @Test(groups = { CORE }, description = SECTION_NUM + " Ensure registered Quantity classes are comparable.")
+    public void testQuantityIsComparable() {
+        for (Class<?> type : TCKSetup.getConfiguration().getQuantityClasses()) {
+            TestUtils.testComparable(SECTION_PREFIX +  SECTION_NUM, type);
+        }
+    }
+
 }

@@ -61,7 +61,7 @@ import javax.measure.spi.*;
  * Test utilities used in the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.6, September 30, 2023
+ * @version 2.7, October 4, 2023
  * @since 1.0
  */
 @Singleton
@@ -88,6 +88,11 @@ public class TestUtils {
     public static final String SYS_PROPERTY_VERBOSE = "tech.units.tck.verbose";
 
     /**
+     * Number of built-in API prefix types
+     */
+    public static final int NUM_OF_PREFIX_TYPES = 2;
+    
+    /**
      * Number of binary prefixes
      */
     public static final int NUM_OF_BINARY_PREFIXES = 8;
@@ -96,6 +101,11 @@ public class TestUtils {
      * Number of metric (SI) prefixes
      */
     public static final int NUM_OF_METRIC_PREFIXES = 24;
+    
+    /**
+     * Global message for missing TCK Configuration
+     */
+    public static final String MSG_NO_TCK_CONFIG = "TCK Configuration not available.";
     
     private static final StringBuilder warnings = new StringBuilder();
 
@@ -126,7 +136,7 @@ public class TestUtils {
     }
 
     /**
-     * Tests the given object being serializable.
+     * Tests the given object being {@link Serializable}.
      *
      * @param section
      *            the section of the spec under test
@@ -134,31 +144,12 @@ public class TestUtils {
      *            the type to be checked.
      * @throws TCKValidationException
      *             if the test fails.
+     * 
      */
     public static void testSerializable(String section, Class<?> type) {
         if (!Serializable.class.isAssignableFrom(type)) {
             throw new TCKValidationException(section + ": Class must be serializable: " + type.getName());
         }
-    }
-
-    /**
-     * Tests the given class being immutable.
-     *
-     * @param section
-     *            the section of the spec under test
-     * @param type
-     *            the type to be checked.
-     * @throws TCKValidationException
-     *             if test fails.
-     */
-    public static void testImmutable(String section, Class<?> type) {
-//        try {
-//            MutabilityAssert.assertInstancesOf(type, MutabilityMatchers.areImmutable(),
-//                    AllowedReason.provided(Dimension.class, Quantity.class, Unit.class, UnitConverter.class).areAlsoImmutable(),
-//                    AllowedReason.allowingForSubclassing(), AllowedReason.allowingNonFinalFields());
-//        } catch (Exception e) {
-//            throw new TCKValidationException(section + ": Class is not immutable: " + type.getName(), e);
-//        }
     }
 
     /**
@@ -172,13 +163,53 @@ public class TestUtils {
      *             if test fails.
      */
     public static void testSerializable(String section, Object o) {
-        if (!(o instanceof Serializable)) {
+    	if (!Serializable.class.isAssignableFrom(o.getClass())) {
             throw new TCKValidationException(section + ": Class must be serializable: " + o.getClass().getName());
         }
         try (ObjectOutputStream oos = new ObjectOutputStream(new ByteArrayOutputStream())) {
             oos.writeObject(o);
         } catch (Exception e) {
             throw new TCKValidationException("Class should be serializable, but serialization failed: " + o.getClass().getName(), e);
+        }
+    }
+    
+    /**
+     * Test for serializable (optional recommendation), writes a warning if not given.
+     *
+     * @param section
+     *            the section of the spec under test
+     * @param type
+     *            the type to be checked.
+     * @return true, if the type is probably serializable.
+     */
+    public static boolean testSerializableOpt(String section, @SuppressWarnings("rawtypes") Class type) {
+        try {
+            testSerializable(section, type);
+            return true;
+        } catch (Exception e) {
+            warnings.append(section).append(": Recommendation failed: Class should be serializable: ").append(type.getName()).append(", details: ")
+                    .append(e.getMessage()).append("\n");
+            return false;
+        }
+    }
+
+    /**
+     * Test for serializable (optional recommendation), writes a warning if not given.
+     *
+     * @param section
+     *            the section of the spec under test
+     * @param instance
+     *            the object to be checked.
+     * @return true, if the instance is probably serializable.
+     */
+    public static boolean testSerializableOpt(String section, Object instance) {
+        try {
+            testSerializable(section, instance);
+            return true;
+        } catch (Exception e) {
+            warnings.append(section).append(": Recommendation failed: Class is serializable, but serialization failed: ")
+                    .append(instance.getClass().getName()).append("\n");
+            return false;
         }
     }
 
@@ -204,15 +235,19 @@ public class TestUtils {
     }
 
     /**
-     * Tests if the given type is comparable.
+     * Tests if the given type is {@link Comparable}.
      *
      * @param section
      *            the section of the spec under test
      * @param type
      *            the type to be checked.
+     * @throws TCKValidationException
+     *             if the test fails.            
      */
     public static void testComparable(String section, Class<?> type) {
-        testImplementsInterface(section, type, Comparable.class);
+    	if (!Comparable.class.isAssignableFrom(type)) {
+            throw new TCKValidationException(section + ": Class must be comparable: " + type.getName());
+        }
     }
 
     /**
@@ -397,6 +432,27 @@ public class TestUtils {
             return false;
         }
     }
+    
+    /**
+     * Tests the given class being immutable.
+     *
+     * @param section
+     *            the section of the spec under test
+     * @param type
+     *            the type to be checked.
+     * @throws TCKValidationException
+     *             if test fails.
+     * @deprecated This was never used by the TCK, as immutability is highly recommended, but not enforced. MutabilityDetector is also incompatible with the Java Platform Module System and not actively developed in recent years.
+     */
+    public static void testImmutable(String section, Class<?> type) {
+//        try {
+//            MutabilityAssert.assertInstancesOf(type, MutabilityMatchers.areImmutable(),
+//                    AllowedReason.provided(Dimension.class, Quantity.class, Unit.class, UnitConverter.class).areAlsoImmutable(),
+//                    AllowedReason.allowingForSubclassing(), AllowedReason.allowingNonFinalFields());
+//        } catch (Exception e) {
+//            throw new TCKValidationException(section + ": Class is not immutable: " + type.getName(), e);
+//        }
+    }
 
     /**
      * Test for immutability (optional recommendation), writes a warning if not given.
@@ -406,6 +462,8 @@ public class TestUtils {
      * @param type
      *            the type to be checked.
      * @return true, if the instance is probably immutable.
+     * 
+     * @deprecated This was never used by the TCK, as immutability is highly recommended, but not enforced. MutabilityDetector is also incompatible with the Java Platform Module System and not actively developed in recent years. 
      */
     public static boolean testImmutableOpt(String section, @SuppressWarnings("rawtypes") Class type) {
         try {
@@ -414,46 +472,6 @@ public class TestUtils {
         } catch (Exception e) {
             warnings.append(section).append(": Recommendation failed: Class should be immutable: ").append(type.getName()).append(", details: ")
                     .append(e.getMessage()).append("\n");
-            return false;
-        }
-    }
-
-    /**
-     * Test for serializable (optional recommendation), writes a warning if not given.
-     *
-     * @param section
-     *            the section of the spec under test
-     * @param type
-     *            the type to be checked.
-     * @return true, if the type is probably serializable.
-     */
-    public static boolean testSerializableOpt(String section, @SuppressWarnings("rawtypes") Class type) {
-        try {
-            testSerializable(section, type);
-            return true;
-        } catch (Exception e) {
-            warnings.append(section).append(": Recommendation failed: Class should be serializable: ").append(type.getName()).append(", details: ")
-                    .append(e.getMessage()).append("\n");
-            return false;
-        }
-    }
-
-    /**
-     * Test for serializable (optional recommendation), writes a warning if not given.
-     *
-     * @param section
-     *            the section of the spec under test
-     * @param instance
-     *            the object to be checked.
-     * @return true, if the instance is probably serializable.
-     */
-    public static boolean testSerializableOpt(String section, Object instance) {
-        try {
-            testSerializable(section, instance);
-            return true;
-        } catch (Exception e) {
-            warnings.append(section).append(": Recommendation failed: Class is serializable, but serialization failed: ")
-                    .append(instance.getClass().getName()).append("\n");
             return false;
         }
     }
