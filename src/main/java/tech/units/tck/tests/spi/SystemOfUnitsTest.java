@@ -29,7 +29,11 @@
  */
 package tech.units.tck.tests.spi;
 
-import static org.testng.AssertJUnit.assertNotNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNot.not;
+import static org.testng.Assert.assertNotNull;
 import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
@@ -44,7 +48,6 @@ import javax.measure.spi.SystemOfUnits;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import tech.units.tck.util.TestUtils;
@@ -53,7 +56,7 @@ import tech.units.tck.util.TestUtils;
  * Tests for SystemOfUnits
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.1, November 15, 2020
+ * @version 2.3, October 4, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -68,14 +71,12 @@ public class SystemOfUnitsTest {
 	    + " Ensure a SystemOfUnits implementation exists for every ServiceProvider")
     public void testEnsureGotSystemOfUnits() {
     	for (ServiceProvider provider : ServiceProvider.available()) {
-    	    assertNotNull(SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null",
-    		    provider);
-    	    AssertJUnit.assertNotNull("SystemOfUnits is null for " + provider,
-    		    provider.getSystemOfUnitsService()
-    			    .getAvailableSystemsOfUnits());
-    	    AssertJUnit.assertFalse("SystemOfUnits not found in " + provider,
-    		    provider.getSystemOfUnitsService()
-    			    .getAvailableSystemsOfUnits().isEmpty());
+    	    assertNotNull(provider,	SECTION_PREFIX + SECTION_NUM + ": ServiceProvider is null");
+    	    assertNotNull(provider.getSystemOfUnitsService(), String.format("SystemOfUnitsService is null for %s", provider));
+    	    assertNotNull(provider.getSystemOfUnitsService().getAvailableSystemsOfUnits(), 
+    	    		String.format("Available SystemOfUnits is null for %s", provider));
+    	    assertThat(String.format("SystemOfUnits not found in %s", provider), 
+    	    		provider.getSystemOfUnitsService().getAvailableSystemsOfUnits(), is(not(empty())));
     	}
     }
 

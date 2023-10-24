@@ -33,8 +33,12 @@ import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.util.TestGroups.FORMAT;
-import static org.testng.AssertJUnit.assertFalse;
-import static org.testng.AssertJUnit.assertNotNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNot.not;
+import static org.testng.Assert.assertNotNull;
+import static tech.units.tck.util.TestUtils.MSG_NO_TCK_CONFIG;
 import static tech.units.tck.util.TestUtils.testHasPublicMethod;
 
 import javax.measure.Unit;
@@ -48,7 +52,7 @@ import tech.units.tck.TCKSetup;
 
 /**
  * Tests for UnitFormat
- * @version 2.1, December 2, 2020
+ * @version 2.3, October 4, 2023
  * @since 1.0
  * @author  <a href="mailto:werner@units.tech">Werner Keil</a>
  */
@@ -63,8 +67,8 @@ public class UnitFormatTest {
     @SpecAssertion(section = SECTION_NUM, id = "45-A1")
     @Test(groups = { FORMAT }, description = SECTION_NUM + " Ensure at least one UnitFormat implementation is available/registered.")
     public void testEnsureGotUnitFormat() {
-        assertNotNull("TCK Configuration not available.", TCKSetup.getConfiguration());
-        assertFalse(TCKSetup.getConfiguration().getUnitFormats4Test().isEmpty());
+        assertNotNull(TCKSetup.getConfiguration(), MSG_NO_TCK_CONFIG);        
+        assertThat("No UnitFormat implementation found.", TCKSetup.getConfiguration().getUnitFormats4Test(), is(not(empty())));
     }
     
     /**

@@ -40,16 +40,12 @@ import org.jboss.test.audit.annotations.SpecVersion;
 import org.testng.annotations.Test;
 
 import tech.units.tck.TCKSetup;
-import tech.units.tck.util.TestUtils;
-
-import javax.measure.Dimension;
-import java.util.Set;
 
 /**
  * Tests for Unit Conversion
  *
  * @author Werner Keil
- * @version 2.1, February 16, 2023
+ * @version 2.2, October 4, 2023
  * @since 2.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -76,7 +72,6 @@ public class PrefixInterfaceTest {
     public void testHashcode() {
         for (@SuppressWarnings("rawtypes")
         Class type : TCKSetup.getConfiguration().getPrefixClasses()) {
-            //TestUtils.testHasPublicMethod(SECTION_PREFIX + SECTION, type, int.class, "hashCode");
 			testHasPublicMethod(SECTION_PREFIX + SECTION, type, true, int.class,"hashCode");
         }
     }

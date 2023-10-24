@@ -29,28 +29,32 @@
  */
 package tech.units.tck.tests.unit;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNot.not;
+import static org.testng.Assert.assertNotNull;
 import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.util.TestGroups.CORE;
+import static tech.units.tck.util.TestUtils.MSG_NO_TCK_CONFIG;
 import static tech.units.tck.util.TestUtils.testHasPublicMethod;
 
 import java.util.List;
 import javax.measure.UnitConverter;
 import org.jboss.test.audit.annotations.SpecAssertion;
 import org.jboss.test.audit.annotations.SpecVersion;
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
 
 import tech.units.tck.TCKSetup;
-import tech.units.tck.util.TestUtils;
 
 /**
  * Tests for Unit Conversion
  *
  * @author Werner Keil
  * @author Almas Shaikh
- * @version 2.1, February 16, 2023
+ * @version 2.2, October 4, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -63,8 +67,8 @@ public class UnitConversionTest {
     @SpecAssertion(section = SECTION, id = "423-A1")
     @Test(groups = { CORE }, description = SECTION + " Ensure at least one UnitConverter implementation is available/registered.")
     public void testEnsureGotConverters() {
-        AssertJUnit.assertTrue("TCK Configuration not available.", TCKSetup.getConfiguration() != null);
-        AssertJUnit.assertFalse(TCKSetup.getConfiguration().getUnitConverters4Test().isEmpty());
+    	assertNotNull(TCKSetup.getConfiguration(), MSG_NO_TCK_CONFIG);
+    	assertThat("No UnitConverter implementation found.", TCKSetup.getConfiguration().getUnitConverters4Test(), is(not(empty())));
     }
 
     /**

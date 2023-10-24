@@ -32,12 +32,15 @@ package tech.units.tck.tests.spi;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.number.OrderingComparison.greaterThanOrEqualTo;
 import static org.hamcrest.number.OrderingComparison.lessThanOrEqualTo;
-import static org.testng.AssertJUnit.assertNotNull;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNot.not;
+import static org.testng.Assert.assertNotNull;
+
 import static tech.units.tck.TCKRunner.SECTION_PREFIX;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
 import static tech.units.tck.util.TestGroups.SPI;
-import static org.testng.AssertJUnit.assertFalse;
 
 import java.util.List;
 
@@ -50,7 +53,7 @@ import org.testng.annotations.Test;
 /**
  * Test class for {@link ServiceProvider}.
  * @author Werner Keil
- * @version 1.2, November 15, 2020
+ * @version 2.1, October 4, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -58,6 +61,9 @@ public class ServiceProviderTest {
     private static final String SECTION_NUM = "5.3";
     private static final String DESCRIPTION = SECTION_NUM + " Service Provider";
 
+    private static final String ASIN = ": available ServiceProviders is null";
+    private static final String PRIO_VALID_INT = ": Priority should be a valid int";
+    
     // ************************ 5.3 Service Provider
     // ************************
     /**
@@ -66,8 +72,8 @@ public class ServiceProviderTest {
     @Test(groups = { SPI }, description = DESCRIPTION)
     @SpecAssertion(section = SECTION_NUM, id = "53-A1")
     public void testAvailable() {
-	List<ServiceProvider> spa = ServiceProvider.available();
-        assertNotNull(SECTION_PREFIX + SECTION_NUM + ": available ServiceProviders is null", spa);
+    	List<ServiceProvider> spa = ServiceProvider.available();
+        assertNotNull(spa, SECTION_PREFIX + SECTION_NUM + ASIN);
     }
     
     /**
@@ -76,9 +82,9 @@ public class ServiceProviderTest {
     @Test(groups = { SPI }, description = DESCRIPTION)
     @SpecAssertion(section = SECTION_NUM, id = "53-A2")
     public void testAvailableNotEmpty() {
-	List<ServiceProvider> spa = ServiceProvider.available();
-        assertNotNull(SECTION_PREFIX + SECTION_NUM + ": available ServiceProviders is null", spa);
-        assertFalse(SECTION_PREFIX + SECTION_NUM + ": No available ServiceProviders found", spa.isEmpty());
+    	final List<ServiceProvider> spa = ServiceProvider.available();
+        assertNotNull(spa, SECTION_PREFIX + SECTION_NUM + ASIN);
+        assertThat(SECTION_PREFIX + SECTION_NUM + ": No available ServiceProviders found", spa, is(not(empty())));
     }
     
     // ************************ 5.3 Service Provider
@@ -89,8 +95,8 @@ public class ServiceProviderTest {
     @Test(groups = { SPI }, description = DESCRIPTION)
     @SpecAssertion(section = SECTION_NUM, id = "53-A3")
     public void testCurrent() {
-	ServiceProvider sp = ServiceProvider.current();
-        assertNotNull(SECTION_PREFIX + SECTION_NUM + ": No current ServiceProvider found", sp);
+    	final ServiceProvider csp = ServiceProvider.current();
+        assertNotNull(csp, SECTION_PREFIX + SECTION_NUM + ": No current ServiceProvider found");
     }
     
     // ************************ 5.3 Service Provider
@@ -101,10 +107,10 @@ public class ServiceProviderTest {
     @Test(groups = { SPI }, description = DESCRIPTION)
     @SpecAssertion(section = SECTION_NUM, id = "53-A4")
     public void testPriority() {
-	ServiceProvider sp = ServiceProvider.current();
-	assertThat(SECTION_PREFIX + SECTION_NUM + ": Priority should be a valid int", sp.getPriority(),
-		greaterThanOrEqualTo(Integer.MIN_VALUE));
-	assertThat(SECTION_PREFIX + SECTION_NUM + ": Priority should be a valid int", sp.getPriority(),
-		lessThanOrEqualTo(Integer.MAX_VALUE));
+    	final ServiceProvider csp = ServiceProvider.current();
+    	assertThat(SECTION_PREFIX + SECTION_NUM + PRIO_VALID_INT, csp.getPriority(),
+    			greaterThanOrEqualTo(Integer.MIN_VALUE));
+    	assertThat(SECTION_PREFIX + SECTION_NUM + PRIO_VALID_INT, csp.getPriority(),
+    			lessThanOrEqualTo(Integer.MAX_VALUE));
     }
 }

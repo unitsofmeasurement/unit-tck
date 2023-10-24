@@ -29,10 +29,15 @@
  */
 package tech.units.tck.tests;
 
-import static org.testng.AssertJUnit.*;
+import static org.testng.Assert.assertNotNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.empty;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNot.not;
 import static tech.units.tck.TCKRunner.SPEC_ID;
 import static tech.units.tck.TCKRunner.SPEC_VERSION;
-import static tech.units.tck.TCKSetup.*;
+import static tech.units.tck.TCKSetup.getConfiguration;
+import static tech.units.tck.util.TestUtils.MSG_NO_TCK_CONFIG;
 import static tech.units.tck.util.TestGroups.CORE;
 
 import org.jboss.test.audit.annotations.SpecAssertion;
@@ -44,7 +49,7 @@ import java.util.Collection;
 /**
  * Tests the ServiceConfiguration
  * @author Werner Keil
- * @version 2.0, July 7, 2023
+ * @version 2.1, October 4, 2023
  * @since 1.0
  */
 @SpecVersion(spec = SPEC_ID, version = SPEC_VERSION)
@@ -59,7 +64,7 @@ public class TCKSetupTest{
             note = "Tests that a TestConfiguration is registered with the JDK ServiceLoader.")
     @Test(groups = { CORE }, description = "TCK Setup: ensure TCK Configuration is registered and available.")
     public void testTestSetup(){
-        assertNotNull("TCK Configuration not available.", getConfiguration());
+        assertNotNull(getConfiguration(), MSG_NO_TCK_CONFIG);
     }
 
     /** Tests the quantity configuration */
@@ -72,7 +77,7 @@ public class TCKSetupTest{
     public void testQuantityConfiguration(){
         @SuppressWarnings("rawtypes")
 	Collection<Class> quantityClasses = getConfiguration().getQuantityClasses();
-        assertNotNull("TCK Test Configuration quantity classes are null.", quantityClasses);
-        assertFalse("TCK Test Configuration quantity classes is empty.", quantityClasses.isEmpty());
+        assertNotNull(quantityClasses, "TCK Test Configuration quantity classes are null.");
+        assertThat("TCK Test Configuration quantity classes are missing.", quantityClasses, is(not(empty())));
     }
 }
