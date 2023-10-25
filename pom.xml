@@ -5,7 +5,7 @@
 	<artifactId>unit-tck</artifactId>
 	<packaging>bundle</packaging>
 	<name>Units of Measurement TCK</name>
-	<url>http://github.com/unitsofmeasurement/unit-tck</url>
+	<url>https://unitsofmeasurement.github.io/unit-tck/</url>
 	<organization>
 		<name>Units of Measurement project</name>
 		<url>http://unitsofmeasurement.github.io</url>
