@@ -11,7 +11,6 @@
 		<url>http://unitsofmeasurement.github.io</url>
 	</organization>
 	<description>Units of Measurement (JSR 385) TCK</description>
-	<version>2.2-SNAPSHOT</version>
 	<parent>
 		<groupId>tech.uom</groupId>
 		<artifactId>uom-parent</artifactId>
@@ -37,6 +36,7 @@
 	<properties>
 		<jsr.version>2.2</jsr.version>
 		<ri.version>2.2</ri.version>
+		<lib.version>2.2</lib.version>
 		<jdkVersion>9</jdkVersion>
 		<project.build.javaVersion>${jdkVersion}</project.build.javaVersion>
 		<maven.compile.sourceLevel>${jdkVersion}</maven.compile.sourceLevel>
@@ -45,6 +45,8 @@
 		<jboss.test.audit.version>2.0.0.Final</jboss.test.audit.version>
 		<hamcrest.version>2.2</hamcrest.version>
 		<reflections.version>0.10.2</reflections.version>
+		<maven.enforcer.version>3.4.1</maven.enforcer.version>
+		<maven.exec.version>3.1.0</maven.exec.version>
 	</properties>
 
 	<dependencyManagement>
@@ -59,7 +61,7 @@
 			<dependency>
 				<groupId>tech.uom.lib</groupId>
 				<artifactId>uom-lib-common</artifactId>
-				<version>2.1</version>
+				<version>${lib.version}</version>
 			</dependency>
 
             <dependency>
@@ -186,7 +188,7 @@
 	            <plugin>
 				  <groupId>org.apache.maven.plugins</groupId>
 				  <artifactId>maven-enforcer-plugin</artifactId>
-				  <version>3.4.1</version>
+				  <version>${maven.enforcer.version}</version>
 				</plugin>	            
 	        </plugins>
 		</pluginManagement>
@@ -270,15 +272,9 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.4.0</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>java</goal>
-						</goals>
-					</execution>
-				</executions>
+				<version>${maven.exec.version}</version>
 				<configuration>
+					<executable>java</executable>
 					<mainClass>tech.units.tck.TCKRunner</mainClass>
 				</configuration>
 			</plugin>
@@ -322,13 +318,10 @@
 				</executions>
 				<configuration>
 					<detectLinks>true</detectLinks>
-					<!-- excludePackageNames>package1</excludePackageNames -->
 					<keywords>true</keywords>
 					<linksource>true</linksource>
 					<failOnError>false</failOnError>
-					<!-- overview>${basedir}/overview.html</overview -->
 					<source>${maven.compile.sourceLevel}</source>
-					<!-- stylesheetfile>${basedir}/src/site/css/measure-jdoc.css</stylesheetfile -->
 					<verbose>true</verbose>
 				</configuration>
 			</plugin>
@@ -373,7 +366,7 @@
 						<plugin>
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-javadoc-plugin</artifactId>
-							<version>2.9.1</version>
+							<version>${maven.javadoc.version}</version>
 							<configuration>
 								<source>${project.build.javaVersion}</source>             <!-- Enables javadoc to handle assertions present in J2SE 1.4. -->
 								<encoding>${project.build.sourceEncoding}</encoding>       <!-- The encoding of the source files. -->
@@ -502,15 +495,9 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>exec-maven-plugin</artifactId>
-						<version>1.4.0</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>java</goal>
-								</goals>
-							</execution>
-						</executions>
+						<version>${maven.exec.version}</version>
 						<configuration>
+							<executable>java</executable>
 							<mainClass>tech.units.tck.TCKRunner</mainClass>
 							<arguments>
 								<argument>-version</argument>

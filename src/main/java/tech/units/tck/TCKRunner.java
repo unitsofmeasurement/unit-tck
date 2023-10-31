@@ -83,7 +83,7 @@ import tech.uom.lib.common.function.Versioned;
  * Main class for executing the JSR 385 TCK.
  *
  * @author <a href="mailto:werner@units.tech">Werner Keil</a>
- * @version 2.4, July 7, 2023
+ * @version 2.5, October 31, 2023
  * @since 1.0
  */
 public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
@@ -179,9 +179,11 @@ public class TCKRunner extends XmlSuite implements Tool, Versioned<String> {
         return TCK_VERSION;
     }
 
-    @Override
+    @SuppressWarnings("exports")
+	@Override
     public final Set<SourceVersion> getSourceVersions() {
-        return Collections.unmodifiableSet(new HashSet<>(Arrays.asList(new SourceVersion[] {SourceVersion.RELEASE_5, SourceVersion.RELEASE_6, SourceVersion.RELEASE_7})));
+        return Collections.unmodifiableSet(new HashSet<>(Arrays.asList(new SourceVersion[] { 
+        		SourceVersion.RELEASE_8})));
     }
 
     /** Main method
