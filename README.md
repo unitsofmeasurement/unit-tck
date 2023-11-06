@@ -66,3 +66,7 @@ To override the default TCK report file
 -Dtech.units.tck.verbose=true/false
 ```
 To toggle the `verbose` option of the TCK for extended test output. The default is `false`. And you normally won't need to set this unless you require detailed analysis or issue resolution.
+
+## Issues or Appeals
+To file issues or TCK appeals, please open a ticket under [unit-tck/issues](issues)
+Chose the label "appeals process" to establish a first-level TCK Appeals Process.
