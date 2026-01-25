@@ -2,7 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
@@ -18,7 +18,8 @@ jobs:
       TEST_REPORTS: /tmp/test-reports
 
     steps:
-      - checkout
+      - checkout:
+          method: full
 
       # run tests!
       - run:
