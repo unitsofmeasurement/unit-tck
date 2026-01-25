@@ -18,8 +18,7 @@ jobs:
       TEST_REPORTS: /tmp/test-reports
 
     steps:
-      - checkout:
-          method: full
+      - checkout
 
       # run tests!
       - run:
